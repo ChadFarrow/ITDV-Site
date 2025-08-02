@@ -11,6 +11,9 @@ const fs = require('fs/promises');
 const path = require('path');
 const { sql } = require('@vercel/postgres');
 
+// Load environment variables from .env.local
+require('dotenv').config({ path: '.env.local' });
+
 async function seedDatabase() {
   try {
     console.log('🌱 Seeding database with feeds from feeds.json...');
@@ -40,8 +43,8 @@ async function seedDatabase() {
               ${feed.title}, 
               ${feed.priority}, 
               ${feed.status},
-              ${new Date(feed.addedAt)},
-              ${new Date(feed.lastUpdated)}
+              ${feed.addedAt},
+              ${feed.lastUpdated}
             )
           `;
           seededCount++;

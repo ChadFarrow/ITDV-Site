@@ -42,8 +42,8 @@ export async function seedDatabase() {
               ${feed.title}, 
               ${feed.priority}, 
               ${feed.status},
-              ${new Date(feed.addedAt)},
-              ${new Date(feed.lastUpdated)}
+              ${feed.addedAt},
+              ${feed.lastUpdated}
             )
           `;
           seededCount++;
