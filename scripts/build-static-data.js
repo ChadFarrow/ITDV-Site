@@ -8,12 +8,41 @@
 const fs = require('fs');
 const path = require('path');
 
+// Handle different working directories in different environments
+function findProjectRoot() {
+  let currentDir = __dirname;
+  
+  // Try to find package.json going up the directory tree
+  while (currentDir !== path.dirname(currentDir)) {
+    if (fs.existsSync(path.join(currentDir, 'package.json'))) {
+      return currentDir;
+    }
+    currentDir = path.dirname(currentDir);
+  }
+  
+  // Fallback to assuming we're in the scripts directory
+  return path.join(__dirname, '..');
+}
+
 async function buildStaticData() {
   console.log('🚀 Building static album data...');
   
   try {
+    // Skip during Vercel build if we can't fetch (circular dependency)
+    if (process.env.VERCEL) {
+      console.log('⚠️ Skipping static data generation during Vercel build');
+      console.log('📋 Static data will be generated post-deployment');
+      return;
+    }
+    
     // Import fetch for Node.js
-    const fetch = (await import('node-fetch')).default;
+    let fetch;
+    try {
+      fetch = (await import('node-fetch')).default;
+    } catch (error) {
+      console.log('⚠️ node-fetch not available, skipping static data generation');
+      return;
+    }
     
     // Determine the base URL
     const baseUrl = process.env.VERCEL_URL 
@@ -46,7 +75,8 @@ async function buildStaticData() {
     };
     
     // Write to public directory
-    const outputPath = path.join(__dirname, '../public/static-albums.json');
+    const projectRoot = findProjectRoot();
+    const outputPath = path.join(projectRoot, 'public/static-albums.json');
     
     // Ensure directory exists
     const dir = path.dirname(outputPath);

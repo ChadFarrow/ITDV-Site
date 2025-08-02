@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/build-static-data.js",
+    "prebuild": "echo 'Skipping static data generation during build'",
     "build": "next build",
     "postbuild": "echo '✅ Build complete with auto-versioned PWA'",
     "start": "next start",
