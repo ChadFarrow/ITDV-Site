@@ -99,8 +99,6 @@ export default function HomePage() {
   const { playAlbum: globalPlayAlbum, shuffleAllTracks } = useAudio();
   const hasLoadedRef = useRef(false);
   
-  // Static background state - Bloodshot Lies album art
-  const [backgroundImageLoaded, setBackgroundImageLoaded] = useState(false);
 
   // Controls state
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
@@ -167,16 +165,6 @@ export default function HomePage() {
   }, []); // Run only once on mount
 
 
-  // Static background loading - Bloodshot Lies album art
-  // CDNImage component handles loading internally, so we just need to track the state
-  useEffect(() => {
-    // Set a small delay to ensure the CDNImage component has time to load
-    const timer = setTimeout(() => {
-      setBackgroundImageLoaded(true);
-    }, 100);
-    
-    return () => clearTimeout(timer);
-  }, []); // Remove isClient dependency to prevent potential loops
 
 
 
@@ -397,12 +385,6 @@ export default function HomePage() {
         if (aIsStayAwhile && !bIsStayAwhile) return -1;
         if (!aIsStayAwhile && bIsStayAwhile) return 1;
         
-        // Pin "Bloodshot Lies" second - with proper type checking
-        const aIsBloodshot = aTitle.toLowerCase().includes('bloodshot lie');
-        const bIsBloodshot = bTitle.toLowerCase().includes('bloodshot lie');
-        
-        if (aIsBloodshot && !bIsBloodshot) return -1;
-        if (!aIsBloodshot && bIsBloodshot) return 1;
         
         // Hierarchical sorting: Albums (7+ tracks) → EPs (2-6 tracks) → Singles (1 track)
         const aIsAlbum = a.tracks.length > 6;
@@ -465,26 +447,8 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
-      {/* Static Background - Bloodshot Lies Album Art */}
-      <div className="fixed inset-0 z-0">
-        <CDNImage
-          src="https://www.doerfelverse.com/art/bloodshot-lies-the-album.png?v=1"
-          alt="Bloodshot Lies Album Art"
-          width={1920}
-          height={1080}
-          className="object-cover w-full h-full"
-          priority
-          onLoad={() => setBackgroundImageLoaded(true)}
-          onError={() => setBackgroundImageLoaded(true)} // Mark as loaded even on error to show fallback
-        />
-        {/* Gradient overlay for better readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black/90"></div>
-      </div>
-      
-      {/* Fallback gradient background - show when not loaded or on error */}
-      {!backgroundImageLoaded && (
-        <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-0" />
-      )}
+      {/* Simple gradient background */}
+      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-0" />
 
       {/* Content overlay */}
       <div className="relative z-10">
@@ -542,7 +506,6 @@ export default function HomePage() {
               {/* Bottom row - Title and Beta badge */}
               <div className="text-center">
                 <h1 className="text-xl font-bold mb-1">Into the Doerfel-Verse</h1>
-                <p className="text-xs text-gray-400 mb-2">- &quot;its was all this reimagined, its a different kind of speech, it was repition, it was what you wanted it to be&quot; - The Contortionist - Reimagined</p>
                                                   <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30">
                   Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
                 </div>
@@ -581,7 +544,6 @@ export default function HomePage() {
                 {/* Center - Title */}
                 <div className="text-center">
                   <h1 className="text-3xl font-bold mb-1">Into the Doerfel-Verse</h1>
-                  <p className="text-sm text-gray-400 mb-2">- &quot;its was all this reimagined, its a different kind of speech, it was repition, it was what you wanted it to be&quot; - The Contortionist - Reimagined</p>
                   <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30 inline-block">
                     Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
                   </div>
