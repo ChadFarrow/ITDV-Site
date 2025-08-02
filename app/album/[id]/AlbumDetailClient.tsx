@@ -16,6 +16,17 @@ interface Track {
   image?: string;
 }
 
+interface RSSFunding {
+  url: string;
+  message?: string;
+}
+
+interface RSSPodRoll {
+  url: string;
+  title?: string;
+  description?: string;
+}
+
 interface Album {
   title: string;
   artist: string;
@@ -24,6 +35,8 @@ interface Album {
   tracks: Track[];
   releaseDate: string;
   feedId: string;
+  funding?: RSSFunding[];
+  podroll?: RSSPodRoll[];
 }
 
 interface AlbumDetailClientProps {
@@ -236,6 +249,89 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         </div>
         </div>
+
+        {/* Podroll and Funding Sections */}
+        {(album.podroll && album.podroll.length > 0) || (album.funding && album.funding.length > 0) ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {/* Podroll Section */}
+            {album.podroll && album.podroll.length > 0 && (
+              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                  </svg>
+                  <h3 className="text-lg font-semibold text-white">Related Shows</h3>
+                </div>
+                <div className="space-y-3">
+                  {album.podroll.map((podrollItem, index) => (
+                    <div key={index} className="group">
+                      <a
+                        href={podrollItem.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-3 bg-black/20 hover:bg-black/40 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-sm font-medium text-white group-hover:text-blue-300 transition-colors">
+                              {podrollItem.title || 'Related Show'}
+                            </h4>
+                            {podrollItem.description && (
+                              <p className="text-xs text-gray-400 mt-1 line-clamp-2">
+                                {podrollItem.description}
+                              </p>
+                            )}
+                          </div>
+                          <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-300 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Funding Section */}
+            {album.funding && album.funding.length > 0 && (
+              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                  <h3 className="text-lg font-semibold text-white">Support</h3>
+                </div>
+                <div className="space-y-3">
+                  {album.funding.map((fundingItem, index) => (
+                    <div key={index} className="group">
+                      <a
+                        href={fundingItem.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block p-3 bg-black/20 hover:bg-black/40 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200"
+                      >
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1 min-w-0">
+                            <h4 className="text-sm font-medium text-white group-hover:text-green-300 transition-colors">
+                              {fundingItem.message || 'Support this Artist'}
+                            </h4>
+                            <p className="text-xs text-gray-400 mt-1 truncate">
+                              {fundingItem.url}
+                            </p>
+                          </div>
+                          <svg className="w-4 h-4 text-gray-400 group-hover:text-green-300 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        ) : null}
 
         {/* Track List */}
         <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden">

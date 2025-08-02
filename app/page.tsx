@@ -16,6 +16,17 @@ interface Track {
   image?: string;
 }
 
+interface RSSFunding {
+  url: string;
+  message?: string;
+}
+
+interface RSSPodRoll {
+  url: string;
+  title?: string;
+  description?: string;
+}
+
 interface Album {
   title: string;
   artist: string;
@@ -24,6 +35,8 @@ interface Album {
   tracks: Track[];
   releaseDate: string;
   feedId: string;
+  funding?: RSSFunding[];
+  podroll?: RSSPodRoll[];
 }
 
 type FilterType = 'all' | 'albums' | 'eps' | 'singles';
