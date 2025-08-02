@@ -1,9 +1,9 @@
 'use client';
 
-import { Filter, Grid3X3, List, Shuffle } from 'lucide-react';
+import { Filter, Grid3X3, List, Shuffle, Box } from 'lucide-react';
 
 export type FilterType = 'all' | 'albums' | 'eps' | 'singles' | 'playlist';
-export type ViewType = 'grid' | 'list';
+export type ViewType = 'grid' | 'list' | '3d';
 export type SortType = 'name' | 'year' | 'tracks';
 
 interface ControlsBarProps {
@@ -150,6 +150,17 @@ export default function ControlsBar({
                 >
                   <List className="w-3 h-3" />
                 </button>
+                <button
+                  onClick={() => onViewChange('3d')}
+                  className={`p-1 rounded transition-all touch-manipulation ${
+                    viewType === '3d' 
+                      ? 'bg-white/20 text-white shadow-sm' 
+                      : 'text-gray-400 hover:text-white active:bg-white/10'
+                  }`}
+                  title="3D view"
+                >
+                  <Box className="w-3 h-3" />
+                </button>
               </div>
             )}
           </div>
@@ -240,6 +251,17 @@ export default function ControlsBar({
                 title="List view"
               >
                 <List className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => onViewChange('3d')}
+                className={`p-1.5 rounded transition-all touch-manipulation ${
+                  viewType === '3d' 
+                    ? 'bg-white/20 text-white shadow-sm' 
+                    : 'text-gray-400 hover:text-white active:bg-white/10'
+                }`}
+                title="3D view"
+              >
+                <Box className="w-4 h-4" />
               </button>
             </div>
           )}
