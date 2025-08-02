@@ -39,6 +39,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { url, type = 'album' } = body;
+    const priority = 'core'; // Default priority
 
     // Validate inputs
     if (!url) {
@@ -63,6 +64,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
 
     // Load existing feeds
     const feedsPath = path.join(process.cwd(), 'data', 'feeds.json');
@@ -100,7 +102,7 @@ export async function POST(request: NextRequest) {
       originalUrl: url,
       type,
       title: `Feed from ${urlObj.hostname}`,
-      priority: 'low', // Default to low priority for user-added feeds
+      priority,
       status: 'active',
       addedAt: new Date().toISOString(),
       lastUpdated: new Date().toISOString()
@@ -127,6 +129,68 @@ export async function POST(request: NextRequest) {
         success: false, 
         error: 'Failed to add feed',
         details: error instanceof Error ? error.message : 'Unknown error'
+      },
+      { status: 500 }
+    );
+  }
+}
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const { feedId } = body;
+
+    if (!feedId) {
+      return NextResponse.json(
+        { success: false, error: "Feed ID is required" },
+        { status: 400 }
+      );
+    }
+
+    // Load existing feeds
+    const feedsPath = path.join(process.cwd(), "data", "feeds.json");
+    
+    try {
+      const feedsContent = await fs.readFile(feedsPath, "utf-8");
+      const feedsData = JSON.parse(feedsContent);
+
+      // Find and remove the feed
+      const feedIndex = feedsData.feeds.findIndex((feed: any) => feed.id === feedId);
+      
+      if (feedIndex === -1) {
+        return NextResponse.json(
+          { success: false, error: "Feed not found" },
+          { status: 404 }
+        );
+      }
+
+      // Remove the feed
+      const removedFeed = feedsData.feeds.splice(feedIndex, 1)[0];
+      feedsData.lastUpdated = new Date().toISOString();
+
+      // Save back to file
+      await fs.writeFile(feedsPath, JSON.stringify(feedsData, null, 2));
+
+      console.log(`✅ Removed RSS feed: ${removedFeed.originalUrl}`);
+
+      return NextResponse.json({
+        success: true,
+        message: "Feed removed successfully",
+        removedFeed
+      });
+    } catch (error) {
+      return NextResponse.json(
+        { success: false, error: "Failed to read feeds file" },
+        { status: 500 }
+      );
+    }
+  } catch (error) {
+    console.error("Error removing feed:", error);
+    return NextResponse.json(
+      { 
+        success: false, 
+        error: "Failed to remove feed",
+        details: error instanceof Error ? error.message : "Unknown error"
       },
       { status: 500 }
     );

@@ -5,8 +5,6 @@ import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import ClientErrorBoundary from '@/components/ClientErrorBoundary'
 import { ToastContainer } from '@/components/Toast'
-import { AudioProvider } from '@/contexts/AudioContext'
-import GlobalNowPlayingBar from '@/components/GlobalNowPlayingBar'
 import PerformanceMonitor from '@/components/PerformanceMonitor'
 
 
@@ -99,25 +97,13 @@ export default function RootLayout({
       <body className={inter.className}>
         <ClientErrorBoundary>
           <ErrorBoundary>
-            <AudioProvider>
-              <div className="min-h-screen bg-gray-50 relative">
-                {/* Background Image */}
-                <div 
-                  className="fixed inset-0 z-0"
-                  style={{
-                    background: 'url(/bloodshot-lies-big.jpg) center/contain fixed',
-                    backgroundAttachment: 'fixed',
-                    opacity: 0.15
-                  }}
-                />
-                {/* Content overlay */}
-                <div className="relative z-10">
-                  {children}
-                </div>
+            <div className="min-h-screen bg-gray-50 relative">
+              {/* Content overlay */}
+              <div className="relative z-10">
+                {children}
               </div>
-              <GlobalNowPlayingBar />
-              <ToastContainer />
-            </AudioProvider>
+            </div>
+            <ToastContainer />
           </ErrorBoundary>
           <ServiceWorkerRegistration />
           <PerformanceMonitor />
