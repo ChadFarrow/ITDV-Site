@@ -32,9 +32,19 @@ async function getAlbumData(albumId: string) {
     
     // Try to find album by ID or title
     const decodedId = decodeURIComponent(albumId);
+    
+    // Helper function to create URL slug (same as homepage)
+    const createSlug = (title: string) => 
+      title.toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with dashes
+        .replace(/-+/g, '-')            // Replace multiple consecutive dashes with single dash
+        .replace(/^-+|-+$/g, '');       // Remove leading/trailing dashes
+    
     const album = albums.find((a: any) => 
       a.feedId === albumId ||
       a.title.toLowerCase() === decodedId.toLowerCase() ||
+      createSlug(a.title) === decodedId.toLowerCase() ||
+      // Backward compatibility: also check old format with multiple dashes
       a.title.toLowerCase().replace(/\s+/g, '-') === decodedId.toLowerCase()
     );
 

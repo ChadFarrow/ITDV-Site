@@ -138,7 +138,11 @@ export default function HomePage() {
 
   const getAlbumUrl = (album: Album) => {
     // Create URL-friendly slug from album title
-    const slug = album.title.toLowerCase().replace(/\s+/g, '-');
+    const slug = album.title
+      .toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with dashes
+      .replace(/-+/g, '-')            // Replace multiple consecutive dashes with single dash
+      .replace(/^-+|-+$/g, '');       // Remove leading/trailing dashes
     return `/album/${encodeURIComponent(slug)}`;
   };
 
