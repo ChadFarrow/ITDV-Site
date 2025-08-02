@@ -447,8 +447,18 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
-      {/* Simple gradient background */}
-      <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 z-0" />
+      {/* Bloodshot Lies Album Art Background */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/bloodshot-lies-big.png"
+          alt="Bloodshot Lies Album Art"
+          fill
+          className="object-cover w-full h-full"
+          priority
+        />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
 
       {/* Content overlay */}
       <div className="relative z-10">
