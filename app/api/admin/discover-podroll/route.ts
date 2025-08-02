@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
 
     const discovered: DiscoveredFeed[] = [];
     const processed = new Set<string>();
-    const queue: { url: string; currentDepth: number }[] = [{ url, currentDepth: 0 }];
+    const queue: { url: string; currentDepth: number; discoveredFrom: string }[] = [{ url, currentDepth: 0, discoveredFrom: url }];
 
     // Get existing feeds for comparison
     const existingFeeds = FeedManager.getActiveFeeds();
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     );
 
     while (queue.length > 0) {
-      const { url: currentUrl, currentDepth } = queue.shift()!;
+      const { url: currentUrl, currentDepth, discoveredFrom } = queue.shift()!;
       const normalizedUrl = normalizeUrl(currentUrl);
 
       // Skip if already processed
@@ -114,7 +114,8 @@ export async function POST(request: NextRequest) {
             if (podrollItem.url && !processed.has(normalizeUrl(podrollItem.url))) {
               queue.push({ 
                 url: podrollItem.url, 
-                currentDepth: currentDepth + 1 
+                currentDepth: currentDepth + 1,
+                discoveredFrom: currentDepth === 0 ? url : discoveredFrom
               });
             }
           }
