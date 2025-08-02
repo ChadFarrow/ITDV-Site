@@ -13,6 +13,8 @@ export interface DBFeed {
 
 export async function initializeDatabase() {
   try {
+    console.log('🔧 Initializing database...');
+    
     // Create feeds table if it doesn't exist
     await sql`
       CREATE TABLE IF NOT EXISTS feeds (
@@ -26,21 +28,24 @@ export async function initializeDatabase() {
         last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()
       );
     `;
+    console.log('✅ Feeds table created/verified');
 
     // Create index for better query performance
     await sql`
       CREATE INDEX IF NOT EXISTS idx_feeds_status ON feeds(status);
     `;
+    console.log('✅ Status index created/verified');
 
     await sql`
       CREATE INDEX IF NOT EXISTS idx_feeds_priority ON feeds(priority);
     `;
+    console.log('✅ Priority index created/verified');
 
-    console.log('Database initialized successfully');
+    console.log('✅ Database initialized successfully');
     return true;
   } catch (error) {
-    console.error('Failed to initialize database:', error);
-    return false;
+    console.error('❌ Failed to initialize database:', error);
+    throw error; // Re-throw to surface the error
   }
 }
 
@@ -66,8 +71,14 @@ export async function getAllFeeds(): Promise<DBFeed[]> {
 
 export async function addFeed(url: string, type: 'album' | 'publisher', title?: string): Promise<{ success: boolean; error?: string; feed?: DBFeed }> {
   try {
-    // Generate ID from URL
-    const feedId = url.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+    // Generate ID from URL - limit length and clean up
+    let feedId = url.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+    // Remove multiple consecutive dashes and trim
+    feedId = feedId.replace(/-+/g, '-').replace(/^-|-$/g, '');
+    // Limit to 200 characters to avoid database issues
+    if (feedId.length > 200) {
+      feedId = feedId.substring(0, 200).replace(/-$/, '');
+    }
     
     // Default title if not provided
     const feedTitle = title || `Feed from ${new URL(url).hostname}`;
