@@ -401,18 +401,19 @@ export default function HomePage() {
                       </div>
                       
                       {/* Play button overlay */}
-                      <div 
-                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          handlePlayAlbum(album, e);
-                        }}
-                      >
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                        <button
+                          className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors pointer-events-auto"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            handlePlayAlbum(album, e);
+                          }}
+                        >
                           <svg className="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                           </svg>
-                        </div>
+                        </button>
                       </div>
                       
                       {/* Title overlay at bottom */}
