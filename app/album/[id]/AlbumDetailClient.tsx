@@ -425,25 +425,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                   </div>
                 )}
 
-                {/* Podroll Information */}
-                {album.podroll && album.podroll.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-lg font-semibold mb-3 text-white text-center lg:text-left">Related Shows</h3>
-                    <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                      {album.podroll.map((podrollItem, index) => (
-                        <a
-                          key={index}
-                          href={podrollItem.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2"
-                        >
-                          🎙️ {podrollItem.title || 'Related Show'}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
+
               </div>
             </div>
           </div>
@@ -549,6 +531,28 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                       <p className="text-xs text-gray-400 truncate">{relatedAlbum.artist}</p>
                     </div>
                   </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Podroll Information - Related Shows */}
+        {album?.podroll && album.podroll.length > 0 && (
+          <div className="container mx-auto px-4 pb-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">Related Shows</h2>
+              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                {album.podroll.map((podrollItem, index) => (
+                  <a
+                    key={index}
+                    href={podrollItem.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-6 py-3 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2"
+                  >
+                    🎙️ {podrollItem.title || `Feed ${podrollItem.url.substring(0, 8)}...`}
+                  </a>
                 ))}
               </div>
             </div>
