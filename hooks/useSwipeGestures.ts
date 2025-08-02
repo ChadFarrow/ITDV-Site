@@ -27,7 +27,7 @@ export function useSwipeGestures({
 }: SwipeGestureOptions) {
   const [touchStart, setTouchStart] = useState<TouchPosition | null>(null);
   const [touchEnd, setTouchEnd] = useState<TouchPosition | null>(null);
-  const elementRef = useRef<HTMLElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
 
   const handleTouchStart = (e: TouchEvent) => {
     const touch = e.touches[0];
