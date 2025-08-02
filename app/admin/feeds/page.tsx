@@ -120,6 +120,66 @@ export default function AdminFeedsPage() {
     }
   };
 
+  const reparseAllFeeds = async () => {
+    if (!confirm('This will discover podroll feeds from all existing feeds. This may take a few minutes. Continue?')) {
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // Get all current feeds
+      const response = await fetch('/api/admin/feeds');
+      if (!response.ok) {
+        throw new Error('Failed to fetch feeds');
+      }
+
+      const data = await response.json();
+      const existingFeeds = data.feeds || [];
+      
+      let totalDiscovered = 0;
+      let totalAdded = 0;
+      let processedCount = 0;
+
+      // Process each feed for podroll discovery
+      for (const feed of existingFeeds) {
+        try {
+          console.log(`Processing feed ${processedCount + 1}/${existingFeeds.length}: ${feed.title}`);
+          
+          const discoveryResponse = await fetch('/api/admin/discover-podroll', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              url: feed.originalUrl,
+              recursive: true,
+              depth: 2,
+              autoAdd: true
+            })
+          });
+
+          if (discoveryResponse.ok) {
+            const discoveryData = await discoveryResponse.json();
+            totalDiscovered += discoveryData.stats.total;
+            totalAdded += discoveryData.stats.added;
+          }
+        } catch (error) {
+          console.error(`Error processing feed ${feed.title}:`, error);
+        }
+        processedCount++;
+      }
+
+      toast.success(`Reparse complete! Processed ${processedCount} feeds, discovered ${totalDiscovered} connections, added ${totalAdded} new feeds.`);
+      
+      // Reload the feeds list to show any new additions
+      loadFeeds();
+      
+    } catch (error) {
+      console.error('Error reparsing feeds:', error);
+      toast.error('Failed to reparse feeds');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const logout = () => {
     setIsAuthenticated(false);
     sessionStorage.removeItem('admin_authenticated');
@@ -183,6 +243,16 @@ export default function AdminFeedsPage() {
               </svg>
               Discover Podroll
             </a>
+            <button
+              onClick={reparseAllFeeds}
+              disabled={loading}
+              className="bg-green-600 hover:bg-green-700 disabled:opacity-50 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+              </svg>
+              {loading ? 'Reparsing...' : 'Reparse All Feeds'}
+            </button>
             <button
               onClick={logout}
               className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors"
