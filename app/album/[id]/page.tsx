@@ -6,8 +6,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const albumTitle = decodeURIComponent(id).replace(/-/g, ' ');
   
   return {
-    title: `${albumTitle} | Into the Doerfel-Verse`,
-    description: `Listen to ${albumTitle} on Into the Doerfel-Verse`,
+    title: `${albumTitle} | Project StableKraft`,
+    description: `Listen to ${albumTitle} on Project StableKraft`,
   };
 }
 
