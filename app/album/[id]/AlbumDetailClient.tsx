@@ -152,17 +152,17 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
   }
 
   return (
-    <div className="min-h-screen text-white relative overflow-hidden">
-      {/* Album Art Background */}
+    <div className="min-h-screen text-white relative overflow-hidden bg-gray-900">
+      {/* Album Art Background - More Prominent */}
       <div className="fixed inset-0 z-0">
         <Image
           src={album.coverArt}
           alt={`${album.title} background`}
           fill
-          className="object-cover w-full h-full opacity-15"
+          className="object-cover w-full h-full opacity-30"
           priority
         />
-        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-gray-900/80"></div>
       </div>
 
       {/* Content overlay */}
@@ -189,48 +189,48 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         </div>
       </header>
 
-      {/* Album Info Section - Original FUCKIT Style */}
-      <div className="container mx-auto px-4 py-6 max-w-3xl">
-        <div className="text-center mb-6">
-          {/* Album Cover - Smaller, like original */}
-          <div className="inline-block mb-4">
-            <div className="w-64 h-64 relative overflow-hidden rounded-lg shadow-2xl mx-auto">
+      {/* Album Info Section - Exact FUCKIT Style */}
+      <div className="container mx-auto px-4 py-4 max-w-2xl">
+        <div className="text-center mb-4">
+          {/* Album Cover - Exact size like original */}
+          <div className="inline-block mb-3">
+            <div className="w-48 h-48 relative overflow-hidden rounded shadow-xl mx-auto">
               <Image
                 src={album.coverArt}
                 alt={album.title}
                 fill
                 className="object-cover"
                 priority
-                sizes="256px"
+                sizes="192px"
               />
             </div>
           </div>
 
-          {/* Album Details - Compact */}
-          <div className="mb-4">
-            <h1 className="text-3xl font-bold mb-1 text-white">{album.title}</h1>
-            <p className="text-lg text-gray-400 mb-3">{album.artist}</p>
+          {/* Album Details - Very Compact */}
+          <div className="mb-3">
+            <h1 className="text-2xl font-bold mb-1 text-white">{album.title}</h1>
+            <p className="text-base text-gray-300 mb-2">{album.artist}</p>
             
-            <div className="flex items-center justify-center gap-3 text-sm text-gray-500 mb-4">
+            <div className="flex items-center justify-center gap-2 text-xs text-gray-500 mb-3">
               <span>{getReleaseYear()}</span>
               <span>•</span>
               <span>{album.tracks.length} tracks</span>
             </div>
 
             {album.description && (
-              <div className="bg-black/60 rounded-lg p-4 max-w-lg mx-auto mb-4">
-                <p className="text-gray-300 text-sm">{album.description}</p>
+              <div className="bg-gray-800/80 rounded p-3 max-w-md mx-auto mb-3">
+                <p className="text-gray-300 text-xs leading-tight">{album.description}</p>
               </div>
             )}
           </div>
 
-          {/* Play Controls - More compact */}
-          <div className="flex items-center justify-center gap-3 mb-6">
+          {/* Play Controls - Very compact */}
+          <div className="flex items-center justify-center gap-2 mb-4">
             <button
               onClick={handlePlayAlbum}
-              className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-white font-medium text-sm"
+              className="flex items-center gap-1 px-4 py-1 bg-blue-600 hover:bg-blue-700 rounded transition-colors text-white font-medium text-xs"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
               <span>Play Album</span>
@@ -239,14 +239,14 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         </div>
       </div>
 
-        {/* Podroll and Funding Sections - Minimal Style */}
+        {/* Podroll and Funding Sections - Very Compact */}
         {(album.podroll && album.podroll.length > 0) || (album.funding && album.funding.length > 0) ? (
-          <div className="container mx-auto px-4 max-w-3xl mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {/* Podroll Section - Minimal */}
+          <div className="container mx-auto px-4 max-w-2xl mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {/* Podroll Section - Very compact */}
             {album.podroll && album.podroll.length > 0 && (
-              <div className="bg-black/60 rounded-lg p-3">
-                <h3 className="text-sm font-semibold text-white mb-2">Related Shows</h3>
+              <div className="bg-gray-800/90 rounded p-2">
+                <h3 className="text-xs font-semibold text-white mb-1">Related Shows</h3>
                 <div className="space-y-1">
                   {album.podroll.map((podrollItem, index) => (
                     <a
@@ -254,7 +254,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                       href={podrollItem.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-2 bg-black/30 hover:bg-black/50 rounded text-xs text-blue-300 hover:text-blue-200 transition-colors truncate"
+                      className="block p-1 bg-gray-700/50 hover:bg-gray-700 rounded text-xs text-blue-300 hover:text-blue-200 transition-colors truncate"
                     >
                       {podrollItem.title || 'Related Show'}
                     </a>
@@ -263,10 +263,10 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
               </div>
             )}
 
-            {/* Funding Section - Minimal */}
+            {/* Funding Section - Very compact */}
             {album.funding && album.funding.length > 0 && (
-              <div className="bg-black/60 rounded-lg p-3">
-                <h3 className="text-sm font-semibold text-white mb-2">Support</h3>
+              <div className="bg-gray-800/90 rounded p-2">
+                <h3 className="text-xs font-semibold text-white mb-1">Support</h3>
                 <div className="space-y-1">
                   {album.funding.map((fundingItem, index) => (
                     <a
@@ -274,7 +274,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                       href={fundingItem.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-2 bg-black/30 hover:bg-black/50 rounded text-xs text-green-300 hover:text-green-200 transition-colors"
+                      className="block p-1 bg-gray-700/50 hover:bg-gray-700 rounded text-xs text-green-300 hover:text-green-200 transition-colors"
                     >
                       {fundingItem.message || 'Support this Artist'}
                     </a>
@@ -286,14 +286,14 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         ) : null}
 
-        {/* Track List - Original FUCKIT Style with Thumbnails */}
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="bg-black/60 rounded-lg overflow-hidden">
-            <div className="p-4 border-b border-white/10">
-              <h2 className="text-lg font-semibold text-center text-white">Tracks</h2>
+        {/* Track List - Exact FUCKIT Style */}
+        <div className="container mx-auto px-4 max-w-2xl">
+          <div className="bg-gray-800/90 rounded overflow-hidden">
+            <div className="p-2 border-b border-gray-700">
+              <h2 className="text-base font-semibold text-center text-white">Tracks</h2>
             </div>
             
-            <div className="divide-y divide-white/10">
+            <div className="divide-y divide-gray-700/50">
               {album.tracks.map((track, index) => {
                 const isCurrentTrack = currentTrack?.url === track.url;
                 const isCurrentlyPlaying = isTrackPlaying(track);
@@ -301,42 +301,42 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                 return (
                   <div
                     key={track.trackNumber}
-                    className={`flex items-center gap-4 p-3 hover:bg-white/5 transition-colors cursor-pointer group ${
-                      isCurrentTrack ? 'bg-white/10' : ''
+                    className={`flex items-center gap-3 p-2 hover:bg-gray-700/50 transition-colors cursor-pointer group ${
+                      isCurrentTrack ? 'bg-gray-700/70' : ''
                     }`}
                     onClick={() => handlePlayTrack(track, index)}
                   >
-                    {/* Track Thumbnail */}
-                    <div className="w-12 h-12 relative flex-shrink-0 rounded overflow-hidden">
+                    {/* Track Thumbnail - Smaller */}
+                    <div className="w-10 h-10 relative flex-shrink-0 rounded overflow-hidden">
                       <Image
                         src={track.image || album.coverArt}
                         alt={track.title}
                         fill
                         className="object-cover"
-                        sizes="48px"
+                        sizes="40px"
                       />
                       {/* Play overlay */}
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
                     </div>
 
-                    {/* Track Info */}
+                    {/* Track Info - Much more compact */}
                     <div className="flex-1 min-w-0">
-                      <h3 className={`font-medium truncate ${
-                        isCurrentTrack ? 'text-blue-400' : 'text-white'
+                      <h3 className={`text-sm font-medium truncate ${
+                        isCurrentTrack ? 'text-blue-400' : 'text-gray-200'
                       }`}>
                         {track.title}
                       </h3>
-                      <p className="text-sm text-gray-400 truncate">{album.artist}</p>
+                      <p className="text-xs text-gray-500 truncate">{album.artist}</p>
                     </div>
 
-                    {/* Track Number and Duration */}
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span className="w-6 text-center">{track.trackNumber}</span>
-                      <span className="w-12 text-right">{formatDuration(track.duration)}</span>
+                    {/* Track Number and Duration - Compact */}
+                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                      <span className="w-4 text-center">{track.trackNumber}</span>
+                      <span className="w-8 text-right">{formatDuration(track.duration)}</span>
                     </div>
                   </div>
                 );
@@ -345,11 +345,11 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         </div>
 
-        {/* You Might Also Like Section */}
-        <div className="container mx-auto px-4 max-w-3xl mt-8">
-          <h2 className="text-xl font-bold text-white mb-4">You Might Also Like</h2>
+        {/* You Might Also Like Section - Compact */}
+        <div className="container mx-auto px-4 max-w-2xl mt-4">
+          <h2 className="text-base font-bold text-white mb-3">You Might Also Like</h2>
           {/* TODO: Add similar albums grid here */}
-          <div className="text-gray-400 text-sm text-center py-8">
+          <div className="text-gray-500 text-xs text-center py-4">
             Similar albums coming soon...
           </div>
         </div>
