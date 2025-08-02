@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { RSSAlbum } from '@/lib/rss-parser';
 import { getAlbumArtworkUrl, getPlaceholderImageUrl } from '@/lib/cdn-utils';
-import { generateAlbumUrl } from '@/lib/url-utils';
+import { generateAlbumUrl, generatePublisherSlug } from '@/lib/url-utils';
 import { useAudio } from '@/contexts/AudioContext';
 import { getErrorMessage } from '@/lib/error-utils';
 import { toast } from '@/components/Toast';
