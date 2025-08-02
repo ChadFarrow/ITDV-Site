@@ -74,7 +74,7 @@ export async function GET() {
           fs.writeFileSync(staticDataPath, JSON.stringify(generatedData, null, 2));
           console.log('💾 Saved generated data to static file');
         } catch (writeError) {
-          console.warn('⚠️ Could not save static file:', writeError.message);
+          console.warn('⚠️ Could not save static file:', writeError instanceof Error ? writeError.message : writeError);
         }
         
         const response = NextResponse.json({
@@ -88,7 +88,7 @@ export async function GET() {
         return response;
       }
     } catch (generationError) {
-      console.warn('⚠️ Could not generate data:', generationError.message);
+      console.warn('⚠️ Could not generate data:', generationError instanceof Error ? generationError.message : generationError);
     }
     
     // Fallback to minimal hardcoded data if no static file exists
