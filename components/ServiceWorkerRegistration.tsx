@@ -7,6 +7,10 @@ export default function ServiceWorkerRegistration() {
   const [newVersion, setNewVersion] = useState('');
 
   useEffect(() => {
+    // Temporarily disable Service Worker to fix refresh loop
+    console.log('🚫 Service Worker temporarily disabled - investigating refresh loop');
+    return;
+    
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
       let registration: ServiceWorkerRegistration;
 

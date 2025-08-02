@@ -22,6 +22,10 @@ interface WebVital {
 export default function PerformanceMonitor() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    
+    // Temporarily disable performance monitoring to debug refresh loop
+    console.log('🔍 Performance monitoring temporarily disabled - debugging refresh loop');
+    return;
 
     let clsValue = 0;
 

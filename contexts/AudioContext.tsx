@@ -113,7 +113,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         }
       });
     }
-  }, []);
+  }, [resume, pause, previousTrack, nextTrack, seekTo]);
 
   const playTrack = (track: Track, album?: string) => {
     if (!audioRef.current) return;
