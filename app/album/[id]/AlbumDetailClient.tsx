@@ -208,10 +208,8 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         const data = await response.json();
         const albums = data.albums || [];
         
-        // Get random albums for "You might also like"
-        const otherAlbums = albums.filter((a: Album) => a.title !== album?.title);
-        const shuffled = otherAlbums.sort(() => 0.5 - Math.random());
-        setRelatedAlbums(shuffled.slice(0, 6)); // Get more to account for potential deduplication
+        // Don't show random albums - only show podroll connections
+        setRelatedAlbums([]); // No random albums
       }
     } catch (error) {
       console.error('Error loading related albums:', error);
@@ -590,13 +588,13 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         </div>
 
-        {/* Related Albums - Combined and Deduplicated */}
+        {/* Related Albums - Only Podroll Connections */}
         {(() => {
           const combinedAlbums = getCombinedRelatedAlbums();
           return combinedAlbums.length > 0 && (
             <div className="container mx-auto px-4 pb-8">
               <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-bold mb-6">Related Albums</h2>
+                <h2 className="text-2xl font-bold mb-6">Related Shows</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {combinedAlbums.map((relatedItem, index) => {
                     // Check if this is a site album (has tracks) or podroll album (has url)
