@@ -404,6 +404,46 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                     </svg>
                   </button>
                 </div>
+
+                {/* Funding Information - Support This Artist */}
+                {album.funding && album.funding.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold mb-3 text-white text-center lg:text-left">Support This Artist</h3>
+                    <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                      {album.funding.map((funding, index) => (
+                        <a
+                          key={index}
+                          href={funding.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2"
+                        >
+                          💝 {funding.message || 'Support'}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Podroll Information */}
+                {album.podroll && album.podroll.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-lg font-semibold mb-3 text-white text-center lg:text-left">Related Shows</h3>
+                    <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                      {album.podroll.map((podrollItem, index) => (
+                        <a
+                          key={index}
+                          href={podrollItem.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2"
+                        >
+                          🎙️ {podrollItem.title || 'Related Show'}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -515,59 +555,6 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         )}
 
-        {/* Additional Info */}
-        {(album.podroll?.length || album.funding?.length) && (
-          <div className="container mx-auto px-4 pb-8">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Podroll */}
-                {album.podroll && album.podroll.length > 0 && (
-                  <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-white/10 p-6">
-                    <h3 className="text-lg font-semibold mb-4">Related Shows</h3>
-                    <div className="space-y-3">
-                      {album.podroll.map((item, index) => (
-                        <a
-                          key={index}
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
-                        >
-                          <div className="font-medium text-blue-300">{item.title || 'Related Show'}</div>
-                          {item.description && (
-                            <div className="text-sm text-gray-400 mt-1">{item.description}</div>
-                          )}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Funding */}
-                {album.funding && album.funding.length > 0 && (
-                  <div className="bg-black/40 backdrop-blur-sm rounded-xl border border-white/10 p-6">
-                    <h3 className="text-lg font-semibold mb-4">Support</h3>
-                    <div className="space-y-3">
-                      {album.funding.map((item, index) => (
-                        <a
-                          key={index}
-                          href={item.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="block p-3 bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
-                        >
-                          <div className="font-medium text-green-300">
-                            {item.message || 'Support this Artist'}
-                          </div>
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Bottom spacing for audio player */}
         <div className="h-24" />
