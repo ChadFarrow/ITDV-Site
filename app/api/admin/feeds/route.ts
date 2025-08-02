@@ -15,11 +15,31 @@ export async function GET() {
             id: "www-doerfelverse-com-feeds-bloodshot-lies-album-xml",
             originalUrl: "https://www.doerfelverse.com/feeds/bloodshot-lies-album.xml",
             type: "album",
-            title: "Feed from www.doerfelverse.com",
+            title: "Bloodshot Lies - The Album",
             priority: "core",
             status: "active",
-            addedAt: new Date().toISOString(),
-            lastUpdated: new Date().toISOString()
+            addedAt: "2025-08-02T05:00:00.000Z",
+            lastUpdated: "2025-08-02T05:00:00.000Z"
+          },
+          {
+            id: "www-doerfelverse-com-feeds-think-ep-xml",
+            originalUrl: "https://www.doerfelverse.com/feeds/think-ep.xml", 
+            type: "album",
+            title: "Think EP",
+            priority: "core",
+            status: "active",
+            addedAt: "2025-08-02T05:00:00.000Z",
+            lastUpdated: "2025-08-02T05:00:00.000Z"
+          },
+          {
+            id: "www-doerfelverse-com-feeds-ben-doerfel-xml",
+            originalUrl: "https://www.doerfelverse.com/feeds/ben-doerfel.xml",
+            type: "publisher", 
+            title: "Ben Doerfel Music",
+            priority: "core",
+            status: "active",
+            addedAt: "2025-08-02T05:00:00.000Z",
+            lastUpdated: "2025-08-02T05:00:00.000Z"
           }
         ],
         lastUpdated: new Date().toISOString(),
@@ -57,7 +77,6 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { url, type = 'album' } = body;
-    const priority = 'core'; // Default priority
 
     // Validate inputs
     if (!url) {
@@ -83,73 +102,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-
-    // Load existing feeds
-    const feedsPath = path.join(process.cwd(), 'data', 'feeds.json');
-    let feedsData;
-    
-    try {
-      // Ensure data directory exists
-      const dataDir = path.join(process.cwd(), 'data');
-      if (!fsSync.existsSync(dataDir)) {
-        try {
-          await fs.mkdir(dataDir, { recursive: true });
-        } catch (mkdirError) {
-          console.warn('Could not create data directory:', mkdirError);
-        }
-      }
-      
-      const feedsContent = await fs.readFile(feedsPath, 'utf-8');
-      feedsData = JSON.parse(feedsContent);
-    } catch (error) {
-      // If file doesn't exist or is invalid, create new structure
-      feedsData = {
-        feeds: [],
-        lastUpdated: new Date().toISOString()
-      };
-    }
-
-    // Check if feed already exists
-    const existingFeed = feedsData.feeds.find((feed: any) => feed.originalUrl === url);
-    if (existingFeed) {
-      return NextResponse.json(
-        { success: false, error: 'Feed already exists' },
-        { status: 409 }
-      );
-    }
-
-    // Generate a unique ID from the URL
-    const urlObj = new URL(url);
-    const hostname = urlObj.hostname.replace(/\./g, '-');
-    const pathname = urlObj.pathname.replace(/[^a-zA-Z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-    const id = `${hostname}-${pathname}`.toLowerCase();
-
-    // Create new feed entry
-    const newFeed = {
-      id,
-      originalUrl: url,
-      type,
-      title: `Feed from ${urlObj.hostname}`,
-      priority,
-      status: 'active',
-      addedAt: new Date().toISOString(),
-      lastUpdated: new Date().toISOString()
-    };
-
-    // Add to feeds array
-    feedsData.feeds.push(newFeed);
-    feedsData.lastUpdated = new Date().toISOString();
-
-    // Save back to file
-    await fs.writeFile(feedsPath, JSON.stringify(feedsData, null, 2));
-
-    console.log(`✅ Added new RSS feed: ${url} (${type})`);
-
+    // In production, we can't persistently store feeds due to read-only file system
+    // For now, return a message explaining this limitation
     return NextResponse.json({
-      success: true,
-      message: 'Feed added successfully (Note: Changes may not persist across deployments in current setup)',
-      feed: newFeed
-    });
+      success: false,
+      error: 'Feed management is currently in read-only mode',
+      message: 'Due to Vercel\'s serverless architecture, dynamic feed management requires a database solution. Currently displaying default feeds only.'
+    }, { status: 400 });
+
   } catch (error) {
     console.error('Error adding feed:', error);
     return NextResponse.json(
@@ -175,60 +135,13 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    // Load existing feeds
-    const feedsPath = path.join(process.cwd(), "data", "feeds.json");
-    
-    try {
-      // Check if file exists first
-      if (!fsSync.existsSync(feedsPath)) {
-        return NextResponse.json(
-          { success: false, error: "No feeds file found" },
-          { status: 404 }
-        );
-      }
-      
-      const feedsContent = await fs.readFile(feedsPath, "utf-8");
-      const feedsData = JSON.parse(feedsContent);
+    // In production, we can't persistently modify feeds due to read-only file system
+    return NextResponse.json({
+      success: false,
+      error: 'Feed management is currently in read-only mode',
+      message: 'Due to Vercel\'s serverless architecture, dynamic feed management requires a database solution. Currently displaying default feeds only.'
+    }, { status: 400 });
 
-      // Find and remove the feed
-      const feedIndex = feedsData.feeds.findIndex((feed: any) => feed.id === feedId);
-      
-      if (feedIndex === -1) {
-        return NextResponse.json(
-          { success: false, error: "Feed not found" },
-          { status: 404 }
-        );
-      }
-
-      // Remove the feed
-      const removedFeed = feedsData.feeds.splice(feedIndex, 1)[0];
-      feedsData.lastUpdated = new Date().toISOString();
-
-      // Save back to file
-      try {
-        await fs.writeFile(feedsPath, JSON.stringify(feedsData, null, 2));
-      } catch (writeError) {
-        console.error("Failed to write feeds file:", writeError);
-        return NextResponse.json(
-          { success: false, error: "Failed to save changes to feeds file" },
-          { status: 500 }
-        );
-      }
-
-      console.log(`✅ Removed RSS feed: ${removedFeed.originalUrl}`);
-
-      return NextResponse.json({
-        success: true,
-        message: "Feed removed successfully (Note: Changes may not persist across deployments in current setup)",
-        removedFeed
-      });
-    } catch (error) {
-      console.error("Error reading feeds file:", error);
-      return NextResponse.json(
-        { success: false, error: "Failed to read feeds file" },
-        { status: 500 }
-      );
-    }
   } catch (error) {
     console.error("Error removing feed:", error);
     return NextResponse.json(

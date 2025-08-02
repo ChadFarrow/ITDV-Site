@@ -89,7 +89,7 @@ export default function AdminFeedsPage() {
         loadFeeds();
       } else {
         const error = await response.json();
-        toast.error(error.message || 'Failed to add feed');
+        toast.error(error.message || error.error || 'Failed to add feed');
       }
     } catch (error) {
       toast.error('Failed to add feed');
@@ -112,7 +112,8 @@ export default function AdminFeedsPage() {
         toast.success('Feed removed successfully!');
         loadFeeds();
       } else {
-        toast.error('Failed to remove feed');
+        const error = await response.json();
+        toast.error(error.message || error.error || 'Failed to remove feed');
       }
     } catch (error) {
       toast.error('Failed to remove feed');
