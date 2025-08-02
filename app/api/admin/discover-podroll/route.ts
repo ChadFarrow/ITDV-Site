@@ -193,19 +193,27 @@ export async function POST(request: NextRequest) {
 
 // GET endpoint to check discovery status
 export async function GET() {
-  const feeds = FeedManager.getActiveFeeds();
-  const stats = {
-    total: feeds.length,
-    byType: {
-      album: feeds.filter(f => f.type === 'album').length,
-      publisher: feeds.filter(f => f.type === 'publisher').length
-    },
-    byPriority: {
-      core: feeds.filter(f => f.priority === 'core').length,
-      extended: feeds.filter(f => f.priority === 'extended').length,
-      low: feeds.filter(f => f.priority === 'low').length
-    }
-  };
+  try {
+    const feeds = await getAllFeeds();
+    const stats = {
+      total: feeds.length,
+      byType: {
+        album: feeds.filter(f => f.type === 'album').length,
+        publisher: feeds.filter(f => f.type === 'publisher').length
+      },
+      byPriority: {
+        core: feeds.filter(f => f.priority === 'core').length,
+        extended: feeds.filter(f => f.priority === 'extended').length,
+        low: feeds.filter(f => f.priority === 'low').length
+      }
+    };
 
-  return NextResponse.json({ feeds, stats });
+    return NextResponse.json({ feeds, stats });
+  } catch (error) {
+    console.error('Error in GET /api/admin/discover-podroll:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch feeds' },
+      { status: 500 }
+    );
+  }
 }
