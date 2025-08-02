@@ -255,6 +255,18 @@ export const KNOWN_PUBLISHERS: { [slug: string]: { feedGuid: string; feedUrl: st
     feedGuid: 'cbcb895d-9a01-465f-af7b-9a09ffbc29f5',
     feedUrl: 'https://wavlake.com/feed/artist/cbcb895d-9a01-465f-af7b-9a09ffbc29f5',
     name: 'Drawing Monsters'
+  },
+  
+  // Ryan Fonda - Independent artist
+  'ryan-fonda': {
+    feedGuid: 'd4c49f2e-0b50-4a5e-8101-7543d68e032f',
+    feedUrl: 'https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f',
+    name: 'Ryan Fonda'
+  },
+  'd4c49f2e': {
+    feedGuid: 'd4c49f2e-0b50-4a5e-8101-7543d68e032f',
+    feedUrl: 'https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f',
+    name: 'Ryan Fonda'
   }
 };
 
