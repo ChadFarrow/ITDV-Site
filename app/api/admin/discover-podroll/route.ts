@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { parseSingleFeed } from '@/lib/feed-parser';
+import { RSSParser } from '@/lib/rss-parser';
 import { FeedManager } from '@/lib/feed-manager';
 
 interface PodrollItem {
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         console.log(`🔍 Discovering feed: ${currentUrl} (depth: ${currentDepth})`);
         
         // Parse the feed
-        const albumData = await parseSingleFeed(currentUrl);
+        const albumData = await RSSParser.parseAlbumFeed(currentUrl);
         
         if (!albumData) {
           discovered.push({

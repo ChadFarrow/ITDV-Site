@@ -1,4 +1,4 @@
-import { parseSingleFeed } from './feed-parser';
+import { RSSParser } from './rss-parser';
 import { getAllFeeds, addFeed } from './db';
 
 interface PodrollDiscoveryOptions {
@@ -97,7 +97,7 @@ export async function discoverPodrollFeeds(
       console.log(`📡 Parsing feed: ${currentUrl} (depth: ${currentDepth})`);
       
       // Parse the feed
-      const albumData = await parseSingleFeed(currentUrl);
+      const albumData = await RSSParser.parseAlbumFeed(currentUrl);
       
       if (!albumData) {
         if (currentDepth > 0) { // Only log errors for discovered feeds, not the original
