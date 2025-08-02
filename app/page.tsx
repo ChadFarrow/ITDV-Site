@@ -423,6 +423,7 @@ export default function HomePage() {
                     </div>
                   </Link>
                 ))}
+              </div>
               
               {/* Album count info */}
               <div className="mt-8 text-center">
