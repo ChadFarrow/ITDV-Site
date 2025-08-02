@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { RSSParser } from '@/lib/rss-parser';
-import { getAllFeeds, initializeDatabase, seedDefaultFeeds } from '@/lib/db';
+import { getAllFeeds, initializeDatabase } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 

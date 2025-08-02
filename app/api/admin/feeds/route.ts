@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAllFeeds, addFeed, removeFeed, initializeDatabase, seedDefaultFeeds } from '@/lib/db';
+import { getAllFeeds, addFeed, removeFeed, initializeDatabase } from '@/lib/db';
 
 export async function GET() {
   try {

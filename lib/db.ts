@@ -126,49 +126,5 @@ export async function removeFeed(feedId: string): Promise<{ success: boolean; er
   }
 }
 
-export async function seedDefaultFeeds(): Promise<void> {
-  try {
-    // Only seed if the table is completely empty
-    const existingFeeds = await sql`SELECT COUNT(*) as count FROM feeds`;
-    const feedCount = parseInt(existingFeeds.rows[0]?.count || '0');
-    
-    if (feedCount > 0) {
-      console.log(`📊 Database already has ${feedCount} feeds, skipping seeding`);
-      return;
-    }
-
-    console.log('🌱 Seeding default feeds for first-time setup...');
-    
-    const defaultFeeds = [
-      {
-        id: 'www-doerfelverse-com-feeds-bloodshot-lies-album-xml',
-        url: 'https://www.doerfelverse.com/feeds/bloodshot-lies-album.xml',
-        type: 'album' as const,
-        title: 'Bloodshot Lies - The Album'
-      },
-      {
-        id: 'www-doerfelverse-com-feeds-think-ep-xml',
-        url: 'https://www.doerfelverse.com/feeds/think-ep.xml',
-        type: 'album' as const,
-        title: 'Think EP'
-      },
-      {
-        id: 'www-doerfelverse-com-feeds-ben-doerfel-xml',
-        url: 'https://www.doerfelverse.com/feeds/ben-doerfel.xml',
-        type: 'publisher' as const,
-        title: 'Ben Doerfel Music'
-      }
-    ];
-
-    for (const feed of defaultFeeds) {
-      await sql`
-        INSERT INTO feeds (id, original_url, type, title, priority, status)
-        VALUES (${feed.id}, ${feed.url}, ${feed.type}, ${feed.title}, 'core', 'active')
-      `;
-    }
-
-    console.log('✅ Default feeds seeded successfully');
-  } catch (error) {
-    console.error('❌ Failed to seed default feeds:', error);
-  }
-}
+// Default feeds functionality removed - database starts empty
+// Users must manually add all RSS feeds they want
