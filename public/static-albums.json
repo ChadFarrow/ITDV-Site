@@ -942,6 +942,19 @@
       "lastUpdated": "2025-08-02T19:09:38.161Z"
     },
     {
+      "title": "Ryan Fonda",
+      "artist": "Unknown Artist",
+      "description": "Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/d4c49f2e-0b50-4a5e-8101-7543d68e032f.jpg",
+      "tracks": [],
+      "releaseDate": "Sat, 02 Aug 2025 20:11:35 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "explicit": false,
+      "feedId": "wavlake-com-feed-artist-ryan-fonda-publisher",
+      "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+      "lastUpdated": "2025-01-27T00:00:00.000Z"
+    },
+    {
       "title": "Music From The Doerfel-Verse",
       "artist": "The Doerfels",
       "description": "Welcome to our Music feed! Want to hear the stories behind the songs, live jams, Doerfel-gossip, and who knows what else from our Doerfel-Vault? You can, and it's free! Just subscribe in a podcasting 2.0 app!\n\nWe don't make money from streams and there are no ads. We want to share music we love making. We just ask if you find any value, to return whatever it's worth to you with time, talent, or treasure. - The Doerfels",
@@ -1631,6 +1644,1464 @@
       "lastUpdated": "2025-08-02T18:31:32.984Z"
     },
     {
+      "title": "Into The Doerfel-Verse",
+      "artist": "Sir TJ The Wrathful, Shredward, Kurtisdrums, Ben Doerfel, Cousin Mike",
+      "description": "Join brothers Sir TJ The Wrathful, Shredward, Kurtisdrums, Ben, and Cousin Mike, as they explore all dimensions of music in The Doerfels universe. Take a dive with us \"into the Doerfel-verse!",
+      "coverArt": "https://www.doerfelverse.com/art/itdvchadf.png",
+      "tracks": [
+        {
+          "title": "Episode 55 - Florida Family Takeover",
+          "duration": "101:23",
+          "url": "https://www.doerfelverse.com/tracks/dvep55.mp3",
+          "trackNumber": 1,
+          "subtitle": "Episode 55 - Florida Family Takeover",
+          "summary": "Family visits from FL and we hang and jam :)\nIf you recieve any Value, please consider giving value back in a way that's meaningful to you.\nHelp produce the DV by helping us with studio gear HERE\nOr Donate through Boosting or Paypal HERE\nThanks for traveling Into The Doerfel-Verse! \nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvchadf.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "55",
+            "florida",
+            "family",
+            "takeover"
+          ]
+        },
+        {
+          "title": "Episode 54 - V4V Executive Council Feat. ChadF",
+          "duration": "109:35",
+          "url": "https://www.doerfelverse.com/tracks/dvep54.mp3",
+          "trackNumber": 2,
+          "subtitle": "Episode 54 - V4V Executive Council Feat. ChadF",
+          "summary": "Special guest ChadF!\nHelp produce the DV by helping us with studio gear HERE\nOr Donate through Paypal HERE\nThanks for traveling Into The Doerfel-Verse! \nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvchadf.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "54",
+            "chadf"
+          ]
+        },
+        {
+          "title": "Episode 53 - Work Tape Demos",
+          "duration": "80:31",
+          "url": "https://www.doerfelverse.com/tracks/dvep53.mp3",
+          "trackNumber": 3,
+          "subtitle": "Episode 53 - Work Tape Demos",
+          "summary": "Clip 1 youtube link HERE\nClip 2 audible link HERE\nHelp produce the DV by helping us with studio gear HERE\nOr Donate through Paypal HERE\nThanks for traveling Into The Doerfel-Verse! \nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "53"
+          ]
+        },
+        {
+          "title": "Episode 52 - Mini-sode",
+          "duration": "34:40",
+          "url": "https://www.doerfelverse.com/tracks/dvep52.mp3",
+          "trackNumber": 4,
+          "subtitle": "Episode 52 - Mini-sode",
+          "summary": "Just a little Mini-sode :)\nHelp produce the DV by helping us with studio gear HERE\nOr Donate through Paypal HERE\nThanks for traveling Into The Doerfel-Verse!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "52"
+          ]
+        },
+        {
+          "title": "Episode 51 - The Greensands",
+          "duration": "73:45",
+          "url": "https://www.doerfelverse.com/tracks/dvep51.mp3",
+          "trackNumber": 5,
+          "subtitle": "Episode 51 - The Greensands",
+          "summary": "The Greensands join us for a great chat about their music and the Valueverse\nHelp produce the DV by helping us with studio gear HERE\nThanks for traveling Into The Doerfel-Verse!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "51",
+            "greensands"
+          ]
+        },
+        {
+          "title": "Episode 50 - Valueverse Jams",
+          "duration": "76:05",
+          "url": "https://www.doerfelverse.com/tracks/dvep50.mp3",
+          "trackNumber": 6,
+          "subtitle": "Episode 50 - Valueverse Jams",
+          "summary": "Listen to some of my fav Valueverse tracks with me on episode 50!\nHelp produce the DV by helping us with studio gear HERE\nThanks for traveling Into The Doerfel-Verse!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "50"
+          ]
+        },
+        {
+          "title": "Episode 49 - Hunting Doerfels",
+          "duration": "98:50",
+          "url": "https://www.doerfelverse.com/tracks/dvep49.mp3",
+          "trackNumber": 7,
+          "subtitle": "Episode 49 - Hunting Doerfels",
+          "summary": "The Spotlight happened about 2 weeks ago, and I try to get everyones take on it. But tracking all the guys down to chat about it is a challange!\nThanks for traveling Into The Doerfel-Verse!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "49",
+            "Spotlight",
+            "hunting"
+          ]
+        },
+        {
+          "title": "Episode 48  -  Boo-bury",
+          "duration": "84:31",
+          "url": "https://www.doerfelverse.com/tracks/dvep48.mp3",
+          "trackNumber": 8,
+          "subtitle": "Episode 48  -  Boo-bury",
+          "summary": "Our guest Boo-bury is always at the forfront of intovation taking v4v to the next level! Be sure not to miss his brand new show \nThe Satellite Spotlight\nIt will be livestreamed May 10 starting at 6pm central. Citybeach will be performing at 9PM. Go to www.liveislit.com for more info!\nHis Podcast can also be found at www.behindthesch3m3s.com\nThanks for traveling Into The Doerfel-Verse!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "48",
+            "boobury"
+          ]
+        },
+        {
+          "title": "Episode 47 - My Friend Jimi",
+          "duration": "89:20",
+          "url": "https://www.doerfelverse.com/tracks/dvep47.mp3",
+          "trackNumber": 9,
+          "subtitle": "Episode 47 - My Friend Jimi",
+          "summary": "Today we were joined by My Friend Jimi! We listen to some his songs and get to hear the origin of his musical journey. You can follow him on Instagram.\nWe've also made a Fountain playlist featuring all of his current songs in the ValueVerse, plus a few songs from soe other v4v artists that you can put on if you want to hear more of his music.\nThanks for traveling Into The Doerfel-Verse!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "47",
+            "my",
+            "friend",
+            "jimi"
+          ]
+        },
+        {
+          "title": "Episode 46 - Banjovi",
+          "duration": "92:30",
+          "url": "https://www.doerfelverse.com/tracks/dvep46.mp3",
+          "trackNumber": 10,
+          "subtitle": "Episode 46 - Banjovi",
+          "summary": "On this episode the banjo nerds really took over! TJ and special guest, Banjovi(Tate Greer), talk and play all things banjo. Tate's website is www.banjovibanjo.com",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "46",
+            "banjovi"
+          ]
+        },
+        {
+          "title": "Episode 45 - V4V music talk plus new song!",
+          "duration": "32:30",
+          "url": "https://www.doerfelverse.com/tracks/dvep45.mp3",
+          "trackNumber": 11,
+          "subtitle": "Episode 45 - V4V music talk plus new song!",
+          "summary": "Just an update on Doerfel-happenings and a new song to release :)\n90% goes right to the artists when you boost while their song is playing! We truly value your support!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "45"
+          ]
+        },
+        {
+          "title": "Episode 44 - HeyCitizen",
+          "duration": "80:54",
+          "url": "https://www.doerfelverse.com/tracks/dvep44.mp3",
+          "trackNumber": 12,
+          "subtitle": "Episode 44 - HeyCitizen",
+          "summary": "ATTENTION CITIZENS! HeyCitizen is in da verse! Check more of his music on LN Beats\nAnd he has Lo-Fi songs\n90% goes right to the artists when you boost while their song is playing! If you enjoy listening, share the show and give us a shout, we truly value you!",
+          "image": "https://www.doerfelverse.com/art/doerf-citizen.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "44",
+            "heycitizen",
+            "hey",
+            "citizen"
+          ]
+        },
+        {
+          "title": "Episode 43 - Jimmy V",
+          "duration": "87:26",
+          "url": "https://www.doerfelverse.com/tracks/dvep43.mp3",
+          "trackNumber": 13,
+          "subtitle": "Episode 43 - Jimmy V",
+          "summary": "Jimmy V is in da verse! Check out his music and podcast at jiimmyv4v.com\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we truly value you!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "43",
+            "jimmy",
+            "v"
+          ]
+        },
+        {
+          "title": "Episode 42 - Steven B",
+          "duration": "93:27",
+          "url": "https://www.doerfelverse.com/tracks/dvep42.mp3",
+          "trackNumber": 14,
+          "subtitle": "Episode 42 - Steven B",
+          "summary": "Steven B is in da verse!\nHe is the creator of the value for value music site/player www.lnbeats.com, and other value for value tools for musicians and podcsters, www.musicsideproject.com www.sovereignfeeds.com\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we truly value you!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "42",
+            "steven",
+            "b",
+            "bell"
+          ]
+        },
+        {
+          "title": "Episode 41- Mike Neumann",
+          "duration": "92:58",
+          "url": "https://www.doerfelverse.com/tracks/dvep41.mp3",
+          "trackNumber": 15,
+          "subtitle": "Episode 41- Mike Neumann",
+          "summary": "Mike Neumann is in da verse!\nCheck out his music podcast It's A Mood!\nJdogs upcoming song here\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we truly value you!",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "40",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "mike",
+            "neumann"
+          ]
+        },
+        {
+          "title": "Episode 40 - Somewhat special guest?...Kurtisdrums!",
+          "duration": "73:50",
+          "url": "https://www.doerfelverse.com/tracks/dvep40.mp3",
+          "trackNumber": 16,
+          "subtitle": "Episode 40 - Somewhat special guest?...Kurtisdrums!",
+          "summary": "Kurtisdrums is back in the verse!\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we truly value you!\ncontact me: tj@doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvlogo1.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "40",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "kurtisdrums"
+          ]
+        },
+        {
+          "title": "Episode 39 - ChadF",
+          "duration": "101:52",
+          "url": "https://www.doerfelverse.com/tracks/dvep39.mp3",
+          "trackNumber": 17,
+          "subtitle": "Episode 39 - ChadF",
+          "summary": "We got the OG EXECUTIVE PRODUCER of the DoerfelVerse himself ChadF to hang! We also have a surpise visit from Shredward and we get a sneak peek of his new upcoming CityBeach album. We chat, listen to some tracks, and talk v4v nerd talk!\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we truly value you!\ncontact me: tj@doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvlogo1.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "39",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "chadf"
+          ]
+        },
+        {
+          "title": "Episode 38 - Musical Chairs with Salty Crayon",
+          "duration": "92:09",
+          "url": "https://www.doerfelverse.com/tracks/dvep38.mp3",
+          "trackNumber": 18,
+          "subtitle": "Episode 38 - Musical Chairs with Salty Crayon",
+          "summary": "Join TJ, Cousin Mike, and Special guest, Salty Crayon! Check out his music podcast Upbeats! https://upbeatspodcast.com/en/\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we love to know if anyone is listening and cares!\ncontact me: tj@doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvlogo1.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "38",
+            "jukebox",
+            "Vol",
+            "4",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "salty",
+            "crayon",
+            "musical chairs"
+          ]
+        },
+        {
+          "title": "Episode 37 - Jukebox Vol. 4",
+          "duration": "82:14",
+          "url": "https://www.doerfelverse.com/tracks/dvep37.mp3",
+          "trackNumber": 19,
+          "subtitle": "Episode 37 - Jukebox Vol. 4",
+          "summary": "Show notes:\n*Feeling Bout You - Kurtisdrums\n*Playing God - Opus\nWho is Opus? I discuss what i know. Then I play clips from the band Vulfpeck, which is who Theo got his career going with, and how they beat the system and spotify. Clips: https://youtu.be/KXvncV79LXk https://youtu.be/T7qf7VTubbI \n*That's The Life - The Katzman\n*Grow - The Doerfels\n*Let You Down - The Johner Boys \n*Happy New Year - The Doerfels\n90% goes right to the artists when you boost while their song is playing! We would love to hear from you if you enjoy listening! Share the show and give us a shout, we love to know if anyone is listening and cares!\ncontact me: tj@doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvlogo1.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "36",
+            "jukebox",
+            "Vol",
+            "4",
+            "into",
+            "the",
+            "music",
+            "valueverse"
+          ]
+        },
+        {
+          "title": "Episode 36 - Doerfel Jukebox Vol. 3",
+          "duration": "51:01",
+          "url": "https://www.doerfelverse.com/tracks/dvep36.mp3",
+          "trackNumber": 20,
+          "subtitle": "Episode 36 - Doerfel Jukebox Vol. 3",
+          "summary": "I am joined by a couple of my children, Jdog and Hazel, and we play music from the valueverse!\nTrack list:\nPorkChops Fried - HeyCitizenChange Your Mind - Ainsley CostelloThat Duck - Sir Seat SitterBig Sciota - Generation GapSensitive Guy - Miles FondaSecrets - Jordan DedoLet Go - Middle Season\n90% goes right to the artists when you boost while their song is playing!\ncontact me: tj@doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvlogo1.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "36",
+            "jukebox",
+            "Vol. 3"
+          ]
+        },
+        {
+          "title": "Episode 35 - Doerfel-Jukebox Vol. 2",
+          "duration": "67:53",
+          "url": "https://www.doerfelverse.com/tracks/dvep35.mp3",
+          "trackNumber": 21,
+          "subtitle": "Episode 35 - Doerfel-Jukebox Vol. 2",
+          "summary": "Sir TJ The Wrathful plays some tracks and talks about music in podcasting 2.0\nTrack list:\nWorth Fighting For\nAnimosity\nYou\nSafe\nHallucinations\nOrdinary\nMaybe It's You\nMake It\nLIVE boosters: Salty Crayon\ncontact me: tj@doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvlogo1.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "jukebox",
+            "doerfels",
+            "doerfel",
+            "music",
+            "from",
+            "the",
+            "into",
+            "doorful",
+            "doorfull"
+          ]
+        },
+        {
+          "title": "Episode 34 - D.A.I. with Tommy Jr",
+          "duration": "76:48",
+          "url": "https://www.doerfelverse.com/tracks/dvep34.mp3",
+          "trackNumber": 22,
+          "subtitle": "Episode 34 - D.A.I. with Tommy Jr",
+          "summary": "Meet Doerfel number nine, Tommy Jr! And join TJ and Cousin Mike on an unexpected journy down a strange musical universe!\nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "doerfels",
+            "doerfelverse",
+            "doerfel",
+            "doorful",
+            "doerful",
+            "intothedoerfelverse",
+            "into",
+            "the",
+            "verse",
+            "doerfel-verse",
+            "episode",
+            "34",
+            "adam. curry"
+          ]
+        },
+        {
+          "title": "Episode 33 with Adam Curry",
+          "duration": "80:53",
+          "url": "https://www.doerfelverse.com/tracks/dvep33.mp3",
+          "trackNumber": 23,
+          "subtitle": "Episode 33 with Adam Curry",
+          "summary": "Had an absolute BLAST! Check out Adams awesome podcasts! No Agenda, Curry and The Keeper, and Boostagram Ball(Music Podcast)\nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/dvep33.png",
+          "explicit": false,
+          "keywords": [
+            "doerfels",
+            "doerfelverse",
+            "doerfel",
+            "doorful",
+            "doerful",
+            "intothedoerfelverse",
+            "into",
+            "the",
+            "verse",
+            "doerfel-verse",
+            "episode",
+            "33",
+            "adam. curry"
+          ]
+        },
+        {
+          "title": "Episode 32.5",
+          "duration": "79:28",
+          "url": "https://www.doerfelverse.com/tracks/dvep32-5.mp3",
+          "trackNumber": 24,
+          "subtitle": "Episode 32.5",
+          "summary": "This is it, testing all systems for the big episode 33 coming up! Where have we been? what's going on? Well we discuss and play some live music and pick a new song to release from the Doerfel-vault!\nSubscribe in a Podcasting 2.0 app and you can follow along and get involved by sending us value in a Boostagram, it's super fun, and is a form of real value! There are many apps, if you've never tried one give Fountain a spin!\nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/fade7.gif",
+          "explicit": false,
+          "keywords": [
+            "doerfels",
+            "doerfelverse",
+            "doerfel",
+            "doorful",
+            "doerful",
+            "intothedoerfelverse",
+            "into",
+            "the",
+            "verse",
+            "doerfel-verse",
+            "episode",
+            "32.5"
+          ]
+        },
+        {
+          "title": "Episode 32 - Doerfel-Node",
+          "duration": "48:00",
+          "url": "https://www.doerfelverse.com/tracks/dvep32.mp3",
+          "trackNumber": 25,
+          "subtitle": "Episode 32 - Doerfel-Node",
+          "summary": "What's a node you ask? Well, we arent really sure, but we got one, and we are learning! Also, Shreddy has some new songs to preview!\nSpecial thanks to Sir Spencer, ChadF, and Salty Crayon for helping me get our node up ad running!\nSubscribe in a Podcasting 2.0 app and you can follow along and get involved by sending us value in a Boostagram, it's super fun! There are many apps, if you've never tried one give Fountain a spin!\nwww.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/fade7.gif",
+          "explicit": false,
+          "keywords": [
+            "doerfels",
+            "doerfelverse",
+            "doerfel",
+            "doorful",
+            "doerful",
+            "intothedoerfelverse",
+            "into",
+            "the",
+            "verse",
+            "doerfel-verse"
+          ]
+        },
+        {
+          "title": "Episode 31 - Doerfel-Jukebox Vol. 1",
+          "duration": "76:58",
+          "url": "https://www.doerfelverse.com/tracks/dvep31.mp3",
+          "trackNumber": 26,
+          "image": "https://www.doerfelverse.com/art/fade7.gif",
+          "explicit": false
+        },
+        {
+          "title": "Episode 30 - Oh My Baby",
+          "duration": "48:16",
+          "url": "https://www.doerfelverse.com/tracks/dvep30.mp3",
+          "trackNumber": 27,
+          "subtitle": "Episode 30 - Oh My Baby",
+          "summary": "What's been happening? LOTS! Join TJ, Ed, Kurt, Jdog, and Cousin Mike as we catch up.\nFinding any value? Show some love and let us know via Boostagram or Paypal! Thanks for listening!\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvblackpaint2.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "30",
+            "oh",
+            "my",
+            "baby"
+          ]
+        },
+        {
+          "title": "Episode 29 - Jam with Tommy G",
+          "duration": "45:55",
+          "url": "https://www.doerfelverse.com/tracks/dvep29.mp3",
+          "trackNumber": 28,
+          "subtitle": "Episode 29 - Jam with Tommy G",
+          "summary": "This episode we are joined by Alandace's dad and have a blast jamming on some tunes! We chat and thank those sending value!\nPlease consider supporting us! We have no advertising or streaming income, this is straight up value for value! Hear music you like? Show some love and let us know via Boostagram or Paypal! Thanks for listening!\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "29",
+            "tommy",
+            "g"
+          ]
+        },
+        {
+          "title": "Episode 28 - Shhh Top Secret",
+          "duration": "108:08",
+          "url": "https://www.doerfelverse.com/tracks/dvep28.mp3",
+          "trackNumber": 29,
+          "subtitle": "Episode 28 - Shhh Top Secret",
+          "summary": "The elders (Sir TJ and Cousin Mike) get together and chat about...\n18 Sundays music, who are they?? Miles Fonda and young music life.\nWhat are these weird Doerfel tracks? jam band? bluegrass fusion??\nThanking our amazing producers!\nPlease consider supporting and sending value, as we have no advertising or streaming income, this is straight up value for value! Hear music you like? Show some love and let us know via Boostagram or Paypal! thanks for listening :) Really, if you dont let us know in some way you are listening and find value, we need you to! So that we know someone is listening and cares! let us know, Boost, Paypal, heck even email us at tj@doerfelverse.com! We just want to know if anyones listening and enjoying :)\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "28"
+          ]
+        },
+        {
+          "title": "Episode 27 - Into The Normy-Verse",
+          "duration": "84:41",
+          "url": "https://www.doerfelverse.com/tracks/dvep27.mp3",
+          "trackNumber": 30,
+          "subtitle": "Episode 27 - Into The Normy-Verse",
+          "summary": "Where have we been? Tap play and find out! \nSpecial Thanks to the one and only, Chad F as our executive producer for the last month, this guy has shown so much value we cannot fully express our grattitude!\nWhat is the Normy-Verse? What is v4v? We talk about both right at the start!\nThen we talk about song picks, and talk about some brand new music! Tune and and let us kow what you think!\nPlease consider supporting and sending value, as we have no advertising or streaming income, this is straight up value for value! Hear music you like? Show some love and let us know via Boostagram or Paypal! thanks for listening :)\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "27"
+          ]
+        },
+        {
+          "title": "Episode 26 - Garage to Studio",
+          "duration": "81:13",
+          "url": "https://www.doerfelverse.com/tracks/dvep26.mp3",
+          "trackNumber": 31,
+          "subtitle": "Episode 26 - Garage to Studio",
+          "summary": "Chad Farrow is still THE executive producer for the month of March, and to see what we did with his donation check out the garage to studio transformition pictures below! We've been working hard and it's starting to pay off with the studio re-modeling!\nAlso we preview A new CityBeach song AND pick a new song for release, what song will it be??? listen and find out, and tell us what you think in a boostagram!\n\n\n\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/dvstudiosign.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "26",
+            "garage",
+            "studio"
+          ]
+        },
+        {
+          "title": "Episode 25 - Alandace Part 2",
+          "duration": "66:28",
+          "url": "https://www.doerfelverse.com/tracks/dvep25.mp3",
+          "trackNumber": 32,
+          "subtitle": "Episode 25 - Alandace Part 2",
+          "summary": "We talk about Fountain. We play a brand new song Alandace is working on and talk about recording. We thank our producers. \nSpecial Thanks to our first ever DoerfelVerse executive producer, Chad Farrow, sent $100 via paypal! \nMore v4v talk. We have more special news!?\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "25",
+            "alandace",
+            "part",
+            "2"
+          ]
+        },
+        {
+          "title": "Episode 24 - Alandace",
+          "duration": "102:29",
+          "url": "https://www.doerfelverse.com/tracks/dvep24.mp3",
+          "trackNumber": 33,
+          "subtitle": "Episode 24 - Alandace",
+          "summary": "Join us as we officially introduce another Doerfel...Shredwards wife, Alandace!(a-lan-dis) She shares about her musical up-bringing and we listen to some new tracks. You can hear her with Shreddy on CityBeach!\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "24",
+            "alandace"
+          ]
+        },
+        {
+          "title": "Episode 23 - Ryan AND Seth Fonda",
+          "duration": "90:56",
+          "url": "https://www.doerfelverse.com/tracks/dvep23.mp3",
+          "trackNumber": 34,
+          "subtitle": "Episode 23 - Ryan AND Seth Fonda",
+          "summary": "Join us AND our brothers Ryan and Seth Fonda as we talk value for value music and life!\nRyan's wavlake here. Seth's Wavlake here.\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "23",
+            "ryan",
+            "seth",
+            "fonda"
+          ]
+        },
+        {
+          "title": "Episode 22 - Halftime",
+          "duration": "41:56",
+          "url": "https://www.doerfelverse.com/tracks/dvep22.mp3",
+          "trackNumber": 35,
+          "subtitle": "Episode 22 - Halftime",
+          "summary": "Sir TJ and Jdog share some random Doerfel info, read the last weeks Boostagrams, and pick a song, or songggs?\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "22",
+            "halftime"
+          ]
+        },
+        {
+          "title": "Episode 21 - Queen Mother",
+          "duration": "95:17",
+          "url": "https://www.doerfelverse.com/tracks/dvep21.mp3",
+          "trackNumber": 36,
+          "subtitle": "Episode 21 - Queen Mother",
+          "summary": "Where have all those Doerfels gone? Join us and find out!\nSPECIAL GUEST: We chat with our mom Cheryl, or as we like to call her, Queen Mother! oh yeah, and dad too :)\nRyan Fonda and Citybeach teamed up for a new self hosted song, \"Unsound Existance\"\nNew music by Ed and Bens church, Lifepoint Music\n \nAnd as always, we discuss a new song release.\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/dvep15-art.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "21",
+            "queen",
+            "mother"
+          ]
+        },
+        {
+          "title": "Episode 20 - Goals",
+          "duration": "87:06",
+          "url": "https://www.doerfelverse.com/tracks/dvep20.mp3",
+          "trackNumber": 37,
+          "subtitle": "Episode 20 - Goals",
+          "summary": "He shoots, he scores! Oh wait this isn't a hockey game :) We play and talk about our song, \"Thought It Was Real\". Talk about the origin of our Hockey stick instruments(Jim Stoneman). And pick a new song for release.\nSpecial thanks to DV Producers for music and Ep20:\nBoostagrams:ChadFSalty Crayonboo-buryAdam Currysirtruckdriverallencpauladam287greatbrittain94Streamers:meremortalspodcastsaintsandsatsgilliganmikeneumannsandymeyer\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/dvep20.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "20",
+            "thought",
+            "it",
+            "was",
+            "real"
+          ]
+        },
+        {
+          "title": "Episode 19 - Wondoerfel New Year",
+          "duration": "65:52",
+          "url": "https://www.doerfelverse.com/tracks/dvep19.mp3",
+          "trackNumber": 38,
+          "subtitle": "Episode 19 - Wondoerfel New Year",
+          "summary": "Join us as we chat about upcoming plans for 2024, share sneak peaks of upcoming music, and pick a new song to release!\nSpecial thanks to DV Producers for music and Ep19:\nChadFadamc1999thekeeperallencpaulsaintsandsatsnicolas_b58Kolomona - Sir LibramikeneumannKyrin(Mere Mortals Podcast)Bearsnareuser52425381(Uncle Joe)\nSubscribe to our music feed!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/dvep19.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorful",
+            "doorfull",
+            "episode",
+            "19"
+          ]
+        },
+        {
+          "title": "Episode 18 - DoerJam 3 Feat. Doug Yeomans",
+          "duration": "78:27",
+          "url": "https://www.doerfelverse.com/tracks/dvep18.mp3",
+          "trackNumber": 39,
+          "subtitle": "Episode 18 - DoerJam 3 Feat. Doug Yeomans",
+          "summary": "Sir TJ on banjo and dobro, Shredward on mandolin, Ben on guitar, and our guest Doug Yeomans on guitar and vocals.\nDoug brings some original tunes and we hang with Doug and talk music career, our stories, and v4v music.\nListen to our latest song here.\nDon't miss a beat and subscribe to our music feed with all our songs here.\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "episode",
+            "18",
+            "doug",
+            "yeomans",
+            "jam",
+            "live"
+          ]
+        },
+        {
+          "title": "Episode 17 - BabyVerse",
+          "duration": "39:38",
+          "url": "https://www.doerfelverse.com/tracks/dvep17.mp3",
+          "trackNumber": 40,
+          "subtitle": "Episode 17 - BabyVerse",
+          "summary": "Sir TJ is joined by his wife and children for an episode full of chaos and exciting news!\nPsalms 127:3-5\nChildren are a gift from the Lord;\nthey are a reward from him.\nChildren born to a young man\nare like arrows in a warrior&rsquo;s hands.\nHow joyful is the man whose quiver is full of them!\nHe will not be put to shame when he confronts his accusers at the city gates.\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/ep17-art.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "episode",
+            "17",
+            "babyverse"
+          ]
+        },
+        {
+          "title": "Episode 16 - DragonCello/DoerJam2",
+          "duration": "107:02",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep16.mp3",
+          "trackNumber": 41,
+          "subtitle": "Episode 16 - DragonCello/DoerJam2",
+          "summary": "DoerJam number 2! Sir TJ, Shreddy, Kurtisdrums, Benny, and Cousin Mike hang with their instruments. We jam on some songs, play some tracks, and talk about random stuff that pops into our heads...\nSongs jammed on are: Morristown Blues, Now I Know(to be released), Dead Time, and...something intresting to end the show..!\nThis is a value for value podcast. This means we do it for the love of it, and if you find any value, we just ask that you send that back in a way, like time, talent, or treasure. Time means listening and sharring the show and music with someone you think might like it! Talent means ANYTHING you can think of, like baking and sending us Cookies(thanks Mike Neumanns better half!). Or making show art, jingles, or anything using your talent. Treasure, that's any number meaningful to you. V4v is making music meaningful again :)\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/dvep16.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorfull",
+            "episode",
+            "16"
+          ]
+        },
+        {
+          "title": "Episode 15 - Bluegrass in Montreal 2007",
+          "duration": "72:11",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep15.mp3",
+          "trackNumber": 42,
+          "subtitle": "Episode 15 - Bluegrass in Montreal 2007",
+          "summary": "Hang with Sir TJ in this out of the normal show format. He listens and does a comentary of a bluegrass show from when they were kids. Recorded live in Montreal, Canada, in 2007.\nTJ/banjo - Kim/fiddle - Edward/mandolin - Joey/bass - Ben/guitar \nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/dvep15-art.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorfull"
+          ]
+        },
+        {
+          "title": "Episode 14 - Chill and Chit-Chat",
+          "duration": "39:31",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep14.mp3",
+          "trackNumber": 43,
+          "subtitle": "Episode 14 - Chill and Chit-Chat",
+          "summary": "Sir TJ and Cousin Mike chit-chat about happenings in the doerfelverse and thank our Producers. We also take a sneak peak into Cousin Mike's musical past, and pick a song for release.\nWe are about a week behind schedule from time of recording do to us all having full time jobs for survival..Lol. So if you sent a boostagram recently and don't hear it read, allow another episode to be released, it may be read then.\nBut if we ever missed a boostagram please shoot me an email at tj@sirtjthewrathful.com, we definatly want to read it and give thanks to all our producers!\nhttps://www.doerfelverse.com/",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "doerful",
+            "doorfull"
+          ]
+        },
+        {
+          "title": "Episode 13 - Chugging Chel with Zac Polk",
+          "duration": "120:24",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep13.mp3",
+          "trackNumber": 44,
+          "subtitle": "Episode 13 - Chugging Chel with Zac Polk",
+          "summary": "Learn some old school Doerfel-lingo with our long-time musician friend Zac Polk.\nWe share stories, talk about v4v music in podcasting 2.0, play some tracks, and pick a new single to release.\nZacs Podcast is here.  We got Zac to make a GetAlby and he is in the split for this episode so if you enjoy and find value maybe send a boostagram welcoming him to the world of v4v :)\nCheck out the song we picked by subscribing to, \"Music From The Doerfel-verse\" feed and that will keep you up to date with all our most recent releases. Or easiy check it out on LNBeats.com\nhttps://www.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/doerfelverse-ep13-art.png",
+          "explicit": false,
+          "keywords": [
+            "intothedoerfelverse",
+            "doerfels",
+            "doerfel",
+            "into",
+            "the",
+            "episode13",
+            "episode",
+            "13",
+            "zac",
+            "polk",
+            "zacpolk"
+          ]
+        },
+        {
+          "title": "Episode 12 - DoerJam!",
+          "duration": "60:32",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep12.mp3",
+          "trackNumber": 45,
+          "subtitle": "Episode 12 - DoerJam!",
+          "summary": "Episode 12 - DoerJam!\nSir TJ The Wrathful on Dobro - Shredward on Mandolin - Ben on Guitar -\nOur live podcast jams are now called DoerJams thanks to Mike Neumann's better half :) Check out Mike's music show, It's A Mood!\nIntro DoerJam: Heart Is Falling Out\nDoerfelVerse Producers: bustedcanoe7, queenmother, Adam Curry, meremortalspodcast, ChadF, salty_crayon, duhlaurien, thebearsnare.com, sirtruckdriver, saintsandsats, latosh, Mike Neaumann\nHere are some great music podcasts if you can only handle so much Doerfels at once. These are great for discovering other V4V artists!\nBoostagram Ball, It's A Mood, Homegrown Hits, Mutton, Mead & Music, Rolling On Show, UpBEATs\nYou can find all the known Music Show Podcasts by clicking on radio over at LNBeats.com\nFeatured DoerJam Song: Pulls Me Up\nSong Of The Week is.......? Let us know what song you want to hear more of!\nThis is a value for value podcast, so if you find any value let us know, we love to hear from yall!\nTry a modern podcast app today, some we reccomend are: Podverse, Podcast Guru, Fountain, CurioCaster\nwww.doerfelverse.com\nMusic From The DoerfelVerse feed on www.LNbeats.com",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel-verse",
+            "doerfels",
+            "doerfel",
+            "epside12",
+            "12",
+            "doerjam",
+            "live",
+            "jam",
+            "music"
+          ]
+        },
+        {
+          "title": "Episode 11 - Doerfel Agents Meeting",
+          "duration": "46:52",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep11.mp3",
+          "trackNumber": 46,
+          "subtitle": "Episode 11 - Doerfel Agents Meeting",
+          "summary": "The self proclaimed \"agents\" of the band, Sir TJ The Wrathful and Cousin Mike, let the rest of the boys have a Sunday off from the show and reflect on the podcast so far. They also choose a new song to release.\nListen to all the music released here at LNBeats.com\nCheck out Adam Curry's Boostagram Ball\nThanking our producers!\ngt, kurtisdrums, chadf, Oystein Berge, toph4471, fatherdorf, steveweb\nOur website is functioning, check it out at https://www.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/itdvspacelogo.png",
+          "explicit": false,
+          "keywords": [
+            "into",
+            "the",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfelverse",
+            "music",
+            "episode",
+            "11",
+            "doorful",
+            "doerful",
+            "doerfel-verse"
+          ]
+        },
+        {
+          "title": "Episode 10 - Feat. Middle Season & Live Jam",
+          "duration": "82:58",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep10.mp3",
+          "trackNumber": 47,
+          "subtitle": "Episode 10 - Feat. Middle Season & Live Jam",
+          "summary": "Episode 10 with Middle Season.\nOn this episode Joey Ramon(Middle Season) joins us and we play a song of his and chat about his musical/life journey.\nCheck out his song on LN Beats HERE\nsend him a Boostagram if you want to hear more of his music!\nAnd you can listen to his worship song HERE.\nThen we pick a song to release.\nThanks for listening!",
+          "image": "https://www.doerfelverse.com/art/doerfelverse-ep10-art.jpeg",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel-verse",
+            "doerfels",
+            "doerfel",
+            "middle",
+            "season",
+            "middleseason",
+            "live",
+            "jam"
+          ]
+        },
+        {
+          "title": "Episode 9 - Daddy D",
+          "duration": "0:00",
+          "url": "https:/www.doerfelverse.com/tracks/dvep9.mp3",
+          "trackNumber": 48,
+          "subtitle": "Episode 9 - Daddy D",
+          "summary": "Our father Daddy D(Tom), visits from FL to help Sir TJ The Wrathful roof his house. We of course had to take this oppertunity to have him on the Podcast! Dad played bass, booked the gigs, drove and fixed the bus, and tried to keep us all in line!\n\nListen to music from the Doerfel-Verse here for free. And if you recieve any value, please consider sending us some back with time, talent, or treasure.\nTime: listening and sending us any thoughts or questions to tj@sirtjthewrathful.com.\nTalent: sending us something from whatever you talents may be.\nTreasure: Right now this would need to be in the form of a boost/boostagram using a modern podcast app like Podverse, Fountain, Podcast Guru, just to name a few.\nThank you for listening and we hope you recieved some kind of value from our crazy family.\n\nhttps://www.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/doerfelverse-ep9-art.jpg",
+          "explicit": false,
+          "keywords": [
+            "doerfel",
+            "doerfels",
+            "doerfelverse",
+            "doerfel-verse",
+            "intothedoerfelverse",
+            "into",
+            "the",
+            "episode",
+            "9",
+            "daddy",
+            "d",
+            "daddyd"
+          ]
+        },
+        {
+          "title": "Episode 8 - Our Favorite Sister",
+          "duration": "77:46",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep8.mp3",
+          "trackNumber": 49,
+          "subtitle": "Episode 8 - Our Favorite Sister",
+          "summary": "We have our favorite(only) sister Kim join us. \nKim is the 2nd oldest of the Doerfel siblings. Singing and playing fiddle, she now lives in FL with her husband Doug and their two children Stevie and Reed.\nKim is now A worship leader at Keys Vineyard Church\nHere's a link to the worhip music previewed in epsiode.\nThanks for listening, if you found any value please let us know!\nYou can send us a boostagram and be involved in the show by using a podcasting 2.0 app. If you know someone who might enjoy our music/podcast, try to pull them into the Doerfel-Verse!\nPodcast Guru, Podverse, Fountain are some of our favorite apps. And for music only definitly go to LNBeats.com\nWe now have A new music only feed called, \"Music From The Doerfel-verse\". Subscribe there to enjoy all our music in an album/playlist format.\nYou can also send us an email with any topics, questions, comments you'd like to share at tj@sirtjthewrathful.com\nhttps://www.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/doerfelverse-ep8-art.jpeg",
+          "explicit": false,
+          "keywords": [
+            "intothedoerfelverse",
+            "into",
+            "the",
+            "doerfelverse",
+            "doerfel-verse",
+            "doerfels",
+            "doerfel",
+            "ep8",
+            "episode8",
+            "kim",
+            "kimdoerfel"
+          ]
+        },
+        {
+          "title": "Episode 7 - With Jdog & callieNOTwallie",
+          "duration": "78:51",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep7.mp3",
+          "trackNumber": 50,
+          "subtitle": "Episode 7 - With Jdog & callieNOTwallie",
+          "summary": "Join us as we chat & jam with Sir TJ The Wrathful's eldest children, Jdog & CallieNotWallie!\nListen to Jdogs album here!\nhttps://www.doerfelverse.com",
+          "image": "https://www.doerfelverse.com/art/doerfelverse-ep7-art.jpeg",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel-verse",
+            "episode7",
+            "7",
+            "doerfels",
+            "doerfel",
+            "intothedoerfelverse",
+            "into"
+          ]
+        },
+        {
+          "title": "Episode 6 - Live Jam 1",
+          "duration": "64:50",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep6.mp3",
+          "trackNumber": 51,
+          "subtitle": "Episode 6 - Live Jam 1",
+          "summary": "We welcome Joey to the show for the first time!Warning- this episode contains Joe's feet, band life stories, and live jamming!\nDon't Take My Time written by Doug Yeomans.\nText Me Or Something written by Miles Fonda\nLet us know in a Boost or email what you'd like to hear and any questions you might have!\nhttps://www.doerfelverse.com/\nWe recommend Music Side Project for artists who would like to get their music on v4v made by the great StevenBA great way to discover other value for value artists are these shows(podcasts)Boostagram Ball It's A MoodHomegrown HitsBefore the Sch3m3sPhantom Power Music Hour\nIf you found any value in our music please cosider sending some value back in the form of time, talent, or treasure!\nThanking all boosters/streamers last week!\nDave Jonesadam287geatbritianDame JeniferGeneBeanSam SethispamproofKolomonagtMitch DAdam CurryDave Smithjohnsbrtboolysteeddale jrericppbeavenourtodd from northern VAMike NeumannAChrisYouKnowshelleycTheCzarChadFcolemccormick1rawbtcKyrinsirseanreisernicksiKRShowBoosterharvhatbryan goodwinbmasigilliganFranco\nTry out a Podcasting 2.0 app today. Here are a few of our favorites:\nPodverse, Podcast Guru, Fountain, LNBeats",
+          "image": "https://www.doerfelverse.com/art/dvspaceart.jpeg",
+          "explicit": false,
+          "keywords": [
+            "intothedoerfelverse",
+            "intothedoerfel-verse",
+            "doerfel",
+            "verse",
+            "into",
+            "the",
+            "doerfels",
+            "episode",
+            "6",
+            "live",
+            "jam",
+            "livejam1",
+            "episode6",
+            "joey",
+            "sirtjthewrathful"
+          ]
+        },
+        {
+          "title": "Episode 5 - Berries and Cream",
+          "duration": "65:04",
+          "url": "https://www.doerfelverse.com/tracks/doerfelverse-ep5.mp3",
+          "trackNumber": 52,
+          "subtitle": "Episode 5 - Berries and Cream",
+          "summary": "Episode 5 - Berries and Cream\nTJ shares new end of show mix he made for the best podcast in the univeerse, No Agenda!\nBen's worship music here: https://lnbeats.com/album/08604071-83cc-5810-bec2-bea0f0cd0033\nListen to Jdogs songs here!\nAdam! it's only Ben and Kurtisdrums who complain about your compression, talk about sound snobs! 😂 \nThis is a value for value podcast, if you find any value in our content please return some value even if its just a quick email message. We love hearing from you.\nTry A new podcast app! Podverse, Podcast Guru, Fountain are some of our favs right now!\nWe would also like to let people know we endourse Steven Bells tools, Music Side Project and Sovereign Feeds. If you are interested in self hosting your own music check them out or send TJ an email if you'd like more information. tj@sirtjthewrathful.com\nThanking boosters from last week: greatbrittain94, adam287, Adam Curry, John Siebert, Dreb Scott, trailchicken, bearsnare, gt\nAlso A big shout out to those who streamed us sats, so generous!\nWe go through some of Ben and Kurts crazy songs and pull up some oldies!",
+          "image": "https://www.doerfelverse.com/art/dvspaceart.jpeg",
+          "explicit": false,
+          "keywords": [
+            "doerfels",
+            "doerfel",
+            "doerfelverse",
+            "doerfel-verse",
+            "verse",
+            "doerfelpodcast",
+            "doerfelsmusic",
+            "podcast",
+            "into",
+            "the",
+            "intothedoerfelverse",
+            "episode",
+            "5"
+          ]
+        },
+        {
+          "title": "Episode 4 - Superjells",
+          "duration": "79:56",
+          "url": "https://www.doerfelverse.com/tracks/ep4doerfelverse-superjells.mp3",
+          "trackNumber": 53,
+          "subtitle": "Episode 4 - Superjells",
+          "summary": "Episode 4 - Superjells\nAnother brother, a key member of the band, Ben finally joins us on the podcast!\nBand life/timeline, stories, touring, making money, play some OLD bluegrass tracks.\nSongwritting and tastes.\nThis is a value 4 value podcast. If you found any value please let us know even if it's just with an email!\nOutro music by Ryan & Seth Fonda",
+          "image": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/cropped-cropped-doerfel-verse-idea-9.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "doerfels",
+            "doerfel-verse",
+            "episode",
+            "4",
+            "thedoerfels",
+            "ep4",
+            "episode4",
+            "sirtjthewrathful"
+          ]
+        },
+        {
+          "title": "Episode 3 - Keep it Low Key ft. Ryan Fonda",
+          "duration": "75:13",
+          "url": "https://www.sirtjthewrathful.com/media/ep3-ryan-fonda.mp3",
+          "trackNumber": 54,
+          "subtitle": "Episode 3 - Keep it Low Key ft. Ryan Fonda",
+          "summary": "Brand New intro :)\nMore talk about \"The Doerfels\" as a band name. Link to video we discussed HERE\nSpecial Guest Ryan Fonda! Check him out on WavLake\nTalk of Ryan's older brother Miles Fonda(April 15, 1988 - January 21, 2023) who gave TJ his No Agenda Knight name. Listen to Miles' song HERE.\nChatting with Ryan about what he's working on and then what Doerfels song to pick next, hmm.\nTo connect with us through boosting get a new podcasting app, some great ones are Fountain, Podverse, and Podcast Guru, if you have any thoughts or questions please email us, tj@sirtjthewrathful.com",
+          "image": "https://www.sirtjthewrathful.com/art/ep3art.jpg",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfels",
+            "doerfel",
+            "doerfel-verse",
+            "verse"
+          ]
+        },
+        {
+          "title": "Episode 2 - DragonBoyz",
+          "duration": "54:38",
+          "url": "https://www.sirtjthewrathful.com/media/ep2-taste-the-dragon.mp3",
+          "trackNumber": 55,
+          "subtitle": "Episode 2 - DragonBoyz",
+          "summary": "Episode 2 is here! We dive deep into some more tracks.\nSpecial thanks to boosts we got this week from: Adam Curry, Dave Jones, ChadF, Fletcher, Dame DuhLaurien, Sir Spencer Wolf of KS\nMake sure you check out the track we chose to release after this episode!\nListen to our music on LNbeats.com by searching, \"doerfels\".\nThis is a value for value podcast, if you find any value then let us know by sending any kind of value back. One way to do that is by sending us a boostagram, or simply send us an email, we want to hear from you, Thanks!\nSir TJ The Wrathful, Shredward, Kurtisdrums, Cousin Mike",
+          "image": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/cropped-cropped-doerfel-verse-idea-9.png",
+          "explicit": false,
+          "keywords": [
+            "doerfel-verse",
+            "doerfelverse",
+            "ep2",
+            "doerfels"
+          ]
+        },
+        {
+          "title": "Episode 1 - So Friggin' Fine",
+          "duration": "44:14",
+          "url": "https://www.sirtjthewrathful.com/media/doerfel-verse-1-So-Friggin-Fine-08-13-23.mp3",
+          "trackNumber": 56,
+          "subtitle": "Episode 1 - So Friggin' Fine",
+          "summary": "We discuss our reasons for making a podcast.\nShort history of the band.\nThanks to Adam Curry for featuring us on the first episode of his brand new music podcast Boostagram Ball, check it out!\nValue for Value model.\nWhat is a Doerfel?\nSpotify, and major streaming services screwing artists?\nWhat song we releasing next? listen to us figure it out, then check the following episode for the full track!\nFor better listening get a Podcasting 2.0 app. We love podcast guru and podverse. For music we recomend searching \"the doerfels\" at LNbeats.com\nSpecial thanks to Steven Bell and Sir Spencer Wolf of KC\nIn this feed we will be making episodes followed by a song. We also plan on sharing other artists music who are following the v4v model.\nBoost us your feedback or email us at tj@sirtjthewrathful.com or find us on No Agenda Social",
+          "image": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/doerfel-verse-idea-9.png",
+          "explicit": false,
+          "keywords": [
+            "doerfels",
+            "thedoerfels",
+            "the",
+            "doerfel-verse",
+            "dorfel",
+            "doerfuls",
+            "verse",
+            "into",
+            "intothedoerfelverse"
+          ]
+        }
+      ],
+      "releaseDate": "Sat, 02 Aug 2025 02:26:22 +0000",
+      "link": "https://www.doerfelverse.com/",
+      "funding": [
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "support Doerfel Music here!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        },
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        }
+      ],
+      "subtitle": "EP 56 LIVE",
+      "summary": "Let me know if you're listening!\nJoin in the troll room at trollroom.io or click HERE. make sure the room name is #doerfelverse \nDoerfels are live and LIT!\nInto The Doerfel-Verse Livestream\nVideo often streaming at www.doerfelverse.com",
+      "keywords": [
+        "thedoerfels",
+        "doerfels",
+        "doerfelverse",
+        "doerfel-verse",
+        "doerfel",
+        "verse",
+        "band",
+        "music",
+        "podcast",
+        "musicpodcast",
+        "doorfulls",
+        "doorfuls",
+        "doerfuls"
+      ],
+      "categories": [
+        "Music Commentary"
+      ],
+      "explicit": false,
+      "language": "en",
+      "owner": {
+        "name": "TJ Doerfel",
+        "email": "tj@doerfelverse.com"
+      },
+      "podroll": [
+        {
+          "url": "https://www.doerfelverse.com/feeds/music-from-the-doerfelverse.xml",
+          "title": "Feed 2b62ef49..."
+        },
+        {
+          "url": "https://mp3s.nashownotes.com/bballrss.xml",
+          "title": "Feed 6dfbd8e4..."
+        },
+        {
+          "url": "https://feeds.rssblue.com/upbeats",
+          "title": "Feed 3aebb7a8..."
+        },
+        {
+          "url": "https://www.doerfelverse.com/feeds/ben-doerfel.xml",
+          "title": "Feed 08604071..."
+        },
+        {
+          "url": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Nostalgic.xml",
+          "title": "Feed 1e7ed1fa..."
+        },
+        {
+          "url": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Kurtisdrums-V1.xml",
+          "title": "Feed 69c634ad..."
+        }
+      ],
+      "feedId": "https-www-doerfelverse-com-feeds-intothedoerfelverse-xml",
+      "feedUrl": "https://www.doerfelverse.com/feeds/intothedoerfelverse.xml",
+      "lastUpdated": "2025-08-02T18:31:32.990Z"
+    },
+    {
       "title": "Kurtisdrums",
       "artist": "Kurtisdrums",
       "description": "I was born and raised in Buffalo, NY.\n\nI grew up on the road in a band and I always had a passion for audio and video production! These are songs I wrote for fun.\nI also drum and write songs with my brothers. We were Fuel On Fire but now we just go as The Doerfels. www.doerfelverse.com",
@@ -2195,6 +3666,896 @@
       "feedId": "https-www-thisisjdog-com-media-ring-that-bell-xml",
       "feedUrl": "https://www.thisisjdog.com/media/ring-that-bell.xml",
       "lastUpdated": "2025-08-02T18:31:33.019Z"
+    },
+    {
+      "title": "Boostagram Ball",
+      "artist": "Adam Curry",
+      "description": "The First Podcast with Value4Value Music hosted by Adam Curry",
+      "coverArt": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+      "tracks": [
+        {
+          "title": "Boostagram Ball - Episode 27",
+          "duration": "61:09",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-27-2024-12-11-Final.mp3",
+          "trackNumber": 1,
+          "subtitle": "Boostagram Ball - Episode 27",
+          "summary": "Boostagram Ball Episode 27 December 11th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\nIf you want to creat your own V4V Music Show Check out:\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\nMusic on Today's Show:\nFM Rodeo - Pop SongTony Salomone - FreeThe Trusted - MarrowTwo Ways Home - Hear a HeartbreakAbel James - Live While I'm AliveAinsley Costello - THEREGOESMY!Longy - Tape UpIROH - The Seed ManSigns and Signals - Modern MarieJack Phemister - Backwards SidewaysAbi Muir - Fighting UphillSuzanne Santo - WorriedCHARLEY T - The Dogs Keep BarkingTwo Weeks In Nashville - Stars and The MoonTracey Blake - One For Jack\nOnboard your favorite artists, send them to:\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 26",
+          "duration": "74:30",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-26-2024-11-20-Final.mp3",
+          "trackNumber": 2,
+          "subtitle": "Boostagram Ball - Episode 26",
+          "summary": "Boostagram Ball Episode 26 November 20th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\nIf you want to creat your own V4V Music Show Check out:\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\nMusic on Today's Show:\nThe Trusted - MillenniumFM Rodeo - Rit JonsAbel James - Thank God for the BluesTJ Wong - Kingdom ComeRichard - Rising Free - Joe Martin, Man Like Kweks, reelrichardEmbleton - Gonna be OKSuzanne Santo - WorriedCole Hansen - Fall Sky, FallXoe Miles - VillianMoe & The ArtiFactz - Moe & The ArtiFactz - Morning MiraclesJUSTLOUD - No More RosesMellow Cassette - Not Getting StrongerSeth Fonda - Saturday Morningsnju - Cold HeartedAinsley Costello - Change Your MindZhaklina - Gossip QueenLuke Wood - Death of MeBen Jonesy Jones - First Time\nOnboard your favorite artists, send them to:\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 25",
+          "duration": "70:54",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBall-25-2024-10-23-Final.mp3",
+          "trackNumber": 3,
+          "subtitle": "Boostagram Ball - Episode 25",
+          "summary": "Boostagram Ball Episode 25 October 23d 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\nIf you want to creat your own V4V Music Show Check out:\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\nMusic on Today's Show:\nThe Doerfels - Disco SwagLongy - Love SchizophreniaEmbleton - You're Killing MeRebel Hero - RunAbel James - Voodoo QueenKara Frazier - I Wanna Be Your Woman (feat. The Aquaducks)CHARLEY T - Runnin'Red Arrow Highway - Leaving ChicagoHerbivore - Pixelated SmileJoJo Scott - Honey Girlbennyjeans - WHY (did you do this to me)Martin Grooms - The Hard WayNicky and the Shouts - Don't be a foolARREIS - Five More MinutesOceana Heartsong - Sheets of RainTwo Weeks In Nashville - Don't Take This For GrantedAdam Kirkup - Be At HomeAlicia Stockman - Halfway to Houston\nOnboard your favorite artists, send them to:\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 24",
+          "duration": "71:22",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-24-2024-10-09-Final.mp3",
+          "trackNumber": 4,
+          "subtitle": "Boostagram Ball - Episode 24",
+          "summary": "Boostagram Ball Episode 24 October 9th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\nIf you want to creat your own V4V Music Show Check out:\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\nMusic on Today's Show:\nThe Retrograde - I Need a LittleThe Trusted - Burning the NightThe Doerfels - Disco SwagJoe Martin Music - High GravityChris Nichols - SweatAinsley Costello - Cherry On Top (90's Revival Remix) with StereonFM Rodeo - Self-Titled National AnthemJUSTLOUD - Shroomsshy kids - fresh off a feelingEmbleton - You're Killing MeHannah Blanchard - Stop (feat. Alex Bonyata)Daddy NAT - 1nightIROH - The FeverAbi Muir - BlueprintEmily D'Ranged - BREAKING UPKavinya - That Smile You're WearingTony Salomone - Unleash\n \nOnboard your favorite artists, send them to:\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 23",
+          "duration": "77:53",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-23-2024-07-27-Final.mp3",
+          "trackNumber": 5,
+          "subtitle": "Boostagram Ball - Episode 23",
+          "summary": "Boostagram Ball Episode 23 for July 27th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nThis episode was streamed Live at Bands at Bitcoin 2024\nUse a modern podcast app from podcastapps.com to support the show and the music:\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\nIf you want to creat your own V4V Music Show Check out:\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\nMusic on Today's Show:\nTony Salomone - Cool SummerRock'n'Roll Breakheart - You've Got a Lot of NerveJoe Martin Music - High GravityThe Doerfels - Bloodshot LiesEmbleton - Gonna be OKTracey Blake - One For JackGeoff Smith - Not On The Radio (Acoustic)Sara Jade - Wait DestinyEmily D'Ranged - H8M3Jack Holliday - Tip ToeAble and The Wolf - Makin' BeansJUSTLOUD - LA SugarLifePoint Music - This Is The Good News (feat. Jordan Merritt)JoJo Scott - Honey GirlAmber Sweeney - BreatheCHARLEY T - The Dogs Keep BarkingHerbivore - Pixelated SmileAinsley Costello - People PleaserRyan Fonda - Cast AwayARREIS - Five More Minutes\n \nOnboard your favorite artists, send them to:\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 22",
+          "duration": "72:36",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-22-2024-03-30-Final.mp3",
+          "trackNumber": 6,
+          "subtitle": "Boostagram Ball - Episode 22",
+          "summary": "Boostagram Ball Episode 22 for March 30th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nThe Trusted - MillenniumTwo Weeks In Nashville - Money MakerThe Velvicks - Hit Me Like SugarFM Rodeo - EveningTJ Wong - Kingdom ComeJosh & Austin - Dog DaysAbi Muir - BlueprintThe Retrograde - I Need a LittleCharlie Crown - Brutal (feat. Kyle Reynolds)The Doerfels - Big Pine SongBad Strangers - CrumbleJeremy Oliveria - Looking For You (Feat. Kellin Quinn)12 Rods - All I Can Think AboutCole Hansen - Fall Sky, FallRichard - Rising Free - Joe Martin, Man Like Kweks, reelrichardbennyjeans - WHY (did you do this to me)Herbivore - I've TriedLiv Faith - Settle DownSara Jade - Never KnewTJ Wong - So Many Years\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 21",
+          "duration": "79:54",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-21-2024-02-27-Final.mp3",
+          "trackNumber": 7,
+          "subtitle": "Boostagram Ball - Episode 21",
+          "summary": "Boostagram Ball Episode 21 for February 27th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nSigns and Signals - Modern MarieThe Trusted - Terrible FightHerbivore - Winds of ChangeFM Rodeo - EveningRichard - Rising Free - Joe Martin, Man Like Kweks, reelrichardCharles Street Sound Company - Money In A BagAbi Muir - First DateSeth Fonda - Saturday MorningThe Doerfels - Figured You OutDaddy NAT - 1dayBryan Duncan - Clap Your HandsSora Satoh - One of a KindEmily Ronna - Someone ElseJosh & Austin - Dog DaysOllie - Burning RoomAllen C. Paul w/ Unclazzified - Sergio's SerenadeSara Jade - Never KnewJimmy V - Pour Me Some WaterARREIS - VicesTyson Froese - The Only OneJack Phemister - Set UpSurvival Guide - Blood Perfume\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 20",
+          "duration": "91:07",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-20-2024-02-09-Final.mp3",
+          "trackNumber": 8,
+          "subtitle": "Boostagram Ball - Episode 20",
+          "summary": "Boostagram Ball Episode 20 for February 9th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nThe Trusted - MillenniumRebel Hero - Money Not MiseryArson Car - MaybeFM Rodeo - JodiAbi Muir - StockholmRyan Fonda feat. CityBeach - Unsound Existence (self-hosted version)Jessica Lynne Witty - Weekend State Of MindNate Johnivan - White LiesVictoria Fragoso - No MoonSurvival Guide - Blood PerfumeThe Doerfels - Bloodshot LiesJUSTLOUD - PoseLiv Faith - Settle DownSeth Fonda - Saturday MorningKurtisdrums - Womp Womp Womp WompAlicia Stockman - Lonely TogetherLifePoint Music - This Is The Good News (feat. Jordan Merritt)Ainsley Costello - RescuedMar&iacute;na &Oacute;sk - Hey Love!Bobby Shell - Beefsteak and TradwivesAlicia Stockman - Halfway to HoustonThe Doerfels - Still A ManFM Rodeo - Headache Song\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 19",
+          "duration": "60:29",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-19-2024-01-17-Final.mp3",
+          "trackNumber": 9,
+          "subtitle": "Boostagram Ball - Episode 19",
+          "summary": "Boostagram Ball Episode 19 for January 17th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nArson Car - MaybeDaves Not Here - We Likes To Party (Radio Version)JUSTLOUD - LA SugarSimon Hawker - I GOT A PROBLEM.Rubber Factory Records - Pile High - Summer EndsSeth Fonda - All We KnowAbi Muir - StockholmThe Doerfels - Happy New Year(demo)Red Arrow Highway - Leaving ChicagoLifePoint Music - This Is The Good News (feat. Jordan Merritt)Allen C. Paul w/ Unclazzified - SerenityLiv Faith - Settle DownAlicia Stockman - Lonely TogetherMar&iacute;na &Oacute;sk - Hey Love!Rock'n'Roll Breakheart - You've Got a Lot of NerveMy Favorite Band - Everything\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 18",
+          "duration": "68:18",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-18-2024-01-06-Final.mp3",
+          "trackNumber": 10,
+          "subtitle": "Boostagram Ball - Episode 18",
+          "summary": "Boostagram Ball Episode 18 for January 6th 2024\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nMy Favorite Band - EverythingGeoff Smith - I Wanna DanceSeth Fonda - All We KnowNate Johnivan - LateChoreboy - We're in It for the MoneyJUSTLOUD - MoonchildJimmy V - Sweet timeJoe Martin Music - The JetsonsDescentFletcher and Blaney - Trap Dog (Paw-ternity Leave)Liv Faith - Settle DownAllen C. Paul w/ Unclazzified - Not Far Awaybo-fi - aliveBryan Duncan - I See YouAbi Muir - StockholmThe Doerfels - Love Like YoursSara Jade - Swallow Me Whole (EP Track)Ollie - LowkeyCityBeach - You Feel Like Home\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 17",
+          "duration": "70:55",
+          "url": "https://op3.dev/e/mp3s.nashownotes.com/BBALL-17-2023-12-12-Final.mp3",
+          "trackNumber": 11,
+          "subtitle": "Boostagram Ball - Episode 17",
+          "summary": "Boostagram Ball Episode 17 for December 12th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nDaves Not Here - We Likes To Party (Radio Version)The Last Confidence - FusorarioTexas 121 - Have Yourself A Merry Little ChristmasHeyCitizen - It's Christmastime Again!Geoff and The Tonewheels - Step KickMr. Information - Ode to Bobbie GWhite Triangles - Sailing to AntarcticaSurvival Guide - Lady NeptuneJoe Martin Music - The JetsonsRyan Fonda - Cast Away RemixLiv Faith - Settle DownCityBeach - First Married ChristmasDeez Laughs aka wrapthenews - Food NoiseKurtisdrums - Lovin You ForeverJUSTLOUD - MoonchildChristian Leuenberg - Halt mich festDaves Not Here - Groove HowSeth Fonda - All We KnowThe Doerfels - The Movie I'll Never SeeVertigo Kidd - Merry Christmas\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 16",
+          "duration": "69:11",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-16-2023-12-02-Final.mp3",
+          "trackNumber": 12,
+          "subtitle": "Boostagram Ball - Episode 16",
+          "summary": "Boostagram Ball Episode 16 for December 2nd 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nThe Last Confidence - FusorarioGeoff Smith - Christmas Time Around The World (2015 Remix)Survival Guide - PieThe Doerfels - Morning LoveKryptaHolic - The KillGeoff and The Tonewheels - Step KickBryan Duncan - Christmas Comes But Once A YearAinsley Costello - RescuedJUSTLOUD - LA SugarTom Ramires - Heat It UpJoe Martin Music - Money For The NeedyAmber Sweeney - The Great Northwest (feat Wanz, Andrew Joslyn, & Pyramid Horns)Jimmie Bratcher - Bacon Is On My MindDeez Laughs aka wrapthenews - Snooze NewsTatiana Moroz - Tatiana Moroz - Bitcoin JingleJohn Dale - SilverballsSeth Fonda - All We KnowJessica Lynne Witty - Drive It Like A Race CarLongy - Salt your wounds\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 15",
+          "duration": "66:22",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-15-2023-11-20-Final.mp3",
+          "trackNumber": 13,
+          "subtitle": "Boostagram Ball - Episode 15",
+          "summary": "Boostagram Ball Episode 15 for November 20th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nLocal Zero - CatacombWinstack - The Fun In LifeMy Favorite Band - EverythingJimmie Bratcher - Mama Won't Fry No ChickenBryan Duncan - Christmas Comes But Once A YearJoe Martin Music - Money For The NeedyThe Tjukebox - NOW! That's What I Call Value!Longy - Salt Your WoundsThe Doerfels - Sing For YouMr. Information - Rock de YateTom Ramires - SummerCityBeach - YouJessie Lark - DaddyAmber Sweeney - Be WellKavinya - UnluckyAll Kings All Poets - ForgivenessSigns and Signals - RavensNate Johnivan - Back Road\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 14",
+          "duration": "86:39",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-14-2023-11-10-Final.mp3",
+          "trackNumber": 14,
+          "subtitle": "Boostagram Ball - Episode 14",
+          "summary": "Boostagram Ball Episode 14 for November 11th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nMy Favorite Band - EverythingJUSTLOUD - ShroomsOllie - LowkeySimon James - Out of the BlueThe Doerfels - You Feel Like Home(CityBeach)Signs and Signals - RavensHeyCitizen - The PlatformSimon Hawker - GOOD MAN GOES DOWNKurtisdrums - First Saw (Feat. ImKidKid)The Truth Beyond - DescentAmber Sweeney - Your Will Be Done (feat. Battle Ground High School Vocal Jazz Choir)Podhome - Love UnveiledAidan Fine - PulseRyan Fonda - Only A Call AwayThe Doerfels - Sing For YouSara Jade - JacomaBryan Duncan - Bryan's Hymn (When I Turn To You)Spike Yee & Proper - Moving in Sequence w/ ProperDeez Laughs aka wrapthenews - The King is DeadJimmy V - Fool meJoe Martin Music - The JetsonsMy Favorite Band - Racer Why 2\nOnboard your favorite artists, send them to:\n\nPodcastindex.org\nMusicSideProject.com\nRSSBlue.com\nPodhome.fm\nPodcastmirror.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 13",
+          "duration": "63:22",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-13-2023-11-04-Final.mp3",
+          "trackNumber": 15,
+          "subtitle": "Boostagram Ball - Episode 13",
+          "summary": "Boostagram Ball Episode 13 for November 4th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\nPodhome.Fm\n\nMusic on Today's Show:\nDeath by Lions - The ProtaganistVertigo Kidd - Pirate RadioJUSTLOUD - ShroomsSimon James - Out of the BlueThe Doerfels - Figured You OutMy Favorite Band - EverythingAidan Fine - PulseDeez Laughs aka wrapthenews - Murky Waters (remix)Joe Martin Music - The JetsonsRed Sand Studio - Illusion FroideBryan Duncan - I Love You With My LifeRyan Fonda - Only A Call AwayCityBeach - GOAinsley Costello - DaydreamerTom Ramires - SummerBobby Shell - Beefsteak and TradwivesEnid Mollel - Fly (feat B. LEO)Richard - Rules Without RulersChris Wenske - Coconuts\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 12",
+          "duration": "77:49",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-12-2023-10-28-Final.mp3",
+          "trackNumber": 16,
+          "subtitle": "Boostagram Ball - Episode 12",
+          "summary": "Boostagram Ball Episode 12 for October 28th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nIf you want to creat your own V4V Music Show Check out:\n\nThe Split Kit\nRSSBlue.com\n\nMusic on Today's Show:\nGeoff Smith - It's Gonna Be A Great DayTom Ramires - PrimaveraMr. Information - SouvenirsMatt Bigelow - BeekeeperAidan Fine - PulseBryan Duncan - Bryan's Hymn (When I Turn To You)Ainsley Costello - Love LetterThe Doerfels - HeartbreakHeyCitizen - MoeFactzJUSTLOUD - ShroomsMiddle Season - Let Go (What's holding you back)Texas 121 - Same Old Shoesshy kids - fresh off a feelingOwl-Eyed Apprentice - Piano Riffing in B flatCityBeach - TOMORROWBobby Shell - Sugar Baby (Single)Mandelbro - EyesAmber Sweeney - Be WellEnid Mollel - Fly (feat B. LEO)Bryan Duncan - I Love You With My Life\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 11",
+          "duration": "67:26",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-11-2023-10-17-Final.mp3",
+          "trackNumber": 17,
+          "subtitle": "Boostagram Ball - Episode 11",
+          "summary": "Boostagram Ball Episode 11 for October 17th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nDeath by Lions - OMGChoreboy - We're in It for the MoneyAinsley Costello - DaydreamerThe Doerfels - They Don't KnowRiot in Progress - Time For A ChangeThe Wolf - The Wait Is OverChristian Leuenberg - Can't Hold Me DownJim Costello - ThisCityBeach - Psalm 54Ryan Fonda - Only A Call AwayAlfred Integer and The Rolling Blackouts - Everybody WinsKavinya - UnluckyOllie - LowkeyMan Like Kweks - Tokyo CitadelEnid Mollel - Fly (feat B. LEO)Geoff Smith - Not On The Radio (Acoustic)Mandelbro - EyesCorey Keller - It's So Hard to Feel Alive\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podcastindex.org/podcast/6594066\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 10",
+          "duration": "60:15",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-10-2023-10-04-Final.mp3",
+          "trackNumber": 18,
+          "subtitle": "Boostagram Ball - Episode 10",
+          "summary": "Boostagram Ball Episode 10 for October 4th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nNate Johnivan - Back RoadRichard - Rules Without RulersAinsley Costello - RescuedCityBeach - GORyan Fonda - Only A Call AwayDrawing Monsters - Tiny ShipsPlebRap - Money Printer Go - Too Bit to FailThe Doerfels - Bloodshot LiesMr. Information - Mr. JEnid Mollel - Fly (feat B. LEO)Bobby Shell - Beefsteak and TradwivesSara Jade - Wait DestinyMandelbro - EyesChoreboy - We're in It for the MoneyJessica Lynne Witty - We're Not Even DrinkingJeremy Oliveria - Looking For You (Feat. Kellin Quinn)\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podcastindex.org/podcast/6594066\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 09",
+          "duration": "60:43",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-09-2023-09-25-Final.mp3",
+          "trackNumber": 19,
+          "subtitle": "Boostagram Ball - Episode 09",
+          "summary": "Boostagram Ball Episode 08 for September 25th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nGeoff Smith - A Little Rock And RollDEVOTEE - Beautiful GhostMinno - Give My LifeAinsley Costello - RescuedChris Wenske - CoconutsAli Mitchell - Wen this is overJdog - Once Had A GirlBen Doerfel - Pulls Me Uptom335 - RainMr. Information - Utterly NothingRobert Willey - That's How It GoesCharles Street Sound Company - Money In A BagThe Doerfels - Bloodshot Liesshy kids - fresh off a feelingJosh & Aus - ColdwaterRyan Fonda - Cast Away\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podcastindex.org/podcast/6594066\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 08",
+          "duration": "67:36",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-08-2023-09-18-Final.mp3",
+          "trackNumber": 20,
+          "subtitle": "Boostagram Ball - Episode 08",
+          "summary": "Boostagram Ball Episode 08 for September 18th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nGeoff Smith - Not On The Radio (Acoustic)Nate Johnivan - LateOllie - LowkeyChris Nichols - Elevator MusicRiot in Progress - Spank The MonkeyChoreboy - We're in It for the Moneybennyjeans - WHY (did you do this to me)The Doerfels - Thought it was RealRaymond Hayden - Weight of the World ft Chris JonesAmber Sweeney - Be WellBen Doerfel - Pulls Me UpMandelbro - EyesCorey Keller - It's So Hard to Feel AliveDeez Laughs aka wrapthenews - SweetJessica Lynne Witty - Keep Goingskrilla bobcat - Pick me up (Mary Lightning Fire)Stephen Salvatore - Eleanor\nOther Music Podcasts:\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podcastindex.org/podcast/6594066\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 07",
+          "duration": "60:06",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-07-2023-09-11-Final.mp3",
+          "trackNumber": 21,
+          "subtitle": "Boostagram Ball - Episode 07",
+          "summary": "Boostagram Ball Episode 07 for September 11th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nGeoff Smith - Fooling' No OneJon Ross - Work SucksAinsley Costello - DaydreamerCityBeach - YouFM Rodeo - Pop SongNate Johnivan - LateBen Doerfel - Pulls Me UpChristian Leuenberg - Halt mich festMandelbro - EyesSpike Yee & Proper - Moving in Sequence w/ ProperJdog - Ring That BellChris Wenske - I Was WrongBobby Shell - Sugar Baby (Single)Sara Jade - Wait DestinyThe Doerfels - Bloodshot Lies\nOther Music Podcasts:\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podcastindex.org/podcast/6594066\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 06",
+          "duration": "70:01",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-06-2023-09-04-Final.mp3",
+          "trackNumber": 22,
+          "subtitle": "Boostagram Ball - Episode 06",
+          "summary": "Boostagram Ball Episode 06 for September 4th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nRusty Gate - Girl Like MeSir Brian with an I - RockstarGeoff Smith - I Wanna DanceJimmy V - Fool meDeez Laughs aka wrapthenews - Waves (freestyle)DEVOTEE - Such A DreamerAinsley Costello - DaydreamerGeoff Smith - GravityCorey Keller - It's So Hard to Feel AliveThe Doerfels - Figured You OutTis Tis - AnotherThe Death of Rock and Roll - Pulling RankJon Ross - Work SucksSilver Unit - RealtimeStephen Salvatore - EleanorRyan Fonda - Bright LightsAmber Sweeney - BreatheBobby Shell - Sugar Baby (Single)\nOther Music Podcasts:\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podverse.fm/episode/ovlSm2_j1\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 05",
+          "duration": "72:25",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-05-2023-08-28-Final.mp3",
+          "trackNumber": 23,
+          "subtitle": "Boostagram Ball - Episode 05",
+          "summary": "Boostagram Ball Episode 05 for August 28th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nJimmy V - Fool meBobby Shell - Sugar Baby (Single)Nate Johnivan - Back RoadCharles Street Sound Company - Money In A BagKurtisdrums - Call Me MedleyAinsley Costello - DaydreamerSam Means - CalinaSara Jade - Lip Service (Mustache Ride)Homeless Moses - Solution RevolutionJessica Lynne Witty - Keep GoingRyan Fonda - Cast AwayThe Usual Cats Project - The OddsLongy - Salt your woundsDeez Laughs aka wrapthenews - Lying Dog Faced Pony SoldierIROH - They RideThe Doerfels - Figured You OutAmber Sweeney - Be Well\nOther Music Podcasts:\nhttps://podcastindex.social/@Meremortals/110936900795092897\n@adam has \"Boostagram Ball\"https://www.boostagramball.com/\n@james has \"James's Random Music Show Thing\"https://podfans.fm/shows/jamess-random-music-show-thing\nRyley has \"Black Cat Music Podcast\"https://curiocaster.com/podcast/pi6582415\n@mikeneumann has &ldquo;It&rsquo;s a mood&rdquo; https://fountain.fm/show/pcdHkHIWgtcE4ksKubo1\n@boobury has &ldquo;Before the Schemes&rdquo; https://podverse.fm/episode/ovlSm2_j1\n@silas has &ldquo;The Fairly Fun Show&rdquo; https://podcastindex.org/podcast/65673\nDJ V4V Podcasthttps://podcastindex.org/podcast/6583461\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 04",
+          "duration": "63:57",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-04-2023-08-20-Final.mp3",
+          "trackNumber": 24,
+          "subtitle": "Boostagram Ball - Episode 04",
+          "summary": "Boostagram Ball Episode 04 for August 20th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nLNBeats.com\nMore added daily!\n\nMusic on Today's Show:\nRichard - Rules Without RulersThe Doerfels - Don't Forget MeMayday Mayday - Higher- featuring Sir Brian With an IChris Wenske - CoconutsBobby Shell - Sugar Baby (Single)Epixode - Stubborn SouljahAmber Sweeney - Be WellHomeless Moses - Solution RevolutionAinsley Costello - Two ShipsMr. Information - Adam BombKor Kid Tueng - Someone (ใครสักคนบนฟ้า)Sara Jade - Lip Service (Mustache Ride)Stephen Salvatore - EleanorSista Afia - Shine Your EyeSam Means - Calina\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 03",
+          "duration": "39:26",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-03-2023-08-11-Final.mp3",
+          "trackNumber": 25,
+          "subtitle": "Boostagram Ball - Episode 03",
+          "summary": "Boostagram Ball Episode 03 for August 11th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nMore added daily!\n\nMusic on Today's Show:\nBoostagram BallNicky and the Shouts - It's timeMatt Bigelow - Fudge!Track - Sheets - Title - click to editPlebRap - Money Printer Go - Too Bit to FailAinsley Costello - Two ShipsKurtisdrums - Call Me MedleyBobby Shell - Sugar Baby (Single)Bass - Timmy Still DownRiot in Progress - Heads UpTis Tis - AnotherTrack - Inside Out\nOnboard your favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 02",
+          "duration": "58:45",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-02-2023-08-05-Final.mp3",
+          "trackNumber": 26,
+          "subtitle": "Boostagram Ball - Episode 02",
+          "summary": "Boostagram Ball Episode 02 for August 5th 2023\nBoostagram Ball is a music podcast where we automatically switch to the artists' wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nMore added daily!\n\nMusic on Today's Show:\nSigns and Signals - Modern MarieRyan Fonda - Cast AwayAinsley Costello - Two ShipsSam Means - CalinaBobby Shell - Sugar Baby (Single)The Doerfels - Don't Forget MeSir Brian with an I - RockstarAble and The Wolf - Makin' BeansThe Doerfels - Bloodshot LiesCorey Keller - It's So Hard to Feel AliveChris Wenske - Cheaters Never Win - Chris Wenske w/ Top TiptonJeremy Oliveria - Looking For You (Feat. Kellin Quinn)Ainsley Costello - Cherry On Top\nOnboard you favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Boostagram Ball - Episode 01",
+          "duration": "62:51",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/BBALL-01-2023-07-28-Final.mp3",
+          "trackNumber": 27,
+          "subtitle": "Boostagram Ball - Episode 01",
+          "summary": "Boostagram Ball Episode 01 for July 28th 2023\nIt's the first every Boostagram Ball where we automatically switch to the artists wallet when playing their songs\nUse a modern podcast app from podcastapps.com to support the show and the music:\n\nFountain\nPodverse\nPodfans\nCuriocaster\nPodfriend\nPodcast Guru\nPodcast Addict\nMore added daily!\n\nMusic on Today's Show:\nThe DoerfulsLongyAinsley CostelloJeremey OliveriaSara JadeDETOX MusicAli MitchellLay'zJoe MartinCorey Keller\nOnboard you favorite artists, send them to:\n\nWavlake.com\nPodcastindex.org\nMusicSideProject.com\nConshax.app\nFountain.fm\n\nMore info on the show: BoostagramBall.com",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        },
+        {
+          "title": "Just The Opener",
+          "duration": "0:14",
+          "url": "https://op3.dev/e/ipfspodcasting.net/e/mp3s.nashownotes.com/boostagramballopener.mp3",
+          "trackNumber": 28,
+          "subtitle": "Just The Opener",
+          "summary": "Boostagram Ball Dummy Episiode\nJust the opener!",
+          "image": "https://noagendaassets.com/enc/1690556352.157_bball-show-art-black.png",
+          "explicit": false,
+          "keywords": [
+            "boostagram ball music value4value"
+          ]
+        }
+      ],
+      "releaseDate": "Wed, 11 Dec 2024 20:11:26 +0000",
+      "link": "https://boostagramball.com",
+      "subtitle": "Boostagram Ball Episode 27 Live",
+      "summary": "The Boostagram Ball Live Episode 27\nUse a modern app at podcastapps.com to listen live and support the artists\ncuriocaster.com supports the live stream\nYou can also go to https://www.thesplitkit.com/live/f53d0028-71d9-4648-85d7-b6b8ada0e99c and connect to your alby wallet",
+      "keywords": [
+        "adam curry boost boostagram ball value4value bitcoin music satoshis podcasting 2.0"
+      ],
+      "categories": [
+        "Music"
+      ],
+      "explicit": false,
+      "language": "en",
+      "owner": {
+        "name": "Adam Curry",
+        "email": "adam@curry.com"
+      },
+      "feedId": "https-mp3s-nashownotes-com-bballrss-xml",
+      "feedUrl": "https://mp3s.nashownotes.com/bballrss.xml",
+      "lastUpdated": "2025-08-02T18:31:33.029Z"
+    },
+    {
+      "title": "UpBEATs",
+      "artist": "Salty Crayon",
+      "description": "\"UpBeats with Salty Crayon\" is a Value4Value music podcast that gives back to independent artists in real-time with Satoshi's (bitcoin) while introducing the world to a wide range of musical talent that takes you on an emotional and upbeat journey through their music and my commentary.",
+      "coverArt": "https://media.rssblue.com/podcasts/upbeats/cover-art.2025.png",
+      "tracks": [
+        {
+          "title": "Salty Sessions w FM Rodeo",
+          "duration": "102:51",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/salty-sessions-w-fm-rodeo/audio.salty-sessions-w-fm-rodeo.mp3",
+          "trackNumber": 1,
+          "image": "https://media.rssblue.com/podcasts/upbeats/salty-sessions-w-fm-rodeo/cover-art.salty-sessions-w-fm-rodeo.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Radical Summer",
+          "duration": "76:36",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/radical-summer/audio.53-radical-summer.mp3",
+          "trackNumber": 2,
+          "image": "https://media.rssblue.com/podcasts/upbeats/radical-summer/cover-art.radical-summer.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Foam Finger #1",
+          "duration": "66:23",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/foam-finger-1/audio.52-foam-finger-1.mp3",
+          "trackNumber": 3,
+          "image": "https://media.rssblue.com/podcasts/upbeats/foam-finger-1/cover-art.freedom-weekend.jpg",
+          "explicit": false
+        },
+        {
+          "title": "51: UK Takeover",
+          "duration": "69:07",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/51-uk-takeover/audio.51-uk-takeover.mp3",
+          "trackNumber": 4,
+          "image": "https://media.rssblue.com/podcasts/upbeats/51-uk-takeover/cover-art.uk-takeover.jpg",
+          "explicit": false
+        },
+        {
+          "title": "50: Is This Thing On?",
+          "duration": "72:08",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/50-is-this-thing-on/audio.50-is-this-thing-on.mp3",
+          "trackNumber": 5,
+          "image": "https://media.rssblue.com/podcasts/upbeats/50-is-this-thing-on/cover-art.50th.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Memorial Day 2025",
+          "duration": "60:07",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/memorial-day-2025/audio.49-memorial-day-2025.mp3",
+          "trackNumber": 6,
+          "image": "https://media.rssblue.com/podcasts/upbeats/memorial-day-2025/cover-art.memorial-day-2025.jpg",
+          "explicit": false
+        },
+        {
+          "title": "48: Knot Your Node",
+          "duration": "70:56",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/48-knot-your-node/audio.48-knot-your-node.mp3",
+          "trackNumber": 7,
+          "image": "https://media.rssblue.com/podcasts/upbeats/48-knot-your-node/cover-art.good-ole-tunes.jpg",
+          "explicit": false
+        },
+        {
+          "title": "47: Tracks 4 Tornados",
+          "duration": "69:50",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/47-tracks-4-tornados/audio.47-tracks-4-tornados.mp3",
+          "trackNumber": 8,
+          "image": "https://media.rssblue.com/podcasts/upbeats/47-tracks-4-tornados/cover-art.tracks-4-tornados.jpg",
+          "explicit": false
+        },
+        {
+          "title": "46: Poached",
+          "duration": "84:50",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/poached/audio.46-poached.mp3",
+          "trackNumber": 9,
+          "image": "https://media.rssblue.com/podcasts/upbeats/poached/cover-art.poached-2025.jpg",
+          "explicit": false
+        },
+        {
+          "title": "45: This vs That",
+          "duration": "77:39",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/45-this-vs-that/audio.45-this-vs-that.mp3",
+          "trackNumber": 10,
+          "image": "https://media.rssblue.com/podcasts/upbeats/45-this-vs-that/cover-art.this-vs-that.jpg",
+          "explicit": false
+        },
+        {
+          "title": "44: Funky Town",
+          "duration": "69:43",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/44-funky-town/audio.44-funky-town.mp3",
+          "trackNumber": 11,
+          "image": "https://media.rssblue.com/podcasts/upbeats/44-funky-town/cover-art.funky-town.jpg",
+          "explicit": false
+        },
+        {
+          "title": "43: The Stars at Night are Big and Bright..",
+          "duration": "70:38",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/43-the-stars-at-night-are-big-and-bright/audio.43-the-stars-at-night.mp3",
+          "trackNumber": 12,
+          "image": "https://media.rssblue.com/podcasts/upbeats/43-the-stars-at-night-are-big-and-bright/cover-art.43.jpg",
+          "explicit": false
+        },
+        {
+          "title": "42: Valentine Rewind",
+          "duration": "74:21",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/42-valentine-rewind/audio.42-valentine-rewind.mp3",
+          "trackNumber": 13,
+          "image": "https://media.rssblue.com/podcasts/upbeats/42-valentine-rewind/cover-art.valentine-rewind-1.jpg",
+          "explicit": false
+        },
+        {
+          "title": "41: Breaker of Hearts",
+          "duration": "75:32",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/41-breaker-of-hearts/audio.41-breaker-of-hearts.mp3",
+          "trackNumber": 14,
+          "image": "https://media.rssblue.com/podcasts/upbeats/41-breaker-of-hearts/cover-art.breaker-of-hearts.jpg",
+          "explicit": false
+        },
+        {
+          "title": "40: Beef Milkshake",
+          "duration": "86:30",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/beef-milkshake/audio.ep-40-beef-milkshake.mp3",
+          "trackNumber": 15,
+          "image": "https://media.rssblue.com/podcasts/upbeats/beef-milkshake/cover-art.beef-milkshake.jpg",
+          "explicit": false
+        },
+        {
+          "title": "39: New Year Who's Dis?",
+          "duration": "74:33",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/39-new-year-whos-dis/audio.39-new-year-whos-dis.mp3",
+          "trackNumber": 16,
+          "image": "https://media.rssblue.com/podcasts/upbeats/39-new-year-whos-dis/cover-art.new-year-whos-dis.jpg",
+          "explicit": false
+        },
+        {
+          "title": "38: Salty's Santa Sleigh Ride",
+          "duration": "66:25",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/38-saltys-santa-sleigh-ride/audio.38-saltys-santa-sleigh-ride.mp3",
+          "trackNumber": 17,
+          "image": "https://media.rssblue.com/podcasts/upbeats/38-saltys-santa-sleigh-ride/cover-art.salty-santas-sleigh-ride.jpg",
+          "explicit": false
+        },
+        {
+          "title": "37 Liquid Vinyl",
+          "duration": "76:02",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/37-liquid-vinyl/audio.37-liquid-vinyl.mp3",
+          "trackNumber": 18,
+          "image": "https://media.rssblue.com/podcasts/upbeats/37-liquid-vinyl/cover-art.liquid-vinyl.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Salty Sessions w Longy",
+          "duration": "83:22",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/salty-sessions-w-longy/audio.salty-sessions-4-w-longy.mp3",
+          "trackNumber": 19,
+          "image": "https://media.rssblue.com/podcasts/upbeats/salty-sessions-w-longy/cover-art.salty-sessions-with-longy.jpg",
+          "explicit": false
+        },
+        {
+          "title": "36: Deathdrinks",
+          "duration": "80:00",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/36-deathdrinks/audio.36-deathdrinks.mp3",
+          "trackNumber": 20,
+          "image": "https://media.rssblue.com/podcasts/upbeats/36-deathdrinks/cover-art.deathdrinks.jpg",
+          "explicit": false
+        },
+        {
+          "title": "35: 1yr Musicversary Veteran's Day Special",
+          "duration": "69:54",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/35-1yr-musicversary-veterans-day-special/audio.35-musicversary.mp3",
+          "trackNumber": 21,
+          "image": "https://media.rssblue.com/podcasts/upbeats/35-1yr-musicversary-veterans-day-special/cover-art.8d036642-36b3-4bda-bda4-d9269c9c642f.jpg",
+          "explicit": false
+        },
+        {
+          "title": "34: ValueWeen",
+          "duration": "85:38",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/34-valueween/audio.34-valueween.mp3",
+          "trackNumber": 22,
+          "image": "https://media.rssblue.com/podcasts/upbeats/34-valueween/cover-art.4c2165a1-5a51-4895-bf1b-ff8ebe25de8e.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Salty Sessions with Jim Costello",
+          "duration": "110:54",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/salty-sessions-with-jim-costello/audio.salty-sessions-with-jim-costello.mp3",
+          "trackNumber": 23,
+          "image": "https://media.rssblue.com/podcasts/upbeats/salty-sessions-with-jim-costello/cover-art.salty-sessions-jim-costello-1.jpg",
+          "explicit": false
+        },
+        {
+          "title": "#33 Magic Number Sauce",
+          "duration": "70:09",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/33-magic-number-sauce/audio.33-magic-number-sauce.mp3",
+          "trackNumber": 24,
+          "image": "https://media.rssblue.com/podcasts/upbeats/33-magic-number-sauce/cover-art.53b5c050-1b55-40bb-bf07-4967decc031e.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Starving Artists",
+          "duration": "72:28",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/starving-artists/audio.32-starving-artists.mp3",
+          "trackNumber": 25,
+          "image": "https://media.rssblue.com/podcasts/upbeats/starving-artists/cover-art.starving-artists.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Sunday Stroll",
+          "duration": "79:55",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/sunday-stroll/audio.31-sunday-stroll.mp3",
+          "trackNumber": 26,
+          "image": "https://media.rssblue.com/podcasts/upbeats/sunday-stroll/cover-art.a8e941e4-5895-43d3-b6a8-eb693ac2618f.jpg",
+          "explicit": false
+        },
+        {
+          "title": "30: End Of Summer Special",
+          "duration": "70:44",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/30-end-of-summer-special/audio.30-end-of-summer-special.mp3",
+          "trackNumber": 27,
+          "image": "https://media.rssblue.com/podcasts/upbeats/30-end-of-summer-special/cover-art.30.jpg",
+          "explicit": false
+        },
+        {
+          "title": "29: Cassette Culture",
+          "duration": "74:25",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/29-cassette-culture/audio.29-cassette-culture-final.mp3",
+          "trackNumber": 28,
+          "image": "https://media.rssblue.com/podcasts/upbeats/29-cassette-culture/cover-art.cassette-culture.jpg",
+          "explicit": false
+        },
+        {
+          "title": "28: No BSOD Here",
+          "duration": "75:53",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/28-no-bsod-here/audio.ep-28-no-bsod-here.mp3",
+          "trackNumber": 29,
+          "image": "https://media.rssblue.com/podcasts/upbeats/28-no-bsod-here/cover-art.0a5603e0-472f-4bf2-8d44-1f90a10f9426.jpg",
+          "explicit": false
+        },
+        {
+          "title": "27: Let Freedom Ring",
+          "duration": "66:34",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/27-let-freedom-ring/audio.27-let-freedom-ring.mp3",
+          "trackNumber": 30,
+          "image": "https://media.rssblue.com/podcasts/upbeats/27-let-freedom-ring/cover-art.4th-of-july.jpg",
+          "explicit": false
+        },
+        {
+          "title": "26: Sand Dollars & 3 Dolla Holla's",
+          "duration": "64:33",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/26-sand-dollars-and-3-dolla-hollas/audio.upbeats-codyprx-ep-26.mp3",
+          "trackNumber": 31,
+          "image": "https://media.rssblue.com/podcasts/upbeats/26-sand-dollars-and-3-dolla-hollas/cover-art.d6e3fe66-c06a-4348-b345-e7d272471741.jpg",
+          "explicit": false
+        },
+        {
+          "title": "25: Lakehouse Hammocks",
+          "duration": "71:33",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/25-lakehouse-hammocks/audio.upbeats-codyprx-ep-25-lakehouse-hammocks.mp3",
+          "trackNumber": 32,
+          "image": "https://media.rssblue.com/podcasts/upbeats/25-lakehouse-hammocks/cover-art.2f119c44-ea58-4107-ad1a-e624fb428264.jpg",
+          "explicit": false
+        },
+        {
+          "title": "24: Memorial Day Jams!",
+          "duration": "70:27",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/24-memorial-day-jams/audio.ep-24-memorial-day.mp3",
+          "trackNumber": 33,
+          "image": "https://media.rssblue.com/podcasts/upbeats/24-memorial-day-jams/cover-art.memorial-day.jpg",
+          "explicit": false
+        },
+        {
+          "title": "23: Make Music Great Again",
+          "duration": "73:09",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/23-make-music-great-again/audio.ep-23-make-music-great-again-mp3.mp3",
+          "trackNumber": 34,
+          "image": "https://media.rssblue.com/podcasts/upbeats/23-make-music-great-again/cover-art.cd9b60fe-aaed-4fb1-b371-f7ca76cc4866.jpg",
+          "explicit": false
+        },
+        {
+          "title": "22: Under the City Lights",
+          "duration": "68:00",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/22-under-the-city-lights/audio.ep-22-under-the-city-lights.mp3",
+          "trackNumber": 35,
+          "image": "https://media.rssblue.com/podcasts/upbeats/22-under-the-city-lights/cover-art.aaeda5a3-e23d-40dd-bc80-c8392250bc30.jpg",
+          "explicit": false
+        },
+        {
+          "title": "21: Jamin the Halvin",
+          "duration": "67:07",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/21-jamin-the-halvin/audio.ep-21-jamin-the-halvin.mp3",
+          "trackNumber": 36,
+          "image": "https://media.rssblue.com/podcasts/upbeats/21-jamin-the-halvin/cover-art.d12ff42b-b275-44e9-a013-029d90717656.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Volume up a smidge",
+          "duration": "62:16",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/volume-up-a-smidge/audio.ep-20-volume-up-a-smidge.mp3",
+          "trackNumber": 37,
+          "image": "https://media.rssblue.com/podcasts/upbeats/volume-up-a-smidge/cover-art.c4a2ea34-7c48-480b-9d27-50c9625f47ab.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Escape from clown world",
+          "duration": "55:18",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/escape-from-clown-world/audio.ep-19-escape-from-clownworld.mp3",
+          "trackNumber": 38,
+          "image": "https://media.rssblue.com/podcasts/upbeats/escape-from-clown-world/cover-art.escape-from-clown-world.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Salty Session Vol 3 w Eastside Tony",
+          "duration": "155:56",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/salty-session-vol-3-w-eastside-tony/audio.salty-sessions-w-eastside-tony.mp3",
+          "trackNumber": 39,
+          "image": "https://media.rssblue.com/podcasts/upbeats/salty-session-vol-3-w-eastside-tony/cover-art.salty-sessions-tony.jpg",
+          "explicit": true
+        },
+        {
+          "title": "Vires In Numeris",
+          "duration": "76:30",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/vires-in-numeris/audio.ep-18-vires-in-numeris.mp3",
+          "trackNumber": 40,
+          "image": "https://media.rssblue.com/podcasts/upbeats/vires-in-numeris/cover-art.grass-roots-grass-fed-music.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Pathfinders & Deck Darlings",
+          "duration": "76:28",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/pathfinders-and-deck-darlings/audio.ep-17.mp3",
+          "trackNumber": 41,
+          "image": "https://media.rssblue.com/podcasts/upbeats/pathfinders-and-deck-darlings/cover-art.pathfinders-and-deck-darlings.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Couple's Therapy",
+          "duration": "85:35",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/couples-therapy/audio.ep-16-couples-therapy.mp3",
+          "trackNumber": 42,
+          "image": "https://media.rssblue.com/podcasts/upbeats/couples-therapy/cover-art.ep-16.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Salty Sessions Vol 2 with Survival Guide",
+          "duration": "123:24",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/salty-sessions-vol-2-with-survival-guide/audio.salty-session-2.mp3",
+          "trackNumber": 43,
+          "image": "https://media.rssblue.com/podcasts/upbeats/salty-sessions-vol-2-with-survival-guide/cover-art.salty-sessions.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Tuning Out The Noise",
+          "duration": "75:22",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/tuning-out-the-noise/audio.ep-15.mp3",
+          "trackNumber": 44,
+          "image": "https://media.rssblue.com/podcasts/upbeats/tuning-out-the-noise/cover-art.february.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Amplified Agenda",
+          "duration": "81:30",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/amplified-agenda/audio.ep-14.mp3",
+          "trackNumber": 45,
+          "image": "https://media.rssblue.com/podcasts/upbeats/amplified-agenda/cover-art.amplified-agenda-1.jpg",
+          "explicit": false
+        },
+        {
+          "title": "EP 13: Queens of the Revolution",
+          "duration": "83:30",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-13-queens-of-the-revolution/audio.ep-13.mp3",
+          "trackNumber": 46,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-13-queens-of-the-revolution/cover-art.female-artists.jpg",
+          "explicit": false
+        },
+        {
+          "title": "EP 12: For Those About To Rock!",
+          "duration": "69:11",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-12-for-those-about-to-rock/audio.ep-12.mp3",
+          "trackNumber": 47,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-12-for-those-about-to-rock/cover-art.rss-blue-1.png",
+          "explicit": false
+        },
+        {
+          "title": "EP 11: Vibe Voyage",
+          "duration": "72:15",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-11-vibe-voyage/audio.ep-11.mp3",
+          "trackNumber": 48,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-11-vibe-voyage/cover-art.rss-blue-1.png",
+          "explicit": false
+        },
+        {
+          "title": "Salty Sessions with The Doerfels",
+          "duration": "165:23",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/salty-sessions-with-the-doerfels/audio.salty-sessions-ep-1.mp3",
+          "trackNumber": 49,
+          "image": "https://media.rssblue.com/podcasts/upbeats/salty-sessions-with-the-doerfels/cover-art.salty-sessions.jpg",
+          "explicit": false
+        },
+        {
+          "title": "EP 10: NYE \"The 23 in 2023\"",
+          "duration": "103:49",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-10-nye-the-23-in-2023/audio.ep-10.mp3",
+          "trackNumber": 50,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-10-nye-the-23-in-2023/cover-art.end-of-2023.jpg",
+          "explicit": false
+        },
+        {
+          "title": "EP 9: Christmas Time in the V4V",
+          "duration": "61:53",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/christmas-time-in-the-v4v/audio.xmas.mp3",
+          "trackNumber": 51,
+          "image": "https://media.rssblue.com/podcasts/upbeats/christmas-time-in-the-v4v/cover-art.jingle-beats.jpg",
+          "explicit": false
+        },
+        {
+          "title": "EP 8: Meister Of Melodies",
+          "duration": "65:31",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-8-meister-of-melodies/audio.2023-12-16-12h15m44s.mp3",
+          "trackNumber": 52,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-8-meister-of-melodies/cover-art.rss-blue-1.png",
+          "explicit": false
+        },
+        {
+          "title": "EP 7: Feisty Foot Tappers",
+          "duration": "64:21",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-7-feisty-foot-tappers/audio.2023-12-09-14h04m24s.mp3",
+          "trackNumber": 53,
+          "explicit": false
+        },
+        {
+          "title": "EP 6: V4V & Chill",
+          "duration": "69:15",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-6-v4v-and-chill/audio.ep6.mp3",
+          "trackNumber": 54,
+          "explicit": false
+        },
+        {
+          "title": "EP 5: TurkeyBEATs",
+          "duration": "75:47",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-5-turkeybeats/audio.turkeybeats.mp3",
+          "trackNumber": 55,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-5-turkeybeats/cover-art.turkey-beats.jpg",
+          "explicit": false
+        },
+        {
+          "title": "Ep 4: Are You Even In The Index Bro?",
+          "duration": "85:09",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-4-are-you-even-in-the-index-bro/audio.ep-4.mp3",
+          "trackNumber": 56,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-4-are-you-even-in-the-index-bro/cover-art.rss-blue-1.png",
+          "explicit": false
+        },
+        {
+          "title": "EP 3: Saluting The Sats",
+          "duration": "65:30",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-3-saluting-the-sats/audio.ep-3.mp3",
+          "trackNumber": 57,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-3-saluting-the-sats/cover-art.veterans-day.jpg",
+          "explicit": false
+        },
+        {
+          "title": "EP 2: Boosting Is Loving!",
+          "duration": "55:56",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/ep-2-boosting-is-loving/audio.boosting-is-loving.mp3",
+          "trackNumber": 58,
+          "image": "https://media.rssblue.com/podcasts/upbeats/ep-2-boosting-is-loving/cover-art.rss-blue-1.png",
+          "explicit": false
+        },
+        {
+          "title": "EP 1: Eargasms",
+          "duration": "56:58",
+          "url": "https://op3.dev/e,pg=3aebb7a8-5942-5ee7-a148-8bdc14f1f3d4/media.rssblue.com/podcasts/upbeats/eargasms/audio.upbeats-1-final.mp3",
+          "trackNumber": 59,
+          "image": "https://media.rssblue.com/podcasts/upbeats/eargasms/cover-art.untitled-design-1.jpg",
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Wed, 23 Jul 2025 11:30:00 GMT",
+      "link": "https://upbeatspodcast.com/",
+      "funding": [
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=B2Y83JARZJBDU",
+          "message": "PayPal"
+        }
+      ],
+      "categories": [
+        "Music"
+      ],
+      "explicit": false,
+      "language": "en",
+      "copyright": "UpBeats Music Podcasting",
+      "owner": {
+        "name": "Salty Crayon",
+        "email": "upbeats_podcast@proton.me"
+      },
+      "feedId": "https-feeds-rssblue-com-upbeats",
+      "feedUrl": "https://feeds.rssblue.com/upbeats",
+      "lastUpdated": "2025-08-02T18:31:33.036Z"
     },
     {
       "title": "Think Of Me In Color",
@@ -2859,12 +5220,516 @@
       "feedId": "https-www-doerfelverse-com-feeds-dfbv2-xml",
       "feedUrl": "https://www.doerfelverse.com/feeds/dfbv2.xml",
       "lastUpdated": "2025-08-02T19:09:39.177Z"
+    },
+    {
+      "title": "Think Of Me In Color",
+      "artist": "Ryan Fonda",
+      "description": "Ryan Fonda wrote and produced this album.",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/6bece1b8-5385-4a33-9224-09e7f3ee6965.jpg",
+      "tracks": [
+        {
+          "title": "Think Of Me In Color",
+          "duration": "2:02",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/1fea31e7-73db-4b29-8d90-3b32ae47d2b9.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        },
+        {
+          "title": "Walk & Wonder",
+          "duration": "3:07",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/ce8fe9e8-7ed5-476e-b0d7-45af9715954c.mp3",
+          "trackNumber": 2,
+          "explicit": false
+        },
+        {
+          "title": "Cast Away",
+          "duration": "3:47",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/b66d8b6c-686d-45e0-804a-1881b9b519ce.mp3",
+          "trackNumber": 3,
+          "explicit": false
+        },
+        {
+          "title": "I Feel Fine",
+          "duration": "3:24",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/980d961c-2005-4bde-89f1-302cc67e5df8.mp3",
+          "trackNumber": 4,
+          "explicit": false
+        },
+        {
+          "title": "Your Love",
+          "duration": "3:13",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/ed494570-2d2d-4d5e-a67d-475935e7bb38.mp3",
+          "trackNumber": 5,
+          "explicit": false
+        },
+        {
+          "title": "Moonlight",
+          "duration": "2:23",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/ce412efd-b83d-43c6-9d30-07943799a39b.mp3",
+          "trackNumber": 6,
+          "explicit": false
+        },
+        {
+          "title": "Better Days",
+          "duration": "2:59",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/1f7e025c-e8f7-4e10-b12b-9715c9c460c7.mp3",
+          "trackNumber": 7,
+          "explicit": false
+        },
+        {
+          "title": "Fighting My Way",
+          "duration": "2:06",
+          "url": "https://op3.dev/e,pg=57203632-2003-55d2-b710-c699db963f18/https://d12wklypp119aj.cloudfront.net/track/4c7f0ab9-ae97-4211-8e65-1bbe5adfd2fe.mp3",
+          "trackNumber": 8,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Wed, 02 Aug 2023 21:41:48 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Ryan Fonda wrote and produced this album.",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "6bece1b8-5385-4a33-9224-09e7f3ee6965-wavlake-com-feed-music-6bece1b8-5385-4a33-9224-09e7f3ee6965",
+      "feedUrl": "https://wavlake.com/feed/music/6bece1b8-5385-4a33-9224-09e7f3ee6965",
+      "lastUpdated": "2025-08-02T20:07:08.988Z"
+    },
+    {
+      "title": "Fighting My Way",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/ba843b13-bd09-4964-944b-cd64678edac7.jpg",
+      "tracks": [
+        {
+          "title": "Fighting My Way",
+          "duration": "3:49",
+          "url": "https://op3.dev/e,pg=d2cfef1f-ee87-50d7-9e03-c53ac0260e2f/https://d12wklypp119aj.cloudfront.net/track/448317db-14f3-4377-8d04-5b5130401f88.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Thu, 10 Aug 2023 17:00:46 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "ba843b13-bd09-4964-944b-cd64678edac7-wavlake-com-feed-music-ba843b13-bd09-4964-944b-cd64678edac7",
+      "feedUrl": "https://wavlake.com/feed/music/ba843b13-bd09-4964-944b-cd64678edac7",
+      "lastUpdated": "2025-08-02T20:07:09.146Z"
+    },
+    {
+      "title": "Alone",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/dd86f305-1766-4cae-a989-56ea9d09dff9.jpg",
+      "tracks": [
+        {
+          "title": "Alone",
+          "duration": "3:01",
+          "url": "https://op3.dev/e,pg=eb7207b6-8f9d-5aa6-8ebf-3b1ac4551f01/https://d12wklypp119aj.cloudfront.net/track/06062219-39b2-407c-8dce-5a24db09dfba.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Thu, 10 Aug 2023 17:24:25 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "dd86f305-1766-4cae-a989-56ea9d09dff9-wavlake-com-feed-music-dd86f305-1766-4cae-a989-56ea9d09dff9",
+      "feedUrl": "https://wavlake.com/feed/music/dd86f305-1766-4cae-a989-56ea9d09dff9",
+      "lastUpdated": "2025-08-02T20:07:09.301Z"
+    },
+    {
+      "title": "Only A Call Away",
+      "artist": "Ryan Fonda",
+      "description": "Written By Ryan & Seth Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/e6a50ff6-8e1b-445f-a9ef-21096af86e49.jpg",
+      "tracks": [
+        {
+          "title": "Only A Call Away",
+          "duration": "4:05",
+          "url": "https://op3.dev/e,pg=65cd72e4-fc7b-595d-baee-6c35feba420a/https://d12wklypp119aj.cloudfront.net/track/d186993b-5230-43a2-aefb-418d79e03c6a.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Fri, 29 Sep 2023 21:59:29 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written By Ryan & Seth Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "e6a50ff6-8e1b-445f-a9ef-21096af86e49-wavlake-com-feed-music-e6a50ff6-8e1b-445f-a9ef-21096af86e49",
+      "feedUrl": "https://wavlake.com/feed/music/e6a50ff6-8e1b-445f-a9ef-21096af86e49",
+      "lastUpdated": "2025-08-02T20:07:09.465Z"
+    },
+    {
+      "title": "Utah Snow",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/f4bebaac-91d0-4485-83ea-1441bfcf6c48.jpg",
+      "tracks": [
+        {
+          "title": "Utah Snow",
+          "duration": "2:55",
+          "url": "https://op3.dev/e,pg=b7842bf4-143a-51fc-be80-552e09b672ef/https://d12wklypp119aj.cloudfront.net/track/1006e0ad-dc79-4a48-8d50-011efaa4f36e.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Sun, 03 Dec 2023 01:08:47 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "f4bebaac-91d0-4485-83ea-1441bfcf6c48-wavlake-com-feed-music-f4bebaac-91d0-4485-83ea-1441bfcf6c48",
+      "feedUrl": "https://wavlake.com/feed/music/f4bebaac-91d0-4485-83ea-1441bfcf6c48",
+      "lastUpdated": "2025-08-02T20:07:09.637Z"
+    },
+    {
+      "title": "Cast Away Remix",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/c277887f-425d-41ac-8632-1ec46dd65ab0.jpg",
+      "tracks": [
+        {
+          "title": "Cast Away Remix",
+          "duration": "3:47",
+          "url": "https://op3.dev/e,pg=0249f11d-bb04-5797-bf1c-bc66ccf513a4/https://d12wklypp119aj.cloudfront.net/track/40fb6d0b-2d3c-4436-bbcf-7ecef9ace5ca.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Fri, 08 Dec 2023 21:47:23 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "c277887f-425d-41ac-8632-1ec46dd65ab0-wavlake-com-feed-music-c277887f-425d-41ac-8632-1ec46dd65ab0",
+      "feedUrl": "https://wavlake.com/feed/music/c277887f-425d-41ac-8632-1ec46dd65ab0",
+      "lastUpdated": "2025-08-02T20:07:09.811Z"
+    },
+    {
+      "title": "Gratitude",
+      "artist": "Ryan Fonda",
+      "description": "Written & Performed By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/0c878c73-f144-45a0-bc5c-ffe68d1a4a3c.jpg",
+      "tracks": [
+        {
+          "title": "Gratitude",
+          "duration": "2:59",
+          "url": "https://op3.dev/e,pg=8da1ca72-1721-50d6-b557-77b8715899b3/https://d12wklypp119aj.cloudfront.net/track/eca5aa9c-b654-4cd1-ab4b-3af4383c029e.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Sun, 05 May 2024 22:24:39 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Performed By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "0c878c73-f144-45a0-bc5c-ffe68d1a4a3c-wavlake-com-feed-music-0c878c73-f144-45a0-bc5c-ffe68d1a4a3c",
+      "feedUrl": "https://wavlake.com/feed/music/0c878c73-f144-45a0-bc5c-ffe68d1a4a3c",
+      "lastUpdated": "2025-08-02T20:07:09.994Z"
+    },
+    {
+      "title": "Bringing Em Down",
+      "artist": "Ryan Fonda",
+      "description": "Written By Ryan Fonda\nProduced By Ben Doerfel",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/4a0dac66-22c0-49f9-9ec2-bcfdf4b4ef10.jpg",
+      "tracks": [
+        {
+          "title": "Bringing Em Down",
+          "duration": "2:41",
+          "url": "https://op3.dev/e,pg=c8d77c9c-e661-5d79-8d5f-735cfe9a95b7/https://d12wklypp119aj.cloudfront.net/track/17249ca4-fc26-45bb-afa3-d86212c9b2f8.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Mon, 07 Aug 2023 18:00:56 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written By Ryan Fonda\nProduced By Ben Doerfel",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "4a0dac66-22c0-49f9-9ec2-bcfdf4b4ef10-wavlake-com-feed-music-4a0dac66-22c0-49f9-9ec2-bcfdf4b4ef10",
+      "feedUrl": "https://wavlake.com/feed/music/4a0dac66-22c0-49f9-9ec2-bcfdf4b4ef10",
+      "lastUpdated": "2025-08-02T20:07:10.167Z"
+    },
+    {
+      "title": "Bright Lights",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/7305e2eb-fe96-46c4-b945-b07dfb8439fd.jpg",
+      "tracks": [
+        {
+          "title": "Bright Lights",
+          "duration": "4:14",
+          "url": "https://op3.dev/e,pg=0934956d-b598-52fd-834b-039826493937/https://d12wklypp119aj.cloudfront.net/track/c80f69df-4517-4b65-b2b7-a5ecab5a67dd.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Mon, 07 Aug 2023 18:05:39 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "7305e2eb-fe96-46c4-b945-b07dfb8439fd-wavlake-com-feed-music-7305e2eb-fe96-46c4-b945-b07dfb8439fd",
+      "feedUrl": "https://wavlake.com/feed/music/7305e2eb-fe96-46c4-b945-b07dfb8439fd",
+      "lastUpdated": "2025-08-02T20:07:10.329Z"
+    },
+    {
+      "title": "Handle With Care",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/286c3d23-159f-47bb-bfe6-031a4b68b309.jpg",
+      "tracks": [
+        {
+          "title": "Nothing",
+          "duration": "3:35",
+          "url": "https://op3.dev/e,pg=539505d7-6df3-5aac-adc6-c450f00df4d8/https://d12wklypp119aj.cloudfront.net/track/8b53bd8a-ced3-4b14-b64c-14e1c13fd441.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        },
+        {
+          "title": "Bringing Em Down",
+          "duration": "2:41",
+          "url": "https://op3.dev/e,pg=539505d7-6df3-5aac-adc6-c450f00df4d8/https://d12wklypp119aj.cloudfront.net/track/b4e84d28-e33c-46d2-8c1e-589c7d6afc3b.mp3",
+          "trackNumber": 2,
+          "explicit": false
+        },
+        {
+          "title": "Help Me Believe",
+          "duration": "2:29",
+          "url": "https://op3.dev/e,pg=539505d7-6df3-5aac-adc6-c450f00df4d8/https://d12wklypp119aj.cloudfront.net/track/cb319051-5098-40b7-8e4a-17d6ee0af6fa.mp3",
+          "trackNumber": 3,
+          "explicit": false
+        },
+        {
+          "title": "Bright Lights",
+          "duration": "4:14",
+          "url": "https://op3.dev/e,pg=539505d7-6df3-5aac-adc6-c450f00df4d8/https://d12wklypp119aj.cloudfront.net/track/26121a89-4591-405f-99ad-6c42791b69c1.mp3",
+          "trackNumber": 4,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Thu, 10 Aug 2023 17:12:36 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "286c3d23-159f-47bb-bfe6-031a4b68b309-wavlake-com-feed-music-286c3d23-159f-47bb-bfe6-031a4b68b309",
+      "feedUrl": "https://wavlake.com/feed/music/286c3d23-159f-47bb-bfe6-031a4b68b309",
+      "lastUpdated": "2025-08-02T20:07:10.646Z"
+    },
+    {
+      "title": "Passion & Desire",
+      "artist": "Ryan Fonda",
+      "description": "Written & Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/28877168-c0a8-4f89-95e1-8900347c7887.jpg",
+      "tracks": [
+        {
+          "title": "Passion & Desire",
+          "duration": "4:00",
+          "url": "https://op3.dev/e,pg=c7c84e9e-75a1-5b60-8c12-32c6850e997f/https://d12wklypp119aj.cloudfront.net/track/3308c154-4de0-4e5b-b941-bf6b5dc1bed9.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Thu, 10 Aug 2023 17:25:19 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written & Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "28877168-c0a8-4f89-95e1-8900347c7887-wavlake-com-feed-music-28877168-c0a8-4f89-95e1-8900347c7887",
+      "feedUrl": "https://wavlake.com/feed/music/28877168-c0a8-4f89-95e1-8900347c7887",
+      "lastUpdated": "2025-08-02T20:07:10.793Z"
+    },
+    {
+      "title": "Hanging Strings",
+      "artist": "Ryan Fonda",
+      "description": "Written By Miles Fonda , Produced By Ryan Fonda",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/19803acd-4989-4482-86f7-030ad1533dd8.jpg",
+      "tracks": [
+        {
+          "title": "Hanging Strings",
+          "duration": "2:34",
+          "url": "https://op3.dev/e,pg=f6a88f0e-5cbe-5bde-a7e8-7617c5b9628c/https://d12wklypp119aj.cloudfront.net/track/f0d2fb39-7cca-403c-97e8-bdfb288ac004.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Sun, 03 Dec 2023 17:41:57 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Written By Miles Fonda , Produced By Ryan Fonda",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "19803acd-4989-4482-86f7-030ad1533dd8-wavlake-com-feed-music-19803acd-4989-4482-86f7-030ad1533dd8",
+      "feedUrl": "https://wavlake.com/feed/music/19803acd-4989-4482-86f7-030ad1533dd8",
+      "lastUpdated": "2025-08-02T20:07:10.949Z"
+    },
+    {
+      "title": "Unsound Existence (feat. CityBeach)",
+      "artist": "Ryan Fonda",
+      "description": "Ryan Fonda, Edward Doerfel, Tj Doerfel",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/f25b2449-b06c-423a-88c4-58c5900ef30d.jpg",
+      "tracks": [
+        {
+          "title": "Unsound Existence (feat. CityBeach)",
+          "duration": "4:56",
+          "url": "https://op3.dev/e,pg=830104af-379d-557c-bb2f-241a23264d79/https://d12wklypp119aj.cloudfront.net/track/0b4eccf7-c56d-41ad-8962-94ddbee43e72.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Mon, 22 Jan 2024 04:03:49 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Ryan Fonda, Edward Doerfel, Tj Doerfel",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "f25b2449-b06c-423a-88c4-58c5900ef30d-wavlake-com-feed-music-f25b2449-b06c-423a-88c4-58c5900ef30d",
+      "feedUrl": "https://wavlake.com/feed/music/f25b2449-b06c-423a-88c4-58c5900ef30d",
+      "lastUpdated": "2025-08-02T20:07:12.112Z"
+    },
+    {
+      "title": "Cast Away",
+      "artist": "Ryan Fonda",
+      "description": "Ryan Fonda wrote and produced.",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/0113fc6a-a0db-4bd2-8837-a7a5c996a69e.jpg",
+      "tracks": [
+        {
+          "title": "Cast Away",
+          "duration": "3:47",
+          "url": "https://op3.dev/e,pg=77c66d60-dcd4-5a2d-87a3-18bff48bff84/https://d12wklypp119aj.cloudfront.net/track/88fe4629-eebb-4f50-bf8c-6990b4d81538.mp3",
+          "trackNumber": 1,
+          "explicit": false
+        }
+      ],
+      "releaseDate": "Wed, 02 Aug 2023 21:12:35 GMT",
+      "link": "https://wavlake.com/ryan-fonda",
+      "summary": "Ryan Fonda wrote and produced.",
+      "explicit": false,
+      "owner": {
+        "name": "Wavlake",
+        "email": "contact@wavlake.com"
+      },
+      "publisher": {
+        "feedGuid": "d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "feedUrl": "https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f",
+        "medium": "publisher"
+      },
+      "feedId": "0113fc6a-a0db-4bd2-8837-a7a5c996a69e-wavlake-com-feed-music-0113fc6a-a0db-4bd2-8837-a7a5c996a69e",
+      "feedUrl": "https://wavlake.com/feed/music/0113fc6a-a0db-4bd2-8837-a7a5c996a69e",
+      "lastUpdated": "2025-08-02T20:07:14.274Z"
     }
   ],
-  "count": 27,
-  "timestamp": "2025-08-02T19:17:51.828Z",
+  "count": 40,
+  "timestamp": "2025-08-02T20:11:58.290Z",
   "cached": false,
   "generated": true,
-  "generatedAt": "2025-08-02T19:19:29.188Z",
+  "generatedAt": "2025-08-02T20:11:58.409Z",
   "source": "build-time-rss-parse"
 }
