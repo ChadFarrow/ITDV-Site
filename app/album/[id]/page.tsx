@@ -18,9 +18,17 @@ async function getAlbumData(albumId: string) {
                      ? 'https://itdv-site.vercel.app' 
                      : 'http://localhost:3000');
     
-    const response = await fetch(`${baseUrl}/api/albums`, {
-      next: { revalidate: 60 }, // Cache for 1 minute
+    // Try fast static endpoint first, fallback to RSS parsing
+    let response = await fetch(`${baseUrl}/api/albums-static`, {
+      next: { revalidate: 300 }, // Cache for 5 minutes
     });
+    
+    if (!response.ok) {
+      console.log('Static endpoint failed, falling back to RSS parsing...');
+      response = await fetch(`${baseUrl}/api/albums`, {
+        next: { revalidate: 60 }, // Cache for 1 minute
+      });
+    }
 
     if (!response.ok) {
       console.error('Failed to fetch albums:', response.status);

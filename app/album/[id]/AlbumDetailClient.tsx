@@ -146,7 +146,13 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
   const loadAlbum = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('/api/albums');
+      // Try fast static endpoint first
+      let response = await fetch('/api/albums-static');
+      
+      if (!response.ok) {
+        console.log('Static endpoint failed, falling back to RSS parsing...');
+        response = await fetch('/api/albums');
+      }
       
       if (!response.ok) {
         throw new Error('Failed to load albums');
@@ -192,7 +198,12 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
 
   const loadRelatedAlbums = async () => {
     try {
-      const response = await fetch('/api/albums');
+      // Try fast static endpoint first
+      let response = await fetch('/api/albums-static');
+      
+      if (!response.ok) {
+        response = await fetch('/api/albums');
+      }
       if (response.ok) {
         const data = await response.json();
         const albums = data.albums || [];
