@@ -371,149 +371,58 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="max-w-7xl mx-auto">
-              {/* Filter Controls */}
-              <div className="mb-6 bg-black/20 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div className="flex items-center gap-2">
-                    {(['all', 'albums', 'eps', 'singles'] as FilterType[]).map((filter) => {
-                      const counts = getFilterCounts();
-                      const count = counts[filter];
-                      const isActive = activeFilter === filter;
-                      
-                      return (
-                        <button
-                          key={filter}
-                          onClick={() => setActiveFilter(filter)}
-                          className={`px-3 py-1.5 text-sm rounded-lg border transition-colors ${
-                            isActive 
-                              ? 'bg-blue-600/80 border-blue-500/50 text-white backdrop-blur-sm' 
-                              : 'bg-black/30 border-white/20 text-gray-300 hover:bg-black/50 backdrop-blur-sm'
-                          }`}
-                        >
-                          {filter.charAt(0).toUpperCase() + filter.slice(1)} ({count})
-                        </button>
-                      );
-                    })}
-                  </div>
-                  
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setViewMode('grid')}
-                      className={`p-2 rounded-lg border transition-colors ${
-                        viewMode === 'grid' 
-                          ? 'bg-blue-600/80 border-blue-500/50 text-white backdrop-blur-sm' 
-                          : 'bg-black/30 border-white/20 text-gray-300 hover:bg-black/50 backdrop-blur-sm'
-                      }`}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => setViewMode('list')}
-                      className={`p-2 rounded-lg border transition-colors ${
-                        viewMode === 'list' 
-                          ? 'bg-blue-600/80 border-blue-500/50 text-white backdrop-blur-sm' 
-                          : 'bg-black/30 border-white/20 text-gray-300 hover:bg-black/50 backdrop-blur-sm'
-                      }`}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
+              {/* Album Section Header */}
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-white">Albums</h2>
               </div>
 
-              {/* Album Display */}
-              {viewMode === 'grid' ? (
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
-                  {filteredAlbums.map((album, index) => (
-                    <div key={album.feedId || index} className="group">
-                      <Link 
-                        href={getAlbumUrl(album)}
-                        className="block cursor-pointer"
-                      >
-                        <div className="aspect-square relative overflow-hidden rounded-lg border border-white/10 hover:border-white/30 transition-all duration-200 group-hover:scale-105">
-                          <Image
-                            src={album.coverArt}
-                            alt={album.title}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, (max-width: 1536px) 16vw, 14vw"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200" />
-                          
-                          {/* Album info overlay */}
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                            <p className="text-xs text-white font-medium">{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</p>
-                            {getReleaseYear(album.releaseDate) && (
-                              <p className="text-xs text-gray-300">{getReleaseYear(album.releaseDate)}</p>
-                            )}
-                          </div>
-                          
-                          {/* Play button overlay */}
-                          <div 
-                            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                            onClick={(e) => handlePlayAlbum(album, e)}
-                          >
-                            <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors hover:scale-110">
-                              <svg className="w-5 h-5 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                              </svg>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
+              {/* Large Album Cards - Horizontal Layout like Original FUCKIT */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {filteredAlbums.map((album, index) => (
+                  <Link 
+                    key={album.feedId || index}
+                    href={getAlbumUrl(album)}
+                    className="group block"
+                  >
+                    <div className="relative aspect-square overflow-hidden rounded-lg border border-white/10 group-hover:border-white/30 transition-all duration-200">
+                      <Image
+                        src={album.coverArt}
+                        alt={album.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-200"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      />
                       
-                      {/* Album info */}
-                      <div className="mt-2 px-1">
-                        <Link href={getAlbumUrl(album)} className="block hover:underline">
-                          <h3 className="text-sm font-semibold text-white truncate">{album.title}</h3>
-                        </Link>
-                        <p className="text-xs text-gray-400 truncate">{album.artist}</p>
+                      {/* Track count overlay */}
+                      <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
+                        <span className="text-xs text-white font-medium">
+                          {album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}
+                        </span>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {filteredAlbums.map((album, index) => (
-                    <div 
-                      key={album.feedId || index}
-                      className="flex items-center gap-4 p-3 bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg hover:bg-black/30 transition-colors cursor-pointer group"
-                      onClick={() => handlePlayAlbum(album)}
-                    >
-                      <div className="w-12 h-12 relative overflow-hidden rounded border border-white/10">
-                        <Image
-                          src={album.coverArt}
-                          alt={album.title}
-                          fill
-                          className="object-cover"
-                          sizes="48px"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-semibold text-white truncate">{album.title}</h3>
-                        <p className="text-xs text-gray-400 truncate">{album.artist}</p>
-                      </div>
-                      <div className="text-xs text-gray-400 text-right">
-                        <p>{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</p>
-                        {getReleaseYear(album.releaseDate) && (
-                          <p>{getReleaseYear(album.releaseDate)}</p>
-                        )}
-                      </div>
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center">
-                          <svg className="w-3 h-3 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      
+                      {/* Play button overlay */}
+                      <div 
+                        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handlePlayAlbum(album, e);
+                        }}
+                      >
+                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
+                          <svg className="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                           </svg>
                         </div>
                       </div>
+                      
+                      {/* Title overlay at bottom */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
+                        <h3 className="text-lg font-bold text-white mb-1">{album.title}</h3>
+                        <p className="text-sm text-gray-300">{album.artist}</p>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </Link>
+                ))}
               
               {/* Album count info */}
               <div className="mt-8 text-center">
