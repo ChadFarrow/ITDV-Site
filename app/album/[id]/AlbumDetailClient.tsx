@@ -365,10 +365,9 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Add padding at bottom for now playing bar */}
-      <div className="h-24" />
+        {/* Add padding at bottom for now playing bar */}
+        <div className="h-24" />
       </div>
     </div>
   );
