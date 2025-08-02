@@ -75,6 +75,7 @@ export default function RootLayout({
         {/* Resource hints for performance */}
         <link rel="preconnect" href="https://www.doerfelverse.com" />
         <link rel="dns-prefetch" href="https://www.doerfelverse.com" />
+        <link rel="preload" href="/api/albums" as="fetch" crossOrigin="anonymous" />
         
         {/* Global Error Handler Script */}
         <script
