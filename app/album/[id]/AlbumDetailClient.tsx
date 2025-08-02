@@ -307,6 +307,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
               </div>
             )}
           </div>
+          </div>
         ) : null}
 
         {/* Track List - FUCKIT Style */}
