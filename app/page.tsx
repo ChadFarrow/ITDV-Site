@@ -204,14 +204,25 @@ export default function HomePage() {
 
   const loadAlbumsData = async (loadTier: 'core' | 'extended' | 'lowPriority' | 'all' = 'all') => {
     try {
-      // Fetch pre-parsed album data from the API endpoint
-      const response = await fetch('/api/albums');
+      // Try fast static endpoint first
+      let response = await fetch('/api/albums-static');
+      let data;
       
-      if (!response.ok) {
-        throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
+      if (response.ok) {
+        data = await response.json();
+        console.log('📦 Using static album data');
+      } else {
+        // Fallback to slow RSS parsing endpoint
+        console.log('🔄 Static data failed, falling back to RSS parsing...');
+        response = await fetch('/api/albums');
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
+        }
+        
+        data = await response.json();
       }
       
-      const data = await response.json();
       const albums = data.albums || [];
       
       setLoadingProgress(75);

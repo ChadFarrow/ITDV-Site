@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "echo 'Skipping auto-version update for deployment'",
+    "prebuild": "node scripts/build-static-data.js",
     "build": "next build",
     "postbuild": "echo '✅ Build complete with auto-versioned PWA'",
     "start": "next start",
@@ -44,7 +44,7 @@
     "lucide-react": "^0.294.0",
     "next": "^15.4.2",
     "next-pwa": "^5.6.0",
-    "node-fetch": "^3.3.2",
+    "node-fetch": "^2.7.0",
     "postcss": "^8",
     "react": "^18",
     "react-dom": "^18",
