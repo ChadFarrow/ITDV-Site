@@ -44,10 +44,13 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    console.log('POST /api/admin/feeds - Request body:', JSON.stringify(body, null, 2));
+    
     const { url, type = 'album', title, discoverPodroll = true } = body;
 
     // Validate inputs
     if (!url) {
+      console.log('POST /api/admin/feeds - ERROR: URL is required');
       return NextResponse.json(
         { success: false, error: 'URL is required' },
         { status: 400 }
@@ -56,7 +59,9 @@ export async function POST(request: NextRequest) {
 
     try {
       new URL(url);
-    } catch {
+      console.log('POST /api/admin/feeds - URL validation passed');
+    } catch (urlError) {
+      console.log('POST /api/admin/feeds - ERROR: Invalid URL format:', url);
       return NextResponse.json(
         { success: false, error: 'Invalid URL format' },
         { status: 400 }
@@ -64,11 +69,14 @@ export async function POST(request: NextRequest) {
     }
 
     if (!['album', 'publisher'].includes(type)) {
+      console.log('POST /api/admin/feeds - ERROR: Invalid type:', type);
       return NextResponse.json(
         { success: false, error: 'Type must be "album" or "publisher"' },
         { status: 400 }
       );
     }
+
+    console.log('POST /api/admin/feeds - All validations passed, proceeding with feed addition');
 
     // Add feed to database with manual source
     const result = await addFeed(url, type, title, { 
@@ -131,6 +139,7 @@ export async function POST(request: NextRequest) {
     }
 
   } catch (error) {
+    console.error('POST /api/admin/feeds - Exception caught:', error);
     console.error('Error adding feed:', error);
     return NextResponse.json(
       { 

@@ -74,26 +74,46 @@ export default function AdminFeedsPage() {
     e.preventDefault();
     if (!newFeedUrl.trim()) return;
 
+    const requestBody = {
+      url: newFeedUrl.trim(),
+      type: newFeedType,
+    };
+
+    console.log('Frontend - Sending request:', requestBody);
+
     setLoading(true);
     try {
       const response = await fetch('/api/admin/feeds', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          url: newFeedUrl.trim(),
-          type: newFeedType,
-        }),
+        body: JSON.stringify(requestBody),
       });
 
+      console.log('Frontend - Response status:', response.status);
+      console.log('Frontend - Response headers:', Object.fromEntries(response.headers.entries()));
+
       if (response.ok) {
+        const responseData = await response.json();
+        console.log('Frontend - Success response:', responseData);
         toast.success('Feed added successfully!');
         setNewFeedUrl('');
         loadFeeds();
       } else {
-        const error = await response.json();
+        const errorText = await response.text();
+        console.log('Frontend - Error response text:', errorText);
+        
+        let error;
+        try {
+          error = JSON.parse(errorText);
+        } catch {
+          error = { error: errorText };
+        }
+        
+        console.log('Frontend - Parsed error:', error);
         toast.error(error.message || error.error || 'Failed to add feed');
       }
     } catch (error) {
+      console.error('Frontend - Exception caught:', error);
       toast.error('Failed to add feed');
     } finally {
       setLoading(false);
