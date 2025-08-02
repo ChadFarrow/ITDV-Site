@@ -7,10 +7,9 @@ import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { RSSAlbum } from '@/lib/rss-parser';
 import { getAlbumArtworkUrl, getPlaceholderImageUrl } from '@/lib/cdn-utils';
-import { generateAlbumUrl, generatePublisherSlug } from '@/lib/url-utils';
-import { getVersionString } from '@/lib/version';
+import { generateAlbumUrl } from '@/lib/url-utils';
 import { useAudio } from '@/contexts/AudioContext';
-import { AppError, ErrorCodes, ErrorCode, getErrorMessage, createErrorLogger } from '@/lib/error-utils';
+import { getErrorMessage } from '@/lib/error-utils';
 import { toast } from '@/components/Toast';
 import dynamic from 'next/dynamic';
 
@@ -26,14 +25,6 @@ const AlbumCard = dynamic(() => import('@/components/AlbumCardLazy'), {
   ssr: true
 });
 
-const CDNImage = dynamic(() => import('@/components/CDNImageLazy'), {
-  loading: () => (
-    <div className="animate-pulse bg-gray-800/50 rounded flex items-center justify-center">
-      <div className="w-6 h-6 bg-white/20 rounded-full animate-spin"></div>
-    </div>
-  ),
-  ssr: false
-});
 
 const ControlsBar = dynamic(() => import('@/components/ControlsBarLazy'), {
   loading: () => (
@@ -51,41 +42,12 @@ const ControlsBar = dynamic(() => import('@/components/ControlsBarLazy'), {
 
 // Import types from the original component
 import type { FilterType, ViewType, SortType } from '@/components/ControlsBar';
-// RSS feed configuration - CDN removed, using original URLs directly
-
-// Temporarily disable error logger to prevent recursion
-// const logger = createErrorLogger('MainPage');
-
-// Development logging utility - disabled for performance
-const isDev = process.env.NODE_ENV === 'development';
-const isVerbose = process.env.NEXT_PUBLIC_LOG_LEVEL === 'verbose';
-
-const devLog = (...args: any[]) => {
-  // Disabled for performance
-};
-
-const verboseLog = (...args: any[]) => {
-  // Disabled for performance
-};
-
-// RSS feed URLs - hardcoded for client-side compatibility
-// All CDN URLs removed, using original URLs directly
-
-// Feed URLs are now loaded dynamically from /api/feeds endpoint
-// This ensures feeds are always up-to-date with data/feeds.json
-
-// Debug logging - Performance optimization info
-devLog('🚀 PERFORMANCE OPTIMIZATION ENABLED - Dynamic feed loading');
-devLog('🔧 Environment check:', { NODE_ENV: process.env.NODE_ENV });
-devLog('🚀 Feeds will be loaded dynamically from /api/feeds endpoint');
 
 export default function HomePage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [albums, setAlbums] = useState<RSSAlbum[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
-  const [totalFeedsCount, setTotalFeedsCount] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   
@@ -99,7 +61,6 @@ export default function HomePage() {
   const { playAlbum: globalPlayAlbum, shuffleAllTracks } = useAudio();
   const hasLoadedRef = useRef(false);
   
-
   // Controls state
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [viewType, setViewType] = useState<ViewType>('grid');
@@ -297,8 +258,6 @@ export default function HomePage() {
       
     } catch (err) {
       const errorMessage = getErrorMessage(err);
-      // Temporarily disable error logging to prevent recursion
-      // logger.error('Error loading albums', err);
       setError(`Error loading album data: ${errorMessage}`);
       toast.error(`Failed to load albums: ${errorMessage}`);
       return [];
@@ -333,39 +292,24 @@ export default function HomePage() {
       }
     } catch (error) {
       let errorMessage = 'Unable to play audio - please try again';
-      let errorCode: ErrorCode = ErrorCodes.AUDIO_PLAYBACK_ERROR;
       
       if (error instanceof DOMException) {
         switch (error.name) {
           case 'NotAllowedError':
             errorMessage = 'Tap the play button again to start playback';
-            errorCode = ErrorCodes.PERMISSION_ERROR;
             break;
           case 'NotSupportedError':
             errorMessage = 'Audio format not supported on this device';
-            errorCode = ErrorCodes.AUDIO_NOT_FOUND;
             break;
         }
       }
       
-      // Temporarily disable error logging to prevent recursion
-      // logger.error('Audio playback error', error, {
-      //   album: album.title,
-      //   trackUrl: firstTrack?.url,
-      //   errorName: error instanceof DOMException ? error.name : 'Unknown'
-      // });
-      
-      const appError = new AppError(errorMessage, errorCode, 400, false);
-      setError(appError.message);
-      toast.error(appError.message);
+      setError(errorMessage);
+      toast.error(errorMessage);
       
       setTimeout(() => setError(null), 5000);
     }
   };
-
-  // Audio playback functions are now handled by the global AudioContext
-
-  // Shuffle functionality is now handled by the global AudioContext
 
   // Helper functions for filtering and sorting
   const getFilteredAlbums = () => {
