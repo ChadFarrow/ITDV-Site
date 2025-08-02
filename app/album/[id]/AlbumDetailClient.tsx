@@ -41,6 +41,13 @@ interface RSSPodRoll {
   description?: string;
 }
 
+interface PodrollAlbum {
+  title: string;
+  artist: string;
+  coverArt: string;
+  url: string;
+}
+
 interface Album {
   title: string;
   artist: string;
@@ -63,6 +70,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
   const [isLoading, setIsLoading] = useState(!initialAlbum);
   const [error, setError] = useState<string | null>(null);
   const [relatedAlbums, setRelatedAlbums] = useState<Album[]>([]);
+  const [podrollAlbums, setPodrollAlbums] = useState<PodrollAlbum[]>([]);
   
   // Global audio context
   const { 
@@ -169,6 +177,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         }
         
         loadRelatedAlbums();
+        loadPodrollAlbums();
       } else {
         setError('Album not found');
       }
@@ -194,6 +203,46 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
       }
     } catch (error) {
       console.error('Error loading related albums:', error);
+    }
+  };
+
+  const loadPodrollAlbums = async () => {
+    if (!album?.podroll || album.podroll.length === 0) return;
+    
+    try {
+      const podrollData: PodrollAlbum[] = [];
+      
+      // Fetch album data for each podroll feed
+      for (const podrollItem of album.podroll) {
+        try {
+          // Try to fetch the feed data
+          const response = await fetch(`/api/test-single-feed?url=${encodeURIComponent(podrollItem.url)}`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.album) {
+              podrollData.push({
+                title: data.album.title || podrollItem.title || 'Unknown Album',
+                artist: data.album.artist || 'Unknown Artist',
+                coverArt: data.album.coverArt || '/placeholder-episode.jpg',
+                url: podrollItem.url
+              });
+            }
+          }
+        } catch (error) {
+          console.error(`Error fetching podroll album for ${podrollItem.url}:`, error);
+          // Fallback to basic podroll data
+          podrollData.push({
+            title: podrollItem.title || 'Unknown Album',
+            artist: 'Unknown Artist',
+            coverArt: '/placeholder-episode.jpg',
+            url: podrollItem.url
+          });
+        }
+      }
+      
+      setPodrollAlbums(podrollData);
+    } catch (error) {
+      console.error('Error loading podroll albums:', error);
     }
   };
 
@@ -538,20 +587,34 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         )}
 
         {/* Podroll Information - Related Shows */}
-        {album?.podroll && album.podroll.length > 0 && (
+        {podrollAlbums.length > 0 && (
           <div className="container mx-auto px-4 pb-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl font-bold mb-6">Related Shows</h2>
-              <div className="flex flex-wrap justify-center lg:justify-start gap-3">
-                {album.podroll.map((podrollItem, index) => (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {podrollAlbums.map((podrollAlbum, index) => (
                   <a
                     key={index}
-                    href={podrollItem.url}
+                    href={podrollAlbum.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-6 py-3 rounded-full text-sm font-medium transition-all transform hover:scale-105 flex items-center gap-2"
+                    className="group block"
                   >
-                    🎙️ {podrollItem.title || `Feed ${podrollItem.url.substring(0, 8)}...`}
+                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
+                      <div className="aspect-square mb-3 rounded overflow-hidden">
+                        <Image
+                          src={podrollAlbum.coverArt}
+                          alt={podrollAlbum.title}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
+                        {podrollAlbum.title}
+                      </h3>
+                      <p className="text-xs text-gray-400 truncate">{podrollAlbum.artist}</p>
+                    </div>
                   </a>
                 ))}
               </div>

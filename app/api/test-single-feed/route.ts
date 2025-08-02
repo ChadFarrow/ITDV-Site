@@ -3,9 +3,18 @@ import { RSSParser } from '@/lib/rss-parser';
 
 export async function GET(request: NextRequest) {
   try {
-    console.log('🧪 Testing single feed parsing...');
+    const { searchParams } = new URL(request.url);
+    const feedUrl = searchParams.get('url');
     
-    const result = await RSSParser.parseAlbumFeed('https://www.doerfelverse.com/feeds/bloodshot-lies-album.xml');
+    if (!feedUrl) {
+      return NextResponse.json({ 
+        error: 'URL parameter is required' 
+      }, { status: 400 });
+    }
+    
+    console.log('🧪 Testing single feed parsing for:', feedUrl);
+    
+    const result = await RSSParser.parseAlbumFeed(feedUrl);
     
     console.log('📦 Parse result:', result ? 'SUCCESS' : 'NULL');
     
@@ -15,6 +24,7 @@ export async function GET(request: NextRequest) {
         album: {
           title: result.title,
           artist: result.artist,
+          coverArt: result.coverArt,
           trackCount: result.tracks.length,
           firstTrack: result.tracks[0]?.title
         }
