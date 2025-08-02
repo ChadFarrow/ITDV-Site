@@ -6,9 +6,8 @@ export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    // Initialize database and seed default feeds if needed
+    // Initialize database schema if needed (but don't auto-seed)
     await initializeDatabase();
-    await seedDefaultFeeds();
     
     // Load RSS feeds from database
     const dbFeeds = await getAllFeeds();
