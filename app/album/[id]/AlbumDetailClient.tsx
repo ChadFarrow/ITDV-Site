@@ -375,7 +375,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                 
                 <div className="hidden sm:flex items-center gap-2 text-sm">
                   <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-                    Project StableKraft
+                    Into the Doerfel-Verse
                   </Link>
                   <span className="text-gray-600">/</span>
                   <span className="font-medium truncate max-w-[200px]">{album.title}</span>
