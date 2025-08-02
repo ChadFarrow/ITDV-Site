@@ -6,6 +6,8 @@ import ErrorBoundary from '@/components/ErrorBoundary'
 import ClientErrorBoundary from '@/components/ClientErrorBoundary'
 import { ToastContainer } from '@/components/Toast'
 import PerformanceMonitor from '@/components/PerformanceMonitor'
+import { AudioProvider } from '@/contexts/AudioContext'
+import GlobalNowPlayingBar from '@/components/GlobalNowPlayingBar'
 
 
 
@@ -95,13 +97,16 @@ export default function RootLayout({
       <body className={inter.className}>
         <ClientErrorBoundary>
           <ErrorBoundary>
-            <div className="min-h-screen bg-gray-50 relative">
-              {/* Content overlay */}
-              <div className="relative z-10">
-                {children}
+            <AudioProvider>
+              <div className="min-h-screen bg-gray-50 relative">
+                {/* Content overlay */}
+                <div className="relative z-10">
+                  {children}
+                </div>
               </div>
-            </div>
-            <ToastContainer />
+              <GlobalNowPlayingBar />
+              <ToastContainer />
+            </AudioProvider>
           </ErrorBoundary>
           <ServiceWorkerRegistration />
           <PerformanceMonitor />

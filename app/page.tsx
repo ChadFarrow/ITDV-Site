@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { getVersionString } from '@/lib/version';
+import { useAudio } from '@/contexts/AudioContext';
 
 interface Track {
   title: string;
@@ -36,6 +37,8 @@ export default function HomePage() {
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  
+  const { playAlbum, playTrack } = useAudio();
 
   useEffect(() => {
     setIsClient(true);
@@ -105,6 +108,29 @@ export default function HomePage() {
   useEffect(() => {
     setFilteredAlbums(getFilteredAlbums());
   }, [albums, activeFilter]);
+
+  const handlePlayAlbum = (album: Album) => {
+    // Convert album tracks to audio context format
+    const audioTracks = album.tracks.map(track => ({
+      ...track,
+      artist: album.artist,
+      album: album.title,
+      image: track.image || album.coverArt
+    }));
+    
+    playAlbum(audioTracks, 0, album.title);
+  };
+
+  const handlePlayTrack = (track: Track, album: Album) => {
+    const audioTrack = {
+      ...track,
+      artist: album.artist,
+      album: album.title,
+      image: track.image || album.coverArt
+    };
+    
+    playTrack(audioTrack, album.title);
+  };
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
@@ -384,6 +410,7 @@ export default function HomePage() {
                     <div 
                       key={album.feedId || index}
                       className="group cursor-pointer"
+                      onClick={() => handlePlayAlbum(album)}
                     >
                       <div className="aspect-square relative overflow-hidden rounded-lg border border-white/10 hover:border-white/30 transition-all duration-200 group-hover:scale-105">
                         <Image
@@ -405,7 +432,7 @@ export default function HomePage() {
                         
                         {/* Play button overlay */}
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                          <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                          <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
                             <svg className="w-5 h-5 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M8 5v14l11-7z"/>
                             </svg>
@@ -427,6 +454,7 @@ export default function HomePage() {
                     <div 
                       key={album.feedId || index}
                       className="flex items-center gap-4 p-3 bg-black/20 border border-white/10 rounded-lg hover:bg-black/30 transition-colors cursor-pointer group"
+                      onClick={() => handlePlayAlbum(album)}
                     >
                       <div className="w-12 h-12 relative overflow-hidden rounded border border-white/10">
                         <Image
