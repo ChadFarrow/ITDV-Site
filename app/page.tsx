@@ -518,7 +518,7 @@ export default function HomePage() {
                   <div className="w-10 h-10 relative border border-gray-700 rounded-lg overflow-hidden">
                     <Image 
                       src="/logo.webp" 
-                      alt="VALUE Logo" 
+                      alt="Doerfelverse Logo" 
                       width={40} 
                       height={40}
                       className="object-cover"
@@ -541,7 +541,7 @@ export default function HomePage() {
               
               {/* Bottom row - Title and Beta badge */}
               <div className="text-center">
-                <h1 className="text-xl font-bold mb-1">Project StableKraft</h1>
+                <h1 className="text-xl font-bold mb-1">Into the Doerfel-Verse</h1>
                 <p className="text-xs text-gray-400 mb-2">- &quot;its was all this reimagined, its a different kind of speech, it was repition, it was what you wanted it to be&quot; - The Contortionist - Reimagined</p>
                                                   <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30">
                   Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
@@ -569,7 +569,7 @@ export default function HomePage() {
                   <div className="w-10 h-10 relative border border-gray-700 rounded-lg overflow-hidden">
                     <Image 
                       src="/logo.webp" 
-                      alt="VALUE Logo" 
+                      alt="Doerfelverse Logo" 
                       width={40} 
                       height={40}
                       className="object-cover"
@@ -580,7 +580,7 @@ export default function HomePage() {
                 
                 {/* Center - Title */}
                 <div className="text-center">
-                  <h1 className="text-3xl font-bold mb-1">Project StableKraft</h1>
+                  <h1 className="text-3xl font-bold mb-1">Into the Doerfel-Verse</h1>
                   <p className="text-sm text-gray-400 mb-2">- &quot;its was all this reimagined, its a different kind of speech, it was repition, it was what you wanted it to be&quot; - The Contortionist - Reimagined</p>
                   <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30 inline-block">
                     Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load

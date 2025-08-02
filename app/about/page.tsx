@@ -14,14 +14,14 @@ export default function AboutPage() {
               <div className="w-10 h-10 relative border border-gray-700 rounded-lg overflow-hidden">
                 <Image 
                   src="/logo.webp" 
-                  alt="VALUE Logo" 
+                  alt="Doerfelverse Logo" 
                   width={40} 
                   height={40}
                   className="object-cover"
                   priority
                 />
               </div>
-              <h1 className="text-4xl font-bold">Project StableKraft</h1>
+              <h1 className="text-4xl font-bold">Into the Doerfel-Verse</h1>
             </Link>
           </div>
         </div>
@@ -31,13 +31,13 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto">
           <div className="mb-12">
             <h1 className="text-4xl font-bold mb-8 text-center">
-              About Project StableKraft
+              About Into the Doerfel-Verse
             </h1>
             
             {/* Main Description - moved from banner */}
             <div className="bg-gray-900/50 rounded-lg p-8 mb-8">
               <p className="text-lg leading-relaxed mb-4">
-                This is a demo app I built for the &quot;StableKraft&quot; project to see what we could do with RSS feeds and music. All data here comes from RSS feeds on{' '}
+                This is a music platform for Into the Doerfel-Verse, showcasing what we can do with RSS feeds and music. All data here comes from RSS feeds on{' '}
                 <a href="https://podcastindex.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
                   podcastindex.org
                 </a>. This is also a demo of a site for The Doerfels that I added other music I like also and some stuff to help test.
