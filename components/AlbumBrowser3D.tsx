@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, Maximize, Minimize, X } from 'lucide-react';
 
 interface Track {
   title: string;
@@ -25,11 +25,13 @@ interface Album {
 interface AlbumBrowser3DProps {
   albums: Album[];
   onPlay: (album: Album, e: React.MouseEvent | React.TouchEvent) => void;
+  onExitFullscreen?: () => void;
 }
 
-export default function AlbumBrowser3D({ albums, onPlay }: AlbumBrowser3DProps) {
+export default function AlbumBrowser3D({ albums, onPlay, onExitFullscreen }: AlbumBrowser3DProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,13 +48,73 @@ export default function AlbumBrowser3D({ albums, onPlay }: AlbumBrowser3DProps) 
     setCurrentIndex((prev) => (prev < albums.length - 1 ? prev + 1 : 0));
   };
 
+  const toggleFullscreen = async () => {
+    if (!isFullscreen) {
+      // Enter fullscreen
+      try {
+        if (containerRef.current) {
+          if (containerRef.current.requestFullscreen) {
+            await containerRef.current.requestFullscreen();
+          } else if ((containerRef.current as any).webkitRequestFullscreen) {
+            await (containerRef.current as any).webkitRequestFullscreen();
+          } else if ((containerRef.current as any).msRequestFullscreen) {
+            await (containerRef.current as any).msRequestFullscreen();
+          }
+          setIsFullscreen(true);
+        }
+      } catch (error) {
+        console.error('Error entering fullscreen:', error);
+      }
+    } else {
+      // Exit fullscreen
+      try {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if ((document as any).webkitExitFullscreen) {
+          await (document as any).webkitExitFullscreen();
+        } else if ((document as any).msExitFullscreen) {
+          await (document as any).msExitFullscreen();
+        }
+        setIsFullscreen(false);
+      } catch (error) {
+        console.error('Error exiting fullscreen:', error);
+      }
+    }
+  };
+
   const handleKeyboard = (e: KeyboardEvent) => {
     if (e.key === 'ArrowLeft') {
       handlePrevious();
     } else if (e.key === 'ArrowRight') {
       handleNext();
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFullscreen();
+    } else if (e.key === 'Escape' && isFullscreen) {
+      toggleFullscreen();
     }
   };
+
+  // Listen for fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      const isCurrentlyFullscreen = !!(
+        document.fullscreenElement ||
+        (document as any).webkitFullscreenElement ||
+        (document as any).msFullscreenElement
+      );
+      setIsFullscreen(isCurrentlyFullscreen);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('msfullscreenchange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('msfullscreenchange', handleFullscreenChange);
+    };
+  }, []);
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyboard);
@@ -90,7 +152,12 @@ export default function AlbumBrowser3D({ albums, onPlay }: AlbumBrowser3DProps) 
   const visibleAlbums = getVisibleAlbums();
 
   return (
-    <div className="w-full h-screen bg-black text-white overflow-hidden">
+    <div 
+      ref={containerRef}
+      className={`w-full text-white overflow-hidden ${
+        isFullscreen ? 'h-screen bg-black fixed inset-0 z-50' : 'h-screen bg-black'
+      }`}
+    >
       {/* 3D Album Browser */}
       <div className="relative h-2/3 flex items-center justify-center" style={{ perspective: '1000px' }}>
         <div className="relative w-full max-w-4xl h-80 flex items-center justify-center">
@@ -172,6 +239,34 @@ export default function AlbumBrowser3D({ albums, onPlay }: AlbumBrowser3DProps) 
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
+
+        {/* Fullscreen Controls */}
+        <div className="absolute top-4 right-4 flex items-center gap-2 z-20">
+          <button
+            onClick={toggleFullscreen}
+            className="bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20 transition-colors"
+            title={isFullscreen ? 'Exit fullscreen (Esc)' : 'Enter fullscreen (F)'}
+          >
+            {isFullscreen ? (
+              <Minimize className="w-5 h-5" />
+            ) : (
+              <Maximize className="w-5 h-5" />
+            )}
+          </button>
+          
+          {isFullscreen && onExitFullscreen && (
+            <button
+              onClick={() => {
+                toggleFullscreen();
+                onExitFullscreen();
+              }}
+              className="bg-white/10 backdrop-blur-sm rounded-full p-3 hover:bg-white/20 transition-colors"
+              title="Exit to grid view"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Track Listing */}
@@ -221,9 +316,14 @@ export default function AlbumBrowser3D({ albums, onPlay }: AlbumBrowser3DProps) 
         </div>
       )}
 
-      {/* Album Counter */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-gray-400">
-        {currentIndex + 1} of {albums.length}
+      {/* Album Counter and Help */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center">
+        <div className="text-sm text-gray-400 mb-2">
+          {currentIndex + 1} of {albums.length}
+        </div>
+        <div className="text-xs text-gray-500">
+          Use ← → arrows to navigate • Press F for fullscreen • ESC to exit
+        </div>
       </div>
     </div>
   );
