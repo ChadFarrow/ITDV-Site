@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import { toast } from '@/components/Toast';
 
 interface Feed {
@@ -225,14 +227,34 @@ export default function AdminFeedsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">RSS Feed Management</h1>
-            <p className="text-gray-400">Manage music feeds for Into the Doerfel-Verse</p>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      {/* Header */}
+      <header className="bg-black/20 backdrop-blur-sm border-b border-white/10">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/admin"
+              className="p-2 hover:bg-white/10 rounded-lg transition-colors group"
+              title="Back to admin dashboard"
+            >
+              <ArrowLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            </Link>
+            <div>
+              <h1 className="text-2xl font-bold">RSS Feed Management</h1>
+              <p className="text-gray-400 text-sm">Manage music feeds for Into the Doerfel-Verse</p>
+            </div>
           </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-6 py-8">
+        <div className="max-w-6xl mx-auto">
+          {/* Action Buttons */}
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h2 className="text-xl font-semibold mb-2">Feed Operations</h2>
+              <p className="text-gray-400">Add feeds, discover podrolls, and manage the music catalog</p>
+            </div>
           <div className="flex items-center gap-4">
             <a
               href="/admin/discover"
@@ -349,6 +371,7 @@ export default function AdminFeedsPage() {
           </ul>
         </div>
       </div>
+    </div>
     </div>
   );
 }

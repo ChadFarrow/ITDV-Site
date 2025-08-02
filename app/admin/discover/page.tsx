@@ -84,18 +84,22 @@ export default function DiscoverPodrollPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       {/* Header */}
-      <header className="bg-gray-800 border-b border-gray-700">
-        <div className="container mx-auto px-4 py-4">
+      <header className="bg-black/20 backdrop-blur-sm border-b border-white/10">
+        <div className="container mx-auto px-6 py-4">
           <div className="flex items-center gap-4">
             <Link
-              href="/admin/feeds"
-              className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+              href="/admin"
+              className="p-2 hover:bg-white/10 rounded-lg transition-colors group"
+              title="Back to admin dashboard"
             >
-              <ArrowLeft className="w-5 h-5" />
+              <ArrowLeft className="w-5 h-5 group-hover:scale-110 transition-transform" />
             </Link>
-            <h1 className="text-xl font-bold">Discover Podroll Feeds</h1>
+            <div>
+              <h1 className="text-2xl font-bold">Discover Podroll Feeds</h1>
+              <p className="text-gray-400 text-sm">Explore podcast networks and discover connected shows</p>
+            </div>
           </div>
         </div>
       </header>
