@@ -61,6 +61,9 @@ export interface RSSAlbum {
   };
   podroll?: RSSPodRoll[];
   publisher?: RSSPublisher;
+  feedId?: string;
+  feedUrl?: string;
+  lastUpdated?: string;
 }
 
 // Development logging utility
