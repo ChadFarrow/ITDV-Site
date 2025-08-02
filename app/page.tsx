@@ -1,12 +1,43 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import AlbumSkeleton from '@/components/AlbumSkeleton';
 import { getVersionString } from '@/lib/version';
 import { useAudio } from '@/contexts/AudioContext';
+import { toast } from '@/components/Toast';
+import dynamic from 'next/dynamic';
+
+// Dynamic imports for heavy components
+const AlbumCard = dynamic(() => import('@/components/AlbumCardLazy'), {
+  loading: () => (
+    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 animate-pulse">
+      <div className="aspect-square bg-gray-800/50 rounded-lg mb-3"></div>
+      <div className="h-4 bg-gray-700/50 rounded mb-2"></div>
+      <div className="h-3 bg-gray-700/50 rounded w-2/3"></div>
+    </div>
+  ),
+  ssr: true
+});
+
+const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
+  loading: () => (
+    <div className="mb-8 p-4 bg-gray-800/20 rounded-lg animate-pulse">
+      <div className="flex items-center gap-4">
+        <div className="h-8 bg-gray-700/50 rounded w-24"></div>
+        <div className="h-8 bg-gray-700/50 rounded w-20"></div>
+        <div className="h-8 bg-gray-700/50 rounded w-16"></div>
+        <div className="h-8 bg-gray-700/50 rounded w-20"></div>
+      </div>
+    </div>
+  ),
+  ssr: true
+});
+
+// Import types from the ControlsBar component
+import type { FilterType, ViewType, SortType } from '@/components/ControlsBar';
 
 interface Track {
   title: string;
@@ -39,123 +70,293 @@ interface Album {
   podroll?: RSSPodRoll[];
 }
 
-type FilterType = 'all' | 'albums' | 'eps' | 'singles';
-type ViewMode = 'grid' | 'list';
 
 export default function HomePage() {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [albums, setAlbums] = useState<Album[]>([]);
-  const [filteredAlbums, setFilteredAlbums] = useState<Album[]>([]);
-  const [activeFilter, setActiveFilter] = useState<FilterType>('all');
-  const [viewMode, setViewMode] = useState<ViewMode>('grid');
+  const [error, setError] = useState<string | null>(null);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [totalFeedsCount, setTotalFeedsCount] = useState(0);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   
-  const { playAlbum, playTrack } = useAudio();
+  // Progressive loading states
+  const [criticalAlbums, setCriticalAlbums] = useState<Album[]>([]);
+  const [enhancedAlbums, setEnhancedAlbums] = useState<Album[]>([]);
+  const [isCriticalLoaded, setIsCriticalLoaded] = useState(false);
+  const [isEnhancedLoaded, setIsEnhancedLoaded] = useState(false);
+  
+  // Global audio context
+  const { playAlbum: globalPlayAlbum, toggleShuffle } = useAudio();
+  const hasLoadedRef = useRef(false);
+  
+  // Static background state
+  const [backgroundImageLoaded, setBackgroundImageLoaded] = useState(false);
+
+  // Controls state
+  const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+  const [viewType, setViewType] = useState<ViewType>('grid');
+  const [sortType, setSortType] = useState<SortType>('name');
+
+  // Shuffle functionality
+  const handleShuffle = () => {
+    try {
+      console.log('🎲 Shuffle button clicked - toggling shuffle mode');
+      toggleShuffle();
+      toast.success('🎲 Shuffle toggled!');
+    } catch (error) {
+      console.error('Error toggling shuffle:', error);
+      toast.error('Error toggling shuffle');
+    }
+  };
 
   useEffect(() => {
     setIsClient(true);
-    loadAlbums();
+    
+    // Add scroll detection for mobile
+    let scrollTimer: NodeJS.Timeout;
+    const handleScroll = () => {
+      document.body.classList.add('is-scrolling');
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        document.body.classList.remove('is-scrolling');
+      }, 150);
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchmove', handleScroll);
+      clearTimeout(scrollTimer);
+    };
   }, []);
 
-  const loadAlbums = async () => {
+  useEffect(() => {
+    // Prevent multiple loads
+    if (hasLoadedRef.current) {
+      return;
+    }
+    
+    hasLoadedRef.current = true;
+    
+    // Clear cache to force fresh data load
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('cachedAlbums');
+      localStorage.removeItem('albumsCacheTimestamp');
+    }
+    
+    // Progressive loading: Load critical data first, then enhance
+    loadCriticalAlbums();
+  }, []); // Run only once on mount
+
+  // Static background loading
+  useEffect(() => {
+    // Set a small delay to ensure the background image has time to load
+    const timer = setTimeout(() => {
+      setBackgroundImageLoaded(true);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Progressive loading: Load critical albums first (core feeds only)
+  const loadCriticalAlbums = async () => {
     try {
       setIsLoading(true);
+      setError(null);
+      setLoadingProgress(0);
+      
+      // Load critical albums first (core feeds)
+      const criticalAlbums = await loadAlbumsData('core');
+      setCriticalAlbums(criticalAlbums);
+      setIsCriticalLoaded(true);
+      setLoadingProgress(30);
+      
+      // Start loading enhanced data in background
+      loadEnhancedAlbums();
+      
+    } catch (error) {
+      setError('Failed to load critical albums');
+      setIsLoading(false);
+    }
+  };
+
+  // Progressive loading: Load enhanced albums (all feeds)
+  const loadEnhancedAlbums = async () => {
+    try {
+      // Load all albums in background
+      const allAlbums = await loadAlbumsData('all');
+      setEnhancedAlbums(allAlbums);
+      setAlbums(allAlbums); // Set main albums state
+      setIsEnhancedLoaded(true);
+      setLoadingProgress(100);
+      setIsLoading(false);
+      
+    } catch (error) {
+      console.warn('Failed to load enhanced albums, using critical albums only');
+      setAlbums(criticalAlbums); // Fallback to critical albums
+      setIsLoading(false);
+    }
+  };
+
+  const loadAlbumsData = async (loadTier: 'core' | 'extended' | 'lowPriority' | 'all' = 'all') => {
+    try {
+      // Fetch pre-parsed album data from the API endpoint
       const response = await fetch('/api/albums');
-      if (response.ok) {
-        const data = await response.json();
-        const sortedAlbums = sortAlbums(data.albums || []);
-        setAlbums(sortedAlbums);
-        setError(null);
-      } else {
-        setError('Failed to load albums');
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
       }
+      
+      const data = await response.json();
+      const albums = data.albums || [];
+      
+      setLoadingProgress(75);
+      
+      // Deduplicate albums
+      const albumMap = new Map<string, Album>();
+      
+      albums.forEach((album: Album) => {
+        const key = `${album.title.toLowerCase()}|${album.artist.toLowerCase()}`;
+        if (!albumMap.has(key)) {
+          albumMap.set(key, album);
+        }
+      });
+      
+      const uniqueAlbums = Array.from(albumMap.values());
+      
+      // Cache the results
+      if (typeof window !== 'undefined') {
+        try {
+          localStorage.setItem('cachedAlbums', JSON.stringify(uniqueAlbums));
+          localStorage.setItem('albumsCacheTimestamp', Date.now().toString());
+        } catch (error) {
+          console.warn('⚠️ Failed to cache albums:', error);
+        }
+      }
+      
+      return uniqueAlbums;
+      
     } catch (err) {
-      setError('Failed to load albums');
-      console.error('Error loading albums:', err);
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setError(`Error loading album data: ${errorMessage}`);
+      toast.error(`Failed to load albums: ${errorMessage}`);
+      return [];
     } finally {
       setIsLoading(false);
     }
   };
 
-  const sortAlbums = (albumList: Album[]) => {
-    // Sort by release date (newest first), then by title
-    return albumList.sort((a, b) => {
-      const dateA = new Date(a.releaseDate).getTime();
-      const dateB = new Date(b.releaseDate).getTime();
-      if (dateB !== dateA) return dateB - dateA;
-      return a.title.localeCompare(b.title);
-    });
-  };
+  const playAlbum = async (album: Album, e: React.MouseEvent | React.TouchEvent) => {
+    // Only prevent default/propagation for the play button, not the entire card
+    e.stopPropagation();
+    
+    // Find the first playable track
+    const firstTrack = album.tracks.find(track => track.url);
+    
+    if (!firstTrack || !firstTrack.url) {
+      console.warn('Cannot play album: missing track');
+      setError('No playable tracks found in this album');
+      setTimeout(() => setError(null), 3000);
+      return;
+    }
 
-  const getAlbumType = (trackCount: number): FilterType => {
-    if (trackCount === 1) return 'singles';
-    if (trackCount >= 2 && trackCount <= 6) return 'eps';
-    return 'albums';
-  };
-
-  const getFilteredAlbums = () => {
-    if (activeFilter === 'all') return albums;
-    return albums.filter(album => getAlbumType(album.tracks.length) === activeFilter);
-  };
-
-  const getFilterCounts = () => {
-    const counts = {
-      all: albums.length,
-      albums: albums.filter(album => album.tracks.length >= 7).length,
-      eps: albums.filter(album => album.tracks.length >= 2 && album.tracks.length <= 6).length,
-      singles: albums.filter(album => album.tracks.length === 1).length,
-    };
-    return counts;
-  };
-
-  const getReleaseYear = (releaseDate: string) => {
     try {
-      return new Date(releaseDate).getFullYear();
-    } catch {
-      return '';
+      console.log('🎵 Attempting to play:', album.title, 'Track URL:', firstTrack.url);
+      
+      // Use global audio context to play album
+      const audioTracks = album.tracks.map(track => ({
+        ...track,
+        artist: album.artist,
+        album: album.title,
+        image: track.image || album.coverArt
+      }));
+      
+      globalPlayAlbum(audioTracks, 0, album.title);
+      console.log('✅ Successfully started playback');
+    } catch (error) {
+      let errorMessage = 'Unable to play audio - please try again';
+      
+      if (error instanceof DOMException) {
+        switch (error.name) {
+          case 'NotAllowedError':
+            errorMessage = 'Tap the play button again to start playback';
+            break;
+          case 'NotSupportedError':
+            errorMessage = 'Audio format not supported on this device';
+            break;
+        }
+      }
+      
+      setError(errorMessage);
+      toast.error(errorMessage);
+      
+      setTimeout(() => setError(null), 5000);
     }
   };
 
-  // Update filtered albums when albums or filter changes
-  useEffect(() => {
-    setFilteredAlbums(getFilteredAlbums());
-  }, [albums, activeFilter]);
-
-  const handlePlayAlbum = (album: Album, e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    // Convert album tracks to audio context format
-    const audioTracks = album.tracks.map(track => ({
-      ...track,
-      artist: album.artist,
-      album: album.title,
-      image: track.image || album.coverArt
-    }));
+  // Helper functions for filtering and sorting
+  const getFilteredAlbums = () => {
+    // Use progressive loading: show critical albums first, then enhanced
+    const albumsToUse = isEnhancedLoaded ? enhancedAlbums : (criticalAlbums.length > 0 ? criticalAlbums : albums);
     
-    playAlbum(audioTracks, 0, album.title);
-  };
-
-  const getAlbumUrl = (album: Album) => {
-    // Create URL-friendly slug from album title
-    const slug = album.title
-      .toLowerCase()
-      .replace(/\s+/g, '-')           // Replace spaces with dashes
-      .replace(/-+/g, '-')            // Replace multiple consecutive dashes with single dash
-      .replace(/^-+|-+$/g, '');       // Remove leading/trailing dashes
-    return `/album/${encodeURIComponent(slug)}`;
-  };
-
-  const handlePlayTrack = (track: Track, album: Album) => {
-    const audioTrack = {
-      ...track,
-      artist: album.artist,
-      album: album.title,
-      image: track.image || album.coverArt
+    // Universal sorting function that implements hierarchical order: Albums → EPs → Singles
+    const sortWithHierarchy = (albums: Album[]) => {
+      return albums.sort((a, b) => {
+        // Hierarchical sorting: Albums (7+ tracks) → EPs (2-6 tracks) → Singles (1 track)
+        const aIsAlbum = a.tracks.length > 6;
+        const bIsAlbum = b.tracks.length > 6;
+        const aIsEP = a.tracks.length > 1 && a.tracks.length <= 6;
+        const bIsEP = b.tracks.length > 1 && b.tracks.length <= 6;
+        const aIsSingle = a.tracks.length === 1;
+        const bIsSingle = b.tracks.length === 1;
+        
+        // Albums come first
+        if (aIsAlbum && !bIsAlbum) return -1;
+        if (!aIsAlbum && bIsAlbum) return 1;
+        
+        // EPs come second (if both are not albums)
+        if (aIsEP && !bIsEP) return -1;
+        if (!aIsEP && bIsEP) return 1;
+        
+        // Singles come last (if both are not albums or EPs)
+        if (aIsSingle && !bIsSingle) return -1;
+        if (!aIsSingle && bIsSingle) return 1;
+        
+        // If same type, sort by title
+        return a.title.localeCompare(b.title);
+      });
     };
     
-    playTrack(audioTrack, album.title);
+    // Apply filtering based on active filter
+    let filtered = albumsToUse;
+    
+    switch (activeFilter) {
+      case 'albums':
+        filtered = albumsToUse.filter(album => album.tracks.length > 6);
+        break;
+      case 'eps':
+        filtered = albumsToUse.filter(album => album.tracks.length > 1 && album.tracks.length <= 6);
+        break;
+      case 'singles':
+        filtered = albumsToUse.filter(album => album.tracks.length === 1);
+        break;
+      default: // 'all'
+        filtered = albumsToUse;
+    }
+
+    // Apply hierarchical sorting to filtered results
+    return sortWithHierarchy(filtered);
   };
+
+  const filteredAlbums = getFilteredAlbums();
+  
+  // Show loading state for progressive loading
+  const showProgressiveLoading = isCriticalLoaded && !isEnhancedLoaded && filteredAlbums.length > 0;
+
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
@@ -211,9 +412,10 @@ export default function HomePage() {
                 </Link>
               </div>
               <div className="text-center">
-                <h1 className="text-xl font-bold mb-1">Into the Doerfel-Verse</h1>
+                <h1 className="text-xl font-bold mb-1">Project StableKraft</h1>
+                <p className="text-xs text-gray-400 mb-2">- &quot;its was all this reimagined, its a different kind of speech, it was repition, it was what you wanted it to be&quot; - The Contortionist - Reimagined</p>
                 <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30">
-                  Beta - Admin interface available at /admin/feeds
+                  Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
                 </div>
               </div>
             </div>
@@ -243,9 +445,10 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <h1 className="text-3xl font-bold mb-1">Into the Doerfel-Verse</h1>
+                  <h1 className="text-3xl font-bold mb-1">Project StableKraft</h1>
+                  <p className="text-sm text-gray-400 mb-2">- &quot;its was all this reimagined, its a different kind of speech, it was repition, it was what you wanted it to be&quot; - The Contortionist - Reimagined</p>
                   <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30 inline-block">
-                    Beta - Admin interface available at /admin/feeds
+                    Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
                   </div>
                 </div>
                 <div className="absolute right-0">
@@ -262,20 +465,30 @@ export default function HomePage() {
               </div>
             </div>
             
-            {/* Status */}
+            {/* Loading/Error Status */}
             {isClient && (
               <div className="flex items-center gap-2 text-sm">
-                {error ? (
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></span>
+                    <span className="text-yellow-400">
+                      {isCriticalLoaded ? 'Loading more albums...' : 'Loading albums...'}
+                      {loadingProgress > 0 && ` (${Math.round(loadingProgress)}%)`}
+                    </span>
+                  </div>
+                ) : showProgressiveLoading ? (
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                    <span className="text-blue-400">
+                      Loading more albums... ({filteredAlbums.length} loaded)
+                    </span>
+                  </div>
+                ) : error ? (
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-red-400 rounded-full"></span>
                     <span className="text-red-400">{error}</span>
                   </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                    <span className="text-green-400">Site ready - admin features available</span>
-                  </div>
-                )}
+                ) : null}
               </div>
             )}
           </div>
@@ -330,125 +543,235 @@ export default function HomePage() {
         
         {/* Main Content */}
         <div className="container mx-auto px-3 sm:px-6 py-6 sm:py-8 pb-28">
-          {isLoading ? (
-            <div className="max-w-7xl mx-auto">
-              {/* Filter skeleton */}
-              <div className="mb-6 flex flex-wrap items-center justify-between gap-4 animate-pulse">
-                <div className="flex items-center gap-2">
-                  {Array.from({ length: 4 }, (_, i) => (
-                    <div key={i} className="h-8 bg-gray-600 rounded-lg w-20"></div>
-                  ))}
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-8 w-8 bg-gray-600 rounded-lg"></div>
-                  <div className="h-8 w-8 bg-gray-600 rounded-lg"></div>
-                </div>
-              </div>
-              
-              {/* Album skeleton */}
-              <AlbumSkeleton count={12} viewMode={viewMode} />
+          {isLoading && !isCriticalLoaded ? (
+            <div className="flex flex-col items-center justify-center py-12 gap-4">
+              <LoadingSpinner 
+                size="large"
+                text="Loading music feeds..."
+                showProgress={false}
+              />
             </div>
           ) : error ? (
             <div className="text-center py-12">
               <h2 className="text-2xl font-semibold mb-4 text-red-400">Error Loading Albums</h2>
-              <p className="text-gray-400 mb-6">{error}</p>
-              <div className="max-w-md mx-auto">
-                <div className="bg-yellow-600/20 border border-yellow-500/30 rounded-lg p-4 mb-4">
-                  <p className="text-yellow-200 text-sm">
-                    No RSS feeds configured yet. Use the admin panel to add music feeds.
-                  </p>
-                </div>
-                <Link 
-                  href="/admin/feeds"
-                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  Go to Admin Panel
-                </Link>
-              </div>
+              <p className="text-gray-400">{error}</p>
+              <button 
+                onClick={() => loadCriticalAlbums()}
+                className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                Retry
+              </button>
             </div>
-          ) : albums.length === 0 ? (
-            <div className="max-w-7xl mx-auto text-center py-12">
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <h2 className="text-2xl font-bold mb-4">No Albums Yet</h2>
-                <p className="text-gray-300 mb-6">Add RSS feeds to display music here.</p>
-                <Link 
-                  href="/admin/feeds"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/80 hover:bg-blue-600 backdrop-blur-sm rounded-lg transition-colors border border-blue-500/30"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Add Your First RSS Feed
-                </Link>
-              </div>
+          ) : filteredAlbums.length > 0 ? (
+            <div className="max-w-7xl mx-auto">
+              {/* Controls Bar */}
+              <ControlsBar
+                activeFilter={activeFilter}
+                onFilterChange={setActiveFilter}
+                sortType={sortType}
+                onSortChange={setSortType}
+                viewType={viewType}
+                onViewChange={setViewType}
+                showShuffle={true}
+                onShuffle={handleShuffle}
+                resultCount={filteredAlbums.length}
+                resultLabel={activeFilter === 'all' ? 'Releases' : 
+                  activeFilter === 'albums' ? 'Albums' :
+                  activeFilter === 'eps' ? 'EPs' : 
+                  activeFilter === 'singles' ? 'Singles' : 'Releases'}
+                className="mb-8"
+              />
+
+              {/* Progressive Loading Indicator */}
+              {showProgressiveLoading && (
+                <div className="mb-6 p-4 bg-blue-600/20 border border-blue-500/30 rounded-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="w-4 h-4 bg-blue-400 rounded-full animate-pulse"></div>
+                    <span className="text-blue-300 text-sm">
+                      Loading more albums in the background... ({filteredAlbums.length} loaded so far)
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Albums Display */}
+              {activeFilter === 'all' ? (
+                // Original sectioned layout for "All" filter
+                <>
+                  {/* Albums Grid */}
+                  {(() => {
+                    const albumsWithMultipleTracks = filteredAlbums.filter(album => album.tracks.length > 6);
+                    return albumsWithMultipleTracks.length > 0 && (
+                      <div className="mb-12">
+                        <h2 className="text-2xl font-bold mb-6">Albums</h2>
+                        {viewType === 'grid' ? (
+                          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                            {albumsWithMultipleTracks.map((album, index) => (
+                              <AlbumCard
+                                key={`album-${index}`}
+                                album={album}
+                                onPlay={playAlbum}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="space-y-2">
+                            {albumsWithMultipleTracks.map((album, index) => (
+                              <Link
+                                key={`album-${index}`}
+                                href={`/album/${encodeURIComponent(album.title.toLowerCase().replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, ''))}`}
+                                className="group flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/10 transition-all duration-200 border border-white/10 hover:border-white/20"
+                              >
+                                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                                  <Image 
+                                    src={album.coverArt} 
+                                    alt={album.title}
+                                    width={64}
+                                    height={64}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                                
+                                <div className="flex-1 min-w-0">
+                                  <h3 className="font-semibold text-lg group-hover:text-blue-400 transition-colors truncate">
+                                    {album.title}
+                                  </h3>
+                                  <p className="text-gray-400 text-sm truncate">{album.artist}</p>
+                                </div>
+                                
+                                <div className="flex items-center gap-4 text-sm text-gray-400">
+                                  <span>{new Date(album.releaseDate).getFullYear()}</span>
+                                  <span>{album.tracks.length} tracks</span>
+                                  <span className="px-2 py-1 bg-white/10 rounded text-xs">Album</span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+                  
+                  {/* EPs and Singles Grid */}
+                  {(() => {
+                    const epsAndSingles = filteredAlbums.filter(album => album.tracks.length <= 6);
+                    return epsAndSingles.length > 0 && (
+                      <div>
+                        <h2 className="text-2xl font-bold mb-6">EPs and Singles</h2>
+                        {viewType === 'grid' ? (
+                          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                            {epsAndSingles.map((album, index) => (
+                              <AlbumCard
+                                key={`ep-single-${index}`}
+                                album={album}
+                                onPlay={playAlbum}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <div className="space-y-2">
+                            {epsAndSingles.map((album, index) => (
+                              <Link
+                                key={`ep-single-${index}`}
+                                href={`/album/${encodeURIComponent(album.title.toLowerCase().replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, ''))}`}
+                                className="group flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/10 transition-all duration-200 border border-white/10 hover:border-white/20"
+                              >
+                                <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                                  <Image 
+                                    src={album.coverArt} 
+                                    alt={album.title}
+                                    width={64}
+                                    height={64}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
+                                
+                                <div className="flex-1 min-w-0">
+                                  <h3 className="font-semibold text-lg group-hover:text-blue-400 transition-colors truncate">
+                                    {album.title}
+                                  </h3>
+                                  <p className="text-gray-400 text-sm truncate">{album.artist}</p>
+                                </div>
+                                
+                                <div className="flex items-center gap-4 text-sm text-gray-400">
+                                  <span>{new Date(album.releaseDate).getFullYear()}</span>
+                                  <span>{album.tracks.length} tracks</span>
+                                  <span className="px-2 py-1 bg-white/10 rounded text-xs">
+                                    {album.tracks.length === 1 ? 'Single' : 'EP'}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })()}
+                </>
+              ) : (
+                // Unified layout for specific filters (Albums, EPs, Singles)
+                viewType === 'grid' ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+                    {filteredAlbums.map((album, index) => (
+                      <AlbumCard
+                        key={`${album.title}-${index}`}
+                        album={album}
+                        onPlay={playAlbum}
+                      />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="space-y-2">
+                    {filteredAlbums.map((album, index) => (
+                      <Link
+                        key={`${album.title}-${index}`}
+                        href={`/album/${encodeURIComponent(album.title.toLowerCase().replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-+|-+$/g, ''))}`}
+                        className="group flex items-center gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/10 transition-all duration-200 border border-white/10 hover:border-white/20"
+                      >
+                        <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                          <Image 
+                            src={album.coverArt} 
+                            alt={album.title}
+                            width={64}
+                            height={64}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-lg group-hover:text-blue-400 transition-colors truncate">
+                            {album.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm truncate">{album.artist}</p>
+                        </div>
+                        
+                        <div className="flex items-center gap-4 text-sm text-gray-400">
+                          <span>{new Date(album.releaseDate).getFullYear()}</span>
+                          <span>{album.tracks.length} tracks</span>
+                          <span className="px-2 py-1 bg-white/10 rounded text-xs">
+                            {album.tracks.length <= 6 ? (album.tracks.length === 1 ? 'Single' : 'EP') : 'Album'}
+                          </span>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )
+              )}
             </div>
           ) : (
-            <div className="max-w-7xl mx-auto">
-              {/* Album Section Header */}
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold text-white">Albums</h2>
-              </div>
-
-              {/* Large Album Cards - Horizontal Layout like Original FUCKIT */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {filteredAlbums.map((album, index) => (
-                  <Link 
-                    key={album.feedId || index}
-                    href={getAlbumUrl(album)}
-                    className="group block"
-                  >
-                    <div className="relative aspect-square overflow-hidden rounded-lg border border-white/10 group-hover:border-white/30 transition-all duration-200">
-                      <Image
-                        src={album.coverArt}
-                        alt={album.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-200"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                      />
-                      
-                      {/* Track count overlay */}
-                      <div className="absolute top-3 right-3 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
-                        <span className="text-xs text-white font-medium">
-                          {album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}
-                        </span>
-                      </div>
-                      
-                      {/* Play button overlay */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-                        <button
-                          className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors pointer-events-auto"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            handlePlayAlbum(album, e);
-                          }}
-                        >
-                          <svg className="w-6 h-6 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        </button>
-                      </div>
-                      
-                      {/* Title overlay at bottom */}
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4">
-                        <h3 className="text-lg font-bold text-white mb-1">{album.title}</h3>
-                        <p className="text-sm text-gray-300">{album.artist}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              
-              {/* Album count info */}
-              <div className="mt-8 text-center">
-                <p className="text-gray-400 text-sm">
-                  Showing {filteredAlbums.length} of {albums.length} release{albums.length !== 1 ? 's' : ''}
-                </p>
-              </div>
+            <div className="text-center py-12">
+              <h2 className="text-2xl font-semibold mb-4">No Albums Found</h2>
+              <p className="text-gray-400">
+                {isCriticalLoaded ? 'Unable to load additional album information.' : 'Unable to load any album information from the RSS feeds.'}
+              </p>
+              {isCriticalLoaded && (
+                <button 
+                  onClick={() => loadEnhancedAlbums()}
+                  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                >
+                  Load More Albums
+                </button>
+              )}
             </div>
           )}
         </div>
