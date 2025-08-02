@@ -8,10 +8,28 @@ export async function GET() {
     const feedsPath = path.join(process.cwd(), 'data', 'feeds.json');
     
     if (!fsSync.existsSync(feedsPath)) {
+      // In production, return default feeds if file doesn't exist
+      const defaultFeeds = {
+        feeds: [
+          {
+            id: "www-doerfelverse-com-feeds-bloodshot-lies-album-xml",
+            originalUrl: "https://www.doerfelverse.com/feeds/bloodshot-lies-album.xml",
+            type: "album",
+            title: "Feed from www.doerfelverse.com",
+            priority: "core",
+            status: "active",
+            addedAt: new Date().toISOString(),
+            lastUpdated: new Date().toISOString()
+          }
+        ],
+        lastUpdated: new Date().toISOString(),
+        version: 2
+      };
+      
       return NextResponse.json({
         success: true,
-        feeds: [],
-        count: 0
+        feeds: defaultFeeds.feeds,
+        count: defaultFeeds.feeds.length
       });
     }
 
@@ -71,6 +89,16 @@ export async function POST(request: NextRequest) {
     let feedsData;
     
     try {
+      // Ensure data directory exists
+      const dataDir = path.join(process.cwd(), 'data');
+      if (!fsSync.existsSync(dataDir)) {
+        try {
+          await fs.mkdir(dataDir, { recursive: true });
+        } catch (mkdirError) {
+          console.warn('Could not create data directory:', mkdirError);
+        }
+      }
+      
       const feedsContent = await fs.readFile(feedsPath, 'utf-8');
       feedsData = JSON.parse(feedsContent);
     } catch (error) {
@@ -119,7 +147,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: 'Feed added successfully',
+      message: 'Feed added successfully (Note: Changes may not persist across deployments in current setup)',
       feed: newFeed
     });
   } catch (error) {
@@ -151,6 +179,14 @@ export async function DELETE(request: NextRequest) {
     const feedsPath = path.join(process.cwd(), "data", "feeds.json");
     
     try {
+      // Check if file exists first
+      if (!fsSync.existsSync(feedsPath)) {
+        return NextResponse.json(
+          { success: false, error: "No feeds file found" },
+          { status: 404 }
+        );
+      }
+      
       const feedsContent = await fs.readFile(feedsPath, "utf-8");
       const feedsData = JSON.parse(feedsContent);
 
@@ -169,16 +205,25 @@ export async function DELETE(request: NextRequest) {
       feedsData.lastUpdated = new Date().toISOString();
 
       // Save back to file
-      await fs.writeFile(feedsPath, JSON.stringify(feedsData, null, 2));
+      try {
+        await fs.writeFile(feedsPath, JSON.stringify(feedsData, null, 2));
+      } catch (writeError) {
+        console.error("Failed to write feeds file:", writeError);
+        return NextResponse.json(
+          { success: false, error: "Failed to save changes to feeds file" },
+          { status: 500 }
+        );
+      }
 
       console.log(`✅ Removed RSS feed: ${removedFeed.originalUrl}`);
 
       return NextResponse.json({
         success: true,
-        message: "Feed removed successfully",
+        message: "Feed removed successfully (Note: Changes may not persist across deployments in current setup)",
         removedFeed
       });
     } catch (error) {
+      console.error("Error reading feeds file:", error);
       return NextResponse.json(
         { success: false, error: "Failed to read feeds file" },
         { status: 500 }
