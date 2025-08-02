@@ -1,64 +1,30 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import fsSync from 'fs';
-import path from 'path';
+import { getAllFeeds, addFeed, removeFeed, initializeDatabase, seedDefaultFeeds } from '@/lib/db';
 
 export async function GET() {
   try {
-    const feedsPath = path.join(process.cwd(), 'data', 'feeds.json');
+    // Initialize database and seed default feeds if needed
+    await initializeDatabase();
+    await seedDefaultFeeds();
     
-    if (!fsSync.existsSync(feedsPath)) {
-      // In production, return default feeds if file doesn't exist
-      const defaultFeeds = {
-        feeds: [
-          {
-            id: "www-doerfelverse-com-feeds-bloodshot-lies-album-xml",
-            originalUrl: "https://www.doerfelverse.com/feeds/bloodshot-lies-album.xml",
-            type: "album",
-            title: "Bloodshot Lies - The Album",
-            priority: "core",
-            status: "active",
-            addedAt: "2025-08-02T05:00:00.000Z",
-            lastUpdated: "2025-08-02T05:00:00.000Z"
-          },
-          {
-            id: "www-doerfelverse-com-feeds-think-ep-xml",
-            originalUrl: "https://www.doerfelverse.com/feeds/think-ep.xml", 
-            type: "album",
-            title: "Think EP",
-            priority: "core",
-            status: "active",
-            addedAt: "2025-08-02T05:00:00.000Z",
-            lastUpdated: "2025-08-02T05:00:00.000Z"
-          },
-          {
-            id: "www-doerfelverse-com-feeds-ben-doerfel-xml",
-            originalUrl: "https://www.doerfelverse.com/feeds/ben-doerfel.xml",
-            type: "publisher", 
-            title: "Ben Doerfel Music",
-            priority: "core",
-            status: "active",
-            addedAt: "2025-08-02T05:00:00.000Z",
-            lastUpdated: "2025-08-02T05:00:00.000Z"
-          }
-        ],
-        lastUpdated: new Date().toISOString(),
-        version: 2
-      };
-      
-      return NextResponse.json({
-        success: true,
-        feeds: defaultFeeds.feeds,
-        count: defaultFeeds.feeds.length
-      });
-    }
-
-    const feedsData = JSON.parse(await fs.readFile(feedsPath, 'utf-8'));
+    const dbFeeds = await getAllFeeds();
+    
+    // Convert DB format to API format for compatibility
+    const apiFeeds = dbFeeds.map(feed => ({
+      id: feed.id,
+      originalUrl: feed.original_url,
+      type: feed.type,
+      title: feed.title,
+      priority: feed.priority,
+      status: feed.status,
+      addedAt: feed.added_at.toISOString(),
+      lastUpdated: feed.last_updated.toISOString()
+    }));
     
     return NextResponse.json({
       success: true,
-      feeds: feedsData.feeds || [],
-      count: feedsData.feeds?.length || 0
+      feeds: apiFeeds,
+      count: apiFeeds.length
     });
   } catch (error) {
     console.error('Error fetching feeds:', error);
@@ -76,7 +42,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { url, type = 'album' } = body;
+    const { url, type = 'album', title } = body;
 
     // Validate inputs
     if (!url) {
@@ -102,13 +68,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In production, we can't persistently store feeds due to read-only file system
-    // For now, return a message explaining this limitation
-    return NextResponse.json({
-      success: false,
-      error: 'Feed management is currently in read-only mode',
-      message: 'Due to Vercel\'s serverless architecture, dynamic feed management requires a database solution. Currently displaying default feeds only.'
-    }, { status: 400 });
+    // Add feed to database
+    const result = await addFeed(url, type, title);
+    
+    if (result.success && result.feed) {
+      // Convert DB format to API format
+      const apiFeed = {
+        id: result.feed.id,
+        originalUrl: result.feed.original_url,
+        type: result.feed.type,
+        title: result.feed.title,
+        priority: result.feed.priority,
+        status: result.feed.status,
+        addedAt: result.feed.added_at.toISOString(),
+        lastUpdated: result.feed.last_updated.toISOString()
+      };
+      
+      return NextResponse.json({
+        success: true,
+        feed: apiFeed,
+        message: 'Feed added successfully'
+      });
+    } else {
+      return NextResponse.json(
+        { success: false, error: result.error || 'Failed to add feed' },
+        { status: 400 }
+      );
+    }
 
   } catch (error) {
     console.error('Error adding feed:', error);
@@ -135,12 +121,20 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    // In production, we can't persistently modify feeds due to read-only file system
-    return NextResponse.json({
-      success: false,
-      error: 'Feed management is currently in read-only mode',
-      message: 'Due to Vercel\'s serverless architecture, dynamic feed management requires a database solution. Currently displaying default feeds only.'
-    }, { status: 400 });
+    // Remove feed from database
+    const result = await removeFeed(feedId);
+    
+    if (result.success) {
+      return NextResponse.json({
+        success: true,
+        message: 'Feed removed successfully'
+      });
+    } else {
+      return NextResponse.json(
+        { success: false, error: result.error || 'Failed to remove feed' },
+        { status: 400 }
+      );
+    }
 
   } catch (error) {
     console.error("Error removing feed:", error);

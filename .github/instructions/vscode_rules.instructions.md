@@ -1,5 +1,6 @@
 ---
-inclusion: always
+description: Guidelines for creating and maintaining VS Code rules to ensure consistency and effectiveness.
+applyTo: ".github/instructions/*.instructions.md"
 ---
 
 - **Required Rule Structure:**
@@ -17,7 +18,7 @@ inclusion: always
 
 - **File References:**
   - Use `[filename](mdc:path/to/file)` ([filename](mdc:filename)) to reference files
-  - Example: [prisma.md](.kiro/steering/prisma.md) for rule references
+  - Example: [prisma.instructions.md](.github/instructions/prisma.instructions.md) for rule references
   - Example: [schema.prisma](mdc:prisma/schema.prisma) for code references
 
 - **Code Examples:**

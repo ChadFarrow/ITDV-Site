@@ -1,43 +1,35 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import fsSync from 'fs';
-import path from 'path';
 import { RSSParser } from '@/lib/rss-parser';
+import { getAllFeeds, initializeDatabase, seedDefaultFeeds } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    // Load RSS feeds from feeds.json
-    const feedsPath = path.join(process.cwd(), 'data', 'feeds.json');
+    // Initialize database and seed default feeds if needed
+    await initializeDatabase();
+    await seedDefaultFeeds();
     
-    if (!fsSync.existsSync(feedsPath)) {
-      return NextResponse.json({
-        albums: [],
-        timestamp: new Date().toISOString()
-      });
-    }
-
-    const feedsData = JSON.parse(await fs.readFile(feedsPath, 'utf-8'));
-    const feeds = feedsData.feeds || [];
+    // Load RSS feeds from database
+    const dbFeeds = await getAllFeeds();
     
     // Process each RSS feed
     const albums = [];
-    for (const feed of feeds) {
+    for (const feed of dbFeeds) {
       if (feed.status === 'active') {
         try {
-          console.log(`🎵 Processing RSS feed: ${feed.originalUrl}`);
-          const album = await RSSParser.parseAlbumFeed(feed.originalUrl);
+          console.log(`🎵 Processing RSS feed: ${feed.original_url}`);
+          const album = await RSSParser.parseAlbumFeed(feed.original_url);
           if (album) {
             // Add feed metadata to the album
             album.feedId = feed.id;
-            album.feedUrl = feed.originalUrl;
-            album.lastUpdated = feed.lastUpdated;
+            album.feedUrl = feed.original_url;
+            album.lastUpdated = feed.last_updated.toISOString();
             albums.push(album);
             console.log(`✅ Successfully parsed album: ${album.title}`);
           }
         } catch (error) {
-          console.error(`❌ Failed to parse RSS feed ${feed.originalUrl}:`, error);
+          console.error(`❌ Failed to parse RSS feed ${feed.original_url}:`, error);
           // Continue processing other feeds
         }
       }
