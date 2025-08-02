@@ -55,6 +55,7 @@ async function checkEnvironment() {
 async function showUsage() {
   console.log('\n📖 Usage:');
   console.log('   npm run dev-setup          - Check current environment');
+  console.log('   npm run seed-db            - Seed database with feeds from feeds.json');
   console.log('   npm run dev                - Start local development server');
   console.log('   npm run build              - Build for production');
   console.log('   npm run start              - Start production server');
@@ -67,10 +68,11 @@ console.log('   BUNNY_CDN_HOSTNAME=re-podtards-cdn.b-cdn.net');
   console.log('   BUNNY_STORAGE_ZONE=re-podtards-storage');
   
   console.log('\n🚀 Workflow:');
-  console.log('   1. Local development: npm run dev (uses original URLs)');
-  console.log('   2. Test changes locally');
-  console.log('   3. Deploy to production: vercel --prod (uses CDN URLs)');
-  console.log('   4. Production site: re.podtards.com (served from CDN)');
+  console.log('   1. Seed database: npm run seed-db (loads feeds from feeds.json)');
+  console.log('   2. Local development: npm run dev (uses original URLs)');
+  console.log('   3. Test changes locally');
+  console.log('   4. Deploy to production: vercel --prod (uses CDN URLs)');
+  console.log('   5. Production site: re.podtards.com (served from CDN)');
 }
 
 async function main() {

@@ -1,4 +1,6 @@
 import { sql } from '@vercel/postgres';
+import fs from 'fs/promises';
+import path from 'path';
 
 export interface DBFeed {
   id: string;
@@ -11,7 +13,58 @@ export interface DBFeed {
   last_updated: Date;
 }
 
-export async function initializeDatabase() {
+export async function seedDatabase() {
+  try {
+    console.log('🌱 Seeding database with feeds from feeds.json...');
+    
+    // Read feeds.json file
+    const feedsPath = path.join(process.cwd(), 'data', 'feeds.json');
+    const feedsData = await fs.readFile(feedsPath, 'utf8');
+    const { feeds } = JSON.parse(feedsData);
+    
+    let seededCount = 0;
+    
+    for (const feed of feeds) {
+      try {
+        // Check if feed already exists
+        const existing = await sql`
+          SELECT id FROM feeds WHERE id = ${feed.id}
+        `;
+        
+        if (existing.rows.length === 0) {
+          // Insert new feed
+          await sql`
+            INSERT INTO feeds (id, original_url, type, title, priority, status, added_at, last_updated)
+            VALUES (
+              ${feed.id}, 
+              ${feed.originalUrl}, 
+              ${feed.type}, 
+              ${feed.title}, 
+              ${feed.priority}, 
+              ${feed.status},
+              ${new Date(feed.addedAt)},
+              ${new Date(feed.lastUpdated)}
+            )
+          `;
+          seededCount++;
+          console.log(`✅ Seeded feed: ${feed.title}`);
+        } else {
+          console.log(`⏭️  Feed already exists: ${feed.title}`);
+        }
+      } catch (error) {
+        console.error(`❌ Failed to seed feed ${feed.title}:`, error);
+      }
+    }
+    
+    console.log(`✅ Database seeding complete. ${seededCount} new feeds added.`);
+    return seededCount;
+  } catch (error) {
+    console.error('❌ Failed to seed database:', error);
+    throw error;
+  }
+}
+
+export async function initializeDatabase(shouldSeed = true) {
   try {
     console.log('🔧 Initializing database...');
     
@@ -40,6 +93,11 @@ export async function initializeDatabase() {
       CREATE INDEX IF NOT EXISTS idx_feeds_priority ON feeds(priority);
     `;
     console.log('✅ Priority index created/verified');
+
+    // Seed database if requested
+    if (shouldSeed) {
+      await seedDatabase();
+    }
 
     console.log('✅ Database initialized successfully');
     return true;
