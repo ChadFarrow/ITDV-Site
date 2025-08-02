@@ -189,143 +189,119 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         </div>
       </header>
 
-      {/* Album Info Section */}
-      <div className="container mx-auto px-4 py-8">
-        <div className="bg-black/30 backdrop-blur-sm rounded-xl p-8 border border-white/10 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Album Cover */}
-          <div className="md:col-span-1">
-            <div className="aspect-square relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
+      {/* Album Info Section - Centered FUCKIT Style */}
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="text-center mb-8">
+          {/* Album Cover - Centered and Larger */}
+          <div className="inline-block mb-6">
+            <div className="w-80 h-80 relative overflow-hidden rounded-lg border border-white/20 shadow-2xl mx-auto">
               <Image
                 src={album.coverArt}
                 alt={album.title}
                 fill
                 className="object-cover"
                 priority
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="320px"
               />
             </div>
           </div>
 
-          {/* Album Details */}
-          <div className="md:col-span-2 flex flex-col justify-between">
-            <div>
-              <h1 className="text-4xl font-bold mb-2">{album.title}</h1>
-              <p className="text-xl text-gray-400 mb-4">{album.artist}</p>
-              
-              <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                <span>{getReleaseYear()}</span>
-                <span>•</span>
-                <span>{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</span>
+          {/* Album Details - Centered */}
+          <div className="mb-6">
+            <h1 className="text-4xl font-bold mb-2 text-white">{album.title}</h1>
+            <p className="text-xl text-gray-300 mb-4">{album.artist}</p>
+            
+            <div className="flex items-center justify-center gap-4 text-sm text-gray-400 mb-6">
+              <span>{getReleaseYear()}</span>
+              <span>•</span>
+              <span>{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</span>
+            </div>
+
+            {album.description && (
+              <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-white/10 max-w-2xl mx-auto mb-6">
+                <p className="text-gray-300 text-sm leading-relaxed">{album.description}</p>
               </div>
+            )}
+          </div>
 
-              {album.description && (
-                <p className="text-gray-300 mb-6 max-w-2xl">{album.description}</p>
-              )}
-            </div>
+          {/* Play Controls - Centered */}
+          <div className="flex items-center justify-center gap-4 mb-8">
+            <button
+              onClick={handlePlayAlbum}
+              className="flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors text-white font-medium"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <span>Play Album</span>
+            </button>
 
-            {/* Play Controls */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={handlePlayAlbum}
-                className="flex items-center gap-2 px-6 py-3 bg-blue-600/80 hover:bg-blue-600 backdrop-blur-sm rounded-full transition-colors border border-blue-500/30"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-                <span className="font-medium">Play Album</span>
-              </button>
-
-              <button
-                onClick={() => {/* TODO: Implement shuffle */}}
-                className="p-3 bg-black/30 border border-white/20 hover:border-white/40 hover:bg-black/50 backdrop-blur-sm rounded-full transition-colors"
-                title="Shuffle play"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-              </button>
-            </div>
+            <button
+              onClick={() => {/* TODO: Implement shuffle */}}
+              className="p-3 bg-black/40 border border-white/20 hover:border-white/40 hover:bg-black/60 rounded-full transition-colors"
+              title="Shuffle play"
+            >
+              <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+              </svg>
+            </button>
           </div>
         </div>
-        </div>
+      </div>
 
-        {/* Podroll and Funding Sections */}
+        {/* Podroll and Funding Sections - More Compact */}
         {(album.podroll && album.podroll.length > 0) || (album.funding && album.funding.length > 0) ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {/* Podroll Section */}
+          <div className="container mx-auto px-4 max-w-4xl mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Podroll Section - Compact */}
             {album.podroll && album.podroll.length > 0 && (
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                   </svg>
-                  <h3 className="text-lg font-semibold text-white">Related Shows</h3>
+                  <h3 className="text-sm font-semibold text-white">Related Shows</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {album.podroll.map((podrollItem, index) => (
-                    <div key={index} className="group">
-                      <a
-                        href={podrollItem.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block p-3 bg-black/20 hover:bg-black/40 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200"
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-medium text-white group-hover:text-blue-300 transition-colors">
-                              {podrollItem.title || 'Related Show'}
-                            </h4>
-                            {podrollItem.description && (
-                              <p className="text-xs text-gray-400 mt-1 line-clamp-2">
-                                {podrollItem.description}
-                              </p>
-                            )}
-                          </div>
-                          <svg className="w-4 h-4 text-gray-400 group-hover:text-blue-300 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </div>
-                      </a>
-                    </div>
+                    <a
+                      key={index}
+                      href={podrollItem.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-2 bg-black/30 hover:bg-black/50 rounded border border-white/10 hover:border-blue-400/30 transition-all text-xs group"
+                    >
+                      <div className="text-blue-300 group-hover:text-blue-200 font-medium truncate">
+                        {podrollItem.title || 'Related Show'}
+                      </div>
+                    </a>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Funding Section */}
+            {/* Funding Section - Compact */}
             {album.funding && album.funding.length > 0 && (
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                   </svg>
-                  <h3 className="text-lg font-semibold text-white">Support</h3>
+                  <h3 className="text-sm font-semibold text-white">Support</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   {album.funding.map((fundingItem, index) => (
-                    <div key={index} className="group">
-                      <a
-                        href={fundingItem.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block p-3 bg-black/20 hover:bg-black/40 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200"
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex-1 min-w-0">
-                            <h4 className="text-sm font-medium text-white group-hover:text-green-300 transition-colors">
-                              {fundingItem.message || 'Support this Artist'}
-                            </h4>
-                            <p className="text-xs text-gray-400 mt-1 truncate">
-                              {fundingItem.url}
-                            </p>
-                          </div>
-                          <svg className="w-4 h-4 text-gray-400 group-hover:text-green-300 transition-colors ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                          </svg>
-                        </div>
-                      </a>
-                    </div>
+                    <a
+                      key={index}
+                      href={fundingItem.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block p-2 bg-black/30 hover:bg-black/50 rounded border border-white/10 hover:border-green-400/30 transition-all text-xs group"
+                    >
+                      <div className="text-green-300 group-hover:text-green-200 font-medium">
+                        {fundingItem.message || 'Support this Artist'}
+                      </div>
+                    </a>
                   ))}
                 </div>
               </div>
@@ -333,57 +309,59 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         ) : null}
 
-        {/* Track List */}
-        <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden">
-          <div className="p-4 border-b border-white/10">
-            <h2 className="text-lg font-semibold">Tracks</h2>
-          </div>
-          
-          <div className="divide-y divide-white/5">
-            {album.tracks.map((track, index) => {
-              const isCurrentTrack = currentTrack?.url === track.url;
-              const isCurrentlyPlaying = isTrackPlaying(track);
-              
-              return (
-                <div
-                  key={track.trackNumber}
-                  className={`flex items-center gap-4 p-4 hover:bg-white/5 transition-colors cursor-pointer group ${
-                    isCurrentTrack ? 'bg-white/10' : ''
-                  }`}
-                  onClick={() => handlePlayTrack(track, index)}
-                >
-                  {/* Track Number / Play Button */}
-                  <div className="w-10 text-center">
-                    {isCurrentlyPlaying ? (
-                      <div className="flex items-center justify-center">
-                        <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
-                      </div>
-                    ) : (
-                      <span className="text-gray-500 group-hover:hidden">{track.trackNumber}</span>
-                    )}
-                    <button className="hidden group-hover:block p-1">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                      </svg>
-                    </button>
-                  </div>
+        {/* Track List - FUCKIT Style */}
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 overflow-hidden">
+            <div className="p-4 border-b border-white/10">
+              <h2 className="text-lg font-semibold text-center text-white">Tracks</h2>
+            </div>
+            
+            <div className="p-2">
+              {album.tracks.map((track, index) => {
+                const isCurrentTrack = currentTrack?.url === track.url;
+                const isCurrentlyPlaying = isTrackPlaying(track);
+                
+                return (
+                  <div
+                    key={track.trackNumber}
+                    className={`flex items-center gap-3 p-3 m-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer group ${
+                      isCurrentTrack ? 'bg-white/15' : 'bg-black/20'
+                    }`}
+                    onClick={() => handlePlayTrack(track, index)}
+                  >
+                    {/* Track Number / Play Button */}
+                    <div className="w-8 text-center flex-shrink-0">
+                      {isCurrentlyPlaying ? (
+                        <div className="flex items-center justify-center">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                        </div>
+                      ) : (
+                        <span className="text-gray-400 text-sm group-hover:hidden">{track.trackNumber}</span>
+                      )}
+                      <button className="hidden group-hover:block p-1">
+                        <svg className="w-3 h-3 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </button>
+                    </div>
 
-                  {/* Track Title */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className={`font-medium truncate ${
-                      isCurrentTrack ? 'text-blue-400' : 'text-white'
-                    }`}>
-                      {track.title}
-                    </h3>
-                  </div>
+                    {/* Track Title */}
+                    <div className="flex-1 min-w-0">
+                      <h3 className={`text-sm font-medium truncate ${
+                        isCurrentTrack ? 'text-blue-300' : 'text-gray-200'
+                      }`}>
+                        {track.title}
+                      </h3>
+                    </div>
 
-                  {/* Duration */}
-                  <div className="text-sm text-gray-500">
-                    {formatDuration(track.duration)}
+                    {/* Duration */}
+                    <div className="text-xs text-gray-500 flex-shrink-0">
+                      {formatDuration(track.duration)}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
