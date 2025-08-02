@@ -208,28 +208,18 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
   };
 
   const loadPodrollAlbums = async () => {
-    console.log('🔍 loadPodrollAlbums called, album:', album?.title);
-    console.log('🔍 podroll data:', album?.podroll);
-    
-    if (!album?.podroll || album.podroll.length === 0) {
-      console.log('❌ No podroll data found');
-      return;
-    }
+    if (!album?.podroll || album.podroll.length === 0) return;
     
     try {
       const podrollData: PodrollAlbum[] = [];
       
-      console.log(`🔄 Fetching ${album.podroll.length} podroll items...`);
-      
       // Fetch album data for each podroll feed
       for (const podrollItem of album.podroll) {
         try {
-          console.log(`🔗 Fetching: ${podrollItem.url}`);
           // Try to fetch the feed data
           const response = await fetch(`/api/test-single-feed?url=${encodeURIComponent(podrollItem.url)}`);
           if (response.ok) {
             const data = await response.json();
-            console.log(`✅ Got data for ${podrollItem.url}:`, data.album?.title);
             if (data.album) {
               podrollData.push({
                 title: data.album.title || podrollItem.title || 'Unknown Album',
@@ -238,11 +228,9 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                 url: podrollItem.url
               });
             }
-          } else {
-            console.log(`❌ Failed to fetch ${podrollItem.url}:`, response.status);
           }
         } catch (error) {
-          console.error(`❌ Error fetching podroll album for ${podrollItem.url}:`, error);
+          console.error(`Error fetching podroll album for ${podrollItem.url}:`, error);
           // Fallback to basic podroll data
           podrollData.push({
             title: podrollItem.title || 'Unknown Album',
@@ -253,10 +241,9 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         }
       }
       
-      console.log(`🎉 Setting ${podrollData.length} podroll albums:`, podrollData);
       setPodrollAlbums(podrollData);
     } catch (error) {
-      console.error('❌ Error loading podroll albums:', error);
+      console.error('Error loading podroll albums:', error);
     }
   };
 
@@ -601,53 +588,40 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         )}
 
         {/* Podroll Information - Related Shows */}
-        {(() => {
-          console.log('🎨 Rendering Related Shows section, podrollAlbums:', podrollAlbums);
-          return podrollAlbums.length > 0 ? (
-            <div className="container mx-auto px-4 pb-8">
-              <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-bold mb-6">Related Shows</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {podrollAlbums.map((podrollAlbum, index) => (
-                    <a
-                      key={index}
-                      href={podrollAlbum.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group block"
-                    >
-                      <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
-                        <div className="aspect-square mb-3 rounded overflow-hidden">
-                          <Image
-                            src={podrollAlbum.coverArt}
-                            alt={podrollAlbum.title}
-                            width={200}
-                            height={200}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                          />
-                        </div>
-                        <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
-                          {podrollAlbum.title}
-                        </h3>
-                        <p className="text-xs text-gray-400 truncate">{podrollAlbum.artist}</p>
+        {podrollAlbums.length > 0 && (
+          <div className="container mx-auto px-4 pb-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6">Related Shows</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {podrollAlbums.map((podrollAlbum, index) => (
+                  <a
+                    key={index}
+                    href={podrollAlbum.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block"
+                  >
+                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
+                      <div className="aspect-square mb-3 rounded overflow-hidden">
+                        <Image
+                          src={podrollAlbum.coverArt}
+                          alt={podrollAlbum.title}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
                       </div>
-                    </a>
-                  ))}
-                </div>
+                      <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
+                        {podrollAlbum.title}
+                      </h3>
+                      <p className="text-xs text-gray-400 truncate">{podrollAlbum.artist}</p>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
-          ) : (
-            <div className="container mx-auto px-4 pb-8">
-              <div className="max-w-4xl mx-auto">
-                <div className="bg-yellow-500/20 border border-yellow-500/30 rounded-lg p-4 text-yellow-200">
-                  <p className="text-sm">Debug: Related Shows section not showing</p>
-                  <p className="text-xs text-yellow-300">podrollAlbums length: {podrollAlbums.length}</p>
-                  <p className="text-xs text-yellow-300">album.podroll length: {album?.podroll?.length || 0}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })()}
+          </div>
+        )}
 
 
         {/* Bottom spacing for audio player */}
