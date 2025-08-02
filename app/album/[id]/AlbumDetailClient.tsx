@@ -200,7 +200,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         // Get random albums for "You might also like"
         const otherAlbums = albums.filter((a: Album) => a.title !== album?.title);
         const shuffled = otherAlbums.sort(() => 0.5 - Math.random());
-        setRelatedAlbums(shuffled.slice(0, 4));
+        setRelatedAlbums(shuffled.slice(0, 6)); // Get more to account for potential deduplication
       }
     } catch (error) {
       console.error('Error loading related albums:', error);
@@ -305,6 +305,32 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
       .replace(/^-+|-+$/g, '');
+  };
+
+  // Combine and deduplicate related albums
+  const getCombinedRelatedAlbums = () => {
+    const combined: Array<Album | PodrollAlbum> = [];
+    const seen = new Set<string>();
+    
+    // Add site albums first (they have priority)
+    relatedAlbums.forEach(album => {
+      const key = `${album.title.toLowerCase()}|${album.artist.toLowerCase()}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        combined.push(album);
+      }
+    });
+    
+    // Add podroll albums that aren't duplicates
+    podrollAlbums.forEach(podrollAlbum => {
+      const key = `${podrollAlbum.title.toLowerCase()}|${podrollAlbum.artist.toLowerCase()}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        combined.push(podrollAlbum);
+      }
+    });
+    
+    return combined.slice(0, 8); // Limit to 8 total albums
   };
 
   if (isLoading) {
@@ -553,75 +579,85 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         </div>
 
-        {/* Related Albums */}
-        {relatedAlbums.length > 0 && (
-          <div className="container mx-auto px-4 pb-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6">You Might Also Like</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {relatedAlbums.map((relatedAlbum, index) => (
-                  <Link
-                    key={index}
-                    href={`/album/${getAlbumSlug(relatedAlbum)}`}
-                    className="group block"
-                  >
-                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
-                      <div className="aspect-square mb-3 rounded overflow-hidden">
-                        <Image
-                          src={relatedAlbum.coverArt}
-                          alt={relatedAlbum.title}
-                          width={200}
-                          height={200}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
-                      <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
-                        {relatedAlbum.title}
-                      </h3>
-                      <p className="text-xs text-gray-400 truncate">{relatedAlbum.artist}</p>
-                    </div>
-                  </Link>
-                ))}
+        {/* Related Albums - Combined and Deduplicated */}
+        {(() => {
+          const combinedAlbums = getCombinedRelatedAlbums();
+          return combinedAlbums.length > 0 && (
+            <div className="container mx-auto px-4 pb-8">
+              <div className="max-w-4xl mx-auto">
+                <h2 className="text-2xl font-bold mb-6">Related Albums</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {combinedAlbums.map((relatedItem, index) => {
+                    // Check if this is a site album (has tracks) or podroll album (has url)
+                    const isSiteAlbum = 'tracks' in relatedItem;
+                    const isExternal = !isSiteAlbum;
+                    
+                    if (isSiteAlbum) {
+                      // Site album - use Link for internal navigation
+                      return (
+                        <Link
+                          key={`site-${index}`}
+                          href={`/album/${getAlbumSlug(relatedItem as Album)}`}
+                          className="group block"
+                        >
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
+                            <div className="aspect-square mb-3 rounded overflow-hidden">
+                              <Image
+                                src={relatedItem.coverArt}
+                                alt={relatedItem.title}
+                                width={200}
+                                height={200}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                              />
+                            </div>
+                            <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
+                              {relatedItem.title}
+                            </h3>
+                            <p className="text-xs text-gray-400 truncate">{relatedItem.artist}</p>
+                          </div>
+                        </Link>
+                      );
+                    } else {
+                      // External podroll album - use external link
+                      const podrollItem = relatedItem as PodrollAlbum;
+                      return (
+                        <a
+                          key={`external-${index}`}
+                          href={podrollItem.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group block"
+                        >
+                          <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10 relative">
+                            {/* External link indicator */}
+                            <div className="absolute top-2 right-2 w-4 h-4 bg-blue-500/80 rounded-full flex items-center justify-center">
+                              <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </div>
+                            <div className="aspect-square mb-3 rounded overflow-hidden">
+                              <Image
+                                src={podrollItem.coverArt}
+                                alt={podrollItem.title}
+                                width={200}
+                                height={200}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                              />
+                            </div>
+                            <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
+                              {podrollItem.title}
+                            </h3>
+                            <p className="text-xs text-gray-400 truncate">{podrollItem.artist}</p>
+                          </div>
+                        </a>
+                      );
+                    }
+                  })}
+                </div>
               </div>
             </div>
-          </div>
-        )}
-
-        {/* Podroll Information - Related Shows */}
-        {podrollAlbums.length > 0 && (
-          <div className="container mx-auto px-4 pb-8">
-            <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6">Related Shows</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {podrollAlbums.map((podrollAlbum, index) => (
-                  <a
-                    key={index}
-                    href={podrollAlbum.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block"
-                  >
-                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
-                      <div className="aspect-square mb-3 rounded overflow-hidden">
-                        <Image
-                          src={podrollAlbum.coverArt}
-                          alt={podrollAlbum.title}
-                          width={200}
-                          height={200}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                        />
-                      </div>
-                      <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
-                        {podrollAlbum.title}
-                      </h3>
-                      <p className="text-xs text-gray-400 truncate">{podrollAlbum.artist}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+          );
+        })()}
 
 
         {/* Bottom spacing for audio player */}
