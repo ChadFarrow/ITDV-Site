@@ -100,21 +100,6 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     };
   }, [isRepeating]);
 
-  // Media Session API handlers
-  useEffect(() => {
-    if ('mediaSession' in navigator) {
-      navigator.mediaSession.setActionHandler('play', () => resume());
-      navigator.mediaSession.setActionHandler('pause', () => pause());
-      navigator.mediaSession.setActionHandler('previoustrack', () => previousTrack());
-      navigator.mediaSession.setActionHandler('nexttrack', () => nextTrack());
-      navigator.mediaSession.setActionHandler('seekto', (details) => {
-        if (details.seekTime !== undefined) {
-          seekTo(details.seekTime);
-        }
-      });
-    }
-  }, [resume, pause, previousTrack, nextTrack, seekTo]);
-
   const playTrack = (track: Track, album?: string) => {
     if (!audioRef.current) return;
 
@@ -295,6 +280,21 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const toggleRepeat = () => {
     setIsRepeating(!isRepeating);
   };
+
+  // Media Session API handlers - after all functions are declared
+  useEffect(() => {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.setActionHandler('play', () => resume());
+      navigator.mediaSession.setActionHandler('pause', () => pause());
+      navigator.mediaSession.setActionHandler('previoustrack', () => previousTrack());
+      navigator.mediaSession.setActionHandler('nexttrack', () => nextTrack());
+      navigator.mediaSession.setActionHandler('seekto', (details) => {
+        if (details.seekTime !== undefined) {
+          seekTo(details.seekTime);
+        }
+      });
+    }
+  }, [resume, pause, previousTrack, nextTrack, seekTo]);
 
   const value: AudioContextType = {
     currentTrack,
