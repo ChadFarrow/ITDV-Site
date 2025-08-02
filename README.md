@@ -51,3 +51,4 @@ A music streaming platform for independent artists, built with Next.js and Verce
 - **Audio**: Custom audio context with HLS.js support
 - **Deployment**: Vercel
 # Build verified Sat Aug  2 10:19:26 EDT 2025
+# Force new deployment - Related Shows feature Sat Aug  2 10:22:42 EDT 2025
