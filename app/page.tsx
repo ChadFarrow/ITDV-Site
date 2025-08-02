@@ -412,7 +412,7 @@ export default function HomePage() {
                 </Link>
               </div>
               <div className="text-center">
-                <h1 className="text-xl font-bold mb-1">Project StableKraft</h1>
+                <h1 className="text-xl font-bold mb-1">Into the Doerfel-Verse</h1>
 
                 <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30">
                   Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
@@ -445,7 +445,7 @@ export default function HomePage() {
                   </div>
                 </div>
                 <div className="text-center">
-                  <h1 className="text-3xl font-bold mb-1">Project StableKraft</h1>
+                  <h1 className="text-3xl font-bold mb-1">Into the Doerfel-Verse</h1>
 
                   <div className="text-xs bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full border border-yellow-500/30 inline-block">
                     Beta - if the page isn&apos;t loading try a hard refresh and wait a little for it to load
