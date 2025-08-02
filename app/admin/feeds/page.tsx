@@ -173,12 +173,23 @@ export default function AdminFeedsPage() {
             <h1 className="text-3xl font-bold mb-2">RSS Feed Management</h1>
             <p className="text-gray-400">Manage music feeds for Into the Doerfel-Verse</p>
           </div>
-          <button
-            onClick={logout}
-            className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors"
-          >
-            Logout
-          </button>
+          <div className="flex items-center gap-4">
+            <a
+              href="/admin/discover"
+              className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Discover Podroll
+            </a>
+            <button
+              onClick={logout}
+              className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition-colors"
+            >
+              Logout
+            </button>
+          </div>
         </div>
 
         {/* Add New Feed Form */}

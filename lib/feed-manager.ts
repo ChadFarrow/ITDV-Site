@@ -10,6 +10,8 @@ export interface Feed {
   status: 'active' | 'inactive';
   addedAt: string;
   lastUpdated: string;
+  source?: 'manual' | 'podroll' | 'recursive'; // Track how the feed was discovered
+  discoveredFrom?: string; // URL of the parent feed if discovered via podroll
 }
 
 export interface FeedsData {

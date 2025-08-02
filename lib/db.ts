@@ -11,6 +11,8 @@ export interface DBFeed {
   status: 'active' | 'inactive';
   added_at: Date;
   last_updated: Date;
+  source?: 'manual' | 'podroll' | 'recursive';
+  discovered_from?: string;
 }
 
 export async function seedDatabase() {
@@ -78,7 +80,9 @@ export async function initializeDatabase(shouldSeed = true) {
         priority VARCHAR(20) NOT NULL CHECK (priority IN ('core', 'extended', 'low')),
         status VARCHAR(20) NOT NULL CHECK (status IN ('active', 'inactive')),
         added_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-        last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+        last_updated TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+        source VARCHAR(20) CHECK (source IN ('manual', 'podroll', 'recursive')),
+        discovered_from TEXT
       );
     `;
     console.log('✅ Feeds table created/verified');
@@ -93,6 +97,19 @@ export async function initializeDatabase(shouldSeed = true) {
       CREATE INDEX IF NOT EXISTS idx_feeds_priority ON feeds(priority);
     `;
     console.log('✅ Priority index created/verified');
+
+    // Add new columns if they don't exist (migration)
+    try {
+      await sql`
+        ALTER TABLE feeds ADD COLUMN IF NOT EXISTS source VARCHAR(20) CHECK (source IN ('manual', 'podroll', 'recursive'));
+      `;
+      await sql`
+        ALTER TABLE feeds ADD COLUMN IF NOT EXISTS discovered_from TEXT;
+      `;
+      console.log('✅ Podroll tracking columns added/verified');
+    } catch (error) {
+      console.log('ℹ️  Podroll tracking columns already exist or migration not needed');
+    }
 
     // Seed database if requested
     if (shouldSeed) {
@@ -127,7 +144,16 @@ export async function getAllFeeds(): Promise<DBFeed[]> {
   }
 }
 
-export async function addFeed(url: string, type: 'album' | 'publisher', title?: string): Promise<{ success: boolean; error?: string; feed?: DBFeed }> {
+export async function addFeed(
+  url: string, 
+  type: 'album' | 'publisher', 
+  title?: string,
+  options?: {
+    priority?: 'core' | 'extended' | 'low';
+    source?: 'manual' | 'podroll' | 'recursive';
+    discoveredFrom?: string;
+  }
+): Promise<{ success: boolean; error?: string; feed?: DBFeed }> {
   try {
     // Generate ID from URL - limit length and clean up
     let feedId = url.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
@@ -141,9 +167,14 @@ export async function addFeed(url: string, type: 'album' | 'publisher', title?: 
     // Default title if not provided
     const feedTitle = title || `Feed from ${new URL(url).hostname}`;
     
+    // Default options
+    const priority = options?.priority || 'core';
+    const source = options?.source || 'manual';
+    const discoveredFrom = options?.discoveredFrom;
+    
     const result = await sql`
-      INSERT INTO feeds (id, original_url, type, title, priority, status)
-      VALUES (${feedId}, ${url}, ${type}, ${feedTitle}, 'core', 'active')
+      INSERT INTO feeds (id, original_url, type, title, priority, status, source, discovered_from)
+      VALUES (${feedId}, ${url}, ${type}, ${feedTitle}, ${priority}, 'active', ${source}, ${discoveredFrom})
       RETURNING *
     `;
 

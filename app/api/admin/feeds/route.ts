@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllFeeds, addFeed, removeFeed, initializeDatabase } from '@/lib/db';
+import { discoverPodrollFeeds } from '@/lib/podroll-discovery';
 
 export async function GET() {
   try {
@@ -17,7 +18,9 @@ export async function GET() {
       priority: feed.priority,
       status: feed.status,
       addedAt: feed.added_at.toISOString(),
-      lastUpdated: feed.last_updated.toISOString()
+      lastUpdated: feed.last_updated.toISOString(),
+      source: feed.source,
+      discoveredFrom: feed.discovered_from
     }));
     
     return NextResponse.json({
@@ -41,7 +44,7 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { url, type = 'album', title } = body;
+    const { url, type = 'album', title, discoverPodroll = true } = body;
 
     // Validate inputs
     if (!url) {
@@ -67,10 +70,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Add feed to database
-    const result = await addFeed(url, type, title);
+    // Add feed to database with manual source
+    const result = await addFeed(url, type, title, { 
+      source: 'manual',
+      priority: 'core' 
+    });
     
     if (result.success && result.feed) {
+      let podrollStats = null;
+      
+      // Discover podroll feeds if requested (default true)
+      if (discoverPodroll && type === 'album') {
+        try {
+          console.log(`🔍 Discovering podroll feeds for manually added feed: ${url}`);
+          const discovery = await discoverPodrollFeeds(url, {
+            autoAdd: true,
+            recursive: true,
+            maxDepth: 2,
+            priority: 'extended'
+          });
+          podrollStats = discovery.stats;
+          console.log(`📊 Podroll discovery completed:`, podrollStats);
+        } catch (discoveryError) {
+          console.error('Podroll discovery failed, but main feed was added:', discoveryError);
+          // Don't fail the main request if podroll discovery fails
+        }
+      }
+      
       // Convert DB format to API format
       const apiFeed = {
         id: result.feed.id,
@@ -80,14 +106,23 @@ export async function POST(request: NextRequest) {
         priority: result.feed.priority,
         status: result.feed.status,
         addedAt: result.feed.added_at.toISOString(),
-        lastUpdated: result.feed.last_updated.toISOString()
+        lastUpdated: result.feed.last_updated.toISOString(),
+        source: result.feed.source,
+        discoveredFrom: result.feed.discovered_from
       };
       
-      return NextResponse.json({
+      const response: any = {
         success: true,
         feed: apiFeed,
         message: 'Feed added successfully'
-      });
+      };
+      
+      if (podrollStats) {
+        response.podrollDiscovery = podrollStats;
+        response.message += `. Discovered ${podrollStats.added} additional podroll feeds.`;
+      }
+      
+      return NextResponse.json(response);
     } else {
       return NextResponse.json(
         { success: false, error: result.error || 'Failed to add feed' },
