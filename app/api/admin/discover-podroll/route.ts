@@ -16,6 +16,8 @@ interface DiscoveredFeed {
   trackCount: number;
   podrollCount: number;
   alreadyExists: boolean;
+  source: 'podroll' | 'recursive';
+  discoveredFrom: string;
   error?: string;
 }
 
@@ -85,6 +87,8 @@ export async function POST(request: NextRequest) {
             trackCount: 0,
             podrollCount: 0,
             alreadyExists: existingUrls.has(normalizedUrl),
+            source: currentDepth === 1 ? 'podroll' : 'recursive',
+            discoveredFrom,
             error: 'Failed to parse feed'
           });
           continue;
@@ -97,7 +101,9 @@ export async function POST(request: NextRequest) {
           hasAlbum: true,
           trackCount: albumData.tracks?.length || 0,
           podrollCount: albumData.podroll?.length || 0,
-          alreadyExists: existingUrls.has(normalizedUrl)
+          alreadyExists: existingUrls.has(normalizedUrl),
+          source: currentDepth === 1 ? 'podroll' : 'recursive',
+          discoveredFrom
         };
 
         discovered.push(feedInfo);
@@ -124,6 +130,8 @@ export async function POST(request: NextRequest) {
           trackCount: 0,
           podrollCount: 0,
           alreadyExists: existingUrls.has(normalizedUrl),
+          source: currentDepth === 1 ? 'podroll' : 'recursive',
+          discoveredFrom,
           error: error instanceof Error ? error.message : 'Unknown error'
         });
       }
@@ -144,8 +152,8 @@ export async function POST(request: NextRequest) {
               title: `${feed.title} by ${feed.artist}`,
               priority: 'extended', // New podroll feeds get extended priority
               status: 'active',
-              source: currentDepth > 0 ? 'recursive' : 'podroll',
-              discoveredFrom: currentDepth > 0 ? url : undefined
+              source: feed.source,
+              discoveredFrom: feed.discoveredFrom
             });
             added.push(feed.url);
             console.log(`✅ Added feed: ${feed.title} by ${feed.artist}`);
