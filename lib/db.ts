@@ -105,23 +105,40 @@ export async function addFeed(url: string, type: 'album' | 'publisher', title?: 
 
 export async function removeFeed(feedId: string): Promise<{ success: boolean; error?: string }> {
   try {
+    console.log(`🗑️ Attempting to remove feed: ${feedId}`);
+    
     const result = await sql`
       DELETE FROM feeds WHERE id = ${feedId}
     `;
     
+    console.log(`📊 Delete result - Row count: ${result.rowCount}`);
+    
     if (result.rowCount && result.rowCount > 0) {
+      console.log(`✅ Successfully removed feed: ${feedId}`);
       return { success: true };
     }
     
+    console.log(`❌ Feed not found: ${feedId}`);
     return { success: false, error: 'Feed not found' };
   } catch (error) {
-    console.error('Failed to remove feed:', error);
+    console.error('❌ Failed to remove feed:', error);
     return { success: false, error: 'Database error occurred' };
   }
 }
 
 export async function seedDefaultFeeds(): Promise<void> {
   try {
+    // Only seed if the table is completely empty
+    const existingFeeds = await sql`SELECT COUNT(*) as count FROM feeds`;
+    const feedCount = parseInt(existingFeeds.rows[0]?.count || '0');
+    
+    if (feedCount > 0) {
+      console.log(`📊 Database already has ${feedCount} feeds, skipping seeding`);
+      return;
+    }
+
+    console.log('🌱 Seeding default feeds for first-time setup...');
+    
     const defaultFeeds = [
       {
         id: 'www-doerfelverse-com-feeds-bloodshot-lies-album-xml',
@@ -147,12 +164,11 @@ export async function seedDefaultFeeds(): Promise<void> {
       await sql`
         INSERT INTO feeds (id, original_url, type, title, priority, status)
         VALUES (${feed.id}, ${feed.url}, ${feed.type}, ${feed.title}, 'core', 'active')
-        ON CONFLICT (id) DO NOTHING
       `;
     }
 
-    console.log('Default feeds seeded successfully');
+    console.log('✅ Default feeds seeded successfully');
   } catch (error) {
-    console.error('Failed to seed default feeds:', error);
+    console.error('❌ Failed to seed default feeds:', error);
   }
 }
