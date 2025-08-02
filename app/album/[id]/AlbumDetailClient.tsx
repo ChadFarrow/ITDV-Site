@@ -112,6 +112,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         preloadBackgroundImage(initialAlbum);
       }
       loadRelatedAlbums();
+      loadPodrollAlbums();
     }
   }, [albumTitle, initialAlbum, isDesktop]);
 
