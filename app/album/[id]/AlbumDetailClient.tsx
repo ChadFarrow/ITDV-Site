@@ -139,9 +139,23 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="border-b border-white/10 backdrop-blur-sm bg-black/50 sticky top-0 z-40">
+    <div className="min-h-screen text-white relative overflow-hidden">
+      {/* Album Art Background */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src={album.coverArt}
+          alt={`${album.title} background`}
+          fill
+          className="object-cover w-full h-full opacity-15"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/60"></div>
+      </div>
+
+      {/* Content overlay */}
+      <div className="relative z-10">
+        {/* Header */}
+        <header className="border-b backdrop-blur-sm bg-black/30 sticky top-0 z-40" style={{ borderColor: 'rgba(255, 255, 255, 0.1)' }}>
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <button
@@ -164,7 +178,8 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
 
       {/* Album Info Section */}
       <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="bg-black/30 backdrop-blur-sm rounded-xl p-8 border border-white/10 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Album Cover */}
           <div className="md:col-span-1">
             <div className="aspect-square relative overflow-hidden rounded-xl border border-white/10 shadow-2xl">
@@ -200,7 +215,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
             <div className="flex items-center gap-4">
               <button
                 onClick={handlePlayAlbum}
-                className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors"
+                className="flex items-center gap-2 px-6 py-3 bg-blue-600/80 hover:bg-blue-600 backdrop-blur-sm rounded-full transition-colors border border-blue-500/30"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z"/>
@@ -210,7 +225,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
 
               <button
                 onClick={() => {/* TODO: Implement shuffle */}}
-                className="p-3 border border-white/20 hover:border-white/40 rounded-full transition-colors"
+                className="p-3 bg-black/30 border border-white/20 hover:border-white/40 hover:bg-black/50 backdrop-blur-sm rounded-full transition-colors"
                 title="Shuffle play"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -220,9 +235,10 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
             </div>
           </div>
         </div>
+        </div>
 
         {/* Track List */}
-        <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
+        <div className="bg-black/30 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden">
           <div className="p-4 border-b border-white/10">
             <h2 className="text-lg font-semibold">Tracks</h2>
           </div>
@@ -278,6 +294,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
 
       {/* Add padding at bottom for now playing bar */}
       <div className="h-24" />
+      </div>
     </div>
   );
 }
