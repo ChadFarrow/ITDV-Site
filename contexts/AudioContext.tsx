@@ -91,6 +91,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     audio.addEventListener('ended', handleEnded);
     audio.addEventListener('loadstart', handleLoadStart);
 
+
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('durationchange', handleDurationChange);
@@ -98,6 +99,21 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       audio.removeEventListener('loadstart', handleLoadStart);
     };
   }, [isRepeating]);
+
+  // Media Session API handlers
+  useEffect(() => {
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.setActionHandler('play', () => resume());
+      navigator.mediaSession.setActionHandler('pause', () => pause());
+      navigator.mediaSession.setActionHandler('previoustrack', () => previousTrack());
+      navigator.mediaSession.setActionHandler('nexttrack', () => nextTrack());
+      navigator.mediaSession.setActionHandler('seekto', (details) => {
+        if (details.seekTime !== undefined) {
+          seekTo(details.seekTime);
+        }
+      });
+    }
+  }, []);
 
   const playTrack = (track: Track, album?: string) => {
     if (!audioRef.current) return;
@@ -111,6 +127,18 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     audioRef.current.load();
     audioRef.current.play();
     setIsPlaying(true);
+
+    // Update Media Session API
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: track.artist || 'Unknown Artist',
+        album: album || undefined,
+        artwork: track.image ? [
+          { src: track.image, sizes: '512x512', type: 'image/png' }
+        ] : []
+      });
+    }
   };
 
   const playAlbum = (tracks: Track[], startIndex = 0, album?: string) => {
@@ -126,6 +154,18 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     audioRef.current.load();
     audioRef.current.play();
     setIsPlaying(true);
+
+    // Update Media Session API
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: track.title,
+        artist: track.artist || 'Unknown Artist',
+        album: album || undefined,
+        artwork: track.image ? [
+          { src: track.image, sizes: '512x512', type: 'image/png' }
+        ] : []
+      });
+    }
   };
 
   const pause = () => {
@@ -154,9 +194,18 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const nextTrack = () => {
     if (playlist.length === 0) return;
 
-    let nextIndex = currentTrackIndex + 1;
-    if (nextIndex >= playlist.length) {
-      nextIndex = 0; // Loop back to start
+    let nextIndex: number;
+    
+    if (isShuffling && playlist.length > 1) {
+      // Get random track that's not the current one
+      do {
+        nextIndex = Math.floor(Math.random() * playlist.length);
+      } while (nextIndex === currentTrackIndex);
+    } else {
+      nextIndex = currentTrackIndex + 1;
+      if (nextIndex >= playlist.length) {
+        nextIndex = 0; // Loop back to start
+      }
     }
 
     const nextTrack = playlist[nextIndex];
@@ -169,6 +218,18 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       if (isPlaying) {
         audioRef.current.play();
       }
+    }
+
+    // Update Media Session API
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: nextTrack.title,
+        artist: nextTrack.artist || 'Unknown Artist',
+        album: nextTrack.album || currentAlbum || undefined,
+        artwork: nextTrack.image ? [
+          { src: nextTrack.image, sizes: '512x512', type: 'image/png' }
+        ] : []
+      });
     }
   };
 
@@ -190,6 +251,18 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       if (isPlaying) {
         audioRef.current.play();
       }
+    }
+
+    // Update Media Session API
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: prevTrack.title,
+        artist: prevTrack.artist || 'Unknown Artist',
+        album: prevTrack.album || currentAlbum || undefined,
+        artwork: prevTrack.image ? [
+          { src: prevTrack.image, sizes: '512x512', type: 'image/png' }
+        ] : []
+      });
     }
   };
 
@@ -217,7 +290,6 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const toggleShuffle = () => {
     setIsShuffling(!isShuffling);
-    // TODO: Implement shuffle logic
   };
 
   const toggleRepeat = () => {

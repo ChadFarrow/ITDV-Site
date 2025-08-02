@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import AlbumSkeleton from '@/components/AlbumSkeleton';
 import { getVersionString } from '@/lib/version';
 import { useAudio } from '@/contexts/AudioContext';
 
@@ -109,7 +110,8 @@ export default function HomePage() {
     setFilteredAlbums(getFilteredAlbums());
   }, [albums, activeFilter]);
 
-  const handlePlayAlbum = (album: Album) => {
+  const handlePlayAlbum = (album: Album, e?: React.MouseEvent) => {
+    e?.stopPropagation();
     // Convert album tracks to audio context format
     const audioTracks = album.tracks.map(track => ({
       ...track,
@@ -119,6 +121,12 @@ export default function HomePage() {
     }));
     
     playAlbum(audioTracks, 0, album.title);
+  };
+
+  const getAlbumUrl = (album: Album) => {
+    // Create URL-friendly slug from album title
+    const slug = album.title.toLowerCase().replace(/\s+/g, '-');
+    return `/album/${encodeURIComponent(slug)}`;
   };
 
   const handlePlayTrack = (track: Track, album: Album) => {
@@ -306,12 +314,22 @@ export default function HomePage() {
         {/* Main Content */}
         <div className="container mx-auto px-3 sm:px-6 py-6 sm:py-8 pb-28">
           {isLoading ? (
-            <div className="flex flex-col items-center justify-center py-12 gap-4">
-              <LoadingSpinner 
-                size="large"
-                text="Loading albums..."
-                showProgress={false}
-              />
+            <div className="max-w-7xl mx-auto">
+              {/* Filter skeleton */}
+              <div className="mb-6 flex flex-wrap items-center justify-between gap-4 animate-pulse">
+                <div className="flex items-center gap-2">
+                  {Array.from({ length: 4 }, (_, i) => (
+                    <div key={i} className="h-8 bg-gray-600 rounded-lg w-20"></div>
+                  ))}
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-8 bg-gray-600 rounded-lg"></div>
+                  <div className="h-8 w-8 bg-gray-600 rounded-lg"></div>
+                </div>
+              </div>
+              
+              {/* Album skeleton */}
+              <AlbumSkeleton count={12} viewMode={viewMode} />
             </div>
           ) : error ? (
             <div className="text-center py-12">
@@ -407,42 +425,48 @@ export default function HomePage() {
               {viewMode === 'grid' ? (
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
                   {filteredAlbums.map((album, index) => (
-                    <div 
-                      key={album.feedId || index}
-                      className="group cursor-pointer"
-                      onClick={() => handlePlayAlbum(album)}
-                    >
-                      <div className="aspect-square relative overflow-hidden rounded-lg border border-white/10 hover:border-white/30 transition-all duration-200 group-hover:scale-105">
-                        <Image
-                          src={album.coverArt}
-                          alt={album.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, (max-width: 1536px) 16vw, 14vw"
-                        />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200" />
-                        
-                        {/* Album info overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                          <p className="text-xs text-white font-medium">{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</p>
-                          {getReleaseYear(album.releaseDate) && (
-                            <p className="text-xs text-gray-300">{getReleaseYear(album.releaseDate)}</p>
-                          )}
-                        </div>
-                        
-                        {/* Play button overlay */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                          <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                            <svg className="w-5 h-5 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M8 5v14l11-7z"/>
-                            </svg>
+                    <div key={album.feedId || index} className="group">
+                      <Link 
+                        href={getAlbumUrl(album)}
+                        className="block cursor-pointer"
+                      >
+                        <div className="aspect-square relative overflow-hidden rounded-lg border border-white/10 hover:border-white/30 transition-all duration-200 group-hover:scale-105">
+                          <Image
+                            src={album.coverArt}
+                            alt={album.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, (max-width: 1536px) 16vw, 14vw"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200" />
+                          
+                          {/* Album info overlay */}
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <p className="text-xs text-white font-medium">{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</p>
+                            {getReleaseYear(album.releaseDate) && (
+                              <p className="text-xs text-gray-300">{getReleaseYear(album.releaseDate)}</p>
+                            )}
+                          </div>
+                          
+                          {/* Play button overlay */}
+                          <div 
+                            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                            onClick={(e) => handlePlayAlbum(album, e)}
+                          >
+                            <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors hover:scale-110">
+                              <svg className="w-5 h-5 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                              </svg>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                       
                       {/* Album info */}
                       <div className="mt-2 px-1">
-                        <h3 className="text-sm font-semibold text-white truncate">{album.title}</h3>
+                        <Link href={getAlbumUrl(album)} className="block hover:underline">
+                          <h3 className="text-sm font-semibold text-white truncate">{album.title}</h3>
+                        </Link>
                         <p className="text-xs text-gray-400 truncate">{album.artist}</p>
                       </div>
                     </div>

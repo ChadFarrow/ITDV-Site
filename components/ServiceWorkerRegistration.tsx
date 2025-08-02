@@ -7,11 +7,6 @@ export default function ServiceWorkerRegistration() {
   const [newVersion, setNewVersion] = useState('');
 
   useEffect(() => {
-    // Temporarily disable Service Worker registration to fix API issues
-    console.log('🚫 Service Worker registration temporarily disabled to fix API issues');
-    
-    // TODO: Re-enable service worker when API issues are resolved
-    /*
     if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
       let registration: ServiceWorkerRegistration;
 
@@ -132,7 +127,6 @@ export default function ServiceWorkerRegistration() {
         });
       });
     }
-    */
   }, []); // Remove updateReady from dependencies to prevent infinite loop
 
   const handleUpdate = () => {

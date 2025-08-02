@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration'
+import PWAInstallPrompt from '@/components/PWAInstallPrompt'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import ClientErrorBoundary from '@/components/ClientErrorBoundary'
 import { ToastContainer } from '@/components/Toast'
@@ -109,6 +110,7 @@ export default function RootLayout({
             </AudioProvider>
           </ErrorBoundary>
           <ServiceWorkerRegistration />
+          <PWAInstallPrompt />
           <PerformanceMonitor />
         </ClientErrorBoundary>
       </body>
