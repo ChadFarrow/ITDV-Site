@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { RSSParser } from '@/lib/rss-parser';
-import { FeedManager } from '@/lib/feed-manager';
+import { getAllFeeds, addFeed } from '@/lib/db';
 
 interface PodrollItem {
   url: string;
@@ -48,7 +48,8 @@ function generateFeedId(url: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const { url, recursive = true, depth = 2 } = await request.json();
+    const body = await request.json();
+    const { url, recursive = true, depth = 2, autoAdd = false } = body;
 
     if (!url) {
       return NextResponse.json({ error: 'URL is required' }, { status: 400 });
@@ -59,9 +60,9 @@ export async function POST(request: NextRequest) {
     const queue: { url: string; currentDepth: number; discoveredFrom: string }[] = [{ url, currentDepth: 0, discoveredFrom: url }];
 
     // Get existing feeds for comparison
-    const existingFeeds = FeedManager.getActiveFeeds();
+    const existingFeeds = await getAllFeeds();
     const existingUrls = new Set(
-      existingFeeds.map(f => normalizeUrl(f.originalUrl))
+      existingFeeds.map(f => normalizeUrl(f.original_url))
     );
 
     while (queue.length > 0) {
@@ -139,25 +140,29 @@ export async function POST(request: NextRequest) {
     }
 
     // Automatically add new feeds if requested
-    const { autoAdd = false } = await request.json();
     const added: string[] = [];
 
     if (autoAdd) {
       for (const feed of discovered) {
         if (!feed.alreadyExists && feed.hasAlbum && !feed.error) {
           try {
-            FeedManager.addFeed({
-              id: generateFeedId(feed.url),
-              originalUrl: feed.url,
-              type: 'album',
-              title: `${feed.title} by ${feed.artist}`,
-              priority: 'extended', // New podroll feeds get extended priority
-              status: 'active',
-              source: feed.source,
-              discoveredFrom: feed.discoveredFrom
-            });
-            added.push(feed.url);
-            console.log(`✅ Added feed: ${feed.title} by ${feed.artist}`);
+            const result = await addFeed(
+              feed.url,
+              'album',
+              `${feed.title} by ${feed.artist}`,
+              {
+                priority: 'extended',
+                source: feed.source,
+                discoveredFrom: feed.discoveredFrom
+              }
+            );
+            
+            if (result.success) {
+              added.push(feed.url);
+              console.log(`✅ Added feed: ${feed.title} by ${feed.artist}`);
+            } else {
+              console.error(`Failed to add feed ${feed.url}: ${result.error}`);
+            }
           } catch (error) {
             console.error(`Failed to add feed ${feed.url}:`, error);
           }
