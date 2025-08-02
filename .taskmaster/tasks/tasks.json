@@ -579,7 +579,7 @@
         "description": "Add The Doerfels content, pages, and functionality to the ITDV site",
         "details": "Add comprehensive Doerfels content to the site including:\n- Create dedicated artist page for The Doerfels\n- Integrate Doerfels music content (albums, tracks, metadata)\n- Add artist bio, images, and promotional materials\n- Ensure proper navigation and linking to Doerfels content\n- Implement Doerfels branding and visual elements\n- Add Doerfels discography and album artwork\n- Create Doerfels-specific sections and features\n- Maintain consistency with existing site design and functionality\n- Optimize for mobile and desktop viewing\n- Include social media links and contact information",
         "testStrategy": "- Verify all Doerfels content displays properly\n- Test navigation to and from Doerfels pages\n- Confirm artist page loads correctly on all devices\n- Validate music content integration and playback\n- Check that branding and images render correctly\n- Test responsive design on mobile and desktop\n- Verify all links and navigation work properly",
-        "status": "pending",
+        "status": "done",
         "dependencies": [],
         "priority": "high",
         "subtasks": []
@@ -637,6 +637,17 @@
         "status": "done",
         "dependencies": [],
         "priority": "medium",
+        "subtasks": []
+      },
+      {
+        "id": 62,
+        "title": "Implement Related Shows (podroll) as Album Cards",
+        "description": "Move Related Shows from top to bottom of album pages and display as album cards with cover art",
+        "details": "Successfully implemented Related Shows (podroll) display as album cards at bottom of album pages:\n- Moved Related Shows section from top to bottom of album pages\n- Created PodrollAlbum interface for proper album data structure\n- Added loadPodrollAlbums function to fetch detailed album data for each podroll item\n- Updated test-single-feed API to accept URL parameter and return cover art\n- Replaced generic Feed buttons with album cards showing cover art and titles\n- Display Related Shows in grid layout matching 'You Might Also Like' section\n- Each podroll item now shows as a proper album card with artwork and metadata\n- Bloodshot Lies album now displays 6 related shows: Music From The Doerfel-Verse, Ben Doerfel, Think EP, Into The Doerfel-Verse, Kurtis Drums, Nostalgic\n- Matches the Think EP style display on the main site",
+        "testStrategy": "- Verify Related Shows appear at bottom of album pages\n- Test that each podroll item displays as album card with cover art\n- Confirm navigation to podroll items works correctly\n- Check responsive design on mobile and desktop\n- Validate API calls to test-single-feed endpoint\n- Ensure consistent styling with other album card sections",
+        "status": "done",
+        "dependencies": [],
+        "priority": "high",
         "subtasks": []
       }
     ],
