@@ -6,16 +6,54 @@ import Link from 'next/link';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { getVersionString } from '@/lib/version';
 
+interface Track {
+  title: string;
+  duration: string;
+  url: string;
+  trackNumber: number;
+  image?: string;
+}
+
+interface Album {
+  title: string;
+  artist: string;
+  description: string;
+  coverArt: string;
+  tracks: Track[];
+  releaseDate: string;
+  feedId: string;
+}
+
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [albums, setAlbums] = useState<Album[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-    setIsLoading(false);
+    loadAlbums();
   }, []);
+
+  const loadAlbums = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/albums');
+      if (response.ok) {
+        const data = await response.json();
+        setAlbums(data.albums || []);
+        setError(null);
+      } else {
+        setError('Failed to load albums');
+      }
+    } catch (err) {
+      setError('Failed to load albums');
+      console.error('Error loading albums:', err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen text-white relative overflow-hidden">
@@ -194,68 +232,89 @@ export default function HomePage() {
             <div className="flex flex-col items-center justify-center py-12 gap-4">
               <LoadingSpinner 
                 size="large"
-                text="Loading site..."
+                text="Loading albums..."
                 showProgress={false}
               />
             </div>
           ) : error ? (
             <div className="text-center py-12">
-              <h2 className="text-2xl font-semibold mb-4 text-red-400">Error Loading Site</h2>
-              <p className="text-gray-400">{error}</p>
-            </div>
-          ) : (
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="bg-black/30 backdrop-blur-sm rounded-xl p-8 border border-white/10">
-                <h2 className="text-3xl font-bold mb-6">Welcome to Into the Doerfel-Verse</h2>
-                <p className="text-gray-300 text-lg mb-8">
-                  A music streaming platform for The Doerfels and family. 
-                  The admin interface is now available for band members to manage RSS feeds.
-                </p>
-                
-                <div className="grid gap-6 md:grid-cols-2">
-                  <Link 
-                    href="/admin/feeds"
-                    className="group p-6 bg-blue-600/20 border border-blue-500/30 rounded-xl hover:bg-blue-600/30 transition-all"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                      <h3 className="text-xl font-semibold text-blue-300 group-hover:text-blue-200">Admin Panel</h3>
-                    </div>
-                    <p className="text-gray-400 group-hover:text-gray-300">
-                      Manage RSS feeds for music content. Password-protected access for band members.
-                    </p>
-                  </Link>
-                  
-                  <Link 
-                    href="/about"
-                    className="group p-6 bg-purple-600/20 border border-purple-500/30 rounded-xl hover:bg-purple-600/30 transition-all"
-                  >
-                    <div className="flex items-center gap-3 mb-3">
-                      <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <h3 className="text-xl font-semibold text-purple-300 group-hover:text-purple-200">About</h3>
-                    </div>
-                    <p className="text-gray-400 group-hover:text-gray-300">
-                      Learn more about this site and how to support The Doerfels.
-                    </p>
-                  </Link>
-                </div>
-                
-                <div className="mt-8 p-4 bg-green-600/20 border border-green-500/30 rounded-lg">
-                  <div className="flex items-center gap-3 mb-2">
-                    <svg className="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h4 className="text-lg font-semibold text-green-300">Site Status: Ready</h4>
-                  </div>
-                  <p className="text-green-200 text-sm">
-                    Admin interface is functioning and ready for RSS feed management.
+              <h2 className="text-2xl font-semibold mb-4 text-red-400">Error Loading Albums</h2>
+              <p className="text-gray-400 mb-6">{error}</p>
+              <div className="max-w-md mx-auto">
+                <div className="bg-yellow-600/20 border border-yellow-500/30 rounded-lg p-4 mb-4">
+                  <p className="text-yellow-200 text-sm">
+                    No RSS feeds configured yet. Use the admin panel to add music feeds.
                   </p>
                 </div>
+                <Link 
+                  href="/admin/feeds"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Go to Admin Panel
+                </Link>
+              </div>
+            </div>
+          ) : albums.length === 0 ? (
+            <div className="text-center py-12">
+              <h2 className="text-2xl font-semibold mb-4">No Albums Yet</h2>
+              <p className="text-gray-400 mb-6">Add RSS feeds to display albums here.</p>
+              <Link 
+                href="/admin/feeds"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
+                Add Your First RSS Feed
+              </Link>
+            </div>
+          ) : (
+            <div className="max-w-7xl mx-auto">
+              {/* Album Grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-4">
+                {albums.map((album, index) => (
+                  <div 
+                    key={album.feedId || index}
+                    className="group cursor-pointer"
+                  >
+                    <div className="aspect-square relative overflow-hidden rounded-lg border border-white/10 hover:border-white/30 transition-all duration-200 group-hover:scale-105">
+                      <Image
+                        src={album.coverArt}
+                        alt={album.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, (max-width: 1536px) 16vw, 14vw"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-200" />
+                      
+                      {/* Play button overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center">
+                          <svg className="w-5 h-5 text-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Album info */}
+                    <div className="mt-2 px-1">
+                      <h3 className="text-sm font-semibold text-white truncate">{album.title}</h3>
+                      <p className="text-xs text-gray-400 truncate">{album.artist}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Album count info */}
+              <div className="mt-8 text-center">
+                <p className="text-gray-400 text-sm">
+                  {albums.length} album{albums.length !== 1 ? 's' : ''} available
+                </p>
               </div>
             </div>
           )}
