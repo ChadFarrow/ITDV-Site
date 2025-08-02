@@ -189,118 +189,94 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         </div>
       </header>
 
-      {/* Album Info Section - Centered FUCKIT Style */}
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="text-center mb-8">
-          {/* Album Cover - Centered and Larger */}
-          <div className="inline-block mb-6">
-            <div className="w-80 h-80 relative overflow-hidden rounded-lg border border-white/20 shadow-2xl mx-auto">
+      {/* Album Info Section - Original FUCKIT Style */}
+      <div className="container mx-auto px-4 py-6 max-w-3xl">
+        <div className="text-center mb-6">
+          {/* Album Cover - Smaller, like original */}
+          <div className="inline-block mb-4">
+            <div className="w-64 h-64 relative overflow-hidden rounded-lg shadow-2xl mx-auto">
               <Image
                 src={album.coverArt}
                 alt={album.title}
                 fill
                 className="object-cover"
                 priority
-                sizes="320px"
+                sizes="256px"
               />
             </div>
           </div>
 
-          {/* Album Details - Centered */}
-          <div className="mb-6">
-            <h1 className="text-4xl font-bold mb-2 text-white">{album.title}</h1>
-            <p className="text-xl text-gray-300 mb-4">{album.artist}</p>
+          {/* Album Details - Compact */}
+          <div className="mb-4">
+            <h1 className="text-3xl font-bold mb-1 text-white">{album.title}</h1>
+            <p className="text-lg text-gray-400 mb-3">{album.artist}</p>
             
-            <div className="flex items-center justify-center gap-4 text-sm text-gray-400 mb-6">
+            <div className="flex items-center justify-center gap-3 text-sm text-gray-500 mb-4">
               <span>{getReleaseYear()}</span>
               <span>•</span>
-              <span>{album.tracks.length} track{album.tracks.length !== 1 ? 's' : ''}</span>
+              <span>{album.tracks.length} tracks</span>
             </div>
 
             {album.description && (
-              <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-white/10 max-w-2xl mx-auto mb-6">
-                <p className="text-gray-300 text-sm leading-relaxed">{album.description}</p>
+              <div className="bg-black/60 rounded-lg p-4 max-w-lg mx-auto mb-4">
+                <p className="text-gray-300 text-sm">{album.description}</p>
               </div>
             )}
           </div>
 
-          {/* Play Controls - Centered */}
-          <div className="flex items-center justify-center gap-4 mb-8">
+          {/* Play Controls - More compact */}
+          <div className="flex items-center justify-center gap-3 mb-6">
             <button
               onClick={handlePlayAlbum}
-              className="flex items-center gap-2 px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-full transition-colors text-white font-medium"
+              className="flex items-center gap-2 px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors text-white font-medium text-sm"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z"/>
               </svg>
               <span>Play Album</span>
-            </button>
-
-            <button
-              onClick={() => {/* TODO: Implement shuffle */}}
-              className="p-3 bg-black/40 border border-white/20 hover:border-white/40 hover:bg-black/60 rounded-full transition-colors"
-              title="Shuffle play"
-            >
-              <svg className="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-              </svg>
             </button>
           </div>
         </div>
       </div>
 
-        {/* Podroll and Funding Sections - More Compact */}
+        {/* Podroll and Funding Sections - Minimal Style */}
         {(album.podroll && album.podroll.length > 0) || (album.funding && album.funding.length > 0) ? (
-          <div className="container mx-auto px-4 max-w-4xl mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Podroll Section - Compact */}
+          <div className="container mx-auto px-4 max-w-3xl mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {/* Podroll Section - Minimal */}
             {album.podroll && album.podroll.length > 0 && (
-              <div className="bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                  <h3 className="text-sm font-semibold text-white">Related Shows</h3>
-                </div>
-                <div className="space-y-2">
+              <div className="bg-black/60 rounded-lg p-3">
+                <h3 className="text-sm font-semibold text-white mb-2">Related Shows</h3>
+                <div className="space-y-1">
                   {album.podroll.map((podrollItem, index) => (
                     <a
                       key={index}
                       href={podrollItem.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-2 bg-black/30 hover:bg-black/50 rounded border border-white/10 hover:border-blue-400/30 transition-all text-xs group"
+                      className="block p-2 bg-black/30 hover:bg-black/50 rounded text-xs text-blue-300 hover:text-blue-200 transition-colors truncate"
                     >
-                      <div className="text-blue-300 group-hover:text-blue-200 font-medium truncate">
-                        {podrollItem.title || 'Related Show'}
-                      </div>
+                      {podrollItem.title || 'Related Show'}
                     </a>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Funding Section - Compact */}
+            {/* Funding Section - Minimal */}
             {album.funding && album.funding.length > 0 && (
-              <div className="bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                  <h3 className="text-sm font-semibold text-white">Support</h3>
-                </div>
-                <div className="space-y-2">
+              <div className="bg-black/60 rounded-lg p-3">
+                <h3 className="text-sm font-semibold text-white mb-2">Support</h3>
+                <div className="space-y-1">
                   {album.funding.map((fundingItem, index) => (
                     <a
                       key={index}
                       href={fundingItem.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block p-2 bg-black/30 hover:bg-black/50 rounded border border-white/10 hover:border-green-400/30 transition-all text-xs group"
+                      className="block p-2 bg-black/30 hover:bg-black/50 rounded text-xs text-green-300 hover:text-green-200 transition-colors"
                     >
-                      <div className="text-green-300 group-hover:text-green-200 font-medium">
-                        {fundingItem.message || 'Support this Artist'}
-                      </div>
+                      {fundingItem.message || 'Support this Artist'}
                     </a>
                   ))}
                 </div>
@@ -310,14 +286,14 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
           </div>
         ) : null}
 
-        {/* Track List - FUCKIT Style */}
-        <div className="container mx-auto px-4 max-w-4xl">
-          <div className="bg-black/40 backdrop-blur-sm rounded-lg border border-white/10 overflow-hidden">
+        {/* Track List - Original FUCKIT Style with Thumbnails */}
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="bg-black/60 rounded-lg overflow-hidden">
             <div className="p-4 border-b border-white/10">
               <h2 className="text-lg font-semibold text-center text-white">Tracks</h2>
             </div>
             
-            <div className="p-2">
+            <div className="divide-y divide-white/10">
               {album.tracks.map((track, index) => {
                 const isCurrentTrack = currentTrack?.url === track.url;
                 const isCurrentlyPlaying = isTrackPlaying(track);
@@ -325,44 +301,56 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                 return (
                   <div
                     key={track.trackNumber}
-                    className={`flex items-center gap-3 p-3 m-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer group ${
-                      isCurrentTrack ? 'bg-white/15' : 'bg-black/20'
+                    className={`flex items-center gap-4 p-3 hover:bg-white/5 transition-colors cursor-pointer group ${
+                      isCurrentTrack ? 'bg-white/10' : ''
                     }`}
                     onClick={() => handlePlayTrack(track, index)}
                   >
-                    {/* Track Number / Play Button */}
-                    <div className="w-8 text-center flex-shrink-0">
-                      {isCurrentlyPlaying ? (
-                        <div className="flex items-center justify-center">
-                          <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                        </div>
-                      ) : (
-                        <span className="text-gray-400 text-sm group-hover:hidden">{track.trackNumber}</span>
-                      )}
-                      <button className="hidden group-hover:block p-1">
-                        <svg className="w-3 h-3 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                    {/* Track Thumbnail */}
+                    <div className="w-12 h-12 relative flex-shrink-0 rounded overflow-hidden">
+                      <Image
+                        src={track.image || album.coverArt}
+                        alt={track.title}
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
+                      {/* Play overlay */}
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
-                      </button>
+                      </div>
                     </div>
 
-                    {/* Track Title */}
+                    {/* Track Info */}
                     <div className="flex-1 min-w-0">
-                      <h3 className={`text-sm font-medium truncate ${
-                        isCurrentTrack ? 'text-blue-300' : 'text-gray-200'
+                      <h3 className={`font-medium truncate ${
+                        isCurrentTrack ? 'text-blue-400' : 'text-white'
                       }`}>
                         {track.title}
                       </h3>
+                      <p className="text-sm text-gray-400 truncate">{album.artist}</p>
                     </div>
 
-                    {/* Duration */}
-                    <div className="text-xs text-gray-500 flex-shrink-0">
-                      {formatDuration(track.duration)}
+                    {/* Track Number and Duration */}
+                    <div className="flex items-center gap-4 text-sm text-gray-500">
+                      <span className="w-6 text-center">{track.trackNumber}</span>
+                      <span className="w-12 text-right">{formatDuration(track.duration)}</span>
                     </div>
                   </div>
                 );
               })}
             </div>
+          </div>
+        </div>
+
+        {/* You Might Also Like Section */}
+        <div className="container mx-auto px-4 max-w-3xl mt-8">
+          <h2 className="text-xl font-bold text-white mb-4">You Might Also Like</h2>
+          {/* TODO: Add similar albums grid here */}
+          <div className="text-gray-400 text-sm text-center py-8">
+            Similar albums coming soon...
           </div>
         </div>
 
