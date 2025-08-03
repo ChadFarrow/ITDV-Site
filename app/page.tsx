@@ -39,17 +39,17 @@ const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
 // Import types from the ControlsBar component
 import type { FilterType, ViewType, SortType } from '@/components/ControlsBar';
 
-// Dynamic import for the 3D browser
-const AlbumBrowser3D = dynamic(() => import('@/components/AlbumBrowser3D'), {
+// Dynamic import for the 3D carousel
+const Album3DCarousel = dynamic(() => import('@/components/Album3DCarousel'), {
   loading: () => (
     <div className="flex items-center justify-center h-96">
       <div className="text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-        <p className="text-lg">Loading 3D browser...</p>
+        <p className="text-lg">Loading 3D carousel...</p>
       </div>
     </div>
   ),
-  ssr: false // 3D browser needs client-side rendering
+  ssr: false // 3D carousel needs client-side rendering for Three.js
 });
 
 interface Track {
@@ -532,7 +532,7 @@ export default function HomePage() {
               </Link>
               
               <a 
-                href="https://www.doerfelverse.com/feeds/intothedoerfelverse.xml" 
+                href="https://www.doerfelverse.com/podcast" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
@@ -632,8 +632,8 @@ export default function HomePage() {
 
               {/* Albums Display */}
               {viewType === '3d' ? (
-                // 3D Browser View
-                <AlbumBrowser3D albums={filteredAlbums} onPlay={playAlbum} />
+                // 3D Carousel View
+                <Album3DCarousel albums={filteredAlbums} onPlay={playAlbum} />
               ) : activeFilter === 'all' ? (
                 // Original sectioned layout for "All" filter
                 <>
