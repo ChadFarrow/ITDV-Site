@@ -39,18 +39,18 @@ const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
 // Import types from the ControlsBar component
 import type { FilterType, ViewType, SortType } from '@/components/ControlsBar';
 
-// Dynamic import for the 3D carousel - temporarily disabled due to build issues
-// const Album3DCarousel = dynamic(() => import('@/components/Album3DCarousel'), {
-//   loading: () => (
-//     <div className="flex items-center justify-center h-96">
-//       <div className="text-center">
-//         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-//         <p className="text-lg">Loading 3D carousel...</p>
-//       </div>
-//     </div>
-//   ),
-//   ssr: false // 3D carousel needs client-side rendering for Three.js
-// });
+// Dynamic import for the 3D carousel
+const Album3DCarousel = dynamic(() => import('@/components/Album3DCarouselSimple'), {
+  loading: () => (
+    <div className="flex items-center justify-center h-96">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
+        <p className="text-lg">Loading 3D carousel...</p>
+      </div>
+    </div>
+  ),
+  ssr: false // 3D carousel needs client-side rendering for Three.js
+});
 
 interface Track {
   title: string;
@@ -627,13 +627,8 @@ export default function HomePage() {
 
               {/* Albums Display */}
               {viewType === '3d' ? (
-                // 3D Carousel View - temporarily disabled
-                <div className="flex items-center justify-center h-96">
-                  <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                    <p className="text-lg">3D Carousel temporarily unavailable</p>
-                  </div>
-                </div>
+                // 3D Carousel View
+                <Album3DCarousel albums={filteredAlbums} onPlay={playAlbum} />
               ) : activeFilter === 'all' ? (
                 // Original sectioned layout for "All" filter
                 <>
