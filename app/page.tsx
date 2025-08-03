@@ -39,17 +39,17 @@ const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
 // Import types from the ControlsBar component
 import type { FilterType, ViewType, SortType } from '@/components/ControlsBar';
 
-// Dynamic import for the 3D carousel
-const Album3DCarousel = dynamic(() => import('@/components/Album3DCarouselSimple'), {
+// Dynamic import for the 3D coverflow
+const Album3DCoverflow = dynamic(() => import('@/components/Album3DCoverflow'), {
   loading: () => (
     <div className="flex items-center justify-center h-96">
       <div className="text-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-        <p className="text-lg">Loading 3D carousel...</p>
+        <p className="text-lg">Loading 3D view...</p>
       </div>
     </div>
   ),
-  ssr: false // 3D carousel needs client-side rendering for Three.js
+  ssr: false // 3D view needs client-side rendering
 });
 
 interface Track {
@@ -101,7 +101,7 @@ export default function HomePage() {
   const [isEnhancedLoaded, setIsEnhancedLoaded] = useState(false);
   
   // Global audio context
-  const { playAlbum: globalPlayAlbum, toggleShuffle } = useAudio();
+  const { playAlbum: globalPlayAlbum, toggleShuffle, currentTrack, isPlaying } = useAudio();
   const hasLoadedRef = useRef(false);
   
   // Static background state
@@ -627,8 +627,13 @@ export default function HomePage() {
 
               {/* Albums Display */}
               {viewType === '3d' ? (
-                // 3D Carousel View
-                <Album3DCarousel albums={filteredAlbums} onPlay={playAlbum} />
+                // 3D Coverflow View
+                <Album3DCoverflow 
+                  albums={filteredAlbums} 
+                  onPlay={playAlbum}
+                  currentTrack={currentTrack}
+                  isPlaying={isPlaying}
+                />
               ) : activeFilter === 'all' ? (
                 // Original sectioned layout for "All" filter
                 <>
