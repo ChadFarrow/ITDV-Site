@@ -159,11 +159,12 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
     const dragEffect = isDragging ? dragOffset / 200 : 0;
     const position = adjustedDiff + dragEffect;
     
-    const baseX = position * 180; // Spacing between albums
-    const z = Math.abs(position) > 2 ? -400 : -Math.abs(position) * 150;
-    const rotateY = Math.max(-60, Math.min(60, -position * 45));
-    const scale = Math.abs(position) > 2 ? 0.6 : position === 0 ? 1.1 : 0.85;
-    const opacity = Math.abs(position) > 2 ? 0 : position === 0 ? 1 : 0.7;
+    // Tighter spacing and more pronounced angles
+    const baseX = position * 140; // Reduced spacing between albums
+    const z = Math.abs(position) > 3 ? -500 : -Math.abs(position) * 180; // More depth
+    const rotateY = Math.max(-70, Math.min(70, -position * 55)); // More rotation
+    const scale = Math.abs(position) > 3 ? 0.5 : position === 0 ? 1.15 : 0.75; // Bigger center, smaller sides
+    const opacity = Math.abs(position) > 3 ? 0 : position === 0 ? 1 : 0.65;
 
     return {
       transform: `translateX(${baseX}px) translateZ(${z}px) rotateY(${rotateY}deg) scale(${scale})`,
@@ -179,7 +180,7 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
     return {
       ...albumStyle,
       transform: `${albumStyle.transform} scaleY(-1)`,
-      opacity: (albumStyle.opacity as number) * 0.3,
+      opacity: (albumStyle.opacity as number) * 0.45, // More visible reflections
     };
   };
 
@@ -216,8 +217,12 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
     >
       {/* Coverflow View */}
       <div 
-        className="relative h-[60%] bg-gradient-to-b from-gray-900 to-black"
-        style={{ perspective: '1200px', perspectiveOrigin: '50% 50%' }}
+        className="relative h-[60%]"
+        style={{ 
+          perspective: '1200px', 
+          perspectiveOrigin: '50% 50%',
+          background: 'linear-gradient(to bottom, #1a1a2e 0%, #0f0f1e 50%, #000000 100%)'
+        }}
         onMouseDown={handleMouseDown}
       >
         {/* Album Container */}
@@ -236,7 +241,7 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                     style={style}
                     onClick={() => handleAlbumClick(index)}
                   >
-                    <div className={`relative ${isCenter ? 'w-72 h-72' : 'w-64 h-64'} rounded-lg overflow-hidden shadow-2xl`}>
+                    <div className={`relative ${isCenter ? 'w-80 h-80' : 'w-60 h-60'} rounded-lg overflow-hidden ${isCenter ? 'shadow-2xl ring-2 ring-white/10 ring-offset-2 ring-offset-transparent' : 'shadow-xl'}`}>
                       <Image
                         src={album.coverArt}
                         alt={album.title}
@@ -246,10 +251,10 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                         priority={Math.abs(index - currentIndex) <= 2}
                       />
                       {isCenter && (
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                          <div className="text-white">
-                            <h3 className="font-bold text-lg">{album.title}</h3>
-                            <p className="text-sm opacity-90">{album.artist}</p>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 hover:opacity-100 transition-all duration-300 flex items-end p-4">
+                          <div className="text-white transform translate-y-2 hover:translate-y-0 transition-transform duration-300">
+                            <h3 className="font-bold text-lg drop-shadow-lg">{album.title}</h3>
+                            <p className="text-sm opacity-90 drop-shadow-md">{album.artist}</p>
                           </div>
                         </div>
                       )}
@@ -262,7 +267,7 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                     style={reflectionStyle}
                     aria-hidden="true"
                   >
-                    <div className={`relative ${isCenter ? 'w-72 h-72' : 'w-64 h-64'} rounded-lg overflow-hidden`}>
+                    <div className={`relative ${isCenter ? 'w-80 h-80' : 'w-60 h-60'} rounded-lg overflow-hidden`}>
                       <Image
                         src={album.coverArt}
                         alt=""
@@ -270,7 +275,7 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                         className="object-cover"
                         sizes={isCenter ? '288px' : '256px'}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black/80" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/85 to-black/95" />
                     </div>
                   </div>
                 </div>
@@ -282,24 +287,24 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
         {/* Navigation Controls */}
         <button
           onClick={handlePrevious}
-          className="absolute left-8 top-1/2 -translate-y-1/2 p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors z-20"
+          className="absolute left-8 top-1/2 -translate-y-1/2 p-2.5 bg-black/30 backdrop-blur-md rounded-full hover:bg-black/50 transition-all hover:scale-110 border border-white/10 z-20 group"
         >
-          <SkipBack className="w-6 h-6" />
+          <SkipBack className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
         </button>
         
         <button
           onClick={handleNext}
-          className="absolute right-8 top-1/2 -translate-y-1/2 p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-colors z-20"
+          className="absolute right-8 top-1/2 -translate-y-1/2 p-2.5 bg-black/30 backdrop-blur-md rounded-full hover:bg-black/50 transition-all hover:scale-110 border border-white/10 z-20 group"
         >
-          <SkipForward className="w-6 h-6" />
+          <SkipForward className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" />
         </button>
 
         {/* Current Album Info */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-center z-20">
-          <h2 className="text-2xl font-bold text-white mb-1">
+          <h2 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">
             {selectedAlbum?.title || 'Untitled'}
           </h2>
-          <p className="text-gray-300">
+          <p className="text-gray-300 drop-shadow-md">
             {selectedAlbum?.artist || 'Unknown Artist'}
           </p>
         </div>
@@ -315,11 +320,11 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
       </div>
 
       {/* Track List Table */}
-      <div className="h-[40%] bg-gray-950 border-t border-gray-800 overflow-hidden">
+      <div className="h-[40%] bg-gradient-to-b from-gray-950 to-black border-t border-gray-800/50 overflow-hidden">
         <div className="h-full flex flex-col">
           {/* Table Header */}
-          <div className="px-6 py-2 border-b border-gray-800 bg-gray-900/50">
-            <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-400 uppercase tracking-wider">
+          <div className="px-6 py-1.5 border-b border-gray-800/40 bg-gray-900/30">
+            <div className="grid grid-cols-12 gap-4 text-xs font-medium text-gray-500 uppercase tracking-wider">
               <div className="col-span-1"></div>
               <div className="col-span-1">Track</div>
               <div className="col-span-4">Name</div>
@@ -340,9 +345,9 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                 <div
                   key={`${track.trackNumber}-${index}`}
                   className={`
-                    grid grid-cols-12 gap-4 px-6 py-2 text-sm hover:bg-gray-800/50 cursor-pointer transition-colors
-                    ${isCurrentTrack ? 'bg-blue-900/20 text-blue-400' : 'text-gray-300'}
-                    ${isSelected ? 'bg-gray-800/30' : ''}
+                    grid grid-cols-12 gap-4 px-6 py-1.5 text-sm hover:bg-gray-800/40 cursor-pointer transition-all
+                    ${isCurrentTrack ? 'bg-blue-900/15 text-blue-300' : 'text-gray-400 hover:text-gray-200'}
+                    ${isSelected ? 'bg-gray-800/20' : ''}
                   `}
                   onClick={(e) => {
                     setSelectedTrackIndex(index);
@@ -359,14 +364,14 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                   <div className="col-span-1 flex items-center justify-center">
                     {isCurrentTrack && isPlaying ? (
                       <div className="flex items-center gap-0.5">
-                        <div className="w-1 h-3 bg-blue-400 animate-pulse"></div>
-                        <div className="w-1 h-2 bg-blue-400 animate-pulse delay-75"></div>
-                        <div className="w-1 h-4 bg-blue-400 animate-pulse delay-150"></div>
+                        <div className="w-0.5 h-3 bg-blue-400 animate-[pulse_1.5s_ease-in-out_infinite]"></div>
+                        <div className="w-0.5 h-2 bg-blue-400 animate-[pulse_1.5s_ease-in-out_infinite_0.2s]"></div>
+                        <div className="w-0.5 h-4 bg-blue-400 animate-[pulse_1.5s_ease-in-out_infinite_0.4s]"></div>
                       </div>
                     ) : isCurrentTrack ? (
-                      <Pause className="w-3 h-3" />
+                      <Pause className="w-3 h-3 text-blue-400" />
                     ) : (
-                      <Play className="w-3 h-3 opacity-0 group-hover:opacity-100" />
+                      <Play className="w-3 h-3 opacity-0 group-hover:opacity-50 transition-opacity" />
                     )}
                   </div>
                   <div className="col-span-1">{track.trackNumber || index + 1}</div>
@@ -383,13 +388,13 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
           </div>
 
           {/* Player Controls Bar */}
-          <div className="px-6 py-3 border-t border-gray-800 bg-gray-900/80 flex items-center justify-between">
+          <div className="px-6 py-2.5 border-t border-gray-800/50 bg-gradient-to-b from-gray-900/90 to-gray-950 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button
                 onClick={handlePrevious}
-                className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-gray-700/40 rounded-lg transition-all hover:scale-110"
               >
-                <SkipBack className="w-5 h-5" />
+                <SkipBack className="w-4 h-4" />
               </button>
               <button
                 onClick={(e) => {
@@ -397,32 +402,32 @@ export default function Album3DCoverflow({ albums, onPlay, currentTrack, isPlayi
                     onPlay(selectedAlbum, e);
                   }
                 }}
-                className="p-3 bg-gray-700 hover:bg-gray-600 rounded-full transition-colors"
+                className="p-2.5 bg-gradient-to-b from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 rounded-full transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 {isPlaying && currentTrack?.album === selectedAlbum?.title ? (
-                  <Pause className="w-5 h-5" />
+                  <Pause className="w-4 h-4" />
                 ) : (
-                  <Play className="w-5 h-5 ml-0.5" />
+                  <Play className="w-4 h-4 ml-0.5" />
                 )}
               </button>
               <button
                 onClick={handleNext}
-                className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
+                className="p-1.5 hover:bg-gray-700/40 rounded-lg transition-all hover:scale-110"
               >
-                <SkipForward className="w-5 h-5" />
+                <SkipForward className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div className="flex items-center gap-2 text-xs text-gray-500">
               <span>{currentIndex + 1} of {albums.length} albums</span>
-              <span className="text-gray-600">•</span>
+              <span className="text-gray-700">•</span>
               <span>{selectedAlbum?.tracks.length || 0} tracks</span>
             </div>
 
             <div className="flex items-center gap-2">
-              <Volume2 className="w-4 h-4 text-gray-400" />
-              <div className="w-24 h-1 bg-gray-700 rounded-full">
-                <div className="w-3/4 h-full bg-gray-400 rounded-full"></div>
+              <Volume2 className="w-4 h-4 text-gray-500" />
+              <div className="w-24 h-1 bg-gray-800 rounded-full">
+                <div className="w-3/4 h-full bg-gradient-to-r from-gray-500 to-gray-400 rounded-full"></div>
               </div>
             </div>
           </div>
