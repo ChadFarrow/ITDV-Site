@@ -76,29 +76,18 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     const handleTimeUpdate = () => setCurrentTime(audio.currentTime);
     const handleDurationChange = () => setDuration(audio.duration);
-    const handleEnded = () => {
-      if (isRepeating) {
-        audio.currentTime = 0;
-        audio.play();
-      } else {
-        nextTrack();
-      }
-    };
     const handleLoadStart = () => setCurrentTime(0);
 
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('durationchange', handleDurationChange);
-    audio.addEventListener('ended', handleEnded);
     audio.addEventListener('loadstart', handleLoadStart);
-
 
     return () => {
       audio.removeEventListener('timeupdate', handleTimeUpdate);
       audio.removeEventListener('durationchange', handleDurationChange);
-      audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('loadstart', handleLoadStart);
     };
-  }, [isRepeating, nextTrack]);
+  }, []);
 
   const playTrack = (track: Track, album?: string) => {
     if (!audioRef.current) return;
@@ -250,6 +239,27 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       });
     }
   }, [playlist, currentTrackIndex, isPlaying, currentAlbum]);
+
+  // Handle track ended event - needs to be after nextTrack is declared
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleEnded = () => {
+      if (isRepeating) {
+        audio.currentTime = 0;
+        audio.play();
+      } else {
+        nextTrack();
+      }
+    };
+
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, [isRepeating, nextTrack]);
 
   const seekTo = useCallback((time: number) => {
     if (audioRef.current) {
