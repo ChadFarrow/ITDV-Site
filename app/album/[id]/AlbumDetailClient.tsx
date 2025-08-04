@@ -59,6 +59,11 @@ interface Album {
   feedUrl?: string;
   funding?: RSSFunding[];
   podroll?: RSSPodRoll[];
+  publisher?: {
+    feedGuid: string;
+    feedUrl: string;
+    medium: string;
+  };
 }
 
 interface AlbumDetailClientProps {
@@ -371,6 +376,14 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
       .replace(/^-+|-+$/g, '');
   };
 
+  const getPublisherSlug = (publisherName: string) => {
+    return publisherName
+      .toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
   // Combine and deduplicate related albums
   const getCombinedRelatedAlbums = () => {
     const combined: Array<Album | PodrollAlbum> = [];
@@ -504,7 +517,20 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                   <h1 className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     {album.title}
                   </h1>
-                  <p className="text-xl lg:text-2xl text-gray-300 mb-4">{album.artist}</p>
+                  <p className="text-xl lg:text-2xl text-gray-300 mb-2">{album.artist}</p>
+                  
+                  {/* Publisher Link */}
+                  {album.publisher && (
+                    <div className="mb-4">
+                      <Link
+                        href={`/publisher/${getPublisherSlug(album.artist)}`}
+                        className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                      >
+                        <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                        View all albums by {album.artist}
+                      </Link>
+                    </div>
+                  )}
                   
                   <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-400 mb-6">
                     <span className="flex items-center gap-1">
