@@ -56,6 +56,7 @@ interface Album {
   tracks: Track[];
   releaseDate: string;
   feedId: string;
+  feedUrl?: string;
   funding?: RSSFunding[];
   podroll?: RSSPodRoll[];
 }
@@ -113,7 +114,10 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         preloadBackgroundImage(initialAlbum);
       }
       loadRelatedAlbums();
-      loadPodrollAlbums();
+      // Load site albums first, then load podroll albums
+      loadSiteAlbums().then(() => {
+        loadPodrollAlbums();
+      });
     }
   }, [albumTitle, initialAlbum, isDesktop]);
 
@@ -185,7 +189,10 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
         }
         
         loadRelatedAlbums();
-        loadPodrollAlbums();
+        // Load site albums first, then load podroll albums
+        loadSiteAlbums().then(() => {
+          loadPodrollAlbums();
+        });
       } else {
         setError('Album not found');
       }
@@ -195,6 +202,21 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const loadSiteAlbums = async () => {
+    try {
+      const response = await fetch('/api/albums-static');
+      if (response.ok) {
+        const data = await response.json();
+        const albums = data.albums || [];
+        setSiteAlbums(albums);
+        return albums;
+      }
+    } catch (error) {
+      console.error('Error loading site albums:', error);
+    }
+    return [];
   };
 
   const loadRelatedAlbums = async () => {
@@ -242,7 +264,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
       for (const podrollItem of album.podroll) {
         // Check if this podroll URL matches any album on the site
         const matchingAlbum = albums.find(siteAlbum => 
-          siteAlbum.feedId === podrollItem.url
+          siteAlbum.feedUrl === podrollItem.url
         );
         
         if (matchingAlbum) {
@@ -660,7 +682,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                       // Podroll album - check if it exists on the site
                       const podrollItem = relatedItem as PodrollAlbum;
                       const matchingSiteAlbum = siteAlbums.find(siteAlbum => 
-                        siteAlbum.feedId === podrollItem.url
+                        siteAlbum.feedUrl === podrollItem.url
                       );
                       
                       if (matchingSiteAlbum) {
