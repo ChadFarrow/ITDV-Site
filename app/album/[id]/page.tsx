@@ -63,10 +63,24 @@ async function getAlbumData(albumId: string) {
   }
 }
 
-export default async function AlbumPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function AlbumPage({ 
+  params,
+  searchParams 
+}: { 
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
   const { id } = await params;
+  const resolvedSearchParams = await searchParams;
   const albumData = await getAlbumData(id);
   const albumTitle = decodeURIComponent(id).replace(/-/g, ' ');
+  
+  // Check for autoplay parameter
+  const shouldAutoplay = resolvedSearchParams.autoplay === 'true';
 
-  return <AlbumDetailClient albumTitle={albumTitle} initialAlbum={albumData} />;
+  return <AlbumDetailClient 
+    albumTitle={albumTitle} 
+    initialAlbum={albumData}
+    autoplay={shouldAutoplay}
+  />;
 }
