@@ -64,10 +64,9 @@ interface Album {
 interface AlbumDetailClientProps {
   albumTitle: string;
   initialAlbum: Album | null;
-  autoplay?: boolean;
 }
 
-export default function AlbumDetailClient({ albumTitle, initialAlbum, autoplay = false }: AlbumDetailClientProps) {
+export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDetailClientProps) {
   const [album, setAlbum] = useState<Album | null>(initialAlbum);
   const [isLoading, setIsLoading] = useState(!initialAlbum);
   const [error, setError] = useState<string | null>(null);
@@ -91,7 +90,6 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum, autoplay =
   const [backgroundLoaded, setBackgroundLoaded] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const preloadAttemptedRef = useRef(false);
-  const hasAutoplayedRef = useRef(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -338,16 +336,6 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum, autoplay =
     globalPlayAlbum(audioTracks, index, album.title);
   };
 
-  // Handle autoplay
-  useEffect(() => {
-    if (autoplay && album && !hasAutoplayedRef.current && isClient) {
-      hasAutoplayedRef.current = true;
-      // Small delay to ensure audio context is ready
-      setTimeout(() => {
-        handlePlayAlbum();
-      }, 100);
-    }
-  }, [autoplay, album, isClient]);
 
   const isTrackPlaying = (track: Track) => {
     return currentTrack?.url === track.url && globalIsPlaying;

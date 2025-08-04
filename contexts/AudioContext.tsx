@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useRef, useEffect } from 'react';
+import React, { createContext, useContext, useState, useRef, useEffect, useCallback } from 'react';
 
 interface Track {
   title: string;
@@ -98,7 +98,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       audio.removeEventListener('ended', handleEnded);
       audio.removeEventListener('loadstart', handleLoadStart);
     };
-  }, [isRepeating]);
+  }, [isRepeating, nextTrack]);
 
   const playTrack = (track: Track, album?: string) => {
     if (!audioRef.current) return;
@@ -153,19 +153,19 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   };
 
-  const pause = () => {
+  const pause = useCallback(() => {
     if (audioRef.current) {
       audioRef.current.pause();
       setIsPlaying(false);
     }
-  };
+  }, []);
 
-  const resume = () => {
+  const resume = useCallback(() => {
     if (audioRef.current) {
       audioRef.current.play();
       setIsPlaying(true);
     }
-  };
+  }, []);
 
   const stop = () => {
     if (audioRef.current) {
@@ -176,7 +176,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   };
 
-  const nextTrack = () => {
+  const nextTrack = useCallback(() => {
     if (playlist.length === 0) return;
 
     let nextIndex: number;
@@ -216,9 +216,9 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         ] : []
       });
     }
-  };
+  }, [playlist, currentTrackIndex, isShuffling, isPlaying, currentAlbum]);
 
-  const previousTrack = () => {
+  const previousTrack = useCallback(() => {
     if (playlist.length === 0) return;
 
     let prevIndex = currentTrackIndex - 1;
@@ -249,14 +249,14 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         ] : []
       });
     }
-  };
+  }, [playlist, currentTrackIndex, isPlaying, currentAlbum]);
 
-  const seekTo = (time: number) => {
+  const seekTo = useCallback((time: number) => {
     if (audioRef.current) {
       audioRef.current.currentTime = time;
       setCurrentTime(time);
     }
-  };
+  }, []);
 
   const setVolume = (newVolume: number) => {
     const clampedVolume = Math.max(0, Math.min(1, newVolume));
