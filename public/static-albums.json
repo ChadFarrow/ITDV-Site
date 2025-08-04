@@ -1,6 +1,179 @@
 {
   "albums": [
     {
+      "title": "Into The Doerfel-Verse",
+      "artist": "Sir TJ The Wrathful, Shredward, Kurtisdrums, Ben Doerfel, Cousin Mike",
+      "description": "Join brothers Sir TJ The Wrathful, Shredward, Kurtisdrums, Ben, and Cousin Mike, as they explore all dimensions of music in The Doerfels universe. Take a dive with us into the Doerfel-verse!",
+      "coverArt": "https://www.doerfelverse.com/art/itdvchadf.png",
+      "tracks": [
+        {
+          "title": "Episode 56 - re.podtards.com",
+          "duration": "1:00:00",
+          "url": "https://www.doerfelverse.com/tracks/dvep56.mp3",
+          "trackNumber": 1,
+          "subtitle": "Episode 56 - re.podtards.com",
+          "summary": "Just two podtards talking about nerdy v4v music stuff and playing some tracks :) check out Chads music player site!",
+          "image": "https://www.doerfelverse.com/art/itdvchadf.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "56",
+            "chadf"
+          ]
+        },
+        {
+          "title": "Episode 55 - Florida Family Takeover",
+          "duration": "1:40:00",
+          "url": "https://www.doerfelverse.com/tracks/dvep55.mp3",
+          "trackNumber": 2,
+          "subtitle": "Episode 55 - Florida Family Takeover",
+          "summary": "Family visits from FL and we hang and jam :)",
+          "image": "https://www.doerfelverse.com/art/itdvchadf.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "55",
+            "florida",
+            "family",
+            "takeover"
+          ]
+        },
+        {
+          "title": "Episode 54 - V4V Executive Council Feat. ChadF",
+          "duration": "1:05:00",
+          "url": "https://www.doerfelverse.com/tracks/dvep54.mp3",
+          "trackNumber": 3,
+          "subtitle": "Episode 54 - V4V Executive Council Feat. ChadF",
+          "summary": "Special guest ChadF!",
+          "image": "https://www.doerfelverse.com/art/itdvchadf.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "54",
+            "chadf"
+          ]
+        },
+        {
+          "title": "Episode 53 - Work Tape Demos",
+          "duration": "48:00",
+          "url": "https://www.doerfelverse.com/tracks/dvep53.mp3",
+          "trackNumber": 4,
+          "subtitle": "Episode 53 - Work Tape Demos",
+          "summary": "Work tape demos discussion",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "53"
+          ]
+        },
+        {
+          "title": "Episode 52 - Mini-sode",
+          "duration": "15:00",
+          "url": "https://www.doerfelverse.com/tracks/dvep52.mp3",
+          "trackNumber": 5,
+          "subtitle": "Episode 52 - Mini-sode",
+          "summary": "Just a little Mini-sode :)",
+          "image": "https://www.doerfelverse.com/art/v4v-music-podcast.png",
+          "explicit": false,
+          "keywords": [
+            "doerfelverse",
+            "doerfel",
+            "verse",
+            "doerfels",
+            "doerfuls",
+            "into",
+            "the",
+            "music",
+            "valueverse",
+            "52"
+          ]
+        }
+      ],
+      "releaseDate": "2025-08-03T14:54:57+00:00",
+      "feedId": "into-the-doerfel-verse",
+      "feedUrl": "https://www.doerfelverse.com/feeds/intothedoerfelverse.xml",
+      "funding": [
+        {
+          "url": "https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN",
+          "message": "Support our Podcast!"
+        }
+      ],
+      "podroll": [
+        {
+          "url": "https://www.doerfelverse.com/feeds/music-from-the-doerfelverse.xml"
+        },
+        {
+          "url": "https://mp3s.nashownotes.com/bballrss.xml"
+        },
+        {
+          "url": "https://feeds.rssblue.com/upbeats"
+        },
+        {
+          "url": "https://www.doerfelverse.com/feeds/ben-doerfel.xml"
+        },
+        {
+          "url": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Nostalgic.xml"
+        },
+        {
+          "url": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Kurtisdrums-V1.xml"
+        }
+      ],
+      "link": "https://www.doerfelverse.com/",
+      "language": "en",
+      "categories": [
+        "Music Commentary"
+      ],
+      "keywords": [
+        "thedoerfels",
+        "doerfels",
+        "doerfelverse",
+        "doerfel-verse",
+        "doerfel",
+        "verse",
+        "band",
+        "music",
+        "podcast",
+        "musicpodcast"
+      ],
+      "explicit": false,
+      "lastUpdated": "2025-08-03T14:54:57+00:00",
+      "subtitle": "Into The Doerfel-Verse Podcast",
+      "summary": "Join brothers Sir TJ The Wrathful, Shredward, Kurtisdrums, Ben, and Cousin Mike, as they explore all dimensions of music in The Doerfels universe."
+    },
+    {
       "title": "Bloodshot Lies - The Album",
       "artist": "The Doerfels",
       "description": "\"Bloodshot Lies - The Album\" gives you a musical experience of our songs that belong together. This is a value for value project. That means we make our music availible for free, and just ask if you receive any value, you return the value in a form that is meaningful to you",
