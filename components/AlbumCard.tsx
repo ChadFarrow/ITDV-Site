@@ -55,15 +55,13 @@ export default function AlbumCard({ album, isPlaying = false, onPlay, className 
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
 
+    // Only handle swipes, remove tap-to-play to prevent accidental plays
     if (isLeftSwipe) {
       // Left swipe - play next track (future enhancement)
       console.log('Left swipe detected - next track');
     } else if (isRightSwipe) {
       // Right swipe - play previous track (future enhancement)
       console.log('Right swipe detected - previous track');
-    } else {
-      // Tap - play/pause
-      onPlay(album, e);
     }
   };
 
@@ -99,14 +97,29 @@ export default function AlbumCard({ album, isPlaying = false, onPlay, className 
   }
 
   return (
-    <Link 
-      href={albumUrl}
-      className={`group relative bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] active:scale-[0.98] block ${className}`}
-      onClick={(e) => {
-        console.log(`🔗 Navigating to album: "${album.title}" -> ${albumUrl}`);
-      }}
-      aria-label={`View album details for ${album.title} by ${album.artist}`}
-    >
+    <div className={`group relative bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] active:scale-[0.98] block ${className}`}>
+      {/* Play button overlay */}
+      <button
+        className="absolute z-10 right-2 top-2 bg-black/50 hover:bg-black/70 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+        onClick={(e) => {
+          e.stopPropagation();
+          onPlay(album, e);
+        }}
+        aria-label={`Play ${album.title}`}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+        </svg>
+      </button>
+      
+      <Link 
+        href={albumUrl}
+        onClick={(e) => {
+          console.log(`🔗 Navigating to album: "${album.title}" -> ${albumUrl}`);
+        }}
+        aria-label={`View album details for ${album.title} by ${album.artist}`}
+        className="block"
+      >
       {/* Album Artwork */}
       <div 
         className="relative aspect-square overflow-hidden"

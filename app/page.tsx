@@ -327,33 +327,46 @@ export default function HomePage() {
     // Use progressive loading: show critical albums first, then enhanced
     const albumsToUse = isEnhancedLoaded ? enhancedAlbums : (criticalAlbums.length > 0 ? criticalAlbums : albums);
     
-    // Universal sorting function that implements hierarchical order: Albums → EPs → Singles
-    const sortWithHierarchy = (albums: Album[]) => {
-      return albums.sort((a, b) => {
-        // Hierarchical sorting: Albums (7+ tracks) → EPs (2-6 tracks) → Singles (1 track)
-        const aIsAlbum = a.tracks.length > 6;
-        const bIsAlbum = b.tracks.length > 6;
-        const aIsEP = a.tracks.length > 1 && a.tracks.length <= 6;
-        const bIsEP = b.tracks.length > 1 && b.tracks.length <= 6;
-        const aIsSingle = a.tracks.length === 1;
-        const bIsSingle = b.tracks.length === 1;
-        
-        // Albums come first
-        if (aIsAlbum && !bIsAlbum) return -1;
-        if (!aIsAlbum && bIsAlbum) return 1;
-        
-        // EPs come second (if both are not albums)
-        if (aIsEP && !bIsEP) return -1;
-        if (!aIsEP && bIsEP) return 1;
-        
-        // Singles come last (if both are not albums or EPs)
-        if (aIsSingle && !bIsSingle) return -1;
-        if (!aIsSingle && bIsSingle) return 1;
-        
-        // If same type, sort by title
-        return a.title.localeCompare(b.title);
-      });
-    };
+          // Universal sorting function that implements hierarchical order: Pinned → Albums → EPs → Singles
+      const sortWithHierarchy = (albums: Album[]) => {
+        return albums.sort((a, b) => {
+          // Pin specific albums to the top in order
+          const pinnedOrder = ["Bloodshot Lies - The Album", "Think EP", "Music From The Doerfel-Verse"];
+          const aIndex = pinnedOrder.indexOf(a.title);
+          const bIndex = pinnedOrder.indexOf(b.title);
+          
+          // If both are pinned, sort by pinnedOrder
+          if (aIndex !== -1 && bIndex !== -1) {
+            return aIndex - bIndex;
+          }
+          // If only one is pinned, it goes first
+          if (aIndex !== -1) return -1;
+          if (bIndex !== -1) return 1;
+
+          // Hierarchical sorting: Albums (7+ tracks) → EPs (2-6 tracks) → Singles (1 track)
+          const aIsAlbum = a.tracks.length > 6;
+          const bIsAlbum = b.tracks.length > 6;
+          const aIsEP = a.tracks.length > 1 && a.tracks.length <= 6;
+          const bIsEP = b.tracks.length > 1 && b.tracks.length <= 6;
+          const aIsSingle = a.tracks.length === 1;
+          const bIsSingle = b.tracks.length === 1;
+          
+          // Albums come first
+          if (aIsAlbum && !bIsAlbum) return -1;
+          if (!aIsAlbum && bIsAlbum) return 1;
+          
+          // EPs come second (if both are not albums)
+          if (aIsEP && !bIsEP) return -1;
+          if (!aIsEP && bIsEP) return 1;
+          
+          // Singles come last (if both are not albums or EPs)
+          if (aIsSingle && !bIsSingle) return -1;
+          if (!aIsSingle && bIsSingle) return 1;
+          
+          // If same type, sort by title
+          return a.title.localeCompare(b.title);
+        });
+      };
     
     // Apply filtering based on active filter
     let filtered = albumsToUse;
