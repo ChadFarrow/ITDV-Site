@@ -248,6 +248,7 @@ export default function AlbumCard({ album, isPlaying = false, onPlay, className 
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-white/5 opacity-0 group-active:opacity-100 transition-opacity duration-150" />
       </div>
-    </Link>
+      </Link>
+    </div>
   );
 }
