@@ -526,19 +526,13 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                   {/* Publisher Link */}
                   {album.publisher && (
                     <div className="mb-4">
-                      <div className="text-sm text-gray-400 mb-2">
-                        <span className="inline-flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
-                          Published by
-                        </span>
-                      </div>
                       <Link
                         href={`/publisher/${getPublisherSlug(album.artist)}`}
                         className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
                         title={`View all albums by ${album.artist}`}
                       >
                         <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                        View publisher page
+                        View all albums by {album.artist}
                       </Link>
                     </div>
                   )}
