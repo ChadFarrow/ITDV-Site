@@ -540,19 +540,6 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                         <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                         View publisher page
                       </Link>
-                      <Link
-                        href={album.publisher.feedUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-gray-300 transition-colors ml-4"
-                        title={`Direct RSS feed (${album.publisher.feedGuid})`}
-                      >
-                        <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-                        Raw RSS feed
-                      </Link>
-                      <div className="text-xs text-gray-500 mt-1">
-                        Feed GUID: {album.publisher.feedGuid}
-                      </div>
                     </div>
                   )}
                   
