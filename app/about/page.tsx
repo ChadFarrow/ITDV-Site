@@ -79,15 +79,15 @@ export default function AboutPage() {
                     Support the open podcast ecosystem that powers this platform.
                   </p>
                   <a
-                    href="https://www.paypal.com/donate?token=5IhXgt0XwBEHolJXARM9gmAoTXWkftjA3uCLayf_msLtycZ5pYnk2ZSe7FoG6rOFtvv2qjUuvOz1ZeV1"
+                    href="https://podcastindex.org/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
                   >
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8.32 21.97a.546.546 0 0 1-.26-.32c-.03-.15-.06.11.6-8.89.66-9.28.66-9.29.81-9.45a.75.75 0 0 1 .7-.36c.73.05 2.38.43 3.3.78a6.64 6.64 0 0 1 2.84 2.18c.45.57.78 1.16.94 1.69.18.58.2 1.56.05 2.2a5.4 5.4 0 0 1-.85 1.84c-.4.52-1.15 1.24-1.69 1.6a6.13 6.13 0 0 1-2.4 1.03c-.88.19-1.12.2-2.3.2H8.89l-.37 5.18c-.27 3.85-.39 5.2-.44 5.25-.08.08-.4.1-.75.04a.81.81 0 0 1-.33-.11zm4.48-11.42c1.42-.1 2.05-.33 2.62-.9.58-.59.86-1.25.9-2.1.02-.42 0-.6-.1-.95-.33-1.17-1.15-1.84-2.54-2.07-.43-.07-1.53-.11-1.74-.06-.15.04-.17.27-.33 2.33-.18 2.44-.18 2.3 0 2.5.1.1.14.12.54.31.53.26 1.33.45 2.06.48.33.01.73 0 .87-.03h-.28z"/>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                    Donate via PayPal
+                    Visit PodcastIndex
                   </a>
                 </div>
               </div>
@@ -126,38 +126,6 @@ export default function AboutPage() {
 
 
 
-          <div className="bg-gray-900/50 rounded-lg p-8 mb-12">
-            <h2 className="text-2xl font-semibold mb-6">
-              Links & Resources
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold mb-4">The Doerfels</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="https://www.doerfelverse.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
-                      Doerfelverse Official Site
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold mb-4">Podcast Index</h3>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="https://podcastindex.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
-                      Podcast Index Website
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://fountain.fm/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
-                      Fountain
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
 
           <div className="text-center">
             <Link 
