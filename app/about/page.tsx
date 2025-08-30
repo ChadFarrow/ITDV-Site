@@ -139,11 +139,6 @@ export default function AboutPage() {
                       Doerfelverse Official Site
                     </a>
                   </li>
-                  <li>
-                    <a href="https://www.paypal.com/donate/?hosted_button_id=ATL9BD9EQRSNN" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
-                      Support The Doerfels
-                    </a>
-                  </li>
                 </ul>
               </div>
               <div>
@@ -152,12 +147,6 @@ export default function AboutPage() {
                   <li>
                     <a href="https://podcastindex.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
                       Podcast Index Website
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="https://podcastindex.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
-                      Support Podcast Index
                     </a>
                   </li>
                 </ul>
