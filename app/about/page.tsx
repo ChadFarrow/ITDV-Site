@@ -119,18 +119,24 @@ export default function AboutPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div>
                 <ul className="space-y-2">
-                  <li className="text-gray-300">
-                    Doerfelverse Official Site
+                  <li>
+                    <a href="https://www.doerfelverse.com/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
+                      Doerfelverse Official Site
+                    </a>
                   </li>
                 </ul>
               </div>
               <div>
                 <ul className="space-y-2">
-                  <li className="text-gray-300">
-                    Podcast Index Website
+                  <li>
+                    <a href="https://podcastindex.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
+                      Podcast Index Website
+                    </a>
                   </li>
-                  <li className="text-gray-300">
-                    Fountain
+                  <li>
+                    <a href="https://fountain.fm/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
+                      Fountain
+                    </a>
                   </li>
                 </ul>
               </div>
