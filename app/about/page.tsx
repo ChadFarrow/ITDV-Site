@@ -114,6 +114,31 @@ export default function AboutPage() {
 
           <div className="bg-gray-900/50 rounded-lg p-8 mb-12">
             <h2 className="text-2xl font-semibold mb-6">
+              Links & Resources
+            </h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <ul className="space-y-2">
+                  <li className="text-gray-300">
+                    Doerfelverse Official Site
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul className="space-y-2">
+                  <li className="text-gray-300">
+                    Podcast Index Website
+                  </li>
+                  <li className="text-gray-300">
+                    Fountain
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-900/50 rounded-lg p-8 mb-12">
+            <h2 className="text-2xl font-semibold mb-6">
               Features
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
