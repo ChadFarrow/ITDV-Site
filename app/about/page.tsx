@@ -40,7 +40,7 @@ export default function AboutPage() {
                 This is a music platform for Into the Doerfel-Verse, showcasing what we can do with RSS feeds and music. All data here comes from RSS feeds on{' '}
                 <a href="https://podcastindex.org/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
                   podcastindex.org
-                </a>. This is also a demo of a site for The Doerfels that I added other music I like also and some stuff to help test.
+                </a>. This is also a demo site that other V4V artists might be about to use as a templet later.
               </p>
               <p className="text-gray-400 text-right">-ChadF</p>
             </div>
