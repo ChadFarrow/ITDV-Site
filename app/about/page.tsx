@@ -90,6 +90,25 @@ export default function AboutPage() {
                     Visit PodcastIndex
                   </a>
                 </div>
+
+                {/* Amazon Wishlist */}
+                <div className="bg-black/40 rounded-lg p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-3">Studio Gear Wishlist</h3>
+                  <p className="text-gray-400 mb-4 text-sm">
+                    Help The Doerfels get studio gear and equipment from their Amazon wishlist.
+                  </p>
+                  <a
+                    href="https://www.amazon.com/registries/gl/guest-view/2X2SOTRO8TQJL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    View Wishlist
+                  </a>
+                </div>
               </div>
             </div>
 
