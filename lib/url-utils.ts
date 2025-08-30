@@ -6,8 +6,6 @@ export function generateAlbumSlug(title: string): string {
   // Special case handling for known problematic titles
   const specialCases: { [key: string]: string } = {
     'bitpunk.fm': 'bitpunkfm',
-    'into the doerfel-verse': 'into-the-doerfel-verse',
-    'into the doerfel verse': 'into-the-doerfel-verse',
     'music from the doerfel-verse': 'music-from-the-doerfel-verse',
     'bloodshot lies - the album': 'bloodshot-lies',
     'dead time(live 2016)': 'dead-timelive-2016',
