@@ -76,9 +76,10 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
       // Create slug for matching
       const createSlug = (name: string) => 
         name.toLowerCase()
-          .replace(/\s+/g, '-')
-          .replace(/-+/g, '-')
-          .replace(/^-+|-+$/g, '');
+          .replace(/[^\w\s-]/g, '') // Remove punctuation except spaces and hyphens
+          .replace(/\s+/g, '-')     // Replace spaces with hyphens
+          .replace(/-+/g, '-')      // Collapse multiple hyphens
+          .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
       
       const decodedName = decodeURIComponent(publisherName);
       const nameSlug = createSlug(decodedName);

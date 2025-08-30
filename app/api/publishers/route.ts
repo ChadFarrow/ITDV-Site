@@ -28,10 +28,26 @@ interface Publisher {
 
 export async function GET(request: NextRequest) {
   try {
-    // Load static albums data
-    const staticAlbumsPath = path.join(process.cwd(), 'public', 'static-albums.json');
-    const staticAlbumsData = JSON.parse(fs.readFileSync(staticAlbumsPath, 'utf8'));
-    const albums: Album[] = staticAlbumsData.albums || [];
+    // Get fresh albums data from database-free endpoint
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL || 
+                   (process.env.NODE_ENV === 'production' 
+                     ? 'https://itdv-site.vercel.app' 
+                     : 'http://localhost:3002');
+    
+    const response = await fetch(`${baseUrl}/api/albums-no-db`, {
+      next: { revalidate: 60 }, // Cache for 1 minute
+    });
+
+    if (!response.ok) {
+      console.error('Failed to fetch albums:', response.status);
+      return NextResponse.json(
+        { error: 'Failed to fetch albums data' },
+        { status: 500 }
+      );
+    }
+
+    const data = await response.json();
+    const albums: Album[] = data.albums || [];
 
     // Group albums by publisher
     const publishersMap = new Map<string, Publisher>();

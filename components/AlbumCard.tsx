@@ -21,6 +21,14 @@ interface Album {
   tracks: Track[];
   releaseDate: string;
   feedId: string;
+  feedUrl?: string;
+  funding?: any[];
+  podroll?: any[];
+  publisher?: {
+    feedGuid: string;
+    feedUrl: string;
+    medium: string;
+  };
 }
 
 interface AlbumCardProps {
@@ -236,12 +244,20 @@ export default function AlbumCard({ album, isPlaying = false, onPlay, className 
           {album.artist}
         </p>
         
-        {/* Release date */}
-        {album.releaseDate && (
-          <p className="text-gray-500 text-[10px] sm:text-xs mt-0.5 sm:mt-1">
-            {new Date(album.releaseDate).getFullYear()}
-          </p>
-        )}
+        {/* Release date and publisher indicator */}
+        <div className="flex items-center justify-between mt-0.5 sm:mt-1">
+          {album.releaseDate && (
+            <p className="text-gray-500 text-[10px] sm:text-xs">
+              {new Date(album.releaseDate).getFullYear()}
+            </p>
+          )}
+          {album.publisher && (
+            <div className="flex items-center gap-1" title="Has publisher feed">
+              <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
+              <span className="text-[9px] sm:text-[10px] text-purple-400 font-medium">PUB</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Mobile touch feedback */}

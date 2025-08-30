@@ -582,25 +582,48 @@ export class RSSParser {
       // Extract Publisher information
       let publisher: RSSPublisher | undefined = undefined;
       
-      // Look for podcast:remoteItem with medium="publisher"
-      const remoteItems = Array.from(channel.getElementsByTagName('podcast:remoteItem'));
-      const publisherRemoteItem = remoteItems.find((item: unknown) => {
-        const element = item as Element;
-        return element.getAttribute('medium') === 'publisher';
-      });
+      // Look for podcast:publisher element first (Podcasting 2.0 spec)
+      const publisherElements = Array.from(channel.getElementsByTagName('podcast:publisher'));
       
-      if (publisherRemoteItem) {
-        const element = publisherRemoteItem as Element;
-        const feedGuid = element.getAttribute('feedGuid');
-        const feedUrl = element.getAttribute('feedUrl');
-        const medium = element.getAttribute('medium');
+      if (publisherElements.length > 0) {
+        const publisherElement = publisherElements[0];
+        // According to spec, podcast:publisher must contain exactly one podcast:remoteItem with medium="publisher"
+        const remoteItem = publisherElement.getElementsByTagName('podcast:remoteItem')[0];
         
-        if (feedGuid && feedUrl && medium) {
-          publisher = {
-            feedGuid,
-            feedUrl,
-            medium
-          };
+        if (remoteItem && remoteItem.getAttribute('medium') === 'publisher') {
+          const feedGuid = remoteItem.getAttribute('feedGuid');
+          const feedUrl = remoteItem.getAttribute('feedUrl');
+          const medium = remoteItem.getAttribute('medium');
+          
+          if (feedGuid && feedUrl && medium) {
+            publisher = {
+              feedGuid,
+              feedUrl,
+              medium
+            };
+          }
+        }
+      } else {
+        // Fallback: Look for standalone podcast:remoteItem with medium="publisher" (legacy support)
+        const remoteItems = Array.from(channel.getElementsByTagName('podcast:remoteItem'));
+        const publisherRemoteItem = remoteItems.find((item: unknown) => {
+          const element = item as Element;
+          return element.getAttribute('medium') === 'publisher';
+        });
+        
+        if (publisherRemoteItem) {
+          const element = publisherRemoteItem as Element;
+          const feedGuid = element.getAttribute('feedGuid');
+          const feedUrl = element.getAttribute('feedUrl');
+          const medium = element.getAttribute('medium');
+          
+          if (feedGuid && feedUrl && medium) {
+            publisher = {
+              feedGuid,
+              feedUrl,
+              medium
+            };
+          }
         }
       }
       

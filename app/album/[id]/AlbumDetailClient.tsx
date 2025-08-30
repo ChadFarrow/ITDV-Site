@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { ArrowLeft, Play, Pause, SkipBack, SkipForward, Volume2 } from 'lucide-react';
 import { useAudio } from '@/contexts/AudioContext';
 import dynamic from 'next/dynamic';
+import { filterPodrollItems } from '@/lib/podroll-utils';
 
 // Dynamic import for ControlsBar
 const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
@@ -266,8 +267,11 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
       
       const podrollData: PodrollAlbum[] = [];
       
+      // Filter out non-music podcast feeds from podrolls
+      const filteredPodroll = filterPodrollItems(album.podroll);
+      
       // Process each podroll item
-      for (const podrollItem of album.podroll) {
+      for (const podrollItem of filteredPodroll) {
         // Check if this podroll URL matches any album on the site
         const matchingAlbum = albums.find(siteAlbum => 
           siteAlbum.feedUrl === podrollItem.url
@@ -522,13 +526,33 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                   {/* Publisher Link */}
                   {album.publisher && (
                     <div className="mb-4">
+                      <div className="text-sm text-gray-400 mb-2">
+                        <span className="inline-flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                          Published by
+                        </span>
+                      </div>
                       <Link
                         href={`/publisher/${getPublisherSlug(album.artist)}`}
                         className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                        title={`View all albums by ${album.artist}`}
                       >
                         <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                        View all albums by {album.artist}
+                        View publisher page
                       </Link>
+                      <Link
+                        href={album.publisher.feedUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-gray-300 transition-colors ml-4"
+                        title={`Direct RSS feed (${album.publisher.feedGuid})`}
+                      >
+                        <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
+                        Raw RSS feed
+                      </Link>
+                      <div className="text-xs text-gray-500 mt-1">
+                        Feed GUID: {album.publisher.feedGuid}
+                      </div>
                     </div>
                   )}
                   

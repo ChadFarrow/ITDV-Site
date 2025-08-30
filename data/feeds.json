@@ -249,8 +249,208 @@
       "status": "active",
       "addedAt": "2025-08-30T14:45:00.000Z",
       "lastUpdated": "2025-08-30T14:45:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-your-chance-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/your-chance.xml",
+      "type": "album",
+      "title": "Your Chance - The Doerfels",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-dfbv1-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/dfbv1.xml",
+      "type": "album",
+      "title": "DFB Volume 1 - Doerfel Family Bluegrass",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-music-from-the-doerfelverse-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/music-from-the-doerfelverse.xml",
+      "type": "album",
+      "title": "Music From The Doerfel-Verse - The Doerfels",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-ben-doerfel-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/ben-doerfel.xml",
+      "type": "album",
+      "title": "Ben Doerfel - Ben Doerfel",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-sirtjthewrathful-com-wp-content-uploads-2023-08-kurtisdrums-v1-xml",
+      "originalUrl": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Kurtisdrums-V1.xml",
+      "type": "album",
+      "title": "Kurtisdrums - Kurtisdrums",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-sirtjthewrathful-com-wp-content-uploads-2023-08-nostalgic-xml",
+      "originalUrl": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Nostalgic.xml",
+      "type": "album",
+      "title": "Nostalgic - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-sirtjthewrathful-com-wp-content-uploads-2023-08-citybeach-xml",
+      "originalUrl": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/CityBeach.xml",
+      "type": "album",
+      "title": "CityBeach - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-wrath-of-banjo-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/wrath-of-banjo.xml",
+      "type": "album",
+      "title": "Wrath Of Banjo - Sir TJ The Wrathful",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-thisisjdog-com-media-ring-that-bell-xml",
+      "originalUrl": "https://www.thisisjdog.com/media/ring-that-bell.xml",
+      "type": "album",
+      "title": "Ring That Bell - Jdog",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-wavlake-com-feed-6bece1b8-5385-4a33-9224-09e7f3ee6965",
+      "originalUrl": "https://www.wavlake.com/feed/6bece1b8-5385-4a33-9224-09e7f3ee6965",
+      "type": "album",
+      "title": "Think Of Me In Color - Ryan Fonda",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-sirtjthewrathful-com-wp-content-uploads-2023-07-beware-of-banjo-xml",
+      "originalUrl": "https://www.sirtjthewrathful.com/wp-content/uploads/2023/07/Beware-of-Banjo.xml",
+      "type": "album",
+      "title": "Beware of Banjo - Sir TJ The Wrathful",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-generation-gap-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/generation-gap.xml",
+      "type": "album",
+      "title": "Generation Gap - Generation Gap",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-phatty-the-grasshopper-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/phatty-the-grasshopper.xml",
+      "type": "album",
+      "title": "Phatty The Grasshopper - The Doerfels",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-autumn-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/autumn.xml",
+      "type": "album",
+      "title": "Autumn - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-unsound-existence-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/unsound-existence.xml",
+      "type": "album",
+      "title": "Unsound Existence (self-hosted version) - Ryan Fonda feat. CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-pour-over-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/pour-over.xml",
+      "type": "album",
+      "title": "Pour Over - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-you-feel-like-home-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/you-feel-like-home.xml",
+      "type": "album",
+      "title": "You Feel Like Home(Single) - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-psalm-54-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/psalm-54.xml",
+      "type": "album",
+      "title": "Psalm 54 - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-you-are-my-world-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/you-are-my-world.xml",
+      "type": "album",
+      "title": "You Are My World - CityBeach",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
+    },
+    {
+      "id": "https-www-doerfelverse-com-feeds-dfbv2-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/dfbv2.xml",
+      "type": "album",
+      "title": "DFB Volume 2 - Doerfel Family Bluegrass",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T15:30:00.000Z",
+      "lastUpdated": "2025-08-30T15:30:00.000Z"
     }
   ],
-  "lastUpdated": "2025-08-30T14:45:00.000Z",
+  "lastUpdated": "2025-08-30T15:30:00.000Z",
   "version": 2
 }

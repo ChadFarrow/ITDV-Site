@@ -26,8 +26,10 @@ export async function GET(request: NextRequest) {
           artist: result.artist,
           coverArt: result.coverArt,
           trackCount: result.tracks.length,
-          firstTrack: result.tracks[0]?.title
-        }
+          firstTrack: result.tracks[0]?.title,
+          publisher: result.publisher // Add publisher data to response
+        },
+        fullAlbum: result // Include full album object for debugging
       });
     } else {
       return NextResponse.json({

@@ -16,17 +16,17 @@ async function getPublisherData(publisherName: string) {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL || 
                    (process.env.NODE_ENV === 'production' 
                      ? 'https://itdv-site.vercel.app' 
-                     : 'http://localhost:3000');
+                     : 'http://localhost:3002');
     
-    // Get albums data
-    let response = await fetch(`${baseUrl}/api/albums-static`, {
-      next: { revalidate: 300 }, // Cache for 5 minutes
+    // Get albums data from database-free endpoint (includes fresh publisher data)
+    let response = await fetch(`${baseUrl}/api/albums-no-db`, {
+      next: { revalidate: 60 }, // Cache for 1 minute
     });
     
     if (!response.ok) {
-      console.log('Static endpoint failed, falling back to RSS parsing...');
-      response = await fetch(`${baseUrl}/api/albums`, {
-        next: { revalidate: 60 }, // Cache for 1 minute
+      console.log('Database-free endpoint failed, falling back to static...');
+      response = await fetch(`${baseUrl}/api/albums-static`, {
+        next: { revalidate: 300 }, // Cache for 5 minutes
       });
     }
 
@@ -41,9 +41,10 @@ async function getPublisherData(publisherName: string) {
     // Create slug from publisher name for matching
     const createSlug = (name: string) => 
       name.toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-')
-        .replace(/^-+|-+$/g, '');
+        .replace(/[^\w\s-]/g, '') // Remove punctuation except spaces and hyphens
+        .replace(/\s+/g, '-')     // Replace spaces with hyphens
+        .replace(/-+/g, '-')      // Collapse multiple hyphens
+        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
     
     const decodedName = decodeURIComponent(publisherName);
     const nameSlug = createSlug(decodedName);
