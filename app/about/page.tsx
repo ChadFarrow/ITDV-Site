@@ -149,6 +149,11 @@ export default function AboutPage() {
                       Podcast Index Website
                     </a>
                   </li>
+                  <li>
+                    <a href="https://fountain.fm/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 underline">
+                      Fountain
+                    </a>
+                  </li>
                 </ul>
               </div>
             </div>
