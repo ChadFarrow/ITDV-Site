@@ -106,19 +106,6 @@ export default function AlbumCard({ album, isPlaying = false, onPlay, className 
 
   return (
     <div className={`group relative bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 overflow-hidden transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:scale-[1.02] active:scale-[0.98] block ${className}`}>
-      {/* Play button overlay */}
-      <button
-        className="absolute z-10 right-2 top-2 bg-black/50 hover:bg-black/70 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-        onClick={(e) => {
-          e.stopPropagation();
-          onPlay(album, e);
-        }}
-        aria-label={`Play ${album.title}`}
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-        </svg>
-      </button>
       
       <Link 
         href={albumUrl}
