@@ -199,8 +199,18 @@
       "status": "active",
       "addedAt": "2025-08-02T20:07:14.274Z",
       "lastUpdated": "2025-08-02T20:07:14.274Z"
+    },
+    {
+      "id": "www-doerfelverse-com-artists-middleseason-inside-out-xml",
+      "originalUrl": "https://www.doerfelverse.com/artists/middleseason/inside-out.xml",
+      "type": "album",
+      "title": "Inside Out - Middle Season",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T14:20:00.000Z",
+      "lastUpdated": "2025-08-30T14:20:00.000Z"
     }
   ],
-  "lastUpdated": "2025-08-02T20:07:14.274Z",
+  "lastUpdated": "2025-08-30T14:20:00.000Z",
   "version": 2
 }
