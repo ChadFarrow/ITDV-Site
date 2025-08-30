@@ -441,6 +441,57 @@
       "lastUpdated": "2025-08-02T04:55:49.557Z"
     },
     {
+      "title": "Inside Out",
+      "artist": "Middle Season",
+      "description": "Based in Nashville TN, currently overcoming laziness and drinking a lot of coffee to finish songs",
+      "coverArt": "https://www.doerfelverse.com/artists/middleseason/inside-out.jpg",
+      "tracks": [
+        {
+          "title": "Inside Out",
+          "duration": "3:08",
+          "url": "https://www.doerfelverse.com/artists/middleseason/inside-out.mp3",
+          "trackNumber": 1,
+          "subtitle": "Inside Out",
+          "summary": "Inside Out by Middle Season",
+          "image": "https://www.doerfelverse.com/artists/middleseason/inside-out.jpg",
+          "explicit": false,
+          "keywords": [
+            "middle",
+            "season",
+            "inside",
+            "out",
+            "nashville",
+            "demu",
+            "v4v",
+            "music"
+          ]
+        }
+      ],
+      "releaseDate": "2025-06-19T00:00:00+00:00",
+      "feedId": "www-doerfelverse-com-artists-middleseason-inside-out-xml",
+      "feedUrl": "https://www.doerfelverse.com/artists/middleseason/inside-out.xml",
+      "funding": [],
+      "podroll": [],
+      "link": "https://www.facebook.com/middleseasonmusic",
+      "language": "en",
+      "categories": [
+        "Music"
+      ],
+      "keywords": [
+        "middle",
+        "season",
+        "nashville",
+        "rock",
+        "music",
+        "v4v",
+        "demu"
+      ],
+      "explicit": false,
+      "lastUpdated": "2025-08-30T14:20:00.000Z",
+      "subtitle": "Inside Out",
+      "summary": "Inside Out by Middle Season"
+    },
+    {
       "title": "Think EP",
       "artist": "The Doerfels",
       "description": "Think EP was originally released in 2017 under the artist name \"Fuel On Fire\" during the bands move to Nashville to try to \"make it\".",
