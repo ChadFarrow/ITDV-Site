@@ -219,8 +219,38 @@
       "status": "active",
       "addedAt": "2025-08-30T14:30:00.000Z",
       "lastUpdated": "2025-08-30T14:30:00.000Z"
+    },
+    {
+      "id": "www-doerfelverse-com-feeds-middle-season-let-go-xml",
+      "originalUrl": "https://www.doerfelverse.com/feeds/middle-season-let-go.xml",
+      "type": "album",
+      "title": "Let Go (What's holding you back) - Middle Season",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T14:45:00.000Z",
+      "lastUpdated": "2025-08-30T14:45:00.000Z"
+    },
+    {
+      "id": "www-doerfelverse-com-artists-middleseason-mspubfeed-xml",
+      "originalUrl": "https://www.doerfelverse.com/artists/middleseason/mspubfeed.xml",
+      "type": "publisher",
+      "title": "Middle Season Publisher Feed",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T14:45:00.000Z",
+      "lastUpdated": "2025-08-30T14:45:00.000Z"
+    },
+    {
+      "id": "www-doerfelverse-com-artists-middleseason-no-way-back-single-xml",
+      "originalUrl": "https://www.doerfelverse.com/artists/middleseason/no-way-back-single.xml",
+      "type": "album",
+      "title": "No Way Back - Single - Middle Season",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T14:45:00.000Z",
+      "lastUpdated": "2025-08-30T14:45:00.000Z"
     }
   ],
-  "lastUpdated": "2025-08-30T14:30:00.000Z",
+  "lastUpdated": "2025-08-30T14:45:00.000Z",
   "version": 2
 }

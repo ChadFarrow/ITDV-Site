@@ -555,6 +555,114 @@
       "summary": "\"Mejor versión\" in Spanish translates to \"best version\" or \"better version\" in English"
     },
     {
+      "title": "Let Go (What's holding you back)",
+      "artist": "Middle Season",
+      "description": "Middle Season is an Indie Rock band based in Nashville TN by music producer and guitarist Joey Ramon, he is originally from South America (Venezuela), currently fighting laziness, drinking a lot of coffee to stay up late and finish up his songs.",
+      "coverArt": "https://www.doerfelverse.com/art/let-go-art.png",
+      "tracks": [
+        {
+          "title": "Let Go (What's holding you back)",
+          "duration": "4:09",
+          "url": "https://www.doerfelverse.com/tracks/let-go.mp3",
+          "trackNumber": 1,
+          "subtitle": "Let Go (What's holding you back)",
+          "summary": "Let Go (What's holding you back) by Middle Season",
+          "image": "https://www.doerfelverse.com/art/let-go-art.png",
+          "explicit": false,
+          "keywords": [
+            "middle",
+            "season",
+            "let",
+            "go",
+            "nashville",
+            "indie",
+            "rock",
+            "music",
+            "v4v"
+          ]
+        }
+      ],
+      "releaseDate": "2023-10-16T20:29:29+00:00",
+      "feedId": "www-doerfelverse-com-feeds-middle-season-let-go-xml",
+      "feedUrl": "https://www.doerfelverse.com/feeds/middle-season-let-go.xml",
+      "funding": [],
+      "podroll": [],
+      "link": "https://instagram.com/middleseasonmusic",
+      "language": "en",
+      "categories": [
+        "Music"
+      ],
+      "keywords": [
+        "music",
+        "middle",
+        "season",
+        "middleseason",
+        "indie",
+        "rock",
+        "nashville"
+      ],
+      "explicit": false,
+      "lastUpdated": "2025-08-30T14:45:00.000Z",
+      "subtitle": "Let Go (What's holding you back)",
+      "summary": "Let Go (What's holding you back) by Middle Season"
+    },
+    {
+      "title": "No Way Back",
+      "artist": "Middle Season",
+      "description": "No Way Back by Middle Season",
+      "coverArt": "https://www.doerfelverse.com/artists/middleseason/no-way-back.jpg",
+      "tracks": [
+        {
+          "title": "No Way Back",
+          "duration": "3:30",
+          "url": "https://www.doerfelverse.com/artists/middleseason/no-way-back.mp3",
+          "trackNumber": 1,
+          "subtitle": "No Way Back",
+          "summary": "No Way Back by Middle Season",
+          "image": "https://www.doerfelverse.com/artists/middleseason/no-way-back.jpg",
+          "explicit": false,
+          "keywords": [
+            "middle",
+            "season",
+            "no",
+            "way",
+            "back",
+            "nashville",
+            "indie",
+            "rock",
+            "music",
+            "v4v"
+          ]
+        }
+      ],
+      "releaseDate": "2025-06-19T00:00:00+00:00",
+      "feedId": "www-doerfelverse-com-artists-middleseason-no-way-back-single-xml",
+      "feedUrl": "https://www.doerfelverse.com/artists/middleseason/no-way-back-single.xml",
+      "funding": [],
+      "podroll": [],
+      "link": "https://instagram.com/middleseasonmusic",
+      "language": "en",
+      "categories": [
+        "Music"
+      ],
+      "keywords": [
+        "middle",
+        "season",
+        "no",
+        "way",
+        "back",
+        "single",
+        "nashville",
+        "indie",
+        "rock",
+        "music"
+      ],
+      "explicit": false,
+      "lastUpdated": "2025-08-30T14:45:00.000Z",
+      "subtitle": "No Way Back",
+      "summary": "No Way Back by Middle Season"
+    },
+    {
       "title": "Think EP",
       "artist": "The Doerfels",
       "description": "Think EP was originally released in 2017 under the artist name \"Fuel On Fire\" during the bands move to Nashville to try to \"make it\".",
