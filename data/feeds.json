@@ -209,8 +209,18 @@
       "status": "active",
       "addedAt": "2025-08-30T14:20:00.000Z",
       "lastUpdated": "2025-08-30T14:20:00.000Z"
+    },
+    {
+      "id": "www-doerfelverse-com-artists-middleseason-mejor-version-xml",
+      "originalUrl": "https://www.doerfelverse.com/artists/middleseason/mejor-version.xml",
+      "type": "album",
+      "title": "Mejor Version - Middle Season",
+      "priority": "extended",
+      "status": "active",
+      "addedAt": "2025-08-30T14:30:00.000Z",
+      "lastUpdated": "2025-08-30T14:30:00.000Z"
     }
   ],
-  "lastUpdated": "2025-08-30T14:20:00.000Z",
+  "lastUpdated": "2025-08-30T14:30:00.000Z",
   "version": 2
 }

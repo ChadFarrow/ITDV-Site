@@ -492,6 +492,69 @@
       "summary": "Inside Out by Middle Season"
     },
     {
+      "title": "Mejor Versión",
+      "artist": "Middle Season",
+      "description": "\"Mejor versión\" in Spanish translates to \"best version\" or \"better version\" in English, depending on the context. It can refer to striving to be the best version of oneself, or it can be used to describe a superior edition of something. Composer: Jose Ramon Angulo & Osmila Angulo",
+      "coverArt": "https://www.doerfelverse.com/artists/middleseason/mejor-version.png",
+      "tracks": [
+        {
+          "title": "Mejor Versión",
+          "duration": "3:08",
+          "url": "https://www.doerfelverse.com/artists/middleseason/mejor-version.mp3",
+          "trackNumber": 1,
+          "subtitle": "Mejor Versión",
+          "summary": "\"Mejor versión\" in Spanish translates to \"best version\" or \"better version\" in English. It can refer to striving to be the best version of oneself.",
+          "image": "https://www.doerfelverse.com/artists/middleseason/mejor-version.png",
+          "explicit": false,
+          "keywords": [
+            "middle",
+            "season",
+            "mejor",
+            "versión",
+            "nashville",
+            "demu",
+            "v4v",
+            "music",
+            "rock"
+          ]
+        }
+      ],
+      "releaseDate": "2025-06-19T23:29:17+00:00",
+      "feedId": "www-doerfelverse-com-artists-middleseason-mejor-version-xml",
+      "feedUrl": "https://www.doerfelverse.com/artists/middleseason/mejor-version.xml",
+      "funding": [],
+      "podroll": [
+        {
+          "url": "https://www.doerfelverse.com/artists/middleseason/inside-out.xml",
+          "title": "Inside Out - Middle Season"
+        },
+        {
+          "url": "https://www.doerfelverse.com/feeds/middle-season-let-go.xml",
+          "title": "Let Go - Middle Season"
+        }
+      ],
+      "link": "https://www.facebook.com/middleseasonmusic",
+      "language": "en",
+      "categories": [
+        "Music"
+      ],
+      "keywords": [
+        "middle",
+        "season",
+        "mejor",
+        "versión",
+        "nashville",
+        "rock",
+        "music",
+        "v4v",
+        "demu"
+      ],
+      "explicit": false,
+      "lastUpdated": "2025-08-30T14:30:00.000Z",
+      "subtitle": "Mejor Versión",
+      "summary": "\"Mejor versión\" in Spanish translates to \"best version\" or \"better version\" in English"
+    },
+    {
       "title": "Think EP",
       "artist": "The Doerfels",
       "description": "Think EP was originally released in 2017 under the artist name \"Fuel On Fire\" during the bands move to Nashville to try to \"make it\".",
