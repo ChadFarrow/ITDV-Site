@@ -4,19 +4,12 @@ import { Filter, Grid3X3, List, Shuffle } from 'lucide-react';
 
 export type FilterType = 'all' | 'albums' | 'eps' | 'singles' | 'playlist';
 export type ViewType = 'grid' | 'list';
-export type SortType = 'name' | 'year' | 'tracks';
-
 interface ControlsBarProps {
   // Filter props
   activeFilter: FilterType;
   onFilterChange: (filter: FilterType) => void;
   showFilters?: boolean;
   filterOptions?: { value: FilterType; label: string }[];
-  
-  // Sort props
-  sortType: SortType;
-  onSortChange: (sort: SortType) => void;
-  sortOptions?: { value: SortType; label: string }[];
   
   // View props
   viewType: ViewType;
@@ -33,12 +26,6 @@ interface ControlsBarProps {
   resultLabel?: string;
 }
 
-const defaultSortOptions: { value: SortType; label: string }[] = [
-  { value: 'name', label: 'Sort by Name' },
-  { value: 'year', label: 'Sort by Year' },
-  { value: 'tracks', label: 'Sort by Tracks' },
-];
-
 const defaultFilters: { value: FilterType; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'albums', label: 'Albums' },
@@ -51,9 +38,6 @@ export default function ControlsBar({
   onFilterChange,
   showFilters = true,
   filterOptions = defaultFilters,
-  sortType,
-  onSortChange,
-  sortOptions = defaultSortOptions,
   viewType,
   onViewChange,
   showViewToggle = true,
@@ -91,19 +75,6 @@ export default function ControlsBar({
         {/* Second Row - Sort, Count, and Actions */}
         <div className="flex items-center justify-between p-3 gap-3">
           <div className="flex items-center gap-3 flex-1 min-w-0">
-            {/* Sort */}
-            <select 
-              value={sortType} 
-              onChange={(e) => onSortChange(e.target.value as SortType)}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-2 py-1 text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all whitespace-nowrap touch-manipulation"
-            >
-              {sortOptions.map((option) => (
-                <option key={option.value} value={option.value} className="bg-gray-900 text-white">
-                  {option.label}
-                </option>
-              ))}
-            </select>
-
             {/* Result count */}
             {resultCount !== undefined && (
               <div className="text-xs text-gray-400 whitespace-nowrap">
@@ -181,19 +152,6 @@ export default function ControlsBar({
               </div>
             </div>
           )}
-
-          {/* Sort */}
-          <select 
-            value={sortType} 
-            onChange={(e) => onSortChange(e.target.value as SortType)}
-            className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all whitespace-nowrap touch-manipulation"
-          >
-            {sortOptions.map((option) => (
-              <option key={option.value} value={option.value} className="bg-gray-900 text-white">
-                {option.label}
-              </option>
-            ))}
-          </select>
 
           {/* Result count */}
           {resultCount !== undefined && (

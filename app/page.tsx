@@ -37,7 +37,7 @@ const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
 });
 
 // Import types from the ControlsBar component
-import type { FilterType, ViewType, SortType } from '@/components/ControlsBar';
+import type { FilterType, ViewType } from '@/components/ControlsBar';
 
 
 interface Track {
@@ -98,7 +98,6 @@ export default function HomePage() {
   // Controls state
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
   const [viewType, setViewType] = useState<ViewType>('grid');
-  const [sortType, setSortType] = useState<SortType>('name');
 
   // Shuffle functionality
   const handleShuffle = () => {
@@ -600,8 +599,6 @@ export default function HomePage() {
               <ControlsBar
                 activeFilter={activeFilter}
                 onFilterChange={setActiveFilter}
-                sortType={sortType}
-                onSortChange={setSortType}
                 viewType={viewType}
                 onViewChange={setViewType}
                 showShuffle={true}
