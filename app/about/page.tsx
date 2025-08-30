@@ -72,25 +72,6 @@ export default function AboutPage() {
                   </a>
                 </div>
 
-                {/* PodcastIndex Donation */}
-                <div className="bg-black/40 rounded-lg p-6 text-center">
-                  <h3 className="text-xl font-semibold mb-3">Support PodcastIndex</h3>
-                  <p className="text-gray-400 mb-4 text-sm">
-                    Support the open podcast ecosystem that powers this platform.
-                  </p>
-                  <a
-                    href="https://podcastindex.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    Visit PodcastIndex
-                  </a>
-                </div>
-
                 {/* Amazon Wishlist */}
                 <div className="bg-black/40 rounded-lg p-6 text-center">
                   <h3 className="text-xl font-semibold mb-3">Studio Gear Wishlist</h3>
@@ -107,6 +88,25 @@ export default function AboutPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                     View Wishlist
+                  </a>
+                </div>
+
+                {/* PodcastIndex Donation */}
+                <div className="bg-black/40 rounded-lg p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-3">Support PodcastIndex</h3>
+                  <p className="text-gray-400 mb-4 text-sm">
+                    Support the open podcast ecosystem that powers this platform.
+                  </p>
+                  <a
+                    href="https://podcastindex.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    Visit PodcastIndex
                   </a>
                 </div>
               </div>
