@@ -586,7 +586,7 @@ export class RSSParser {
       const publisherElements = Array.from(channel.getElementsByTagName('podcast:publisher'));
       
       if (publisherElements.length > 0) {
-        const publisherElement = publisherElements[0];
+        const publisherElement = publisherElements[0] as Element;
         // According to spec, podcast:publisher must contain exactly one podcast:remoteItem with medium="publisher"
         const remoteItem = publisherElement.getElementsByTagName('podcast:remoteItem')[0];
         
