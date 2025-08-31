@@ -129,6 +129,7 @@ slack-tokens.json
 discord-tokens.json
 # GitHub tokens
 github-tokens.json
+ghp_*
 # GitLab tokens
 gitlab-tokens.json
 # Bitbucket tokens
