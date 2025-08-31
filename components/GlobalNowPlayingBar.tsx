@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useAudio } from '@/contexts/AudioContext';
 import { useSwipeGestures } from '@/hooks/useSwipeGestures';
+import NowPlayingScreen from './NowPlayingScreen';
 
 const GlobalNowPlayingBar: React.FC = () => {
+  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const {
     currentTrack,
     currentAlbum,
@@ -61,17 +63,26 @@ const GlobalNowPlayingBar: React.FC = () => {
   };
 
   return (
-    <div 
-      ref={swipeRef}
-      className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/10 p-4 z-50 touch-pan-y"
-    >
+    <>
+      <NowPlayingScreen 
+        isOpen={isFullScreenOpen} 
+        onClose={() => setIsFullScreenOpen(false)} 
+      />
+      
+      <div 
+        ref={swipeRef}
+        className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-sm border-t border-white/10 p-4 z-50 touch-pan-y"
+      >
       <div className="max-w-7xl mx-auto">
         {/* Mobile Layout */}
         <div className="block sm:hidden">
           {/* Main controls row */}
           <div className="flex items-center gap-3 mb-3">
-            {/* Track Info */}
-            <div className="flex items-center gap-2 min-w-0 flex-1">
+            {/* Track Info - Clickable to open full screen */}
+            <div 
+              className="flex items-center gap-2 min-w-0 flex-1 cursor-pointer"
+              onClick={() => setIsFullScreenOpen(true)}
+            >
               {currentTrack.image && (
                 <div className="w-10 h-10 relative overflow-hidden rounded border border-white/20">
                   <Image
@@ -207,8 +218,11 @@ const GlobalNowPlayingBar: React.FC = () => {
 
         {/* Desktop Layout */}
         <div className="hidden sm:flex items-center gap-4">
-          {/* Track Info */}
-          <div className="flex items-center gap-3 min-w-0 flex-1">
+          {/* Track Info - Clickable to open full screen */}
+          <div 
+            className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer"
+            onClick={() => setIsFullScreenOpen(true)}
+          >
             {currentTrack.image && (
               <div className="w-12 h-12 relative overflow-hidden rounded border border-white/20">
                 <Image
@@ -359,7 +373,8 @@ const GlobalNowPlayingBar: React.FC = () => {
           box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
         }
       `}</style>
-    </div>
+      </div>
+    </>
   );
 };
 
