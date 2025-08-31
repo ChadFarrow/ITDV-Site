@@ -31,10 +31,21 @@ async function generateIcons() {
     console.log(`Created icon-${size}x${size}.png`);
   }
 
-  // Android maskable icons (using pre-cropped round version)
+  // Android maskable icons (using pre-cropped round version with safe zone padding)
+  // Maskable icons need padding - safe zone is center 80% (40% radius from center)
   for (const size of pwaSquareSizes) {
+    const logoSize = Math.floor(size * 0.65); // Logo takes up 65% to fit in safe zone
+    const padding = Math.floor((size - logoSize) / 2);
+    
     await sharp(roundSourcePath)
-      .resize(size, size)
+      .resize(logoSize, logoSize)
+      .extend({
+        top: padding,
+        bottom: padding,
+        left: padding,
+        right: padding,
+        background: { r: 0, g: 0, b: 0, alpha: 1 } // Black background
+      })
       .toFile(path.join(publicPath, `icon-maskable-${size}x${size}.png`));
     console.log(`Created icon-maskable-${size}x${size}.png`);
   }
