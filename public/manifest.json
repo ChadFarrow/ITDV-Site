@@ -1,7 +1,7 @@
 {
-  "name": "Into the Doerfel-Verse",
-  "short_name": "ITDV",
-  "description": "Music streaming platform for The Doerfels",
+  "name": "DoerfelVerse",
+  "short_name": "DV",
+  "description": "Music & Podcast Hub - The Doerfels and Friends",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
@@ -23,13 +23,25 @@
       "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/apple-touch-icon.png",
