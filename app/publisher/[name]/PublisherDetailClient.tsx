@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
+import { useAudio } from '@/contexts/AudioContext';
 
 interface Track {
   title: string;
@@ -48,6 +49,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
   const [publisher, setPublisher] = useState<Publisher | null>(initialPublisher);
   const [isLoading, setIsLoading] = useState(!initialPublisher);
   const [error, setError] = useState<string | null>(null);
+  const { playAlbum } = useAudio();
 
   useEffect(() => {
     if (!initialPublisher) {
@@ -129,6 +131,21 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
     } catch {
       return '';
     }
+  };
+
+  const handlePlayAlbum = (album: Album, e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigation when clicking play button
+    e.stopPropagation();
+    
+    // Map album tracks to the expected format
+    const tracks = album.tracks.map(track => ({
+      ...track,
+      artist: album.artist,
+      album: album.title,
+      image: track.image || album.coverArt
+    }));
+    
+    playAlbum(tracks, 0, album.title);
   };
 
   if (isLoading) {
@@ -258,30 +275,47 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
             <h2 className="text-2xl font-bold mb-6">Albums</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {publisher.albums.map((album, index) => (
-                <Link
+                <div
                   key={`${album.feedId}-${index}`}
-                  href={`/album/${getAlbumSlug(album)}`}
-                  className="group block"
+                  className="group relative"
                 >
-                  <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
-                    <div className="aspect-square mb-3 rounded overflow-hidden">
-                      <Image
-                        src={album.coverArt}
-                        alt={album.title}
-                        width={200}
-                        height={200}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                      />
+                  <Link
+                    href={`/album/${getAlbumSlug(album)}`}
+                    className="block"
+                  >
+                    <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:bg-white/10 transition-colors border border-white/10">
+                      <div className="aspect-square mb-3 rounded overflow-hidden relative">
+                        <Image
+                          src={album.coverArt}
+                          alt={album.title}
+                          width={200}
+                          height={200}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                        />
+                        
+                        {/* Play Button Overlay */}
+                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <button
+                            onClick={(e) => handlePlayAlbum(album, e)}
+                            className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform shadow-lg"
+                            title={`Play ${album.title}`}
+                          >
+                            <svg className="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
+                        {album.title}
+                      </h3>
+                      <p className="text-xs text-gray-400 truncate">{album.artist}</p>
+                      {album.releaseDate && (
+                        <p className="text-xs text-gray-500 mt-1">{getReleaseYear(album.releaseDate)}</p>
+                      )}
                     </div>
-                    <h3 className="font-semibold text-sm mb-1 truncate group-hover:text-blue-400 transition-colors">
-                      {album.title}
-                    </h3>
-                    <p className="text-xs text-gray-400 truncate">{album.artist}</p>
-                    {album.releaseDate && (
-                      <p className="text-xs text-gray-500 mt-1">{getReleaseYear(album.releaseDate)}</p>
-                    )}
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               ))}
             </div>
           </div>

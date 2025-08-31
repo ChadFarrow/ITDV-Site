@@ -503,7 +503,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
             <div className="flex flex-col lg:flex-row gap-8 items-start">
               {/* Album Artwork */}
               <div className="flex-shrink-0 mx-auto lg:mx-0">
-                <div className="w-64 h-64 lg:w-80 lg:h-80 relative rounded-xl shadow-2xl overflow-hidden border border-white/20">
+                <div className="w-64 h-64 lg:w-80 lg:h-80 relative rounded-xl shadow-2xl overflow-hidden border border-white/20 group cursor-pointer">
                   <Image
                     src={album.coverArt}
                     alt={album.title}
@@ -512,6 +512,19 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
                     priority
                     sizes="(min-width: 1024px) 320px, 256px"
                   />
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <button
+                      onClick={handlePlayAlbum}
+                      className="p-4 lg:p-6 bg-white/20 backdrop-blur-sm border border-white/40 text-white rounded-full hover:scale-110 hover:bg-white/30 transition-all shadow-2xl"
+                      title={`Play ${album.title}`}
+                    >
+                      <svg className="w-8 h-8 lg:w-12 lg:h-12 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
 
