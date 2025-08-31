@@ -81,7 +81,7 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
       className="fixed inset-0 bg-gradient-to-b from-gray-900 via-black to-black z-[100] flex flex-col"
     >
       {/* Header */}
-      <div className="flex items-center justify-between p-4 sm:p-6">
+      <div className="flex items-center justify-between p-4 sm:p-6" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
         <button
           onClick={onClose}
           className="p-2 text-white/60 hover:text-white transition-colors"
@@ -108,7 +108,7 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-8 pb-8">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 sm:px-8 pb-4 sm:pb-8">
         {/* Album Art */}
         <div className="w-full max-w-md aspect-square relative mb-8">
           {currentTrack.image ? (
