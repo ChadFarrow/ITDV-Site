@@ -450,14 +450,8 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
             priority
           />
         ) : (
-          /* Fallback to Bloodshot Lies background */
-          <Image
-            src="https://re.podtards.com/optimized/bloodshot-lies-the-album_500x500.webp"
-            alt="Bloodshot Lies background"
-            fill
-            className="object-cover w-full h-full"
-            priority
-          />
+          /* Fallback to default background */
+          <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black"></div>
         )}
         
         {/* Dynamic overlay based on album */}
