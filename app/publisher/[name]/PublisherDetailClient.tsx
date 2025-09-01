@@ -50,7 +50,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
   const [publisherArtwork, setPublisherArtwork] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(!initialPublisher);
   const [error, setError] = useState<string | null>(null);
-  const { playAlbumAndOpenNowPlaying } = useAudio();
+  const { playAlbum } = useAudio();
 
   useEffect(() => {
     if (!initialPublisher) {
@@ -168,7 +168,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
       image: track.image || album.coverArt
     }));
     
-    playAlbumAndOpenNowPlaying(tracks, 0, album.title);
+    playAlbum(tracks, 0, album.title);
   };
 
   if (isLoading) {

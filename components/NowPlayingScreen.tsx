@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import { useAudio } from '@/contexts/AudioContext';
 import { useSwipeGestures } from '@/hooks/useSwipeGestures';
+import { extractColorsFromImage, createAlbumBackground, createTextOverlay, ExtractedColors } from '@/lib/color-utils';
 
 interface NowPlayingScreenProps {
   isOpen: boolean;
@@ -11,6 +12,10 @@ interface NowPlayingScreenProps {
 }
 
 const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) => {
+  const [extractedColors, setExtractedColors] = useState<ExtractedColors | null>(null);
+  const [isLoadingColors, setIsLoadingColors] = useState(false);
+  const colorCache = useRef<Map<string, ExtractedColors>>(new Map());
+
   const {
     currentTrack,
     currentAlbum,
@@ -38,6 +43,37 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
     threshold: 50,
     velocityThreshold: 0.3
   });
+
+  // Extract colors from album art when track changes
+  useEffect(() => {
+    if (!isOpen || !currentTrack?.image) {
+      setExtractedColors(null);
+      return;
+    }
+
+    const imageUrl = currentTrack.image;
+    
+    // Check cache first
+    if (colorCache.current.has(imageUrl)) {
+      setExtractedColors(colorCache.current.get(imageUrl)!);
+      return;
+    }
+
+    setIsLoadingColors(true);
+    
+    extractColorsFromImage(imageUrl)
+      .then((colors) => {
+        colorCache.current.set(imageUrl, colors);
+        setExtractedColors(colors);
+      })
+      .catch((error) => {
+        console.warn('Failed to extract colors from image:', error);
+        setExtractedColors(null);
+      })
+      .finally(() => {
+        setIsLoadingColors(false);
+      });
+  }, [isOpen, currentTrack?.image]);
 
   // Handle escape key
   useEffect(() => {
@@ -75,11 +111,23 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
     setVolume(newVolume);
   };
 
+  // Generate background styles
+  const backgroundStyle = extractedColors 
+    ? { background: createAlbumBackground(extractedColors) }
+    : { background: 'linear-gradient(135deg, #1f2937 0%, #111827 50%, #000000 100%)' };
+
+  const overlayStyle = extractedColors 
+    ? { background: createTextOverlay(extractedColors) }
+    : { background: 'linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.3) 100%)' };
+
   return (
     <div 
       ref={swipeRef}
-      className="fixed inset-0 bg-gradient-to-b from-gray-900 via-black to-black z-[100] flex flex-col"
+      className="fixed inset-0 z-[100] flex flex-col transition-all duration-1000 ease-in-out"
+      style={backgroundStyle}
     >
+      {/* Color overlay for better text readability */}
+      <div className="absolute inset-0 pointer-events-none" style={overlayStyle} />
       {/* Header */}
       <div className="flex items-center justify-between p-4 sm:p-6" style={{ paddingTop: 'max(1rem, env(safe-area-inset-top))' }}>
         <button
