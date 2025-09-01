@@ -18,6 +18,21 @@ export interface ExtractedColors {
 export const extractColorsFromImage = async (imageUrl: string): Promise<ExtractedColors> => {
   return new Promise((resolve, reject) => {
     const img = new Image();
+    
+    // Handle different image sources
+    let finalUrl = imageUrl;
+    
+    // If it's a CDN URL or external URL, use our proxy
+    if (imageUrl.includes('cdn.') || imageUrl.includes('http') || imageUrl.includes('//')) {
+      // Convert HTTP to HTTPS if needed
+      let secureUrl = imageUrl;
+      if (imageUrl.startsWith('http://')) {
+        secureUrl = imageUrl.replace('http://', 'https://');
+      }
+      // Use the proxy-image API to avoid CORS issues
+      finalUrl = `/api/proxy-image?url=${encodeURIComponent(secureUrl)}`;
+    }
+    
     img.crossOrigin = 'anonymous';
     
     img.onload = () => {
@@ -92,11 +107,23 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
       }
     };
     
-    img.onerror = () => {
-      reject(new Error('Failed to load image'));
+    img.onerror = (error) => {
+      console.error('Failed to load image:', finalUrl, error);
+      // Try without proxy as fallback
+      if (finalUrl.includes('/api/proxy-image')) {
+        const fallbackImg = new Image();
+        fallbackImg.crossOrigin = 'anonymous';
+        fallbackImg.onload = img.onload;
+        fallbackImg.onerror = () => {
+          reject(new Error('Failed to load image from both proxy and direct URL'));
+        };
+        fallbackImg.src = imageUrl;
+      } else {
+        reject(new Error('Failed to load image'));
+      }
     };
     
-    img.src = imageUrl;
+    img.src = finalUrl;
   });
 };
 
