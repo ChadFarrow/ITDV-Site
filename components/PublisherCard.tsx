@@ -43,18 +43,14 @@ export default function PublisherCard({ publisher }: PublisherCardProps) {
               width={64}
               height={64}
               className="w-full h-full object-cover"
-              onError={(e) => {
-                // Hide broken image and show icon instead
-                e.currentTarget.style.display = 'none';
-              }}
             />
-          ) : null}
-          {/* Always show fallback icon, will be hidden if image loads successfully */}
-          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-            <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
-          </div>
+          ) : (
+            <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+              <svg className="w-8 h-8 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+              </svg>
+            </div>
+          )}
         </div>
         
         {/* Publisher Info */}

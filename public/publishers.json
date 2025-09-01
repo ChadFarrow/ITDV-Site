@@ -7,7 +7,7 @@
     "albumCount": 3,
     "latestAlbum": {
       "title": "Bloodshot Lies - The Album",
-      "coverArt": "/bloodshot-lies-big.png",
+      "coverArt": "https://www.doerfelverse.com/art/doerfels-hockeystick.png",
       "releaseDate": "2024-01-01"
     }
   },
@@ -19,6 +19,7 @@
     "albumCount": 7,
     "latestAlbum": {
       "title": "Nostalgic",
+      "coverArt": "https://www.doerfelverse.com/art/citybeach-logo.png",
       "releaseDate": "2023-12-01"
     }
   },
@@ -30,6 +31,7 @@
     "albumCount": 4,
     "latestAlbum": {
       "title": "Inside Out - Single",
+      "coverArt": "https://www.doerfelverse.com/artists/middleseason/mslogo.jpg",
       "releaseDate": "2024-01-01"
     }
   },
@@ -41,6 +43,7 @@
     "albumCount": 13,
     "latestAlbum": {
       "title": "Think Of Me In Color",
+      "coverArt": "https://d12wklypp119aj.cloudfront.net/image/d4c49f2e-0b50-4a5e-8101-7543d68e032f.jpg",
       "releaseDate": "2024-01-01"
     }
   },
@@ -52,6 +55,7 @@
     "albumCount": 1,
     "latestAlbum": {
       "title": "Unsound Existence (self-hosted version)",
+      "coverArt": "https://www.doerfelverse.com/art/citybeach-logo.png",
       "releaseDate": "2024-01-01"
     }
   }
