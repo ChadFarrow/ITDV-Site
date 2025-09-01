@@ -19,33 +19,24 @@ export async function GET(request: Request) {
     const staticDataPath = path.join(process.cwd(), 'public', 'static-albums.json');
     
     if (clearCache) {
-      try {
-        if (fs.existsSync(staticDataPath)) {
-          fs.unlinkSync(staticDataPath);
-          console.log('🗑️ Cleared static data file');
-        }
-        // Clear in-memory cache too
-        generatedData = null;
-        lastGenerated = 0;
-        console.log('🗑️ Cleared in-memory cache');
-        
-        return NextResponse.json({
-          message: 'Cache cleared successfully',
-          cleared: true,
-          timestamp: new Date().toISOString()
-        });
-      } catch (error) {
-        console.error('Error clearing cache:', error);
-        return NextResponse.json({
-          error: 'Failed to clear cache',
-          details: error instanceof Error ? error.message : 'Unknown error'
-        }, { status: 500 });
-      }
+      // Clear in-memory cache (can't delete files in serverless/read-only environments)
+      generatedData = null;
+      lastGenerated = 0;
+      console.log('🗑️ Cleared in-memory cache (file system is read-only)');
+      
+      return NextResponse.json({
+        message: 'In-memory cache cleared successfully (file system is read-only)',
+        cleared: true,
+        note: 'Static file cannot be deleted in serverless environment',
+        timestamp: new Date().toISOString()
+      });
     }
     
     // Try to serve pre-generated static file first (unless forced regeneration)
+    // Skip static file if regenerating or if we want to ignore old incomplete data
+    const ignoreStaticFile = forceRegenerate || searchParams.get('ignore-static') === 'true';
     
-    if (!forceRegenerate && fs.existsSync(staticDataPath)) {
+    if (!ignoreStaticFile && fs.existsSync(staticDataPath)) {
       const staticData = JSON.parse(fs.readFileSync(staticDataPath, 'utf8'));
       
       const response = NextResponse.json({
