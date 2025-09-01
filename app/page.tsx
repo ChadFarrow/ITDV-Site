@@ -195,40 +195,19 @@ export default function HomePage() {
       const criticalAlbums = await loadAlbumsData('core');
       setCriticalAlbums(criticalAlbums);
       
-      // Process publishers from critical albums - match existing publisher page logic
-      const criticalPublisherMap = new Map();
-      criticalAlbums.forEach((album: Album) => {
-        // Exact same check as publisher pages: just need album.publisher to exist
-        if (album.publisher) {
-          console.log('Critical album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
-          
-          // Group by artist name (like publisher pages do)
-          const key = album.artist.toLowerCase();
-          if (!criticalPublisherMap.has(key)) {
-            criticalPublisherMap.set(key, {
-              name: album.artist,
-              feedGuid: album.publisher.feedGuid || `artist-${album.artist.toLowerCase().replace(/\s+/g, '-')}`,
-              feedUrl: album.publisher.feedUrl || '',
-              medium: album.publisher.medium || 'music',
-              albums: [],
-              albumCount: 0,
-            });
-          }
-          const publisher = criticalPublisherMap.get(key);
-          publisher.albums.push(album);
-          publisher.albumCount++;
-          
-          if (!publisher.latestAlbum || new Date(album.releaseDate) > new Date(publisher.latestAlbum.releaseDate)) {
-            publisher.latestAlbum = {
-              title: album.title,
-              coverArt: album.coverArt,
-              releaseDate: album.releaseDate,
-            };
-          }
+      // Load static publisher data
+      try {
+        const publisherResponse = await fetch('/publishers.json');
+        if (publisherResponse.ok) {
+          const staticPublishers = await publisherResponse.json();
+          setPublishers(staticPublishers);
+          console.log('📦 Loaded static publisher data:', staticPublishers.map((p: any) => p.name));
+        } else {
+          console.warn('Failed to load static publisher data');
         }
-      });
-      
-      setPublishers(Array.from(criticalPublisherMap.values()));
+      } catch (error) {
+        console.error('Error loading static publisher data:', error);
+      }
       setIsCriticalLoaded(true);
       setLoadingProgress(30);
       
@@ -249,43 +228,7 @@ export default function HomePage() {
       setEnhancedAlbums(allAlbums);
       setAlbums(allAlbums); // Set main albums state
       
-      // Process publishers from albums - match existing publisher page logic exactly
-      const publisherMap = new Map();
-      allAlbums.forEach((album: Album) => {
-        // Exact same check as publisher pages: just need album.publisher to exist
-        if (album.publisher) {
-          console.log('Enhanced album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
-          
-          // Group by artist name (like publisher pages do)
-          const key = album.artist.toLowerCase();
-          if (!publisherMap.has(key)) {
-            publisherMap.set(key, {
-              name: album.artist,
-              feedGuid: album.publisher.feedGuid || `artist-${album.artist.toLowerCase().replace(/\s+/g, '-')}`,
-              feedUrl: album.publisher.feedUrl || '',
-              medium: album.publisher.medium || 'music',
-              albums: [],
-              albumCount: 0,
-            });
-          }
-          const publisher = publisherMap.get(key);
-          publisher.albums.push(album);
-          publisher.albumCount++;
-          
-          // Set latest album (most recent)
-          if (!publisher.latestAlbum || new Date(album.releaseDate) > new Date(publisher.latestAlbum.releaseDate)) {
-            publisher.latestAlbum = {
-              title: album.title,
-              coverArt: album.coverArt,
-              releaseDate: album.releaseDate,
-            };
-          }
-        }
-      });
-      
-      console.log('Publishers found:', Array.from(publisherMap.values()).map(p => p.name));
-      
-      setPublishers(Array.from(publisherMap.values()));
+      // Publishers already loaded from static data, no need to reprocess
       setIsEnhancedLoaded(true);
       setLoadingProgress(100);
       setIsLoading(false);
@@ -299,21 +242,24 @@ export default function HomePage() {
 
   const loadAlbumsData = async (loadTier: 'core' | 'extended' | 'lowPriority' | 'all' = 'all') => {
     try {
-      // Temporarily use database-free parsing until static data is properly regenerated
-      console.log('🔄 Using database-free parsing for complete publisher data...');
-      let response = await fetch('/api/albums-no-db');
+      // Use fast static album data (publishers are loaded separately from static file)
+      let response = await fetch('/api/albums-static');
+      let data;
       
-      if (!response.ok) {
-        // Fallback to static endpoint if database-free fails
-        console.log('📦 Database-free failed, falling back to static data...');
-        response = await fetch('/api/albums-static');
+      if (response.ok) {
+        data = await response.json();
+        console.log('📦 Using static album data (publishers from static file)');
+      } else {
+        // Fallback to database-free endpoint (slower but more complete)
+        console.log('🔄 Static data failed, falling back to database-free parsing...');
+        response = await fetch('/api/albums-no-db');
         
         if (!response.ok) {
           throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
         }
+        
+        data = await response.json();
       }
-      
-      const data = await response.json();
       
       const albums = data.albums || [];
       
