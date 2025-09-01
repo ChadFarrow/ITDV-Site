@@ -44,36 +44,50 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
     velocityThreshold: 0.3
   });
 
-  // Extract colors from album art when track changes
+  // Get pre-extracted colors from album data when track changes
   useEffect(() => {
-    if (!isOpen || !currentTrack?.image) {
+    if (!isOpen || !currentTrack) {
       setExtractedColors(null);
       return;
     }
 
-    const imageUrl = currentTrack.image;
+    // Try to get pre-extracted colors from the track's album data
+    const albumTitle = currentAlbum;
+    console.log('🎨 Current track data:', currentTrack);
+    console.log('🎨 Current album:', currentAlbum);
+    console.log('🎨 Looking for album:', albumTitle);
     
-    // Check cache first
-    if (colorCache.current.has(imageUrl)) {
-      setExtractedColors(colorCache.current.get(imageUrl)!);
-      return;
+    if (albumTitle) {
+      // Load the pre-extracted colors from our static data
+      fetch('/data/albums-with-colors.json')
+        .then(response => response.json())
+        .then(data => {
+          console.log('🎨 Available albums:', data.albums.map((a: any) => a.title));
+          
+          const album = data.albums?.find((a: any) => 
+            a.title?.toLowerCase() === albumTitle.toLowerCase()
+          );
+          
+          if (album?.colors) {
+            console.log('🎨 Using pre-extracted colors for:', albumTitle, album.colors);
+            setExtractedColors(album.colors);
+          } else {
+            console.log('🎨 No pre-extracted colors found for:', albumTitle);
+            console.log('🎨 Available titles:', data.albums.map((a: any) => a.title));
+            setExtractedColors(null);
+          }
+        })
+        .catch((error) => {
+          console.warn('Failed to load pre-extracted colors:', error);
+          setExtractedColors(null);
+        });
+    } else {
+      console.log('🎨 No album title provided');
+      setExtractedColors(null);
     }
-
-    setIsLoadingColors(true);
     
-    extractColorsFromImage(imageUrl)
-      .then((colors) => {
-        colorCache.current.set(imageUrl, colors);
-        setExtractedColors(colors);
-      })
-      .catch((error) => {
-        console.warn('Failed to extract colors from image:', error);
-        setExtractedColors(null);
-      })
-      .finally(() => {
-        setIsLoadingColors(false);
-      });
-  }, [isOpen, currentTrack?.image]);
+    setIsLoadingColors(false);
+  }, [isOpen, currentAlbum]);
 
   // Handle escape key
   useEffect(() => {

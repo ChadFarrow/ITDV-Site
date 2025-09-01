@@ -17,6 +17,7 @@ export interface ExtractedColors {
 // Extract dominant colors from an image using Canvas API
 export const extractColorsFromImage = async (imageUrl: string): Promise<ExtractedColors> => {
   return new Promise((resolve, reject) => {
+    console.log('🖼️ Starting color extraction for:', imageUrl);
     const img = new Image();
     
     // Handle different image sources
@@ -57,8 +58,8 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imageData.data;
         
-        // Analyze colors
-        const colors: { [key: string]: number } = {};
+        // Collect all pixels for KMeans clustering
+        const pixels: Array<[number, number, number]> = [];
         
         for (let i = 0; i < data.length; i += 4) {
           const r = data[i];
@@ -69,25 +70,32 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
           const brightness = (r + g + b) / 3;
           if (brightness < 20 || brightness > 235) continue;
           
-          // Quantize colors to reduce noise
-          const quantizedR = Math.floor(r / 32) * 32;
-          const quantizedG = Math.floor(g / 32) * 32;
-          const quantizedB = Math.floor(b / 32) * 32;
-          
-          const colorKey = `${quantizedR},${quantizedG},${quantizedB}`;
-          colors[colorKey] = (colors[colorKey] || 0) + 1;
+          pixels.push([r, g, b]);
         }
         
-        // Find dominant color
-        let maxCount = 0;
-        let dominantColor = '';
+        // Use KMeans to find 5 representative colors
+        const kMeansColors = kMeans(pixels, 5);
         
-        for (const [color, count] of Object.entries(colors)) {
-          if (count > maxCount) {
-            maxCount = count;
-            dominantColor = color;
+        // Find the most vibrant color from the KMeans palette
+        let bestColor = kMeansColors[0];
+        let bestScore = 0;
+        
+        for (const color of kMeansColors) {
+          const [r, g, b] = color;
+          const hsl = rgbToHsl(r, g, b);
+          const saturation = hsl.s / 100;
+          const lightness = hsl.l / 100;
+          
+          // Score based on saturation and avoiding too dark/light colors
+          const score = saturation * (1 - Math.abs(lightness - 0.5));
+          
+          if (score > bestScore) {
+            bestScore = score;
+            bestColor = color;
           }
         }
+        
+        const dominantColor = `${bestColor[0]},${bestColor[1]},${bestColor[2]}`;
         
         if (!dominantColor) {
           // Fallback to a neutral color
@@ -95,18 +103,20 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
         }
         
         const [r, g, b] = dominantColor.split(',').map(Number);
-        const palette = generateColorPalette(r, g, b);
+        const generatedPalette = generateColorPalette(r, g, b);
         const isDark = isColorDark(r, g, b);
         
         console.log('🎨 Extracted colors:', {
           dominant: `rgb(${r}, ${g}, ${b})`,
-          palette,
+          kMeansPalette: kMeansColors.map(c => `rgb(${c[0]}, ${c[1]}, ${c[2]})`),
+          bestScore,
+          generatedPalette,
           isDark
         });
         
         resolve({
           dominant: `rgb(${r}, ${g}, ${b})`,
-          palette,
+          palette: generatedPalette,
           isDark
         });
       } catch (error) {
@@ -189,6 +199,58 @@ const isColorDark = (r: number, g: number, b: number): boolean => {
   return brightness < 128;
 };
 
+// Simple KMeans clustering for color extraction
+const kMeans = (pixels: Array<[number, number, number]>, k: number): Array<[number, number, number]> => {
+  if (pixels.length === 0) return [[64, 64, 64]];
+  if (pixels.length < k) return pixels.slice(0, k);
+  
+  // Initialize centroids randomly
+  const centroids: Array<[number, number, number]> = [];
+  for (let i = 0; i < k; i++) {
+    const randomIndex = Math.floor(Math.random() * pixels.length);
+    centroids.push([...pixels[randomIndex]]);
+  }
+  
+  // Run KMeans for a few iterations
+  for (let iter = 0; iter < 10; iter++) {
+    // Assign pixels to nearest centroid
+    const clusters: Array<Array<[number, number, number]>> = Array(k).fill(null).map(() => []);
+    
+    for (const pixel of pixels) {
+      let minDistance = Infinity;
+      let bestCluster = 0;
+      
+      for (let c = 0; c < k; c++) {
+        const distance = Math.sqrt(
+          Math.pow(pixel[0] - centroids[c][0], 2) +
+          Math.pow(pixel[1] - centroids[c][1], 2) +
+          Math.pow(pixel[2] - centroids[c][2], 2)
+        );
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          bestCluster = c;
+        }
+      }
+      
+      clusters[bestCluster].push(pixel);
+    }
+    
+    // Update centroids
+    for (let c = 0; c < k; c++) {
+      if (clusters[c].length > 0) {
+        const avgR = clusters[c].reduce((sum, p) => sum + p[0], 0) / clusters[c].length;
+        const avgG = clusters[c].reduce((sum, p) => sum + p[1], 0) / clusters[c].length;
+        const avgB = clusters[c].reduce((sum, p) => sum + p[2], 0) / clusters[c].length;
+        
+        centroids[c] = [Math.round(avgR), Math.round(avgG), Math.round(avgB)];
+      }
+    }
+  }
+  
+  return centroids;
+};
+
 // Create a smooth gradient background from album art colors
 export const createAlbumBackground = (colors: ExtractedColors): string => {
   const { dominant, palette } = colors;
@@ -200,13 +262,22 @@ export const createAlbumBackground = (colors: ExtractedColors): string => {
   const [, r, g, b] = rgbMatch.map(Number);
   const hsl = rgbToHsl(r, g, b);
   
-  const gradient = `linear-gradient(135deg, 
-    hsl(${hsl.h}, ${Math.min(100, hsl.s + 20)}%, ${Math.max(5, hsl.l - 50)}%) 0%, 
-    hsl(${hsl.h}, ${hsl.s}%, ${Math.max(5, hsl.l - 30)}%) 25%, 
-    hsl(${(hsl.h + 15) % 360}, ${Math.max(0, hsl.s - 10)}%, ${Math.max(5, hsl.l - 40)}%) 75%, 
-    hsl(${(hsl.h + 30) % 360}, ${Math.max(0, hsl.s - 20)}%, ${Math.max(5, hsl.l - 60)}%) 100%)`;
+  // Smart lightness adjustment based on original color brightness
+  const isLightColor = hsl.l > 60; // If lightness > 60%, it's a light color
   
-  console.log('🎨 Generated gradient:', gradient);
+  const gradient = isLightColor 
+    ? // For light colors: reduce lightness to prevent blown-out whites
+      `linear-gradient(135deg, 
+        hsl(${hsl.h}, ${Math.min(100, hsl.s + 20)}%, ${Math.max(15, hsl.l - 25)}%) 0%, 
+        hsl(${hsl.h}, ${hsl.s}%, ${Math.max(12, hsl.l - 30)}%) 25%, 
+        hsl(${(hsl.h + 15) % 360}, ${Math.max(30, hsl.s - 10)}%, ${Math.max(10, hsl.l - 35)}%) 75%, 
+        hsl(${(hsl.h + 30) % 360}, ${Math.max(20, hsl.s - 20)}%, ${Math.max(8, hsl.l - 40)}%) 100%)`
+    : // For dark colors: boost lightness to make them visible
+      `linear-gradient(135deg, 
+        hsl(${hsl.h}, ${Math.min(100, hsl.s + 20)}%, ${Math.max(35, hsl.l - 5)}%) 0%, 
+        hsl(${hsl.h}, ${hsl.s}%, ${Math.max(30, hsl.l - 10)}%) 25%, 
+        hsl(${(hsl.h + 15) % 360}, ${Math.max(30, hsl.s - 10)}%, ${Math.max(25, hsl.l - 15)}%) 75%, 
+        hsl(${(hsl.h + 30) % 360}, ${Math.max(20, hsl.s - 20)}%, ${Math.max(20, hsl.l - 20)}%) 100%)`;
   
   return gradient;
 };
