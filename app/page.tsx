@@ -299,21 +299,24 @@ export default function HomePage() {
 
   const loadAlbumsData = async (loadTier: 'core' | 'extended' | 'lowPriority' | 'all' = 'all') => {
     try {
-      // Use database-free endpoint to get fresh publisher metadata
-      console.log('🔄 Using database-free parsing for complete publisher data...');
-      let response = await fetch('/api/albums-no-db');
+      // Try fast static endpoint first
+      let response = await fetch('/api/albums-static');
+      let data;
       
-      if (!response.ok) {
-        // Fallback to static endpoint if database-free fails
-        console.log('📦 Database-free failed, falling back to static data...');
-        response = await fetch('/api/albums-static');
+      if (response.ok) {
+        data = await response.json();
+        console.log('📦 Using static album data');
+      } else {
+        // Fallback to database-free endpoint (slower but more complete)
+        console.log('🔄 Static data failed, falling back to database-free parsing...');
+        response = await fetch('/api/albums-no-db');
         
         if (!response.ok) {
           throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
         }
+        
+        data = await response.json();
       }
-      
-      const data = await response.json();
       
       const albums = data.albums || [];
       

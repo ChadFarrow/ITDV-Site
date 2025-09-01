@@ -62,7 +62,7 @@ export async function GET() {
       const albums = [];
       const errors = [];
       
-      for (const feed of albumFeeds.slice(0, 20)) { // Limit to first 20 to avoid rate limiting
+      for (const feed of albumFeeds) { // Process all feeds for complete static data
         try {
           console.log(`🎵 Parsing: ${feed.title}`);
           const albumData = await RSSParser.parseAlbumFeed(feed.originalUrl);
