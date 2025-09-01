@@ -13,9 +13,37 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const forceRegenerate = searchParams.get('regenerate') === 'true';
+    const clearCache = searchParams.get('clear') === 'true';
+    
+    // Handle cache clearing
+    const staticDataPath = path.join(process.cwd(), 'public', 'static-albums.json');
+    
+    if (clearCache) {
+      try {
+        if (fs.existsSync(staticDataPath)) {
+          fs.unlinkSync(staticDataPath);
+          console.log('🗑️ Cleared static data file');
+        }
+        // Clear in-memory cache too
+        generatedData = null;
+        lastGenerated = 0;
+        console.log('🗑️ Cleared in-memory cache');
+        
+        return NextResponse.json({
+          message: 'Cache cleared successfully',
+          cleared: true,
+          timestamp: new Date().toISOString()
+        });
+      } catch (error) {
+        console.error('Error clearing cache:', error);
+        return NextResponse.json({
+          error: 'Failed to clear cache',
+          details: error instanceof Error ? error.message : 'Unknown error'
+        }, { status: 500 });
+      }
+    }
     
     // Try to serve pre-generated static file first (unless forced regeneration)
-    const staticDataPath = path.join(process.cwd(), 'public', 'static-albums.json');
     
     if (!forceRegenerate && fs.existsSync(staticDataPath)) {
       const staticData = JSON.parse(fs.readFileSync(staticDataPath, 'utf8'));
