@@ -30,9 +30,15 @@ interface AudioContextType {
   isShuffling: boolean;
   isRepeating: boolean;
   
+  // Now Playing Screen
+  isNowPlayingOpen: boolean;
+  openNowPlaying: () => void;
+  closeNowPlaying: () => void;
+  
   // Actions
   playTrack: (track: Track, album?: string) => void;
   playAlbum: (tracks: Track[], startIndex?: number, album?: string) => void;
+  playAlbumAndOpenNowPlaying: (tracks: Track[], startIndex?: number, album?: string) => void;
   pause: () => void;
   resume: () => void;
   stop: () => void;
@@ -68,6 +74,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [isShuffling, setIsShuffling] = useState(false);
   const [isRepeating, setIsRepeating] = useState(false);
+  const [isNowPlayingOpen, setIsNowPlayingOpen] = useState(false);
 
   // Initialize audio element
   useEffect(() => {
@@ -140,6 +147,19 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         ] : []
       });
     }
+  };
+
+  const playAlbumAndOpenNowPlaying = (tracks: Track[], startIndex = 0, album?: string) => {
+    playAlbum(tracks, startIndex, album);
+    setIsNowPlayingOpen(true);
+  };
+
+  const openNowPlaying = () => {
+    setIsNowPlayingOpen(true);
+  };
+
+  const closeNowPlaying = () => {
+    setIsNowPlayingOpen(false);
   };
 
   const pause = useCallback(() => {
@@ -318,8 +338,12 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     currentTrackIndex,
     isShuffling,
     isRepeating,
+    isNowPlayingOpen,
+    openNowPlaying,
+    closeNowPlaying,
     playTrack,
     playAlbum,
+    playAlbumAndOpenNowPlaying,
     pause,
     resume,
     stop,

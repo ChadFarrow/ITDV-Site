@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { useAudio } from '@/contexts/AudioContext';
 import { useSwipeGestures } from '@/hooks/useSwipeGestures';
 import NowPlayingScreen from './NowPlayingScreen';
 
 const GlobalNowPlayingBar: React.FC = () => {
-  const [isFullScreenOpen, setIsFullScreenOpen] = useState(false);
   const {
     currentTrack,
     currentAlbum,
@@ -17,6 +16,9 @@ const GlobalNowPlayingBar: React.FC = () => {
     volume,
     isShuffling,
     isRepeating,
+    isNowPlayingOpen,
+    openNowPlaying,
+    closeNowPlaying,
     pause,
     resume,
     nextTrack,
@@ -65,8 +67,8 @@ const GlobalNowPlayingBar: React.FC = () => {
   return (
     <>
       <NowPlayingScreen 
-        isOpen={isFullScreenOpen} 
-        onClose={() => setIsFullScreenOpen(false)} 
+        isOpen={isNowPlayingOpen} 
+        onClose={closeNowPlaying} 
       />
       
       <div 
@@ -81,7 +83,7 @@ const GlobalNowPlayingBar: React.FC = () => {
             {/* Track Info - Clickable to open full screen */}
             <div 
               className="flex items-center gap-2 min-w-0 flex-1 cursor-pointer"
-              onClick={() => setIsFullScreenOpen(true)}
+              onClick={openNowPlaying}
             >
               {currentTrack.image && (
                 <div className="w-10 h-10 relative overflow-hidden rounded border border-white/20">
@@ -221,7 +223,7 @@ const GlobalNowPlayingBar: React.FC = () => {
           {/* Track Info - Clickable to open full screen */}
           <div 
             className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer"
-            onClick={() => setIsFullScreenOpen(true)}
+            onClick={openNowPlaying}
           >
             {currentTrack.image && (
               <div className="w-12 h-12 relative overflow-hidden rounded border border-white/20">

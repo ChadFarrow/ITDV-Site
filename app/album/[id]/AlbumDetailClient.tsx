@@ -82,7 +82,7 @@ export default function AlbumDetailClient({ albumTitle, initialAlbum }: AlbumDet
   
   // Global audio context
   const { 
-    playAlbum: globalPlayAlbum, 
+    playAlbumAndOpenNowPlaying: globalPlayAlbum, 
     currentTrack,
     isPlaying: globalIsPlaying,
     pause: globalPause,
