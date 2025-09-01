@@ -194,6 +194,41 @@ export default function HomePage() {
       // Load critical albums first (core feeds)
       const criticalAlbums = await loadAlbumsData('core');
       setCriticalAlbums(criticalAlbums);
+      
+      // Process publishers from critical albums too
+      const criticalPublisherMap = new Map();
+      criticalAlbums.forEach((album: Album) => {
+        if (album.publisher) {
+          console.log('Critical album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
+        }
+        
+        if (album.publisher) {
+          const key = album.publisher.feedGuid || album.artist.toLowerCase();
+          if (!criticalPublisherMap.has(key)) {
+            criticalPublisherMap.set(key, {
+              name: album.artist,
+              feedGuid: album.publisher.feedGuid,
+              feedUrl: album.publisher.feedUrl,
+              medium: album.publisher.medium,
+              albums: [],
+              albumCount: 0,
+            });
+          }
+          const publisher = criticalPublisherMap.get(key);
+          publisher.albums.push(album);
+          publisher.albumCount++;
+          
+          if (!publisher.latestAlbum || new Date(album.releaseDate) > new Date(publisher.latestAlbum.releaseDate)) {
+            publisher.latestAlbum = {
+              title: album.title,
+              coverArt: album.coverArt,
+              releaseDate: album.releaseDate,
+            };
+          }
+        }
+      });
+      
+      setPublishers(Array.from(criticalPublisherMap.values()));
       setIsCriticalLoaded(true);
       setLoadingProgress(30);
       
@@ -214,11 +249,16 @@ export default function HomePage() {
       setEnhancedAlbums(allAlbums);
       setAlbums(allAlbums); // Set main albums state
       
-      // Process publishers from albums
+      // Process publishers from albums - only show artists with publisher metadata
       const publisherMap = new Map();
       allAlbums.forEach((album: Album) => {
+        // Debug log to see what publisher data exists
         if (album.publisher) {
-          const key = album.publisher.feedGuid;
+          console.log('Album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
+        }
+        
+        if (album.publisher) {
+          const key = album.publisher.feedGuid || album.artist.toLowerCase();
           if (!publisherMap.has(key)) {
             publisherMap.set(key, {
               name: album.artist,
@@ -243,6 +283,8 @@ export default function HomePage() {
           }
         }
       });
+      
+      console.log('Publishers found:', Array.from(publisherMap.values()).map(p => p.name));
       
       setPublishers(Array.from(publisherMap.values()));
       setIsEnhancedLoaded(true);
