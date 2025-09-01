@@ -46,17 +46,5 @@
       "coverArt": "https://d12wklypp119aj.cloudfront.net/image/d4c49f2e-0b50-4a5e-8101-7543d68e032f.jpg",
       "releaseDate": "2024-01-01"
     }
-  },
-  {
-    "name": "Ryan Fonda feat. CityBeach",
-    "feedGuid": "9dd3d9f3-5371-54c5-91e6-c68e157dd1ea",
-    "feedUrl": "https://www.doerfelverse.com/feeds/citybeach-pubfeed.xml",
-    "medium": "publisher",
-    "albumCount": 1,
-    "latestAlbum": {
-      "title": "Unsound Existence (self-hosted version)",
-      "coverArt": "https://www.doerfelverse.com/art/citybeach-logo.png",
-      "releaseDate": "2024-01-01"
-    }
   }
 ]
