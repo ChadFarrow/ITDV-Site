@@ -19,7 +19,7 @@
     "albumCount": 7,
     "latestAlbum": {
       "title": "Nostalgic",
-      "coverArt": "/citybeach-nostalgic.png",
+      "coverArt": "/bloodshot-lies-big.png",
       "releaseDate": "2023-12-01"
     }
   },
@@ -31,7 +31,7 @@
     "albumCount": 4,
     "latestAlbum": {
       "title": "Inside Out - Single",
-      "coverArt": "/middleseason-inside-out.png",
+      "coverArt": "/bloodshot-lies-big.png",
       "releaseDate": "2024-01-01"
     }
   },
@@ -43,7 +43,7 @@
     "albumCount": 13,
     "latestAlbum": {
       "title": "Think Of Me In Color",
-      "coverArt": "/ryan-fonda-think-of-me.png",
+      "coverArt": "/bloodshot-lies-big.png",
       "releaseDate": "2024-01-01"
     }
   },
@@ -55,7 +55,7 @@
     "albumCount": 1,
     "latestAlbum": {
       "title": "Unsound Existence (self-hosted version)",
-      "coverArt": "/unsound-existence.png",
+      "coverArt": "/bloodshot-lies-big.png",
       "releaseDate": "2024-01-01"
     }
   }
