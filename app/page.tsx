@@ -195,21 +195,21 @@ export default function HomePage() {
       const criticalAlbums = await loadAlbumsData('core');
       setCriticalAlbums(criticalAlbums);
       
-      // Process publishers from critical albums too
+      // Process publishers from critical albums - match existing publisher page logic
       const criticalPublisherMap = new Map();
       criticalAlbums.forEach((album: Album) => {
+        // Exact same check as publisher pages: just need album.publisher to exist
         if (album.publisher) {
           console.log('Critical album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
-        }
-        
-        if (album.publisher) {
-          const key = album.publisher.feedGuid || album.artist.toLowerCase();
+          
+          // Group by artist name (like publisher pages do)
+          const key = album.artist.toLowerCase();
           if (!criticalPublisherMap.has(key)) {
             criticalPublisherMap.set(key, {
               name: album.artist,
-              feedGuid: album.publisher.feedGuid,
-              feedUrl: album.publisher.feedUrl,
-              medium: album.publisher.medium,
+              feedGuid: album.publisher.feedGuid || `artist-${album.artist.toLowerCase().replace(/\s+/g, '-')}`,
+              feedUrl: album.publisher.feedUrl || '',
+              medium: album.publisher.medium || 'music',
               albums: [],
               albumCount: 0,
             });
@@ -249,22 +249,21 @@ export default function HomePage() {
       setEnhancedAlbums(allAlbums);
       setAlbums(allAlbums); // Set main albums state
       
-      // Process publishers from albums - only show artists with publisher metadata
+      // Process publishers from albums - match existing publisher page logic exactly
       const publisherMap = new Map();
       allAlbums.forEach((album: Album) => {
-        // Debug log to see what publisher data exists
+        // Exact same check as publisher pages: just need album.publisher to exist
         if (album.publisher) {
-          console.log('Album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
-        }
-        
-        if (album.publisher) {
-          const key = album.publisher.feedGuid || album.artist.toLowerCase();
+          console.log('Enhanced album with publisher:', album.title, 'by', album.artist, 'Publisher:', album.publisher);
+          
+          // Group by artist name (like publisher pages do)
+          const key = album.artist.toLowerCase();
           if (!publisherMap.has(key)) {
             publisherMap.set(key, {
               name: album.artist,
-              feedGuid: album.publisher.feedGuid,
-              feedUrl: album.publisher.feedUrl,
-              medium: album.publisher.medium,
+              feedGuid: album.publisher.feedGuid || `artist-${album.artist.toLowerCase().replace(/\s+/g, '-')}`,
+              feedUrl: album.publisher.feedUrl || '',
+              medium: album.publisher.medium || 'music',
               albums: [],
               albumCount: 0,
             });
