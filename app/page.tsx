@@ -22,6 +22,21 @@ const AlbumCard = dynamic(() => import('@/components/AlbumCardLazy'), {
   ssr: true
 });
 
+const PublisherCard = dynamic(() => import('@/components/PublisherCard'), {
+  loading: () => (
+    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 animate-pulse">
+      <div className="flex items-center gap-4">
+        <div className="w-16 h-16 bg-gray-800/50 rounded-lg flex-shrink-0"></div>
+        <div className="flex-1">
+          <div className="h-4 bg-gray-700/50 rounded mb-2"></div>
+          <div className="h-3 bg-gray-700/50 rounded w-1/2"></div>
+        </div>
+      </div>
+    </div>
+  ),
+  ssr: true
+});
+
 const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
   loading: () => (
     <div className="mb-8 p-4 bg-gray-800/20 rounded-lg animate-pulse">
@@ -82,6 +97,7 @@ export default function HomePage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [albums, setAlbums] = useState<Album[]>([]);
+  const [publishers, setPublishers] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [totalFeedsCount, setTotalFeedsCount] = useState(0);
@@ -197,6 +213,38 @@ export default function HomePage() {
       const allAlbums = await loadAlbumsData('all');
       setEnhancedAlbums(allAlbums);
       setAlbums(allAlbums); // Set main albums state
+      
+      // Process publishers from albums
+      const publisherMap = new Map();
+      allAlbums.forEach((album: Album) => {
+        if (album.publisher) {
+          const key = album.publisher.feedGuid;
+          if (!publisherMap.has(key)) {
+            publisherMap.set(key, {
+              name: album.artist,
+              feedGuid: album.publisher.feedGuid,
+              feedUrl: album.publisher.feedUrl,
+              medium: album.publisher.medium,
+              albums: [],
+              albumCount: 0,
+            });
+          }
+          const publisher = publisherMap.get(key);
+          publisher.albums.push(album);
+          publisher.albumCount++;
+          
+          // Set latest album (most recent)
+          if (!publisher.latestAlbum || new Date(album.releaseDate) > new Date(publisher.latestAlbum.releaseDate)) {
+            publisher.latestAlbum = {
+              title: album.title,
+              coverArt: album.coverArt,
+              releaseDate: album.releaseDate,
+            };
+          }
+        }
+      });
+      
+      setPublishers(Array.from(publisherMap.values()));
       setIsEnhancedLoaded(true);
       setLoadingProgress(100);
       setIsLoading(false);
@@ -374,6 +422,9 @@ export default function HomePage() {
       case 'singles':
         filtered = albumsToUse.filter(album => album.tracks.length === 1);
         break;
+      case 'publishers':
+        // For publishers filter, we'll show publishers instead of albums
+        return publishers;
       default: // 'all'
         filtered = albumsToUse;
     }
@@ -603,7 +654,8 @@ export default function HomePage() {
                 resultLabel={activeFilter === 'all' ? 'Releases' : 
                   activeFilter === 'albums' ? 'Albums' :
                   activeFilter === 'eps' ? 'EPs' : 
-                  activeFilter === 'singles' ? 'Singles' : 'Releases'}
+                  activeFilter === 'singles' ? 'Singles' : 
+                  activeFilter === 'publishers' ? 'Publishers' : 'Releases'}
                 className="mb-8"
               />
 
@@ -620,7 +672,17 @@ export default function HomePage() {
               )}
 
               {/* Albums Display */}
-              {activeFilter === 'all' ? (
+              {activeFilter === 'publishers' ? (
+                // Publishers display
+                <div className="space-y-4">
+                  {filteredAlbums.map((publisher: any, index: number) => (
+                    <PublisherCard
+                      key={`publisher-${index}`}
+                      publisher={publisher}
+                    />
+                  ))}
+                </div>
+              ) : activeFilter === 'all' ? (
                 // Original sectioned layout for "All" filter
                 <>
                   {/* Albums Grid */}
