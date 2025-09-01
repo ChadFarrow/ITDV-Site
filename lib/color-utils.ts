@@ -22,8 +22,8 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
     // Handle different image sources
     let finalUrl = imageUrl;
     
-    // If it's a CDN URL or external URL, use our proxy
-    if (imageUrl.includes('cdn.') || imageUrl.includes('http') || imageUrl.includes('//')) {
+    // Always use proxy for external URLs to avoid CORS issues
+    if (imageUrl.startsWith('http')) {
       // Convert HTTP to HTTPS if needed
       let secureUrl = imageUrl;
       if (imageUrl.startsWith('http://')) {
@@ -31,6 +31,7 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
       }
       // Use the proxy-image API to avoid CORS issues
       finalUrl = `/api/proxy-image?url=${encodeURIComponent(secureUrl)}`;
+      console.log('🔄 Using proxy for image:', secureUrl, '→', finalUrl);
     }
     
     img.crossOrigin = 'anonymous';
@@ -97,6 +98,12 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
         const palette = generateColorPalette(r, g, b);
         const isDark = isColorDark(r, g, b);
         
+        console.log('🎨 Extracted colors:', {
+          dominant: `rgb(${r}, ${g}, ${b})`,
+          palette,
+          isDark
+        });
+        
         resolve({
           dominant: `rgb(${r}, ${g}, ${b})`,
           palette,
@@ -108,19 +115,10 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
     };
     
     img.onerror = (error) => {
-      console.error('Failed to load image:', finalUrl, error);
-      // Try without proxy as fallback
-      if (finalUrl.includes('/api/proxy-image')) {
-        const fallbackImg = new Image();
-        fallbackImg.crossOrigin = 'anonymous';
-        fallbackImg.onload = img.onload;
-        fallbackImg.onerror = () => {
-          reject(new Error('Failed to load image from both proxy and direct URL'));
-        };
-        fallbackImg.src = imageUrl;
-      } else {
-        reject(new Error('Failed to load image'));
-      }
+      console.error('Failed to load image from proxy:', finalUrl, error);
+      // Don't fallback to direct URL as it will fail with CORS
+      // Instead, just use a fallback color scheme
+      reject(new Error('Failed to load image from proxy'));
     };
     
     img.src = finalUrl;
@@ -202,12 +200,15 @@ export const createAlbumBackground = (colors: ExtractedColors): string => {
   const [, r, g, b] = rgbMatch.map(Number);
   const hsl = rgbToHsl(r, g, b);
   
-  // Create a more sophisticated gradient
-  return `linear-gradient(135deg, 
+  const gradient = `linear-gradient(135deg, 
     hsl(${hsl.h}, ${Math.min(100, hsl.s + 20)}%, ${Math.max(5, hsl.l - 50)}%) 0%, 
     hsl(${hsl.h}, ${hsl.s}%, ${Math.max(5, hsl.l - 30)}%) 25%, 
     hsl(${(hsl.h + 15) % 360}, ${Math.max(0, hsl.s - 10)}%, ${Math.max(5, hsl.l - 40)}%) 75%, 
     hsl(${(hsl.h + 30) % 360}, ${Math.max(0, hsl.s - 20)}%, ${Math.max(5, hsl.l - 60)}%) 100%)`;
+  
+  console.log('🎨 Generated gradient:', gradient);
+  
+  return gradient;
 };
 
 // Create a subtle overlay for better text readability

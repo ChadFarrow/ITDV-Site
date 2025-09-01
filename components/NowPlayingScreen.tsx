@@ -114,7 +114,10 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
   // Generate background styles
   const backgroundStyle = extractedColors 
     ? { background: createAlbumBackground(extractedColors) }
-    : { background: 'linear-gradient(135deg, #1f2937 0%, #111827 50%, #000000 100%)' };
+    : { 
+        // More vibrant fallback gradient inspired by music themes
+        background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #581c87 75%, #000000 100%)' 
+      };
 
   const overlayStyle = extractedColors 
     ? { background: createTextOverlay(extractedColors) }
