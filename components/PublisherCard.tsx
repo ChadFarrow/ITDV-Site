@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 interface Publisher {
   name: string;
@@ -21,6 +22,8 @@ interface PublisherCardProps {
 }
 
 export default function PublisherCard({ publisher }: PublisherCardProps) {
+  const [imageError, setImageError] = useState(false);
+  
   const publisherSlug = publisher.name
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
@@ -31,18 +34,19 @@ export default function PublisherCard({ publisher }: PublisherCardProps) {
   return (
     <Link
       href={`/publisher/${encodeURIComponent(publisherSlug)}`}
-      className="group bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 hover:scale-[1.02] transform"
+      className="group bg-white/5 backdrop-blur-sm rounded-xl p-4 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-white/20 block"
     >
       <div className="flex items-center gap-4">
         {/* Publisher Avatar/Latest Album Cover */}
         <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-gray-800">
-          {publisher.latestAlbum?.coverArt ? (
+          {publisher.latestAlbum?.coverArt && !imageError ? (
             <Image
               src={publisher.latestAlbum.coverArt}
               alt={publisher.name}
               width={64}
               height={64}
               className="w-full h-full object-cover"
+              onError={() => setImageError(true)}
             />
           ) : (
             <div className="w-full h-full bg-gray-800 flex items-center justify-center">
