@@ -9,12 +9,15 @@ const GENERATION_TTL = 10 * 60 * 1000; // 10 minutes
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    // Try to serve pre-generated static file first
+    const { searchParams } = new URL(request.url);
+    const forceRegenerate = searchParams.get('regenerate') === 'true';
+    
+    // Try to serve pre-generated static file first (unless forced regeneration)
     const staticDataPath = path.join(process.cwd(), 'public', 'static-albums.json');
     
-    if (fs.existsSync(staticDataPath)) {
+    if (!forceRegenerate && fs.existsSync(staticDataPath)) {
       const staticData = JSON.parse(fs.readFileSync(staticDataPath, 'utf8'));
       
       const response = NextResponse.json({
@@ -28,9 +31,9 @@ export async function GET() {
       return response;
     }
     
-    // Check in-memory cache
+    // Check in-memory cache (unless forced regeneration)
     const now = Date.now();
-    if (generatedData && (now - lastGenerated) < GENERATION_TTL) {
+    if (!forceRegenerate && generatedData && (now - lastGenerated) < GENERATION_TTL) {
       console.log('📦 Serving cached generated data');
       const response = NextResponse.json({
         ...generatedData,
@@ -44,7 +47,11 @@ export async function GET() {
     }
     
     // Generate data on-demand by calling the RSS parsing endpoint
-    console.log('🔄 Generating static data on-demand...');
+    if (forceRegenerate) {
+      console.log('🔄 Force regenerating static data with all feeds...');
+    } else {
+      console.log('🔄 Generating static data on-demand...');
+    }
     
     try {
       // Import and use RSS parser directly to avoid HTTP overhead
