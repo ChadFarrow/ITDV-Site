@@ -111,7 +111,7 @@ export default function HomePage() {
   const [isEnhancedLoaded, setIsEnhancedLoaded] = useState(false);
   
   // Global audio context
-  const { playAlbum: globalPlayAlbum, toggleShuffle } = useAudio();
+  const { playAlbumAndOpenNowPlaying: globalPlayAlbum, toggleShuffle } = useAudio();
   const hasLoadedRef = useRef(false);
   
   // Static background state
