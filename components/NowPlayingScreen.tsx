@@ -120,7 +120,9 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
         const mobileOpts = getMobileOptimizations();
         if (colorCache.current.size >= mobileOpts.maxCacheSize) {
           const firstKey = colorCache.current.keys().next().value;
-          colorCache.current.delete(firstKey);
+          if (firstKey) {
+            colorCache.current.delete(firstKey);
+          }
         }
         
         colorCache.current.set(cacheKey, colors);
