@@ -644,7 +644,7 @@ export default function HomePage() {
                   activeFilter === 'albums' ? 'Albums' :
                   activeFilter === 'eps' ? 'EPs' : 
                   activeFilter === 'singles' ? 'Singles' : 
-                  activeFilter === 'publishers' ? 'Publishers' : 'Releases'}
+                  activeFilter === 'publishers' ? 'Artists' : 'Releases'}
                 className="mb-8"
               />
 
