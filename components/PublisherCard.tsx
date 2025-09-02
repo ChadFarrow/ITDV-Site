@@ -64,9 +64,11 @@ export default function PublisherCard({ publisher }: PublisherCardProps) {
           </h3>
           <div className="flex items-center gap-3 text-sm text-gray-400 mt-1">
             <span>{publisher.albumCount} release{publisher.albumCount !== 1 ? 's' : ''}</span>
-            <span className="px-2 py-1 bg-white/10 rounded text-xs">
-              {publisher.medium === 'music' ? 'Music' : 'Publisher'}
-            </span>
+            {publisher.medium === 'music' && (
+              <span className="px-2 py-1 bg-white/10 rounded text-xs">
+                Music
+              </span>
+            )}
           </div>
           {publisher.latestAlbum && (
             <p className="text-xs text-gray-500 mt-1 truncate">
