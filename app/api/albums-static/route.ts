@@ -97,7 +97,7 @@ export async function GET(request: Request) {
           feed.title.toLowerCase().includes('doerfel') || 
           feed.title.toLowerCase().includes('bloodshot') ||
           feed.id === 'core' || 
-          feed.priority === 'high'
+          feed.priority === 'core'
         ).slice(0, 10) : // Limit to first 10 for speed
         albumFeeds;
 
