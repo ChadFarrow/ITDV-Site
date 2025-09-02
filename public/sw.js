@@ -1,7 +1,7 @@
 const CACHE_NAME = 'itdv-music-v1';
 const STATIC_CACHE_NAME = 'itdv-static-v1';
 
-// Files to cache for offline functionality
+// Files to cache for offline functionality and performance
 const STATIC_FILES = [
   '/',
   '/manifest.json',
@@ -9,6 +9,8 @@ const STATIC_FILES = [
   '/icon-512x512.png',
   '/logo.webp',
   '/bloodshot-lies-big.png',
+  '/data/albums-with-colors.json', // Critical color data
+  '/publishers.json', // Publisher data
   // Add more static assets as needed
 ];
 

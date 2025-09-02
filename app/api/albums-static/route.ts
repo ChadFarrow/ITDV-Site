@@ -14,6 +14,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const forceRegenerate = searchParams.get('regenerate') === 'true';
     const clearCache = searchParams.get('clear') === 'true';
+    const priority = searchParams.get('priority'); // 'high' for critical albums
     
     // Handle cache clearing
     const staticDataPath = path.join(process.cwd(), 'public', 'static-albums.json');
@@ -46,7 +47,8 @@ export async function GET(request: Request) {
       });
       
       // Aggressive caching for static data
-      response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=7200');
+      response.headers.set('Cache-Control', 'public, max-age=3600, s-maxage=7200, stale-while-revalidate=86400');
+      response.headers.set('CDN-Cache-Control', 'max-age=7200');
       return response;
     }
     
@@ -61,7 +63,8 @@ export async function GET(request: Request) {
         loadTime: 'cached'
       });
       
-      response.headers.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+      response.headers.set('Cache-Control', 'public, max-age=300, s-maxage=600, stale-while-revalidate=1800');
+      response.headers.set('CDN-Cache-Control', 'max-age=600');
       return response;
     }
     
@@ -88,7 +91,19 @@ export async function GET(request: Request) {
       const albums = [];
       const errors = [];
       
-      for (const feed of albumFeeds) { // Process all feeds for complete static data
+      // For priority requests, only process core/high priority feeds
+      const feedsToProcess = priority === 'high' ? 
+        albumFeeds.filter(feed => 
+          feed.title.toLowerCase().includes('doerfel') || 
+          feed.title.toLowerCase().includes('bloodshot') ||
+          feed.id === 'core' || 
+          feed.priority === 'high'
+        ).slice(0, 10) : // Limit to first 10 for speed
+        albumFeeds;
+
+      console.log(`📡 Processing ${feedsToProcess.length} ${priority === 'high' ? 'priority ' : ''}album feeds...`);
+
+      for (const feed of feedsToProcess) {
         try {
           console.log(`🎵 Parsing: ${feed.title}`);
           const albumData = await RSSParser.parseAlbumFeed(feed.originalUrl);
@@ -153,7 +168,8 @@ export async function GET(request: Request) {
         loadTime: 'on-demand'
       });
       
-      response.headers.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+      response.headers.set('Cache-Control', 'public, max-age=300, s-maxage=600, stale-while-revalidate=1800');
+      response.headers.set('CDN-Cache-Control', 'max-age=600');
       return response;
     } catch (generationError) {
       console.warn('⚠️ Could not generate data:', generationError instanceof Error ? generationError.message : generationError);

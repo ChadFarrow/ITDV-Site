@@ -3,53 +3,33 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { getVersionString } from '@/lib/version';
 import { useAudio } from '@/contexts/AudioContext';
 import { toast } from '@/components/Toast';
-import { preloadCriticalColors, performanceMonitor } from '@/lib/performance-utils';
+import { preloadCriticalColors } from '@/lib/performance-utils';
 import dynamic from 'next/dynamic';
 
-// Dynamic imports for heavy components
+// Optimized dynamic imports with reduced loading states
 const AlbumCard = dynamic(() => import('@/components/AlbumCardLazy'), {
   loading: () => (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 animate-pulse">
+    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 animate-pulse h-64">
       <div className="aspect-square bg-gray-800/50 rounded-lg mb-3"></div>
       <div className="h-4 bg-gray-700/50 rounded mb-2"></div>
       <div className="h-3 bg-gray-700/50 rounded w-2/3"></div>
     </div>
   ),
-  ssr: true
+  ssr: false // Reduce initial bundle size
 });
 
 const PublisherCard = dynamic(() => import('@/components/PublisherCard'), {
-  loading: () => (
-    <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 animate-pulse">
-      <div className="flex items-center gap-4">
-        <div className="w-16 h-16 bg-gray-800/50 rounded-lg flex-shrink-0"></div>
-        <div className="flex-1">
-          <div className="h-4 bg-gray-700/50 rounded mb-2"></div>
-          <div className="h-3 bg-gray-700/50 rounded w-1/2"></div>
-        </div>
-      </div>
-    </div>
-  ),
-  ssr: true
+  loading: () => <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 h-20 animate-pulse"></div>,
+  ssr: false
 });
 
 const ControlsBar = dynamic(() => import('@/components/ControlsBar'), {
-  loading: () => (
-    <div className="mb-8 p-4 bg-gray-800/20 rounded-lg animate-pulse">
-      <div className="flex items-center gap-4">
-        <div className="h-8 bg-gray-700/50 rounded w-24"></div>
-        <div className="h-8 bg-gray-700/50 rounded w-20"></div>
-        <div className="h-8 bg-gray-700/50 rounded w-16"></div>
-        <div className="h-8 bg-gray-700/50 rounded w-20"></div>
-      </div>
-    </div>
-  ),
-  ssr: true
+  loading: () => <div className="mb-8 p-4 bg-gray-800/20 rounded-lg animate-pulse h-16"></div>,
+  ssr: false
 });
 
 // Import types from the ControlsBar component
@@ -95,7 +75,6 @@ interface Album {
 
 
 export default function HomePage() {
-  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   const [albums, setAlbums] = useState<Album[]>([]);
   const [publishers, setPublishers] = useState<any[]>([]);
@@ -247,23 +226,38 @@ export default function HomePage() {
 
   const loadAlbumsData = async (loadTier: 'core' | 'extended' | 'lowPriority' | 'all' = 'all') => {
     try {
+      // For critical loading, check cache first
+      if (loadTier === 'core' && typeof window !== 'undefined') {
+        const cached = localStorage.getItem('cachedCriticalAlbums');
+        const cacheTime = localStorage.getItem('criticalAlbumsCacheTimestamp');
+        
+        if (cached && cacheTime && (Date.now() - parseInt(cacheTime)) < 5 * 60 * 1000) {
+          console.log('📦 Using cached critical albums');
+          return JSON.parse(cached);
+        }
+      }
+
       // Use fast static album data (publishers are loaded separately from static file)
-      let response = await fetch('/api/albums-static');
+      let response = await fetch('/api/albums-static' + (loadTier === 'core' ? '?priority=high' : ''));
       let data;
       
       if (response.ok) {
         data = await response.json();
         console.log('📦 Using static album data (publishers from static file)');
       } else {
-        // Fallback to database-free endpoint (slower but more complete)
-        console.log('🔄 Static data failed, falling back to database-free parsing...');
-        response = await fetch('/api/albums-no-db');
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
+        // Only fallback for critical data, don't wait for enhanced data
+        if (loadTier === 'core') {
+          console.log('🔄 Static data failed, falling back to database-free parsing...');
+          response = await fetch('/api/albums-no-db');
+          
+          if (!response.ok) {
+            throw new Error(`Failed to fetch albums: ${response.status} ${response.statusText}`);
+          }
+          
+          data = await response.json();
+        } else {
+          throw new Error('Enhanced data unavailable');
         }
-        
-        data = await response.json();
       }
       
       const albums = data.albums || [];
@@ -282,11 +276,20 @@ export default function HomePage() {
       
       const uniqueAlbums = Array.from(albumMap.values());
       
-      // Cache the results
+      // Cache the results based on load tier
       if (typeof window !== 'undefined') {
         try {
-          localStorage.setItem('cachedAlbums', JSON.stringify(uniqueAlbums));
-          localStorage.setItem('albumsCacheTimestamp', Date.now().toString());
+          if (loadTier === 'core') {
+            // Cache first 15 albums for critical loading
+            const criticalAlbums = uniqueAlbums.slice(0, 15);
+            localStorage.setItem('cachedCriticalAlbums', JSON.stringify(criticalAlbums));
+            localStorage.setItem('criticalAlbumsCacheTimestamp', Date.now().toString());
+            console.log(`📦 Cached ${criticalAlbums.length} critical albums`);
+            return criticalAlbums;
+          } else {
+            localStorage.setItem('cachedAlbums', JSON.stringify(uniqueAlbums));
+            localStorage.setItem('albumsCacheTimestamp', Date.now().toString());
+          }
         } catch (error) {
           console.warn('⚠️ Failed to cache albums:', error);
         }
@@ -438,6 +441,8 @@ export default function HomePage() {
           fill
           className="object-cover w-full h-full"
           priority
+          quality={60}
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
@@ -468,6 +473,7 @@ export default function HomePage() {
                       height={40}
                       className="object-cover"
                       priority
+                      quality={75}
                     />
                   </div>
                 </div>
@@ -509,6 +515,7 @@ export default function HomePage() {
                       height={40}
                       className="object-cover"
                       priority
+                      quality={75}
                     />
                   </div>
                 </div>

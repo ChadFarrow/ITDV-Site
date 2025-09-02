@@ -106,7 +106,13 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     
     audioRef.current.src = track.url;
     audioRef.current.load();
-    audioRef.current.play();
+    audioRef.current.play().catch(error => {
+      if (error.name === 'AbortError' || error.message.includes('aborted')) {
+        console.log('Audio loading was cancelled (expected behavior)');
+      } else {
+        console.warn('Audio playback error:', error);
+      }
+    });
     setIsPlaying(true);
 
     // Update Media Session API
@@ -133,7 +139,13 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     
     audioRef.current.src = track.url;
     audioRef.current.load();
-    audioRef.current.play();
+    audioRef.current.play().catch(error => {
+      if (error.name === 'AbortError' || error.message.includes('aborted')) {
+        console.log('Audio loading was cancelled (expected behavior)');
+      } else {
+        console.warn('Audio playback error:', error);
+      }
+    });
     setIsPlaying(true);
 
     // Update Media Session API
@@ -171,7 +183,13 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const resume = useCallback(() => {
     if (audioRef.current) {
-      audioRef.current.play();
+      audioRef.current.play().catch(error => {
+        if (error.name === 'AbortError' || error.message.includes('aborted')) {
+          console.log('Audio loading was cancelled (expected behavior)');
+        } else {
+          console.warn('Audio playback error:', error);
+        }
+      });
       setIsPlaying(true);
     }
   }, []);
@@ -210,7 +228,14 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       audioRef.current.src = nextTrack.url;
       audioRef.current.load();
       if (isPlaying) {
-        audioRef.current.play();
+        audioRef.current.play().catch(error => {
+          // Silently handle expected audio loading errors (user navigation, network issues, etc.)
+          if (error.name === 'AbortError' || error.message.includes('aborted')) {
+            console.log('Audio loading was cancelled (expected behavior)');
+          } else {
+            console.warn('Audio playback error:', error);
+          }
+        });
       }
     }
 
@@ -243,7 +268,13 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       audioRef.current.src = prevTrack.url;
       audioRef.current.load();
       if (isPlaying) {
-        audioRef.current.play();
+        audioRef.current.play().catch(error => {
+          if (error.name === 'AbortError' || error.message.includes('aborted')) {
+            console.log('Audio loading was cancelled (expected behavior)');
+          } else {
+            console.warn('Audio playback error:', error);
+          }
+        });
       }
     }
 

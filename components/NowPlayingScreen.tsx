@@ -54,7 +54,10 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
   // Performance-optimized color loading with mobile considerations
   const loadColors = useRef(debounce(async (albumTitle: string, track: any) => {
     const timer = performanceMonitor.startTimer('colorLoad');
-    const cacheKey = albumTitle.toLowerCase();
+    // Create cache key that includes track info for track-specific colors
+    const cacheKey = track.image 
+      ? `${albumTitle.toLowerCase()}-${track.title?.toLowerCase() || 'unknown'}` 
+      : albumTitle.toLowerCase();
     
     try {
       // Check memory cache first
@@ -65,14 +68,8 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
         return;
       }
 
-      // Check global preloaded cache
-      const preloadedColors = getCachedColors(albumTitle);
-      if (preloadedColors) {
-        console.log('🎨 Using preloaded cache for:', albumTitle);
-        colorCache.current.set(cacheKey, preloadedColors);
-        setExtractedColors(preloadedColors);
-        return;
-      }
+      // Note: Skip preloaded cache check for now to ensure we check for track-specific colors
+      // We'll check preloaded colors later as a fallback
 
       console.log('🎨 Loading colors from network for:', albumTitle);
       setIsLoadingColors(true);
@@ -93,7 +90,7 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
 
       const data = await colorDataPromise;
       const album = data.albums?.find((a: any) => 
-        a.title?.toLowerCase() === cacheKey
+        a.title?.toLowerCase() === albumTitle.toLowerCase()
       );
       
       let colors = null;
@@ -105,6 +102,7 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
           t.image === track.image && 
           t.colors
         );
+        
         if (trackMatch?.colors) {
           console.log('🎵 Using track-specific colors for:', track.title);
           colors = trackMatch.colors;
@@ -115,6 +113,15 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
       if (!colors && album?.colors) {
         console.log('🎨 Using album colors for:', albumTitle);
         colors = album.colors;
+      }
+      
+      // Final fallback: check preloaded cache
+      if (!colors) {
+        const preloadedColors = getCachedColors(albumTitle);
+        if (preloadedColors) {
+          console.log('🎨 Using preloaded cache as final fallback for:', albumTitle);
+          colors = preloadedColors;
+        }
       }
 
       if (colors) {
