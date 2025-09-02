@@ -95,7 +95,7 @@ export const extractColorsFromImage = async (imageUrl: string): Promise<Extracte
           }
         }
         
-        const dominantColor = `${bestColor[0]},${bestColor[1]},${bestColor[2]}`;
+        let dominantColor = `${bestColor[0]},${bestColor[1]},${bestColor[2]}`;
         
         if (!dominantColor) {
           // Fallback to a neutral color
