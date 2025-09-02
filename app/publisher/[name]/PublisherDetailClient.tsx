@@ -76,7 +76,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
         }
       }
     } catch (error) {
-      console.warn('Could not load publisher artwork:', error);
+      console.warn('Could not load artist artwork:', error);
     }
   };
 
@@ -130,11 +130,11 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
         setPublisher(publisherInfo);
         setError(null);
       } else {
-        setError('Publisher not found');
+        setError('Artist not found');
       }
     } catch (err) {
-      console.error('Error loading publisher:', err);
-      setError('Failed to load publisher');
+      console.error('Error loading artist:', err);
+      setError('Failed to load artist');
     } finally {
       setIsLoading(false);
     }
@@ -182,7 +182,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
   if (error || !publisher) {
     return (
       <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-semibold mb-4">{error || 'Publisher not found'}</h1>
+        <h1 className="text-2xl font-semibold mb-4">{error || 'Artist not found'}</h1>
         <Link 
           href="/"
           className="text-blue-400 hover:text-blue-300 transition-colors"
@@ -197,7 +197,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
     <div className="min-h-screen text-white relative overflow-hidden">
       {/* Background */}
       <div className="fixed inset-0 z-0">
-        {/* Use publisher artwork as background */}
+        {/* Use artist artwork as background */}
         {(publisherArtwork || publisher.albums[0]?.coverArt) && (
           <Image
             src={publisherArtwork || publisher.albums[0].coverArt}
@@ -244,11 +244,11 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
           </div>
         </header>
 
-        {/* Publisher Hero Section */}
+        {/* Artist Hero Section */}
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-8 items-start">
-              {/* Publisher Artwork */}
+              {/* Artist Artwork */}
               <div className="flex-shrink-0 mx-auto lg:mx-0">
                 <div className="w-64 h-64 lg:w-80 lg:h-80 relative rounded-xl shadow-2xl overflow-hidden border border-white/20">
                   <Image
@@ -262,13 +262,13 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
                 </div>
               </div>
 
-              {/* Publisher Info */}
+              {/* Artist Info */}
               <div className="flex-1 text-center lg:text-left">
                 <div className="mb-6">
                   <h1 className="text-4xl lg:text-5xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     {publisher.name}
                   </h1>
-                  <p className="text-xl lg:text-2xl text-gray-300 mb-4">Publisher</p>
+                  <p className="text-xl lg:text-2xl text-gray-300 mb-4">Artist</p>
                   
                   <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-400 mb-6">
                     <span className="flex items-center gap-1">
@@ -283,7 +283,7 @@ export default function PublisherDetailClient({ publisherName, initialPublisher 
 
                   <div className="max-w-2xl mx-auto lg:mx-0 mb-6">
                     <p className="text-gray-300 leading-relaxed">
-                      All albums published by {publisher.name}
+                      All albums by {publisher.name}
                     </p>
                   </div>
                 </div>
