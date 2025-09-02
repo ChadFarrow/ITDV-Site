@@ -8,6 +8,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { getVersionString } from '@/lib/version';
 import { useAudio } from '@/contexts/AudioContext';
 import { toast } from '@/components/Toast';
+import { preloadCriticalColors, performanceMonitor } from '@/lib/performance-utils';
 import dynamic from 'next/dynamic';
 
 // Dynamic imports for heavy components
@@ -194,6 +195,10 @@ export default function HomePage() {
       // Load critical albums first (core feeds)
       const criticalAlbums = await loadAlbumsData('core');
       setCriticalAlbums(criticalAlbums);
+      
+      // Preload colors for critical albums for instant Now Playing screen
+      const criticalTitles = criticalAlbums.slice(0, 10).map((album: any) => album.title);
+      preloadCriticalColors(criticalTitles).catch(console.warn);
       
       // Load static publisher data
       try {

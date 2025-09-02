@@ -5,16 +5,21 @@ import Image from 'next/image';
 import { useAudio } from '@/contexts/AudioContext';
 import { useSwipeGestures } from '@/hooks/useSwipeGestures';
 import { extractColorsFromImage, createAlbumBackground, createTextOverlay, ExtractedColors } from '@/lib/color-utils';
+import { performanceMonitor, getMobileOptimizations, getCachedColors, debounce } from '@/lib/performance-utils';
 
 interface NowPlayingScreenProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
+// Global color cache to persist across component remounts
+const globalColorCache = new Map<string, ExtractedColors>();
+let colorDataPromise: Promise<any> | null = null;
+
 const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) => {
   const [extractedColors, setExtractedColors] = useState<ExtractedColors | null>(null);
   const [isLoadingColors, setIsLoadingColors] = useState(false);
-  const colorCache = useRef<Map<string, ExtractedColors>>(new Map());
+  const colorCache = useRef<Map<string, ExtractedColors>>(globalColorCache);
 
   const {
     currentTrack,
@@ -44,50 +49,112 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
     velocityThreshold: 0.3
   });
 
-  // Get pre-extracted colors from album data when track changes
+  // Performance-optimized color loading with mobile considerations
+  const loadColors = useRef(debounce(async (albumTitle: string, track: any) => {
+    const timer = performanceMonitor.startTimer('colorLoad');
+    const cacheKey = albumTitle.toLowerCase();
+    
+    try {
+      // Check memory cache first
+      if (colorCache.current.has(cacheKey)) {
+        console.log('🎨 Using memory cache for:', albumTitle);
+        setExtractedColors(colorCache.current.get(cacheKey)!);
+        performanceMonitor.recordCacheHit();
+        return;
+      }
+
+      // Check global preloaded cache
+      const preloadedColors = getCachedColors(albumTitle);
+      if (preloadedColors) {
+        console.log('🎨 Using preloaded cache for:', albumTitle);
+        colorCache.current.set(cacheKey, preloadedColors);
+        setExtractedColors(preloadedColors);
+        return;
+      }
+
+      console.log('🎨 Loading colors from network for:', albumTitle);
+      setIsLoadingColors(true);
+
+      // Create or reuse the shared promise for color data loading
+      if (!colorDataPromise) {
+        colorDataPromise = fetch('/data/albums-with-colors.json')
+          .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.json();
+          })
+          .catch(error => {
+            console.error('Failed to load color data:', error);
+            colorDataPromise = null;
+            throw error;
+          });
+      }
+
+      const data = await colorDataPromise;
+      const album = data.albums?.find((a: any) => 
+        a.title?.toLowerCase() === cacheKey
+      );
+      
+      let colors = null;
+      
+      // Check for track-specific colors first
+      if (album?.tracks && track.image) {
+        const trackMatch = album.tracks.find((t: any) => 
+          t.title?.toLowerCase() === track.title?.toLowerCase() && 
+          t.image === track.image && 
+          t.colors
+        );
+        if (trackMatch?.colors) {
+          console.log('🎵 Using track-specific colors for:', track.title);
+          colors = trackMatch.colors;
+        }
+      }
+      
+      // Fallback to album colors
+      if (!colors && album?.colors) {
+        console.log('🎨 Using album colors for:', albumTitle);
+        colors = album.colors;
+      }
+
+      if (colors) {
+        // Cache with size limit for mobile performance
+        const mobileOpts = getMobileOptimizations();
+        if (colorCache.current.size >= mobileOpts.maxCacheSize) {
+          const firstKey = colorCache.current.keys().next().value;
+          colorCache.current.delete(firstKey);
+        }
+        
+        colorCache.current.set(cacheKey, colors);
+        setExtractedColors(colors);
+        performanceMonitor.recordCacheMiss();
+      } else {
+        console.log('🎨 No colors found for:', albumTitle);
+        setExtractedColors(null);
+      }
+      
+    } catch (error) {
+      console.warn('Failed to load colors:', error);
+      setExtractedColors(null);
+    } finally {
+      setIsLoadingColors(false);
+      timer();
+    }
+  }, getMobileOptimizations().colorLoadDelay)).current;
+
   useEffect(() => {
     if (!isOpen || !currentTrack) {
       setExtractedColors(null);
       return;
     }
 
-    // Try to get pre-extracted colors from the track's album data
     const albumTitle = currentAlbum;
-    console.log('🎨 Current track data:', currentTrack);
-    console.log('🎨 Current album:', currentAlbum);
-    console.log('🎨 Looking for album:', albumTitle);
-    
-    if (albumTitle) {
-      // Load the pre-extracted colors from our static data
-      fetch('/data/albums-with-colors.json')
-        .then(response => response.json())
-        .then(data => {
-          console.log('🎨 Available albums:', data.albums.map((a: any) => a.title));
-          
-          const album = data.albums?.find((a: any) => 
-            a.title?.toLowerCase() === albumTitle.toLowerCase()
-          );
-          
-          if (album?.colors) {
-            console.log('🎨 Using pre-extracted colors for:', albumTitle, album.colors);
-            setExtractedColors(album.colors);
-          } else {
-            console.log('🎨 No pre-extracted colors found for:', albumTitle);
-            console.log('🎨 Available titles:', data.albums.map((a: any) => a.title));
-            setExtractedColors(null);
-          }
-        })
-        .catch((error) => {
-          console.warn('Failed to load pre-extracted colors:', error);
-          setExtractedColors(null);
-        });
-    } else {
+    if (!albumTitle) {
       console.log('🎨 No album title provided');
       setExtractedColors(null);
+      return;
     }
-    
-    setIsLoadingColors(false);
-  }, [isOpen, currentAlbum]);
+
+    loadColors(albumTitle, currentTrack);
+  }, [isOpen, currentAlbum, currentTrack, loadColors]);
 
   // Handle escape key
   useEffect(() => {
@@ -125,12 +192,18 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
     setVolume(newVolume);
   };
 
-  // Generate background styles
+  // Generate mobile-optimized background styles
+  const mobileOpts = getMobileOptimizations();
   const backgroundStyle = extractedColors 
-    ? { background: createAlbumBackground(extractedColors) }
+    ? { 
+        background: createAlbumBackground(extractedColors),
+        willChange: mobileOpts.willChange,
+        contain: mobileOpts.cssContainment
+      }
     : { 
-        // More vibrant fallback gradient inspired by music themes
-        background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #581c87 75%, #000000 100%)' 
+        background: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 25%, #581c87 75%, #000000 100%)',
+        willChange: mobileOpts.willChange,
+        contain: mobileOpts.cssContainment
       };
 
   const overlayStyle = extractedColors 
