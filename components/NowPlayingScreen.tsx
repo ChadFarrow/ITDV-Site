@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useAudio } from '@/contexts/AudioContext';
 import { useSwipeGestures } from '@/hooks/useSwipeGestures';
 import { extractColorsFromImage, createAlbumBackground, createTextOverlay, ExtractedColors } from '@/lib/color-utils';
@@ -17,6 +18,7 @@ const globalColorCache = new Map<string, ExtractedColors>();
 let colorDataPromise: Promise<any> | null = null;
 
 const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) => {
+  const router = useRouter();
   const [extractedColors, setExtractedColors] = useState<ExtractedColors | null>(null);
   const [isLoadingColors, setIsLoadingColors] = useState(false);
   const colorCache = useRef<Map<string, ExtractedColors>>(globalColorCache);
@@ -194,6 +196,19 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
     setVolume(newVolume);
   };
 
+  const handleViewAlbum = () => {
+    if (currentAlbum) {
+      // Convert album title to URL-friendly slug
+      const albumSlug = currentAlbum.toLowerCase()
+        .replace(/[^\w\s-]/g, '') // Remove special characters
+        .replace(/\s+/g, '-') // Replace spaces with hyphens
+        .trim();
+      
+      router.push(`/album/${albumSlug}`);
+      onClose(); // Close the now playing screen
+    }
+  };
+
   // Generate mobile-optimized background styles
   const mobileOpts = getMobileOptimizations();
   const backgroundStyle = extractedColors 
@@ -238,8 +253,9 @@ const NowPlayingScreen: React.FC<NowPlayingScreenProps> = ({ isOpen, onClose }) 
         </div>
 
         <button
+          onClick={handleViewAlbum}
           className="p-2 text-white/60 hover:text-white transition-colors"
-          title="More options"
+          title="View album"
         >
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
