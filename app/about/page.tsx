@@ -91,6 +91,25 @@ export default function AboutPage() {
                   </a>
                 </div>
 
+                {/* Site Donation */}
+                <div className="bg-black/40 rounded-lg p-6 text-center">
+                  <h3 className="text-xl font-semibold mb-3">Support ChadF</h3>
+                  <p className="text-gray-400 mb-4 text-sm">
+                    This site is a passion project for me but if you want to help me cover the cost any help is appreciated
+                  </p>
+                  <a
+                    href="https://www.paypal.com/donate/?business=NYCRNVFP4X3DY&no_recurring=0&currency_code=USD"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8.32 21.97a.546.546 0 0 1-.26-.32c-.03-.15-.06.11.6-8.89.66-9.28.66-9.29.81-9.45a.75.75 0 0 1 .7-.36c.73.05 2.38.43 3.3.78a6.64 6.64 0 0 1 2.84 2.18c.45.57.78 1.16.94 1.69.18.58.2 1.56.05 2.2a5.4 5.4 0 0 1-.85 1.84c-.4.52-1.15 1.24-1.69 1.6a6.13 6.13 0 0 1-2.4 1.03c-.88.19-1.12.2-2.3.2H8.89l-.37 5.18c-.27 3.85-.39 5.2-.44 5.25-.08.08-.4.1-.75.04a.81.81 0 0 1-.33-.11zm4.48-11.42c1.42-.1 2.05-.33 2.62-.9.58-.59.86-1.25.9-2.1.02-.42 0-.6-.1-.95-.33-1.17-1.15-1.84-2.54-2.07-.43-.07-1.53-.11-1.74-.06-.15.04-.17.27-.33 2.33-.18 2.44-.18 2.3 0 2.5.1.1.14.12.54.31.53.26 1.33.45 2.06.48.33.01.73 0 .87-.03h-.28z"/>
+                    </svg>
+                    Donate via PayPal
+                  </a>
+                </div>
+
                 {/* PodcastIndex Donation */}
                 <div className="bg-black/40 rounded-lg p-6 text-center">
                   <h3 className="text-xl font-semibold mb-3">Support PodcastIndex</h3>
