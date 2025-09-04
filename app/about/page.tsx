@@ -45,6 +45,95 @@ export default function AboutPage() {
               <p className="text-gray-400 text-right">-ChadF</p>
             </div>
 
+            {/* Add to Home Screen Instructions - Moved to top */}
+            <div className="bg-gray-900/50 rounded-lg p-8 mb-8">
+              <h2 className="text-2xl font-semibold mb-6">
+                📱 Add to Your Home Screen
+              </h2>
+              <p className="text-gray-300 mb-6">
+                Get quick access to Into the Doerfel-Verse by adding it to your phone's home screen. 
+                It will work like a native app with offline support!
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* iOS Instructions */}
+                <div className="bg-black/40 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <span className="text-2xl">🍎</span> iPhone/iPad (Safari)
+                  </h3>
+                  <ol className="space-y-3 text-gray-300 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-blue-400 font-bold">1.</span>
+                      <span>Open this site in Safari browser</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-blue-400 font-bold">2.</span>
+                      <span>Tap the Share button <span className="inline-block bg-gray-700 px-2 py-0.5 rounded text-xs">⎙</span> (square with arrow)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-blue-400 font-bold">3.</span>
+                      <span>Scroll down and tap "Add to Home Screen"</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-blue-400 font-bold">4.</span>
+                      <span>Name it "Doerfel-Verse" (or keep the default)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-blue-400 font-bold">5.</span>
+                      <span>Tap "Add" in the top right corner</span>
+                    </li>
+                  </ol>
+                  <div className="mt-4 p-3 bg-blue-900/30 rounded-lg border border-blue-500/20">
+                    <p className="text-xs text-blue-300">
+                      💡 The app icon will appear on your home screen and open in full-screen mode!
+                    </p>
+                  </div>
+                </div>
+
+                {/* Android Instructions */}
+                <div className="bg-black/40 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                    <span className="text-2xl">🤖</span> Android (Chrome)
+                  </h3>
+                  <ol className="space-y-3 text-gray-300 text-sm">
+                    <li className="flex gap-2">
+                      <span className="text-green-400 font-bold">1.</span>
+                      <span>Open this site in Chrome browser</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400 font-bold">2.</span>
+                      <span>Tap the menu button <span className="inline-block bg-gray-700 px-2 py-0.5 rounded text-xs">⋮</span> (three dots)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400 font-bold">3.</span>
+                      <span>Select "Add to Home screen" or "Install app"</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400 font-bold">4.</span>
+                      <span>Name it "Doerfel-Verse" (or keep the default)</span>
+                    </li>
+                    <li className="flex gap-2">
+                      <span className="text-green-400 font-bold">5.</span>
+                      <span>Tap "Add" or "Install"</span>
+                    </li>
+                  </ol>
+                  <div className="mt-4 p-3 bg-green-900/30 rounded-lg border border-green-500/20">
+                    <p className="text-xs text-green-300">
+                      💡 You might see an "Install" banner at the bottom of the screen - just tap it!
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Other Browsers */}
+              <div className="mt-6 p-4 bg-yellow-900/20 rounded-lg border border-yellow-500/20">
+                <p className="text-sm text-yellow-300">
+                  <span className="font-semibold">Other browsers:</span> Firefox, Edge, Brave, and Samsung Internet also support this feature. 
+                  Look for "Add to Home Screen" or "Install" in the browser menu (usually in the ⋮ or ≡ menu).
+                </p>
+              </div>
+            </div>
+
             {/* Support Section */}
             <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 rounded-lg p-8 mb-8 border border-purple-500/20">
               <h2 className="text-2xl font-bold mb-6 text-center">Support the Creators</h2>
@@ -191,6 +280,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+
 
 
 

@@ -223,26 +223,20 @@ export default function AlbumCard({ album, isPlaying = false, onPlay, className 
       </div>
 
       {/* Album Info */}
-      <div className="p-2 sm:p-3">
+      <div className="p-2 sm:p-3 bg-black/70 backdrop-blur-sm">
         <h3 className="font-semibold text-white text-xs sm:text-sm leading-tight line-clamp-2 group-hover:text-blue-300 transition-colors duration-200">
           {album.title}
         </h3>
-        <p className="text-gray-400 text-[10px] sm:text-xs mt-0.5 sm:mt-1 line-clamp-1">
+        <p className="text-gray-300 text-[10px] sm:text-xs mt-0.5 sm:mt-1 line-clamp-1">
           {album.artist}
         </p>
         
         {/* Release date and publisher indicator */}
         <div className="flex items-center justify-between mt-0.5 sm:mt-1">
           {album.releaseDate && (
-            <p className="text-gray-500 text-[10px] sm:text-xs">
+            <p className="text-gray-400 text-[10px] sm:text-xs">
               {new Date(album.releaseDate).getFullYear()}
             </p>
-          )}
-          {album.publisher && (
-            <div className="flex items-center gap-1" title="Has publisher feed">
-              <div className="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
-              <span className="text-[9px] sm:text-[10px] text-purple-400 font-medium">PUB</span>
-            </div>
           )}
         </div>
       </div>
