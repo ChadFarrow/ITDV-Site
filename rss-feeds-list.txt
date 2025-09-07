@@ -1,0 +1,113 @@
+ITDV-Site RSS Feeds List
+========================
+
+This document contains all RSS feeds used on the ITDV-Site for music distribution.
+
+==========================================
+CORE FEEDS (Priority: core)
+==========================================
+
+1. Bloodshot Lies Album Feed
+   URL: https://www.doerfelverse.com/feeds/bloodshot-lies-album.xml
+   Type: album
+   Title: Feed from www.doerfelverse.com
+   Status: active
+
+2. Think EP Feed
+   URL: https://www.doerfelverse.com/feeds/think-ep.xml
+   Type: album
+   Title: Feed from www.doerfelverse.com
+   Status: active
+
+==========================================
+EXTENDED FEEDS (Priority: extended)
+==========================================
+
+3. Ryan Fonda Publisher Feed
+   URL: https://wavlake.com/feed/artist/d4c49f2e-0b50-4a5e-8101-7543d68e032f
+   Type: publisher
+   Title: Ryan Fonda
+   Status: active
+
+4. Unsound Existence Feed
+   URL: https://www.doerfelverse.com/feeds/unsound-existence.xml
+   Type: album
+   Title: Unsound Existence - Ryan Fonda feat. CityBeach
+   Status: active
+
+5. Wavlake Music Feeds (Multiple UUIDs):
+   - https://wavlake.com/feed/music/6bece1b8-5385-4a33-9224-09e7f3ee6965
+   - https://wavlake.com/feed/music/ba843b13-bd09-4964-944b-cd64678edac7
+   - https://wavlake.com/feed/music/dd86f305-1766-4cae-a989-56ea9d09dff9
+   - https://wavlake.com/feed/music/e6a50ff6-8e1b-445f-a9ef-21096af86e49
+   - https://wavlake.com/feed/music/f4bebaac-91d0-4485-83ea-1441bfcf6c48
+   - https://wavlake.com/feed/music/c277887f-425d-41ac-8632-1ec46dd65ab0
+   - https://wavlake.com/feed/music/0c878c73-f144-45a0-bc5c-ffe68d1a4a3c
+   - https://wavlake.com/feed/music/4a0dac66-22c0-49f9-9ec2-bcfdf4b4ef10
+   - https://wavlake.com/feed/music/7305e2eb-fe96-46c4-b945-b07dfb8439fd
+   - https://wavlake.com/feed/music/0934bb2d-210c-4988-8055-9cd54c9817f7
+   - https://wavlake.com/feed/music/286c3d23-159f-47bb-bfe6-031a4b68b309
+   - https://wavlake.com/feed/music/28877168-c0a8-4f89-95e1-8900347c7887
+   - https://wavlake.com/feed/music/19803acd-4989-4482-86f7-030ad1533dd8
+   - https://wavlake.com/feed/music/f25b2449-b06c-423a-88c4-58c5900ef30d
+   - https://wavlake.com/feed/music/0113fc6a-a0db-4bd2-8837-a7a5c996a69e
+
+6. Middle Season Feeds:
+   - https://www.doerfelverse.com/artists/middleseason/inside-out.xml
+   - https://www.doerfelverse.com/artists/middleseason/mejor-version.xml
+   - https://www.doerfelverse.com/feeds/middle-season-let-go.xml
+   - https://www.doerfelverse.com/artists/middleseason/mspubfeed.xml (publisher)
+   - https://www.doerfelverse.com/artists/middleseason/no-way-back-single.xml
+
+7. The Doerfels Feeds:
+   - https://www.doerfelverse.com/feeds/your-chance.xml
+   - https://www.doerfelverse.com/feeds/dfbv1.xml
+   - https://www.doerfelverse.com/feeds/music-from-the-doerfelverse.xml
+   - https://www.doerfelverse.com/feeds/ben-doerfel.xml
+   - https://www.doerfelverse.com/feeds/wrath-of-banjo.xml
+   - https://www.doerfelverse.com/feeds/generation-gap.xml
+   - https://www.doerfelverse.com/feeds/phatty-the-grasshopper.xml
+   - https://www.doerfelverse.com/feeds/autumn.xml
+   - https://www.doerfelverse.com/feeds/unsound-existence.xml
+   - https://www.doerfelverse.com/feeds/pour-over.xml
+   - https://www.doerfelverse.com/feeds/you-feel-like-home.xml
+   - https://www.doerfelverse.com/feeds/psalm-54.xml
+   - https://www.doerfelverse.com/feeds/you-are-my-world.xml
+   - https://www.doerfelverse.com/feeds/dfbv2.xml
+
+8. Sir TJ The Wrathful Feeds:
+   - https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Kurtisdrums-V1.xml
+   - https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/Nostalgic.xml
+   - https://www.sirtjthewrathful.com/wp-content/uploads/2023/08/CityBeach.xml
+   - https://www.sirtjthewrathful.com/wp-content/uploads/2023/07/Beware-of-Banjo.xml
+
+9. Jdog Feed:
+   - https://www.thisisjdog.com/media/ring-that-bell.xml
+
+10. Additional Wavlake Feed:
+    - https://www.wavlake.com/feed/6bece1b8-5385-4a33-9224-09e7f3ee6965
+
+==========================================
+FEED STATISTICS
+==========================================
+
+Total Feeds: 42
+- Core Priority: 2 feeds
+- Extended Priority: 40 feeds
+
+Feed Types:
+- Album feeds: 35
+- Publisher feeds: 2
+- Mixed content: 5
+
+Feed Sources:
+- doerfelverse.com: 20 feeds
+- wavlake.com: 16 feeds
+- sirtjthewrathful.com: 4 feeds
+- thisisjdog.com: 1 feed
+- doerfelverse.com/artists/: 1 feed
+
+All feeds are currently active and being monitored for updates.
+
+Generated: January 2025
+Source: ITDV-Site feeds.json data
